@@ -52,7 +52,7 @@ class Vue {
 	<body>
 	    <main>
 	        <header class="appbar">
-	            <h1><a href="/art-pub-mtl/api/">L'art public à Montréal</a></h1> 
+	            <h1><a href="/art-public-mtl/api/">L'art public à Montréal</a></h1> 
 	        </header>
 			
 		<?php
@@ -92,8 +92,8 @@ class Vue {
 		<section class="contenu listeOeuvres">
 			<h1>Bienvenue sur le site Art public Montréal</h1>
 			<ul>
-				<li><a href="/art-pub-mtl/api/oeuvre">Voir les oeuvres</a></li>
-				<li><a href="/art-pub-mtl/api/artiste">Voir les artistes</a></li>
+				<li><a href="/art-public-mtl/api/oeuvre">Voir les oeuvres</a></li>
+				<li><a href="/art-public-mtl/api/artiste">Voir les artistes</a></li>
 			</ul>
 		</section>
 			
@@ -187,10 +187,10 @@ class Vue {
 		extract($aData);
 		?>
 		 <section class="contenu uneOeuvre flex flex-col">
-		 	<section class="retour"><a href="/art-pub-mtl/api/oeuvre"> Retour à la liste  </a></section>
+		 	<section class="retour"><a href="/art-public-mtl/api/oeuvre"> Retour à la liste  </a></section>
             <section class="oeuvre flex wrap">
                 <header class="image dummy">
-                	<img src="/art-pub-mtl/img/placeholder_640_480.jpg" />
+                	<img src="/art-public-mtl/img/placeholder_640_480.jpg" />
                     <h2 class="titre"><?php echo $Titre?></h2>
                 </header>
                     
@@ -202,7 +202,7 @@ class Vue {
 						foreach($Artistes as $artiste){
 							extract($artiste);
 							?>
-							<p class="auteur">Par : <a href="/art-pub-mtl/api/artiste/<?php echo $id_artiste ?>"><?php 
+							<p class="auteur">Par : <a href="/art-public-mtl/api/artiste/<?php echo $id_artiste ?>"><?php 
                                     if(isset($Nom) && $Nom!=""){
                                 echo $Nom .", ". $Prenom;
                             
