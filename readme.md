@@ -10,10 +10,10 @@ Les fichiers suivants sont à modifier en fonction de la configuration du site (
 
 
 ## Routes disponibles
-- https://jmartel.webdev.cmaisonneuve.qc.ca/art-pub-mtl/api/ - Accueil
-- https://jmartel.webdev.cmaisonneuve.qc.ca/art-pub-mtl/api/oeuvre - Les oeuvres
-- https://jmartel.webdev.cmaisonneuve.qc.ca/art-pub-mtl/api/oeuvre/ID - Une oeuvre (remplacer ID par le numero de l'oeuvre)
-- https://jmartel.webdev.cmaisonneuve.qc.ca/art-pub-mtl/api/artiste - Les artistes
-- https://jmartel.webdev.cmaisonneuve.qc.ca/art-pub-mtl/api/artiste/ID - Un artiste (remplacer ID par le numero de l'artiste)
-- https://jmartel.webdev.cmaisonneuve.qc.ca/art-pub-mtl/api/admin/oeuvre/ - Admin, liste des oeuvres
-- https://jmartel.webdev.cmaisonneuve.qc.ca/art-pub-mtl/api/admin/oeuvre/miseajour - Admin, importation des données publiques
+- https://jmartel.webdev.cmaisonneuve.qc.ca/art-public-mtl/api/ - Accueil
+- https://jmartel.webdev.cmaisonneuve.qc.ca/art-public-mtl/api/oeuvre - Les oeuvres
+- https://jmartel.webdev.cmaisonneuve.qc.ca/art-public-mtl/api/oeuvre/ID - Une oeuvre (remplacer ID par le numero de l'oeuvre)
+- https://jmartel.webdev.cmaisonneuve.qc.ca/art-public-mtl/api/artiste - Les artistes
+- https://jmartel.webdev.cmaisonneuve.qc.ca/art-public-mtl/api/artiste/ID - Un artiste (remplacer ID par le numero de l'artiste)
+- https://jmartel.webdev.cmaisonneuve.qc.ca/art-public-mtl/api/admin/oeuvre/ - Admin, liste des oeuvres
+- https://jmartel.webdev.cmaisonneuve.qc.ca/art-public-mtl/api/admin/oeuvre/miseajour - Admin, importation des données publiques
