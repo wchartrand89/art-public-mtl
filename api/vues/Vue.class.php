@@ -21,7 +21,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheHead() {
-		?>
+		 ?>
 		<!DOCTYPE html>
 		<html lang="fr">
 		
@@ -31,15 +31,14 @@ class Vue {
 		    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		    <meta name="description" content="">
 		    <meta name="viewport" content="width=device-width">
-		    
 			<link rel="stylesheet" href="../css/var.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="../css/flex.css" type="text/css" media="screen">
 		    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen">
 		    <!--<script src="../../js/plugins.js"></script>-->
 		    <script src="../js/main.js"></script>
+
 		</head>
 		<?php
-		
 	}
 
 	/**
@@ -86,7 +85,7 @@ class Vue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheAccueil($aData = Array()) {
+	public function afficheAccueil() {
 		
 		?>
 		<section class="contenu listeOeuvres">
