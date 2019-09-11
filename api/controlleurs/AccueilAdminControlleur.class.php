@@ -20,19 +20,29 @@
 class AccueilAdminControlleur extends Controlleur 
 {
 	
-	// GET : 
-	
 	public function getAction(Requete $requete)
 	{
-		$oVue = new AdminAuthentificationVue();
-		$oVue->afficheHead();
-		$oVue->afficheEntete();
-		$oVue->afficheConnexion();				
-		$oVue->affichePied();
-
-		
+		$res = array();
+//		var_dump($requete->url_elements);
+		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='page')	// Normalement l'id de l'artiste 
+		{
+            echo 'voici la page ADMIN!';
+            $oVue = new AdminVue();
+    		$oVue->afficheHead();
+    		$oVue->afficheEntete();
+    		$oVue->affichePied();
+        } 
+        else if(isset($requete->url_elements[0])){
+            echo 'Cette page ADMIN est non existante';
+        }
+        else 	// Accueil Admin (connection)
+        {
+    		$oVue = new AdminVue();
+    		$oVue->afficheHead();
+    		$oVue->afficheEntete();
+    		$oVue->afficheConnexion();				
+    		$oVue->affichePied();			
+        }
 	}
-	
-	
 }
 ?>
