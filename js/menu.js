@@ -1,4 +1,5 @@
 window.addEventListener("load", function(){
+    let appbar=document.querySelector(".appbar");
     let menu = document.querySelector(".menu");
     let iconeMenu=document.querySelector(".menuCubes");
     let iconeFermer=document.querySelector(".fermerMenu");
@@ -6,7 +7,7 @@ window.addEventListener("load", function(){
     let recherche=document.querySelector(".search");
 
     iconeMenu.addEventListener("click", function(){
-        menu.classList.remove("hidden");
+        appbar.classList.add("montre");
         langue.classList.remove("hidden");
         iconeMenu.classList.add("hidden");
         iconeFermer.classList.remove("hidden");
@@ -14,7 +15,7 @@ window.addEventListener("load", function(){
 
     })
     iconeFermer.addEventListener("click", function(){
-        menu.classList.add("hidden");
+        appbar.classList.remove("montre");
         langue.classList.add("hidden");
         iconeMenu.classList.remove("hidden");
         iconeFermer.classList.add("hidden");
