@@ -2,10 +2,6 @@
     --taille-appbar : 100px;
 }
 
-.hidden{
-    display:none;
-}
-
 .appbar{
     background-color: var(--couleur-fond);
     height:var(--taille-appbar);
@@ -16,15 +12,12 @@
     display:flex;
     justify-content: space-between;
     align-items:center;
-
     padding: var(--padding-base);
-
 }
 .appbar .logo img{
     max-width:130px;
     height:auto;
 }
-
 .appbar .icons a{
     padding: 10px;
 }
@@ -32,7 +25,6 @@
     font-weight: 600;
     font-size: 24px;
 }
-
 .appbar .menu{
     display:flex;
     flex-wrap: wrap;
@@ -40,7 +32,7 @@
     position:absolute;
     top:var(--taille-appbar);
     left:0;
-    height:500%;
+    min-height: calc(100vh - 100px);
     background-color: var(--couleur-fond);
 }
 .appbar .menu .lien{
@@ -49,9 +41,8 @@
     justify-content: center;
     align-items: center;
     width: 50%;
-    height:33%;
+    min-height:33.3%;
 }
-
 .appbar .menu .lien svg{
     fill: var(--couleur-fond);
 }
@@ -74,6 +65,11 @@
     background-color: var(--couleur-menu6);
 }
 
+
+
+.appbar .hidden{
+    display:none;
+}
 
 
 

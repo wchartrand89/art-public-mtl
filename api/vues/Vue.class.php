@@ -55,12 +55,12 @@ class Vue {
 
 	            <a class="logo" href="/art-public-mtl/api/"><img src="../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
 				<div class="icons">
-					<a class="search hidden" href="#"><img src="../img/icons/search_40px.svg" alt="Icone de recherche"></a>
-					<a class="langue" href="#">EN</a>
-					<a class="menuCubes hidden" href="#"><img src="../img/icons/menu.svg" alt="Icone d'ouverture du menu"></a>
-					<a class="fermerMenu" href="#"><img src="../img/icons/close.svg" alt="Icone de fermeture du menu"></a>
+					<a class="search" href="#"><img src="../img/icons/search_40px.svg" alt="Icone de recherche"></a>
+					<a class="langue hidden" href="#">EN</a>
+					<a class="menuCubes" href="#"><img src="../img/icons/menu.svg" alt="Icone d'ouverture du menu"></a>
+					<a class="fermerMenu hidden" href="#"><img src="../img/icons/close.svg" alt="Icone de fermeture du menu"></a>
 				</div>
-				<nav class="menu ouvert">
+				<nav class="menu hidden">
 					<a class="lien" href="#">
 					<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/>
 					<path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
