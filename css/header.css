@@ -18,10 +18,15 @@
     max-width:130px;
     height:auto;
 }
+.appbar .icons{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 .appbar .icons a{
     padding: 10px;
 }
-.appbar .fermerMenu{
+.appbar .fermerMenu, .appbar .langue{
     font-weight: 600;
     font-size: 24px;
 }

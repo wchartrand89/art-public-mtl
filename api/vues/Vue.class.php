@@ -38,6 +38,7 @@ class Vue {
 		    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen">
 		    <!--<script src="../../js/plugins.js"></script>-->
 		    <script src="../js/main.js"></script>
+		    <script src="../js/menu.js"></script>
 
 		</head>
 		<?php
@@ -55,8 +56,8 @@ class Vue {
 
 	            <a class="logo" href="/art-public-mtl/api/"><img src="../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
 				<div class="icons">
-					<a class="search" href="#"><img src="../img/icons/search_40px.svg" alt="Icone de recherche"></a>
 					<a class="langue hidden" href="#">EN</a>
+					<a class="search" href="#"><img src="../img/icons/search_40px.svg" alt="Icone de recherche"></a>
 					<a class="menuCubes" href="#"><img src="../img/icons/menu.svg" alt="Icone d'ouverture du menu"></a>
 					<a class="fermerMenu hidden" href="#"><img src="../img/icons/close.svg" alt="Icone de fermeture du menu"></a>
 				</div>
