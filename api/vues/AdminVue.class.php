@@ -52,7 +52,7 @@ class AdminVue {
 	<body>
 	    <main>
 	        <header class="appbar">
-	            <h1><a href="/art-pub-mtl/api/admin">L'art public à Montréal (Admin)</a></h1> 
+	            <h1><a href="/art-public-mtl/api/admin">L'art public à Montréal (Admin)</a></h1> 
 	        </header>
 			
 		<?php
@@ -103,7 +103,7 @@ class AdminVue {
 			                    <span class="titre"><?php echo $Titre ?> - </span>
 			                    <span class ="description"> <?php echo $Description ?> - </span>
 			                    <span class="arrondissement"><?php echo $Arrondissement ?></span>
-		                    <span class="action flex-droite"><!--	<a href="/art-pub-mtl/api/admin/oeuvre/<?php echo $id ?>">[x]</a>--> <a href="/art-pub-mtl/api/admin/oeuvre/<?php echo $id ?>">[Modifier descripion]</a></span>
+		                    <span class="action flex-droite"><!--	<a href="/art-public-mtl/api/admin/oeuvre/<?php echo $id ?>">[x]</a>--> <a href="/art-public-mtl/api/admin/oeuvre/<?php echo $id ?>">[Modifier descripion]</a></span>
 			                    
 			                </section>
 
