@@ -55,12 +55,7 @@ class Vue {
 	        <header class="appbar">
 
 	            <a class="logo" href="/art-public-mtl/api/"><img src="../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
-				<div class="icons">
-					<a class="langue hidden" href="#">EN</a>
-					<a class="search" href="#"><img src="../img/icons/search_40px.svg" alt="Icone de recherche"></a>
-					<a class="menuCubes" href="#"><img src="../img/icons/menu.svg" alt="Icone d'ouverture du menu"></a>
-					<a class="fermerMenu hidden" href="#"><img src="../img/icons/close.svg" alt="Icone de fermeture du menu"></a>
-				</div>
+				
 				<nav class="menu hidden">
 					<a class="lien" href="#">
 					<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/>
@@ -90,6 +85,16 @@ class Vue {
 						<p>Compte</p>
 					</a>
 				</nav>	
+				<div class="icons">
+					
+					<a class="search" href="#"><img src="../img/icons/search_40px.svg" alt="Icone de recherche"></a>
+					<a class="langue hidden" href="#">EN</a>
+					<a class="menuCubes" href="#"><img src="../img/icons/menu.svg" alt="Icone d'ouverture du menu"></a>
+					<a class="fermerMenu hidden" href="#"><img src="../img/icons/close.svg" alt="Icone de fermeture du menu"></a>
+					<a class="compte" href="#">
+					<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>						
+					</a>
+				</div>
 			</header>
 			<main>
 			

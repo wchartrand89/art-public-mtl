@@ -7,6 +7,8 @@
     /* --main-couleur-lien : #ff1744; */
     /* --marge-gauche : 84px; */
     
+
+    /* COULEURS */
     --couleur-fond : #f5f5f5;
     --couleur-marine : #103C61;
     --couleur-orange : #DF8E32;
@@ -19,36 +21,18 @@
     --couleur-menu6 : rgba(16,60,97,0.25);
 
 
-
+  /* MARGES, etc. */
 
     --padding-base: 15px;
-}
 
 
-/*BEAKPOINTS À FAIRE*/
-/*
-@mixin for-phone-only {
-  @media (max-width: 599px) { @content; }
-}
-@mixin for-tablet-portrait-up {
-  @media (min-width: 600px) { @content; }
-}
-@mixin for-tablet-landscape-up {
-  @media (min-width: 900px) { @content; }
-}
-@mixin for-desktop-up {
-  @media (min-width: 1200px) { @content; }
-}
-@mixin for-big-desktop-up {
-  @media (min-width: 1800px) { @content; }
+  /* BREAKPOINTS */
+
+  --break-phone: 599px;
+  --break-tablet-portrait-up: 600px;
+  --break-tablet-landscape-up: 900px;
+  --break-desktop-up: 1200px;
+  --break-big-desktop-up: 1800px;
+
 }
 
-// usage
-.my-box {
-  padding: 10px;
-  
-  @include for-desktop-up {
-    padding: 20px;
-  }
-}
-*/
