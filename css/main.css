@@ -1,5 +1,7 @@
 /* Basé sur les sources de muicss*/
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Pacifico&display=swap');
+
 
 /**
  * Body CSS
@@ -207,6 +209,8 @@ buttons {
     width: 100%;
 }
 
+/*------------------Section d'une oeuvre -------------------*/
+
 .contenu.uneOeuvre
 {
     padding-left: 0px;
@@ -219,6 +223,16 @@ buttons {
     display: flex;
     background-color: #FFF;
     margin: 0px auto;
+}
+
+.uneOeuvre > .oeuvre > .titre {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 63px;
+    text-align: center;
+    color: #103C61;
 }
 
 .uneOeuvre > .oeuvre > .image
@@ -268,7 +282,7 @@ buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: #FFF;
+    color: #DF8E32;
     font-size: 24px;
     margin-left: var(--marge-gauche);
     text-decoration: none;
@@ -279,7 +293,7 @@ buttons {
 .uneOeuvre > .retour a
 {
     text-decoration: none;
-    color: #FFF;
+    color: #DF8E32;
     padding-left: 48px;
 }
 
