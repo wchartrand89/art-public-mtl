@@ -43,10 +43,10 @@
         font-size: 24px;
     }
     .appbar .menu{
-        z-index:-10;
         transform:ScaleY(0);
         transform-origin: 50% 0%;
         transition: transform .15s;
+        /* transform:translateX(-100%); */
         display:flex;
         flex-wrap: wrap;
         width:100%;
@@ -58,8 +58,10 @@
     }
     .montre .menu{
         transform: ScaleY(1);
-        transition: transform 235ms;
         transform-origin: 50% 0%;
+        transition: transform 235ms;
+        
+        /* transform:translateX(0%); */
     }
 
     .appbar .menu .lien{
