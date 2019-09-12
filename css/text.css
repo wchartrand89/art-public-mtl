@@ -1,0 +1,23 @@
+h1{
+    font-family: 'Pacifico', cursive;
+    font-size:4rem;
+    color: var(--couleur-orange);
+}
+
+p{
+    font-size:1.4rem;
+}
+
+
+h2{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size:2.4rem;
+    color:var(--couleur-marine);
+}
+
+.btn{
+    font-weight:bold;
+    font-size:1.6rem;
+    color:var(--couleur-fond);
+}
