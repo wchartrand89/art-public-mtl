@@ -22,7 +22,8 @@ class AdminControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
-		$res = array();
+        echo'<br><br><br>';
+//        var_dump($res);
 //		var_dump($requete->url_elements);
 		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
 		{
@@ -32,6 +33,15 @@ class AdminControlleur extends Controlleur
     		$oVue->afficheEntete();
     		$oVue->affichePied();
         } 
+//        if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='oeuvres')	// Normalement l'id de l'artiste 
+//		{
+//            echo 'OEUVRES';
+//            $oOAC = new OeuvreControlleur();
+//            $oOAC->getAction(Requete $requete);
+//    		$oVue->afficheEntete();
+//    		$oVue->afficheOeuvres($res);
+//    		$oVue->affichePied();
+//        } 
         else if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='')	// Normalement l'id de l'artiste 
 		{
             echo 'ACCUEIL ADMIN';
@@ -55,5 +65,26 @@ class AdminControlleur extends Controlleur
     		$oVue->affichePied();			
         }
 	}
+    
+    
+	public function postAction(){
+        echo'AH';
+        
+        if(!empty($_POST)){
+  		    $authentification = new Authentification();
+            $retour = $authentification->verification($_POST['login'], $_POST['mdp']);
+            if($retour == true){ //login et mdp sont corrects
+                //connecter la personne
+                $_SESSION['login'] = $_POST['login'];
+                
+                //redirection vers page privee
+                header("location:http://localhost/art-public-mtl/api/admin/menu");
+            }else{
+                header("location:http://localhost/art-public-mtl/api/admin");
+                exit();
+            }
+          
+        }
+    }
 }
 ?>

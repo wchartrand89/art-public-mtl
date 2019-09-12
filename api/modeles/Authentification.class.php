@@ -10,13 +10,13 @@
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
  */
-class Authentification extends Manager{
+class Authentification extends Modele{
 	public  function verification($lo, $mdp){
+        echo 'FUCK';
        //requete de verication ici   
-        $requete= "SELECT Usager FROM utilisateur WHERE Usager='$lo' and motPasse='$mdp'";
-        $result =$this->connexion->query($requete);
-
-        $resultat = $result->fetchAll(PDO::FETCH_ASSOC);
+        $requete= "SELECT Usager FROM utilisateur WHERE usager='$lo' and motPasse='$mdp'";
+        $result =$this->_db->query($requete);
+        $resultat = $result->fetch_assoc();
 
      // print_r($resultat[0]['nbre']); die;
 

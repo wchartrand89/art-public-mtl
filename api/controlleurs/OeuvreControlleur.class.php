@@ -19,7 +19,6 @@
  
 class OeuvreControlleur extends Controlleur 
 {
-	
 	// GET : 
 	// 		/oeuvre/ - Liste des oeuvres
 	// 		/oeuvre/{id}/ - Une oeuvre

@@ -32,11 +32,11 @@ class AdminVue {
 		    <meta name="description" content="">
 		    <meta name="viewport" content="width=device-width">
 		    
-		    <link rel="stylesheet" href="<?php echo BASE_URL."css/flex.css"?>" type="text/css" media="screen">
-		    <link rel="stylesheet" href="<?php echo BASE_URL."css/adminmain.css"?>" type="text/css" media="screen">
+		    <link rel="stylesheet" href="<?php echo "./css/flex.css"?>" type="text/css" media="screen">
+		    <link rel="stylesheet" href="<?php echo "./css/adminmain.css"?>" type="text/css" media="screen">
 		    
-		    <script src="<?php echo BASE_URL."js/define.js"?>"></script>
-		    <script src="<?php echo BASE_URL."js/admin.js"?>"></script>
+		    <script src="./js/define.js"></script>
+		    <script src="./js/admin.js"></script>
 		</head>
 		<?php
 		
