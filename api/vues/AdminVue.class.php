@@ -52,7 +52,7 @@ class AdminVue {
 	<body>
 	    <main>
 	        <header class="appbar">
-	            <h1><a href="/art-public-mtl/api/admin">L'art public à Montréal (Admin)</a></h1> 
+	            <h1><a href="/art-public-mtl/api/admin/accueil">L'art public à Montréal (Admin)</a></h1> 
 	        </header>
 			
 		<?php
@@ -153,6 +153,28 @@ class AdminVue {
 					</section>
 				
 			</section>
+			
+		<?php
+		
+	}
+    
+	public function afficheConnexion() {
+		
+		?>
+
+            <form action="?controller=authentification&action=connexionPost" method="post">	
+                <div>
+                    <label for="name">Nom d'usager:</label>
+                    <input type="text" id="name" name="login">
+                </div>
+                <div>
+                    <label for="mdp">Mot de passe:</label>
+                    <input type="mdp" id="mdp" name="mdp">
+                </div>
+                <div>
+                    <input type="submit" id="envoyer" value="Se connecter">
+                </div>		
+            </form>
 			
 		<?php
 		

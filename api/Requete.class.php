@@ -21,16 +21,12 @@ class Requete
 	
     public function __construct() {
         $this->_db = MonSQL::getInstance();
-        
         $this->verbe = $_SERVER['REQUEST_METHOD'];
         $_GET['url'] = (isset($_GET['url']) ? $_GET['url'] : "");
-        
         $this->url_elements = explode('/', $_GET['url']);
-						
 		$this->parseIncomingParams();
-		
 		$this->ressource = $this->url_elements[0]; 
-		array_splice($this->url_elements, 0, 1);
+//        var_dump ($this);
         return true;
 	}
 	
