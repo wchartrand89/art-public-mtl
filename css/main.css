@@ -7,10 +7,18 @@
 
 html,
 body {
-    height: 100%;
-    font-family: Arial,Verdana,Tahoma;
-    background-color: var(--couleur-fond);
+    /* height: 100%; */
+    font-family: 'Open Sans', sans-serif;
+    /* background-color: var(--couleur-fond); */
     margin:0px 0px 0px 0px;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction: column;
+}
+body{
+    position:relative;
+    top:var(--taille-appbar);
+    width:100%;
 }
 
 html,
@@ -316,7 +324,7 @@ buttons {
 /**
  * appbar
  */
-
+/* 
 .appbar {
     position: fixed;
     top: 0;
@@ -335,7 +343,7 @@ buttons {
     color: #FFF;
     font-size: 24px;
     text-decoration: none;
-}
+} */
 
 /**
  * contenu
@@ -359,7 +367,7 @@ buttons {
  * Footer CSS
  */
 
-main > footer {
+/* main > footer {
     padding-left: var(--marge-gauche);
     height: 35px;
     background-color: #eee;
@@ -369,7 +377,7 @@ main > footer {
     right: 0;
     left: 0;
     z-index: 2;
-}
+} */
 
 
 
