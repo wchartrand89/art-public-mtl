@@ -17,26 +17,37 @@
 
  
  
-class AccueilAdminControlleur extends Controlleur 
+class AdminControlleur extends Controlleur 
 {
 	
 	public function getAction(Requete $requete)
 	{
 		$res = array();
 //		var_dump($requete->url_elements);
-		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='page')	// Normalement l'id de l'artiste 
+		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
 		{
-            echo 'voici la page ADMIN!';
+            echo 'MENU ADMIN';
             $oVue = new AdminVue();
     		$oVue->afficheHead();
     		$oVue->afficheEntete();
     		$oVue->affichePied();
         } 
+        else if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='')	// Normalement l'id de l'artiste 
+		{
+            echo 'ACCUEIL ADMIN';
+            $oVue = new AdminVue();
+    		$oVue->afficheHead();
+    		$oVue->afficheEntete();
+            $oVue->afficheConnexion();	
+    		$oVue->affichePied();
+        } 
         else if(isset($requete->url_elements[0])){
-            echo 'Cette page ADMIN est non existante';
+//            var_dump($requete);
+            echo 'PAGE ADMIN NON EXISTANTE';
         }
         else 	// Accueil Admin (connection)
         {
+//            echo 'BLOU';
     		$oVue = new AdminVue();
     		$oVue->afficheHead();
     		$oVue->afficheEntete();
