@@ -188,11 +188,12 @@ buttons {
 .carte-info  .texte h2
 {
     margin: 0px;
-    padding 0px;
+    padding: 0px;
     font-size: 14px;
     
     
 }
+
 .oeuvre .auteur a
 {
     color: var(--main-couleur-lien);
