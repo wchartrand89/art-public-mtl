@@ -30,11 +30,15 @@ class Vue {
 		    <meta charset="utf-8">
 		    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		    <meta name="description" content="">
-		    <meta name="viewport" content="width=device-width">
+			<meta name="viewport" content="width=device-width">
+			<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico&display=swap" rel="stylesheet">
+
 			<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="../css/var.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="../css/header.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="../css/footer.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="../css/text.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="../css/component.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="../css/flex.css" type="text/css" media="screen">
 		    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen">
 		    <!--<script src="../../js/plugins.js"></script>-->
@@ -166,12 +170,28 @@ class Vue {
 	public function afficheAccueil() {
 		
 		?>
-		<section class="contenu listeOeuvres">
-			<h1>Bienvenue sur le site Art public Montréal</h1>
-			<ul>
-				<li><a href="/art-public-mtl/api/oeuvre">Voir les oeuvres</a></li>
-				<li><a href="/art-public-mtl/api/artiste">Voir les artistes</a></li>
+		<section class="carte">
+			<div class="text">
+				<h1>Vivez Montréal</h1>
+				<p>À travers sa grande collection d'art public</p>
+			</div>
+			<a class= "btn btnAccueil" href="/art-public-mtl/api/oeuvre">Voir la carte</a>
+		</section>
+		<section class="nvlOeuvres">
+			<h2>Nouvelles oeuvres</h2>
+			<ul class="carrousel">
+				<!-- Générer les articles en php, structure HTML voulue : -->
+				<!-- <li><a href="lien vers la page de l'oeuvre"></a><img src="lien image de l'oeuvre" alt="Nom de l'oeuvre"></li> -->
+				<!-- test pour CSS, à supprimer -->
+				<!-- <li><a href="#"></a><img src="../img/oeuvres/962_1.jpg" alt="Nom de l'oeuvre"></li> -->
+				<!-- <li><a href="#"></a><img src="../img/oeuvres/1099_1.jpg" alt="Nom de l'oeuvre"></li> -->
+				<!-- <li><a href="#"></a><img src="../img/oeuvres/1119_1.jpg" alt="Nom de l'oeuvre"></li> -->
+				<!-- <li><a href="#"></a><img src="../img/oeuvres/1127_1.jpg" alt="Nom de l'oeuvre"></li> -->
 			</ul>
+			<div class="points">
+
+			</div>
+			
 		</section>
 		<?php
 		
