@@ -10,9 +10,23 @@
 html,
 body {
     height: 100%;
-    font-family: Arial,Verdana,Tahoma;
-    background-color: var(--couleur-fond);
+    font-family: 'Open Sans', sans-serif;
     margin:0px 0px 0px 0px;
+    box-sizing:border-box;
+    width:100%;
+}
+body{
+    
+    width:100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    width:100%;
+    flex: 1 0 auto;
+    max-width:100%;
 }
 
 html,
@@ -26,12 +40,34 @@ buttons {
 }
 
 
+/*---------- ACCUEIL --------*/
+
+main .carte{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:var(--couleur-marine);
+    height: 270px;
+    width:100%;
+}
+main .carte .text{
+    margin-bottom: calc(var(--padding-base) * 3);
+}
+main .carte .text p{
+    color: var(--couleur-fond);
+    margin-top: var(--padding-base);
+}
+main .carte .btnAccueil{
+    /* margin-top:50px; */
+    background-color: var(--couleur-fond);
+    color: var(--couleur-marine);
+}
 
 
 
 
-
-.carte
+/* .carte
 {
     position: relative;
     width: var(--carte-largeur);
@@ -42,15 +78,15 @@ buttons {
     border-radius: 2px;
     overflow: hidden;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
-}
+} */
 
-.carte .image   
+/* .carte .image   
 {
     width: 100%;
     height: var(--carte-hauteur-image);
     position: relative;
     overflow: hidden;
-}
+} */
 
 
 .carte:hover .image  > img
@@ -318,20 +354,20 @@ buttons {
 /**
  * Recherche
  */
-
+/* 
 .recherche
 {
     margin-top: 16px;
     margin-bottom: 16px;
     padding-left: 8px;
     width: 100%;
-}
+} */
 
 
 /**
  * appbar
  */
-
+/* 
 .appbar {
     position: fixed;
     top: 0;
@@ -350,43 +386,24 @@ buttons {
     color: #FFF;
     font-size: 24px;
     text-decoration: none;
-}
+} */
 
 /**
  * contenu
  */
 
-.contenu {
-    padding-left: var(--marge-gauche);
-    min-height: 100%;
-    padding-top: 64px;
+
+ .contenu {
+    /* padding-left: var(--marge-gauche);
+    min-height: 100%; */
+    /* padding-top: 64px; */
         
     display: flex;
     flex-wrap: wrap;
     /* sticky footer */
-    margin-bottom: -100px;
-    padding-bottom: 100px;
-}
-
-
-
-/**
- * Footer CSS
- */
-
-main > footer {
-    padding-left: var(--marge-gauche);
-    height: 35px;
-    background-color: #eee;
-    
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
-}
-
-
+    /* margin-bottom: -100px;
+    padding-bottom: 100px; */
+}  
 
 .hidden
 {

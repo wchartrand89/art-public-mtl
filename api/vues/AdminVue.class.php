@@ -52,7 +52,7 @@ class AdminVue {
 	<body>
 	    <main>
 	        <header class="appbar">
-	            <h1><a href="/art-pub-mtl/api/admin">L'art public à Montréal (Admin)</a></h1> 
+	            <h1><a href="/art-public-mtl/api/admin/accueil">L'art public à Montréal (Admin)</a></h1> 
 	        </header>
 			
 		<?php
@@ -103,7 +103,7 @@ class AdminVue {
 			                    <span class="titre"><?php echo $Titre ?> - </span>
 			                    <span class ="description"> <?php echo $Description ?> - </span>
 			                    <span class="arrondissement"><?php echo $Arrondissement ?></span>
-		                    <span class="action flex-droite"><!--	<a href="/art-pub-mtl/api/admin/oeuvre/<?php echo $id ?>">[x]</a>--> <a href="/art-pub-mtl/api/admin/oeuvre/<?php echo $id ?>">[Modifier descripion]</a></span>
+		                    <span class="action flex-droite"><!--	<a href="/art-public-mtl/api/admin/oeuvre/<?php echo $id ?>">[x]</a>--> <a href="/art-public-mtl/api/admin/oeuvre/<?php echo $id ?>">[Modifier descripion]</a></span>
 			                    
 			                </section>
 
@@ -153,6 +153,28 @@ class AdminVue {
 					</section>
 				
 			</section>
+			
+		<?php
+		
+	}
+    
+	public function afficheConnexion() {
+		
+		?>
+
+            <form action="?controller=authentification&action=connexionPost" method="post">	
+                <div>
+                    <label for="name">Nom d'usager:</label>
+                    <input type="text" id="name" name="login">
+                </div>
+                <div>
+                    <label for="mdp">Mot de passe:</label>
+                    <input type="mdp" id="mdp" name="mdp">
+                </div>
+                <div>
+                    <input type="submit" id="envoyer" value="Se connecter">
+                </div>		
+            </form>
 			
 		<?php
 		
