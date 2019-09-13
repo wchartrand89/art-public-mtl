@@ -1,4 +1,5 @@
 <?php
+class OeuvreVue {
 /**
 	 * Affiche le détails d'une oeuvre
 	 * @access public
@@ -100,6 +101,7 @@
 			
 		<?php
 		
-    }
+	}
+}
     
 
