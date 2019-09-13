@@ -9,15 +9,14 @@
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
  */
-
-//	echo $_SERVER["HTTP_HOST"];
+	echo $_SERVER["HTTP_HOST"];
 
 	if($_SERVER["HTTP_HOST"] == "127.0.0.1:8000" || $_SERVER["HTTP_HOST"] == "localhost")
 	{
-		define('BASE_URL', 'http://127.0.0.1:8000/art-public-mtl/');	
+		define('BASE_URL', 'http://127.0.0.1:8000/art-pub-mtl/');	
 	}
 	else {
-		define('BASE_URL', 'https://jmartel.webdev.cmaisonneuve.qc.ca/art-public-mtl/api/');	
+		define('BASE_URL', 'http://artpublicmtl.ceciliaflores.ca/art-pub-mtl/');	
 	}
 		
 	
