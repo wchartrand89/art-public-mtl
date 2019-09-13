@@ -136,7 +136,6 @@ main .nvlOeuvres h2{
   }
   .next {
     right: 5%;
-    
     border-radius: 3px 0 0 3px;
   }
   
@@ -171,7 +170,7 @@ main .nvlOeuvres h2{
     height: 15px;
     width: 15px;
     margin: 0 2px;
-    background-color:var(--couleur-bleu);
+    background-color:#d3d3d3;
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
