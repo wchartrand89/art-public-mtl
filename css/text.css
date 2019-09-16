@@ -14,6 +14,15 @@ h2{
     font-weight: bold;
     font-size:2.4rem;
     color:var(--couleur-marine);
+    text-transform: uppercase;
+}
+
+.nom{
+    font-family: 'Open Sans', sans-serif;
+    font-size:1.5rem;
+    color:var(--couleur-fond);
+    font-weight: bold;
+    /* text-transform: uppercase; */
 }
 
 .btn{
@@ -21,3 +30,5 @@ h2{
     font-size:1.6rem;
     color:var(--couleur-fond);
 }
+
+
