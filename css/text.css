@@ -42,6 +42,9 @@ h2{
     p{
         font-size:1.8rem;
     }
+    .btn{
+        font-size:2rem;
+    }
 }
 
 /* BREAK TABLET LANDSCAPE UP */
@@ -52,7 +55,7 @@ h2{
 
 }
 
-/* BREAK TABLET DESKTOP UP */
+/* BREAK DESKTOP UP */
 @media screen and (min-width: 1200px) {
     h1{
         font-size:10rem;
