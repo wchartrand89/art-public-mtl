@@ -30,13 +30,24 @@ class AdminVue {
 		    <meta charset="utf-8">
 		    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		    <meta name="description" content="">
+
 		    <meta name="viewport" content="width=device-width">
 		    
-		    <link rel="stylesheet" href="<?php echo "./css/flex.css"?>" type="text/css" media="screen">
-		    <link rel="stylesheet" href="<?php echo "./css/adminmain.css"?>" type="text/css" media="screen">
+		    <link rel="stylesheet" href="<?php echo "../../css/flex.css"?>" type="text/css" media="screen">
+		    <link rel="stylesheet" href="<?php echo "../../css/adminmain.css"?>" type="text/css" media="screen">
 		    
 		    <script src="./js/define.js"></script>
 		    <script src="./js/admin.js"></script>
+
+		    <meta name="viewport" content="width=device-width">		    
+		    <link rel="stylesheet" href="<?php echo BASE_URL."css/flex.css"?>" type="text/css" media="screen">
+		    <link rel="stylesheet" href="<?php echo BASE_URL."css/adminmain.css"?>" type="text/css" media="screen">
+			
+			<link rel="stylesheet" href="../../css/text.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="../../css/var.css" type="text/css" media="screen">
+			
+		    <script src="<?php echo BASE_URL."js/define.js"?>"></script>
+		    <script src="<?php echo BASE_URL."js/admin.js"?>"></script>
 		</head>
 		<?php
 		
@@ -175,6 +186,44 @@ class AdminVue {
                     <input type="submit" id="envoyer" value="Se connecter">
                 </div>		
             </form>
+			
+		<?php
+		
+	}
+	
+	public function afficheMenuAdmin() { //location temporaire
+		
+		?>
+		<section id="menuadmin">
+			<h2 id="textMenuAdmin">Menu administrateur</h2>
+			<div id = "fieldset">
+				<fieldset>
+					<legend><p id="textlegend">OEUVRES</p></legend>
+						<a href="">Ajouter</a><br>
+						<a href="">Modifier</a><br>
+						<a href="">Supprimer</a>
+				</fieldset>
+				<fieldset>
+					<legend><p id="textlegend">ARTISTES</p></legend>
+						<a href="">Modifier</a><br>
+						<a href="">Supprimer</a>
+				</fieldset>
+			</div>
+			<div id = "fieldset">
+				<fieldset>
+					<legend><p id="textlegend">PARCOURS</p></legend>
+						<a href="">Ajouter</a><br>
+						<a href="">Modifier</a><br>
+						<a href="">Supprimer</a>
+				</fieldset>
+				<fieldset>
+					<legend><p id="textlegend">ADMINISTRATEUR</p></legend>
+						<a href="">Ajouter</a><br>
+						<a href="">Modifier</a><br>
+						<a href="">Supprimer</a>
+				</fieldset>
+			</div>
+		</section>    
 			
 		<?php
 		

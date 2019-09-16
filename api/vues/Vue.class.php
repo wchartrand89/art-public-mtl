@@ -274,62 +274,9 @@ class Vue {
 		
 	}
 
-	/**
-	 * Affiche le détails d'une oeuvre
-	 * @access public
-	 * @return void
-	 */
-	public function afficheOeuvre($aData = Array()) {
-		extract($aData);
-		?>
-		 <section class="contenu uneOeuvre flex flex-col">
-		 	<section class="retour"><a href="/art-public-mtl/api/oeuvre"> Retour à la liste  </a></section>
-            <section class="oeuvre flex wrap">
-                <header class="image dummy">
-                	<img src="/art-public-mtl/img/placeholder_640_480.jpg" />
-                    <h2 class="titre"><?php echo $Titre?></h2>
-                </header>
-                    
-                        
-                <section class="texte">
-					<p class="description"><?php echo $Description ?></p>
-						<?php
-           
-						foreach($Artistes as $artiste){
-							extract($artiste);
-							?>
-							<p class="auteur">Par : <a href="/art-public-mtl/api/artiste/<?php echo $id_artiste ?>"><?php 
-                                    if(isset($Nom) && $Nom!=""){
-                                echo $Nom .", ". $Prenom;
-                            
-                            }
-                            else
-                            {
-                                echo $NomCollectif;
-                            
-                            }
-                                
-                                
-                                        ?></a></p>
-						<?php
-						}
-
-						?>
-                   
-			    	<p class="arrondissement"><?php echo $Arrondissement?></p>
-                </section>
-                
-            </section>
-
-        </section>
-        
-							
-			
-		<?php
-		
-	}
 
 
+	
 	/**
 	 * Affiche la liste des artistes
 	 * @access public

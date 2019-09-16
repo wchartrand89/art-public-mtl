@@ -54,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
 	var_dump($oReq);
 	/* Instanciation du controlleur */
 //	$nomControlleur = ucfirst($oReq->ressource) . 'AdminControlleur';
-	$nomControlleur = 'AdminControlleur';
+	$nomControlleur = ucfirst($oReq->ressource) . 'AdminControlleur';
 //echo $nomControlleur;
 	if (class_exists($nomControlleur)) {
     	$oControlleur = new $nomControlleur();

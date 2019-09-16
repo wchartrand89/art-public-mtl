@@ -1,5 +1,7 @@
 /* Basé sur les sources de muicss*/
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Pacifico&display=swap');
+
 
 /**
  * Body CSS
@@ -229,6 +231,7 @@ main .carte .btnAccueil{
     
     
 }
+
 .oeuvre .auteur a
 {
     color: var(--main-couleur-lien);
@@ -242,6 +245,8 @@ main .carte .btnAccueil{
     width: 100%;
 }
 
+/*------------------Section d'une oeuvre -------------------*/
+
 .contenu.uneOeuvre
 {
     padding-left: 0px;
@@ -254,6 +259,16 @@ main .carte .btnAccueil{
     display: flex;
     background-color: #FFF;
     margin: 0px auto;
+}
+
+.uneOeuvre > .oeuvre > .titre {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 63px;
+    text-align: center;
+    color: #103C61;
 }
 
 .uneOeuvre > .oeuvre > .image
@@ -303,7 +318,7 @@ main .carte .btnAccueil{
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: #FFF;
+    color: #DF8E32;
     font-size: 24px;
     margin-left: var(--marge-gauche);
     text-decoration: none;
@@ -314,7 +329,7 @@ main .carte .btnAccueil{
 .uneOeuvre > .retour a
 {
     text-decoration: none;
-    color: #FFF;
+    color: #DF8E32;
     padding-left: 48px;
 }
 

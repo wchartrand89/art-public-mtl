@@ -28,10 +28,14 @@ class AdminControlleur extends Controlleur
 		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
 		{
             echo 'MENU ADMIN';
-            $oVue = new AdminVue();
+			//$oVue = new AdminVue();
+			$oVue = new MenuAdminVue();//test
     		$oVue->afficheHead();
-    		$oVue->afficheEntete();
-    		$oVue->affichePied();
+			$oVue->afficheEntete();
+			$oVue->afficheMenuAdmin();
+			$oVue->affichePied();
+
+			
         } 
 //        if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='oeuvres')	// Normalement l'id de l'artiste 
 //		{
@@ -49,7 +53,8 @@ class AdminControlleur extends Controlleur
     		$oVue->afficheHead();
     		$oVue->afficheEntete();
             $oVue->afficheConnexion();	
-    		$oVue->affichePied();
+			$oVue->affichePied();
+			$oVue->afficheMenuAdmin();
         } 
         else if(isset($requete->url_elements[0])){
 //            var_dump($requete);

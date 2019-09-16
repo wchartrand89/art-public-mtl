@@ -5,7 +5,7 @@
     }
     else
     {
-        var BASEURL = "http://"+location.host+"/art-public-mtl/api/";	
+        var BASEURL = "http://artpublicmtl.ceciliaflores.ca/art-public-mtl/";	
     }
     
 })();
