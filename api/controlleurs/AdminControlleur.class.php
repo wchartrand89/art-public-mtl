@@ -22,6 +22,8 @@ class AdminControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
+        echo'<br><br><br>';
+		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
 		$res = array();
 		//var_dump($requete->url_elements);
 		/*if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
@@ -32,9 +34,21 @@ class AdminControlleur extends Controlleur
     		$oVue->afficheHead();
 			$oVue->afficheEntete();
 			$oVue->afficheMenuAdmin();
+			$oVue->affichePied();
+
+			
+        } 
+//        if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='oeuvres')	// Normalement l'id de l'artiste 
+//		{
+//            echo 'OEUVRES';
+//            $oOAC = new OeuvreControlleur();
+//            $oOAC->getAction(Requete $requete);
+//    		$oVue->afficheEntete();
+//    		$oVue->afficheOeuvres($res);
+//    		$oVue->affichePied();
+//        } 
 			$oVue->affichePied();			
 		}
-		if
         else if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='')	// Normalement l'id de l'artiste 
 		{
             echo 'ACCUEIL ADMIN';
@@ -52,7 +66,6 @@ class AdminControlleur extends Controlleur
         }
         else 	// Accueil Admin (connection)
         {
-//            echo 'BLOU';
     		$oVue = new AdminVue();
     		$oVue->afficheHead();
     		$oVue->afficheEntete();
@@ -88,5 +101,24 @@ class AdminControlleur extends Controlleur
 		}
 
 	}
+    
+    
+	public function postAction(){        
+        if(!empty($_POST)){
+  		    $authentification = new Authentification();
+            $retour = $authentification->verification($_POST['login'], $_POST['mdp']);
+            if($retour == true){ //login et mdp sont corrects
+                //connecter la personne
+                $_SESSION['login'] = $_POST['login'];
+                
+                //redirection vers page privee
+                header("location:http://localhost/art-public-mtl/api/admin/menu");
+            }else{
+                header("location:http://localhost/art-public-mtl/api/admin");
+                exit();
+            }
+          
+        }
+    }
 }
 ?>

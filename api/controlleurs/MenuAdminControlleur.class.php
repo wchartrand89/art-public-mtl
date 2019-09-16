@@ -22,7 +22,7 @@ class MenuAdminControlleur extends Controlleur
    
     public function getAction(Requete $requete)
     {
-        $oVue = new MenuAdminVue();
+        $oVue = new AdminVue();
         $oVue->afficheHead();
         $oVue->afficheEntete();
         $oVue->afficheMenuAdmin();
