@@ -19,6 +19,7 @@
         justify-content: space-between;
         align-items:center;
         padding: var(--padding-base);
+        z-index:1;
     }
 
 
