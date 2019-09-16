@@ -97,7 +97,8 @@ class MenuAdminVue {
 			<h2 id="textMenuAdmin">Menu administrateur</h2>
 			<div id = "fieldset">
 				<fieldset>
-					<legend><p id="textlegend">OEUVRES</p></legend>
+				<!--<legend> <p id="textlegend">OEUVRES</p></legend>-->
+					<legend><a href="/art-public-mtl/api/admin/oeuvre">OEUVRES</a></legend>
 						<a href="">Ajouter</a><br>
 						<a href="">Modifier</a><br>
 						<a href="">Supprimer</a>
@@ -122,13 +123,8 @@ class MenuAdminVue {
 						<a href="">Supprimer</a>
 				</fieldset>
 			</div>
-		</section>    
-	}		
-		
-		
-		
-	
-	
-	
-
+		</section> 
+	<?php	   
+	}	
 }
+?>

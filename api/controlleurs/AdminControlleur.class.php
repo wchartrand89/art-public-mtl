@@ -23,8 +23,8 @@ class AdminControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$res = array();
-//		var_dump($requete->url_elements);
-		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
+		//var_dump($requete->url_elements);
+		/*if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
 		{
             echo 'MENU ADMIN';
 			//$oVue = new AdminVue();
@@ -32,10 +32,9 @@ class AdminControlleur extends Controlleur
     		$oVue->afficheHead();
 			$oVue->afficheEntete();
 			$oVue->afficheMenuAdmin();
-			$oVue->affichePied();
-
-			
-        } 
+			$oVue->affichePied();			
+		}
+		if
         else if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='')	// Normalement l'id de l'artiste 
 		{
             echo 'ACCUEIL ADMIN';
@@ -44,8 +43,9 @@ class AdminControlleur extends Controlleur
     		$oVue->afficheEntete();
             $oVue->afficheConnexion();	
 			$oVue->affichePied();
-			$oVue->afficheMenuAdmin();
-        } 
+			
+		} 
+		
         else if(isset($requete->url_elements[0])){
 //            var_dump($requete);
             echo 'PAGE ADMIN NON EXISTANTE';
@@ -58,7 +58,35 @@ class AdminControlleur extends Controlleur
     		$oVue->afficheEntete();
     		$oVue->afficheConnexion();				
     		$oVue->affichePied();			
-        }
+		}*/
+		
+		if(!isset($requete->url_elements[0])){
+			echo 'PAGE ADMIN NON EXISTANTE2';
+		}
+		else if ($requete->url_elements[0] == '')
+		{
+			// Accueil Admin (connection)
+			echo 'ACCUEIL ADMIN';
+            $oVue = new AdminVue();
+    		$oVue->afficheHead();
+    		$oVue->afficheEntete();
+            $oVue->afficheConnexion();	
+			$oVue->affichePied();
+		}
+		else
+		{
+			/* Instanciation du controlleur */
+            $nomControlleur = ucfirst($requete->url_elements[0]) . 'AdminControlleur';
+            //echo $nomControlleur;
+            if (class_exists($nomControlleur)) {
+                $oControlleur = new $nomControlleur();
+                $nomAction = strtolower($requete->verbe) . 'Action';
+                $oControlleur->$nomAction($requete);
+            }else{
+				echo 'PAGE ADMIN NON EXISTANTE';
+			}
+		}
+
 	}
 }
 ?>
