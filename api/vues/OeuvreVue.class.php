@@ -65,6 +65,8 @@ class OeuvreVue {
 					</div>
 				</div>
                         
+				<a href="#" class="btn"><i class="material-icons">share</i>Partager</a>
+
                 <section class="texte">
 					<p class="description"><?php echo $Description ?></p>
 						<?php
