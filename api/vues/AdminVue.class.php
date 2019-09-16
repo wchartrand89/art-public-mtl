@@ -33,21 +33,14 @@ class AdminVue {
 
 		    <meta name="viewport" content="width=device-width">
 		    
-		    <link rel="stylesheet" href="<?php echo "../../css/flex.css"?>" type="text/css" media="screen">
-		    <link rel="stylesheet" href="<?php echo "../../css/adminmain.css"?>" type="text/css" media="screen">
-		    
 		    <script src="./js/define.js"></script>
 		    <script src="./js/admin.js"></script>
 
 		    <meta name="viewport" content="width=device-width">		    
-		    <link rel="stylesheet" href="<?php echo BASE_URL."css/flex.css"?>" type="text/css" media="screen">
-		    <link rel="stylesheet" href="<?php echo BASE_URL."css/adminmain.css"?>" type="text/css" media="screen">
-			
+		    <link rel="stylesheet" href="../../css/flex.css" type="text/css" media="screen">
+		    <link rel="stylesheet" href="../../css/adminmain.css" type="text/css" media="screen">			
 			<link rel="stylesheet" href="../../css/text.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="../../css/var.css" type="text/css" media="screen">
-			
-		    <script src="<?php echo BASE_URL."js/define.js"?>"></script>
-		    <script src="<?php echo BASE_URL."js/admin.js"?>"></script>
 		</head>
 		<?php
 		
@@ -63,7 +56,7 @@ class AdminVue {
 	<body>
 	    <main>
 	        <header class="appbar">
-	            <h1><a href="/art-public-mtl/api/admin/accueil">L'art public à Montréal (Admin)</a></h1> 
+	            <h1><a href="/art-public-mtl/api/admin">ART PUBLIC MONTREAL - ADMINISTRATEUR</a></h1> 
 	        </header>
 			
 		<?php
@@ -173,7 +166,7 @@ class AdminVue {
 		
 		?>
 
-            <form action="?controller=authentification&action=connexionPost" method="post">	
+            <form id='connection' action="?controller=authentification&action=connexionPost" method="post">	
                 <div>
                     <label for="name">Nom d'usager:</label>
                     <input type="text" id="name" name="login">

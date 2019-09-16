@@ -12,7 +12,6 @@
  */
 class Authentification extends Modele{
 	public  function verification($lo, $mdp){
-        echo 'FUCK';
        //requete de verication ici   
         $requete= "SELECT Usager FROM utilisateur WHERE usager='$lo' and motPasse='$mdp'";
         $result =$this->_db->query($requete);

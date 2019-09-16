@@ -58,7 +58,7 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
 	}
 	
 	$nomControlleur = ucfirst($oReq->ressource) . 'Controlleur';
-	                var_dump($oReq);
+//	                var_dump($oReq);
 
 	
 		if (class_exists($nomControlleur)) {
