@@ -28,7 +28,39 @@ class ArtisteControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$res = array();
-		var_dump($requete->url_elements);
+		// var_dump($requete->url_elements);
+		//POUR TEST CSS
+		$oVue = new Vue();
+		$oVue->afficheHead();
+		$oVue->afficheEntete();
+		?>
+		<section class="contenu listeArtiste">
+            <section class="oeuvres flex wrap">
+							<section class="artiste carte">
+			                    <header class="">
+			                        <h2 class="nom">Nom artiste
+                                        </h2> 
+			                    </header>
+			                    <footer class="barre-action">
+								<a class="ouvrir-oeuvre" href="">En savoir plus...</a>	
+								
+			                    </footer>
+			                </section>
+						
+						}
+				
+					</section>
+				
+			</section>
+			<?php
+			$oVue->affichePied();
+		
+
+
+
+		die;
+		//FIN TEST
+
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'artiste 
 		{
             $id_artiste = (int)$requete->url_elements[0];
@@ -36,7 +68,7 @@ class ArtisteControlleur extends Controlleur
             $res = $this->getArtiste($id_artiste);
             
         } 
-        else 	// Liste des oeuvres
+        else 	// Liste des artistes
         {
         	$res = $this->getListeArtiste();
 			
