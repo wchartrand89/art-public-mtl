@@ -105,15 +105,22 @@ class AdminControlleur extends Controlleur
     
 	public function postAction(){        
         if(!empty($_POST)){
+
   		    $authentification = new Authentification();
             $retour = $authentification->verification($_POST['login'], $_POST['mdp']);
             if($retour == true){ //login et mdp sont corrects
+//                echo 'true';
                 //connecter la personne
                 $_SESSION['login'] = $_POST['login'];
+//                echo $_SESSION['login'];
+//                die;
                 
                 //redirection vers page privee
                 header("location:http://localhost/art-public-mtl/api/admin/menu");
             }else{
+//                $_SESSION['login'] = '';
+                session_destroy();
+//                echo 'false';
                 header("location:http://localhost/art-public-mtl/api/admin");
                 exit();
             }

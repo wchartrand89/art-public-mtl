@@ -12,8 +12,9 @@
  * 
  */
 class Oeuvre extends Modele {	
-	const TABLE_OEUVRE = "apm__oeuvre";
-	const TABLE_LIAISON_ARTISTE_OEUVRE = "apm__oeuvre_artiste";
+     
+	const TABLE_OEUVRE = "oeuvre";
+	const TABLE_LIAISON_ARTISTE_OEUVRE = "artiste_oeuvre";
 	const TABLE_OEUVRE_DONNEES_EXTERNES = "apm__oeuvre_donnees_externes";
 	
 	/**
@@ -24,14 +25,15 @@ class Oeuvre extends Modele {
 	 */
 	public function getListe() 
 	{
+        
 		$res = Array();
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre
-					left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
-					inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
-					order by id ASC
+					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
+					"//left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
+					."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
+					order by Oeu.id_oeuvre ASC
 				";
-		//echo $query;
+//		echo $query;
 		//SELECT * FROM `apm__oeuvre` Oeu inner join apm__oeuvre_artiste O_A ON Oeu.id = O_A.id_oeuvre
 		if($mrResultat = $this->_db->query($query))
 		{
@@ -39,7 +41,7 @@ class Oeuvre extends Modele {
 			{
 				$oeu = end($res);
 				
-				if(isset($oeu) && $oeu['id'] != $oeuvre['id'])
+				if(isset($oeu) && $oeu['id_oeuvre'] != $oeuvre['id_oeuvre'])
 				{
 					
 					$oeuvre['Artistes'] = Array();
@@ -55,7 +57,7 @@ class Oeuvre extends Modele {
 					
 					$res[] = $oeuvre;
 				}
-				else if(isset($oeu) && $oeu['id'] == $oeuvre['id'])
+				else if(isset($oeu) && $oeu['id_oeuvre'] == $oeuvre['id_oeuvre'])
 				{
 					$i = count($res)-1;
 					$res[$i]['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
@@ -68,6 +70,10 @@ class Oeuvre extends Modele {
 				  
 			}
 		}
+//        else
+//        {
+//            echo $this->_db->query($query);
+//        }
 		return $res;
 	}
 	

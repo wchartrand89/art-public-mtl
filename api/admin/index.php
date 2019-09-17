@@ -1,4 +1,9 @@
 <?php
+
+session_start();
+$_SESSION['id'] = 'something';
+//echo $_SESSION['id'];
+
 ini_set('display_errors', 1);
 error_reporting(~0);
 /**
@@ -53,7 +58,13 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
 	$oReq = new Requete();
 //	var_dump($oReq);
 	/* Instanciation du controlleur */
-//	$nomControlleur = ucfirst($oReq->ressource) . 'AdminControlleur';
+
+/*
+
+ira chercher le bon controlleur selon l'url (admin/menu, admin/oeuvre, etc.)
+
+*/
+
 	$nomControlleur = ucfirst($oReq->ressource) . 'AdminControlleur';
 //echo $nomControlleur;
 	if (class_exists($nomControlleur)) {
@@ -62,6 +73,8 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
 //        echo $nomAction;
     	$result = $oControlleur->$nomAction($oReq);
 	}
+
+
 	
 	
 	//http://www.lornajane.net/posts/2012/building-a-restful-php-server-understanding-the-request				

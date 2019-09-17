@@ -27,7 +27,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	
 	public function getAction(Requete $requete)
 	{
-        echo 'getOeuvres';
+//        echo 'getOeuvres';
 		$res = array();
 		//var_dump($requete->url_elements);
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
