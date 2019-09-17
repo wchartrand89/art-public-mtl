@@ -98,7 +98,6 @@ class AdminVue {
          	<section class="recherche"></section>
             <section class="oeuvres flex flex-col">
 						<?php
-                        
 						foreach ($aData as $cle => $oeuvre) {
 							extract($oeuvre);
                            
@@ -173,7 +172,7 @@ class AdminVue {
                 </div>
                 <div>
                     <label for="mdp">Mot de passe:</label>
-                    <input type="mdp" id="mdp" name="mdp">
+                    <input type="password" id="mdp" name="mdp">
                 </div>
                 <div>
                     <input type="submit" id="envoyer" value="Se connecter">

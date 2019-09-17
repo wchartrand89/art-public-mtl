@@ -13,13 +13,19 @@
 class Authentification extends Modele{
 	public  function verification($lo, $mdp){
        //requete de verication ici   
-        $requete= "SELECT Usager FROM utilisateur WHERE usager='$lo' and motPasse='$mdp'";
+        $requete= "SELECT login FROM user WHERE login='$lo' and role='admin' and password='$mdp'";
         $result =$this->_db->query($requete);
-        $resultat = $result->fetch_assoc();
+
+        while ($resultat = $result->fetch_assoc()) 
+        {
+            $tableau[] = $resultat;
+        }
+
+//        var_dump($resultat);
 
      // print_r($resultat[0]['nbre']); die;
 
-        if( $resultat[0]>0)   return true;
+        if( $tableau[0]>0)   return true;
         return false;
 	}
 }

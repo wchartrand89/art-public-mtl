@@ -22,12 +22,19 @@ class MenuAdminControlleur extends Controlleur
    
     public function getAction(Requete $requete)
     {
-        $oVue = new AdminVue();
-        $oVue->afficheHead();
-        $oVue->afficheEntete();
-        $oVue->afficheMenuAdmin();
-        $oVue->affichePied(); 
+        if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
+        {
+            $oVue = new AdminVue();
+            $oVue->afficheHead();
+            $oVue->afficheEntete();
+            $oVue->afficheMenuAdmin();
+            $oVue->affichePied(); 
+        }
+        else
+        {
+            header("location:http://localhost/art-public-mtl/api/admin");
+            exit();
+        }
     }
-
 }
 ?>
