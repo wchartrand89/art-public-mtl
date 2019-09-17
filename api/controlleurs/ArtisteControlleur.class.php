@@ -27,31 +27,40 @@ class ArtisteControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
+
 		$res = array();
-		// var_dump($requete->url_elements);
+		// var_dump($requete->url_elements[0]);
 		//POUR TEST CSS
 		$oVue = new Vue();
-		$oVue->afficheHead();
+
+		$oVue->afficheHead($requete->url_elements[0]);
 		$oVue->afficheEntete();
 		?>
-		<section class="contenu listeArtiste">
-            <section class="oeuvres flex wrap">
-							<section class="artiste carte">
-			                    <header class="">
-			                        <h2 class="nom">Nom artiste
-                                        </h2> 
-			                    </header>
-			                    <footer class="barre-action">
-								<a class="ouvrir-oeuvre" href="">En savoir plus...</a>	
-								
-			                    </footer>
-			                </section>
-						
-						}
-				
-					</section>
-				
-			</section>
+		<section class="choix">
+			<p class="lettre">A</p>
+			<p class="lettre">B</p>
+			<div class="lettreChoisie">
+				<a class="fleches prev">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></a>
+				<p class="lettre">C</p>
+				<a class="fleches next">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg></a>
+			</div>
+			
+			<p class="lettre">D</p>
+			<p class="lettre">E</p>
+		</section>
+		<section class="liste">
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+		</section>
+
 			<?php
 			$oVue->affichePied();
 		

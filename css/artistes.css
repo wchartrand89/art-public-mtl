@@ -1,0 +1,54 @@
+main{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+main>section{
+    margin-top:var(--padding-base);
+}
+main .choix{
+    /* height:95%; */
+    width:22%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 2px solid var(--couleur-marine);
+}
+main .liste{
+    width:75%;
+}
+
+.lettre{
+    font-size:6.4rem;
+    font-weight:600;
+    color: var(--couleur-marine);
+}
+.choix >.lettre, .choix .lettreChoisie{
+    padding-bottom:var(--padding-base);
+}
+.choix>.lettre:first-of-type, .choix> .lettre:last-of-type{
+    padding-top: var(--padding-base);
+} 
+.lettreChoisie p, .lettreChoisie a, .lettreChoisir a svg{
+    color: var(--couleur-orange);
+}
+.lettreChoisie p{
+    font-size: 8rem;
+}
+.lettreChoisie{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.lettreChoisie a svg{
+    width:36px;
+    height:36px;
+}
+
+
+main .liste{
+    display:flex;
+    flex-direction: column;    
+
+}

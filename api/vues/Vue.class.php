@@ -20,8 +20,9 @@ class Vue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheHead() {
+	public function afficheHead($requete) {
 		 ?>
+		 
 		<!DOCTYPE html>
 		<html lang="fr">
 		
@@ -40,11 +41,20 @@ class Vue {
 			<link rel="stylesheet" href="../css/text.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="../css/component.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="../css/flex.css" type="text/css" media="screen">
-		    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen">
+			<?php
+			if ($requete== ""){
+				echo '<link rel="stylesheet" href="../css/home.css" type="text/css" media="screen">';
+				echo '<script src="../js/slider.js"></script>';
+			} 
+			else if ($requete== "artiste"){
+				echo '<link rel="stylesheet" href="../css/artistes.css" type="text/css" media="screen">';
+			} 
+			?>
 		    <!--<script src="../../js/plugins.js"></script>-->
 		    <script src="../js/main.js"></script>
 		    <script src="../js/menu.js"></script>
-		    <script src="../js/slider.js"></script>
+		    
 
 		</head>
 		<?php
