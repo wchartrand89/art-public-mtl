@@ -52,6 +52,7 @@ class OeuvreControlleur extends Controlleur
 			
 			$oVue = new Vue();
 			$oeuvreVue = new OeuvreVue();
+			$oeuvresVue = new OeuvresVue();
 			$oVue->afficheHead();
 			$oVue->afficheEntete();
 			
@@ -61,8 +62,8 @@ class OeuvreControlleur extends Controlleur
 			}
 			else
 			{
-				$oVue->afficheOeuvres($res);
-			}	
+				$oeuvresVue->afficheOeuvres($res);
+			}
 			
 			$oVue->affichePied();
 			

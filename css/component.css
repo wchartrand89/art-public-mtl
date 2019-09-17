@@ -34,7 +34,7 @@
 
 .contenu_onglet {
     background-color: var(--couleur-fond);
-    border:1px solid black;
+    /* border:1px solid black; */
     margin-top:-1px;
     padding:5px;
     display:none;
