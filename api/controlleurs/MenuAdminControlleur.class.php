@@ -25,7 +25,6 @@ class MenuAdminControlleur extends Controlleur
         if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
         {
             $oVue = new AdminVue();
-            $oVue->afficheHead();
             $oVue->afficheEntete();
             $oVue->afficheMenuAdmin();
             $oVue->affichePied(); 
