@@ -1,4 +1,3 @@
-		?>
 		<section class="carte">
 			<div class="text">
 				<h1>Vivez Montréal</h1>
