@@ -1,13 +1,20 @@
+body{
+    position: relative;
+}
 main{
     display:flex;
+    align-items: flex-start;
     justify-content: space-between;
-    align-items: center;
+   
 }
-main>section{
+main>section, main>aside{
     margin-top:var(--padding-base);
 }
 main .choix{
     /* height:95%; */
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 100px;
     width:22%;
     display: flex;
     flex-direction: column;
@@ -16,7 +23,17 @@ main .choix{
     border-right: 2px solid var(--couleur-marine);
 }
 main .liste{
-    width:75%;
+    width:78%;
+    display:flex;
+    flex-direction: column;  
+}
+main .liste a{
+    width:100%;
+    height:auto;
+    padding-left: calc(var(--padding-base) * 3);
+    padding-top: var(--padding-base);
+    font-size:1.4rem;
+    font-weight:600;
 }
 
 .lettre{
@@ -44,11 +61,4 @@ main .liste{
 .lettreChoisie a svg{
     width:36px;
     height:36px;
-}
-
-
-main .liste{
-    display:flex;
-    flex-direction: column;    
-
 }

@@ -36,10 +36,10 @@ class ArtisteControlleur extends Controlleur
 		$oVue->afficheHead($requete->url_elements[0]);
 		$oVue->afficheEntete();
 		?>
-		<section class="choix">
+		<aside class="choix">
 			<p class="lettre">A</p>
 			<p class="lettre">B</p>
-			<div class="lettreChoisie">
+			<div class=" lettre lettreChoisie">
 				<a class="fleches prev">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></a>
 				<p class="lettre">C</p>
@@ -49,9 +49,20 @@ class ArtisteControlleur extends Controlleur
 			
 			<p class="lettre">D</p>
 			<p class="lettre">E</p>
-		</section>
+			<p class="lettre">F</p>
+			<p class="lettre">G</p>
+		
+		</aside>
 		<section class="liste">
 			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERS, Manon</a>
+			<a class="lienArtiste" href="">DANGERSFJGKG NV, Manon</a>
 			<a class="lienArtiste" href="">DANGERS, Manon</a>
 			<a class="lienArtiste" href="">DANGERS, Manon</a>
 			<a class="lienArtiste" href="">DANGERS, Manon</a>
