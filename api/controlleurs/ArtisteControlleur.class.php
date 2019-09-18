@@ -51,7 +51,6 @@ class ArtisteControlleur extends Controlleur
 				
 			
 			$oVue = new Vue();
-			$oVue->afficheHead();
 			$oVue->afficheEntete();
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
 			{

@@ -67,7 +67,6 @@ class AdminControlleur extends Controlleur
         else 	// Accueil Admin (connection)
         {
     		$oVue = new AdminVue();
-    		$oVue->afficheHead();
     		$oVue->afficheEntete();
     		$oVue->afficheConnexion();				
     		$oVue->affichePied();			
@@ -81,7 +80,6 @@ class AdminControlleur extends Controlleur
 			// Accueil Admin (connection)
 			echo 'ACCUEIL ADMIN';
             $oVue = new AdminVue();
-    		$oVue->afficheHead();
     		$oVue->afficheEntete();
             $oVue->afficheConnexion();	
 			$oVue->affichePied();

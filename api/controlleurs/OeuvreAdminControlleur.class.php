@@ -24,12 +24,14 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	// 		/oeuvre/ - Liste des oeuvres
 	// 		/oeuvre/{id}/ - Une oeuvre
 	// 		/oeuvre/?q=nom,arrond,etc&valeur=chaineDeRecherche
+    //      /oeuvre/modifier/id
+    //      /oeuvre/supprimer/id
 	
 	public function getAction(Requete $requete)
 	{
 //        echo 'getOeuvres';
 		$res = array();
-		//var_dump($requete->url_elements);
+		var_dump($requete->url_elements);
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
 		{
             $id_oeuvre = (int)$requete->url_elements[0];
@@ -37,10 +39,19 @@ class OeuvreAdminControlleur extends OeuvreControlleur
             $res = $this->getOeuvre($id_oeuvre);
             
         } 
-		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "miseajour")
+		else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "miseajour")
 		{
 			$res = $this->mettreAJour();
+            echo "MISE A JOUR";
 		}
+        else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "modifier")
+        {
+            echo "MODIFICATION";
+        $id=$requete->url_elements[2];
+            
+            $oVue = new AdminVue();
+            $oVue->afficheFormulaireModification($id);
+        }
         else 	// Liste des oeuvres
         {
         	$res = $this->getListeOeuvre();
@@ -56,7 +67,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 				
 			
 			$oVue = new AdminVue();
-			$oVue->afficheHead();
 			$oVue->afficheEntete();
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
 			{
