@@ -14,12 +14,64 @@ h2{
     font-weight: bold;
     font-size:2.4rem;
     color:var(--couleur-marine);
+    text-transform: uppercase;
+}
+
+.nom{
+    font-family: 'Open Sans', sans-serif;
+    font-size:1.5rem;
+    color:var(--couleur-fond);
+    font-weight: bold;
+    /* text-transform: uppercase; */
 }
 
 .btn{
     font-weight:bold;
     font-size:1.6rem;
     color:var(--couleur-fond);
+}
+
+/* BREAK TABLET PORTRAIT UP */
+@media screen and (min-width: 600px) {
+    h1{
+        font-size:8rem;
+    }
+    h2{
+        font-size:2.8rem;
+    }
+    p{
+        font-size:1.8rem;
+    }
+    .btn{
+        font-size:2rem;
+    }
+}
+
+/* BREAK TABLET LANDSCAPE UP */
+@media screen and (min-width: 900px) {
+  
+   
+
+
+}
+
+/* BREAK DESKTOP UP */
+@media screen and (min-width: 1200px) {
+    h1{
+        font-size:10rem;
+    }
+    h2{
+        font-size:3.6rem;
+    }
+    p{
+        font-size:2.4rem;
+    }
+    .btn{
+        font-size:2.6rem;
+    }
+    .nom{
+        font-size:2.6rem;
+    }
 }
 
 /**
@@ -39,7 +91,7 @@ h2{
     background-color: var(--couleur-marine);
     color: var(--couleur-fond);
     padding: 15px;
-    font-display:  
+      
      
 }
 fieldset{
@@ -60,7 +112,7 @@ a{
 
 a:hover{    
     font-style: italic;
-    color:var(--couleur-orange)  
+    color:var(--couleur-orange);  
 }
 
 #textlegend{

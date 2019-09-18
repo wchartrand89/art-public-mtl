@@ -19,12 +19,17 @@
     --couleur-marine : #103C61;
     --couleur-orange : #DF8E32;
     --couleur-bleu : #9EECF8;
+    --couleur-bleu2 : #a4e7f1;
 
     --couleur-menu2 : rgba(16,60,97,0.85);
     --couleur-menu3 : rgba(16,60,97,0.70);
     --couleur-menu4 : rgba(16,60,97,0.55);
     --couleur-menu5 : rgba(16,60,97,0.40);
     --couleur-menu6 : rgba(16,60,97,0.25);
+
+
+    --couleur-orange-menu : rgba(223,142,50,0.85);
+    --couleur-bleu2-menu : rgba(164, 231, 241, 0.85);
 
 
   /* MARGES, etc. */
