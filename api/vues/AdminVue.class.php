@@ -77,6 +77,20 @@ require("admin/AfficheOeuvres.html.php");
 	require("admin/FormulaireModification.html.php");
 		
 	}
+    
+	public function afficheDeconnection() {
+		
+		?>
+
+            <form id='deconnection' action="?controller=deconnection&action=deconnectionPost" method="post">	
+                <div>
+                    <input type="submit" id="envoyer" value="Déconnection">
+                </div>		
+            </form>
+			
+		<?php
+		
+	}
 	
 	public function afficheMenuAdmin() { //location temporaire
 		

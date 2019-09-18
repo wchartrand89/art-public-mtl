@@ -26,6 +26,7 @@ class MenuAdminControlleur extends Controlleur
         {
             $oVue = new AdminVue();
             $oVue->afficheEntete();
+            $oVue->afficheDeconnection();
             $oVue->afficheMenuAdmin();
             $oVue->affichePied(); 
         }
@@ -35,5 +36,19 @@ class MenuAdminControlleur extends Controlleur
             exit();
         }
     }
+    
+	public function postAction()
+    {        
+            session_start(); //to ensure you are using same session
+            session_destroy(); //destroy the session
+            header("location:http://localhost/art-public-mtl/api/admin");
+            exit();
+    }
+          
 }
+    
+    
+    
+    
+
 ?>
