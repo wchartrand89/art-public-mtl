@@ -15,6 +15,7 @@
 
 class Vue {
 
+<<<<<<< HEAD
 /**
 	 * Affiche le head html
 	 * @access public
@@ -55,10 +56,9 @@ class Vue {
 		    <script src="../js/main.js"></script>
 		    <script src="../js/menu.js"></script>
 		    
+=======
+>>>>>>> f405f260d497ab19cc9a67c1ff785ca8e97899a1
 
-		</head>
-		<?php
-	}
 
 	/**
 	 * Affiche entetes
@@ -66,6 +66,7 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheEntete() {
+<<<<<<< HEAD
 		?>
 	<body>
 	        <header class="appbar">
@@ -115,6 +116,9 @@ class Vue {
 			<main>
 			
 		<?php
+=======
+		require("entetepied/entete.html.php");
+>>>>>>> f405f260d497ab19cc9a67c1ff785ca8e97899a1
 		
 	}
 
@@ -125,6 +129,7 @@ class Vue {
 	 * @return void
 	 */
 	public function affichePied() {
+<<<<<<< HEAD
 		?>
 			</main>
 			<footer>
@@ -167,11 +172,11 @@ class Vue {
 				</div>
 				
 			</footer>
+=======
+>>>>>>> f405f260d497ab19cc9a67c1ff785ca8e97899a1
 		
-	</body>
-</html>
+		require("entetepied/pied.html.php");
 
-		<?php
 		
 	}
 	
@@ -183,6 +188,7 @@ class Vue {
 	 */
 	public function afficheAccueil() {
 		
+<<<<<<< HEAD
 		?>
 		<section class="carte">
 			<div class="text">
@@ -241,6 +247,9 @@ class Vue {
 
 		</section>
 		<?php
+=======
+require("accueil/accueil.html.php");
+>>>>>>> f405f260d497ab19cc9a67c1ff785ca8e97899a1
 		
 	}
 	
@@ -251,73 +260,7 @@ class Vue {
 	 */
 	public function afficheOeuvres($aData = Array()) {
 		
-		?>
-		 <section class="contenu listeOeuvres">
-         	<section class="recherche"></section>
-            <section class="oeuvres flex wrap">
-						<?php
-        
-//        echo '<pre>';
-//print_r($aData);
-//echo '</pre>';
-						foreach ($aData as $cle => $oeuvre) {
-							extract($oeuvre);
-							?>
-							<section class="oeuvre carte">
-			                    <header class="image dummy">
-			                        <h2 class="titre"><?php echo $Titre?></h2> 
-			                    </header>
-			                    <section class="texte">
-			                        <p class="description">
-			                            <?php echo $Description ?> 
-									</p>
-									<?php 
-									foreach($Artistes as $artiste){
-										extract($artiste);
-										?>
-										<p class="auteur">Par : <a href="artiste/<?php echo $id_artiste ?>">
-                           <?php 
-                            if(isset($Nom) && $Nom!=""){
-                                echo $Nom .", ". $Prenom;
-                     
-                            }
-                            else
-                            {
-                                echo $NomCollectif;
-                        
-                            }
-                                
-                                
-                                        ?></a></p>
-									<?php
-									}
-
-									?>
-			                        <p class="arrondissement"><?php echo $Arrondissement?></p>
-			                    </section>
-			                    <footer class="barre-action">
-								<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id ?>" data-link="/artPublic/api/oeuvre/<?php echo $id ?>/" data-id="<?php echo $id ?>">En savoir plus...</a>	
-								<!--<button class="ouvrir-oeuvre" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">En savoir plus...</button>-->
-			                    </footer>
-			                </section>
-							
-							
-							
-							
-							
-							<?php
-							/*
-							 <section class="oeuvre">
-								<h2 class="titre"><a href="/artPublic/api/oeuvre/<?php echo $oeuvre['id'] ?>"><?php echo $oeuvre['Titre']?></a></h2>	
-							</section>
-							 */
-						}
-						?>
-					</section>
-				
-			</section>
-			
-		<?php
+require  ("oeuvre/AfficheOeuvres.html.php"); 
 		
 	}
 
@@ -331,41 +274,7 @@ class Vue {
 	 */
 	public function afficheArtistes($aData = Array()) {
 		
-		?>
-		 <section class="contenu listeArtiste">
-            <section class="oeuvres flex wrap">
-						<?php
-						foreach ($aData as $cle => $artiste) {
-							extract($artiste);
-							?>
-							<section class="artiste carte">
-			                    <header class="">
-			                        <h2 class="nom"><?php 
-                              if(isset($Nom) && $Nom!=""){
-                                echo $Nom .", ". $Prenom;
-                            }
-                            else
-                            {
-                                echo $NomCollectif;
-                            }
-                                
-                                
-                                        ?>
-                                        </h2> 
-			                    </header>
-			                    <footer class="barre-action">
-								<a class="ouvrir-oeuvre" href="artiste/<?php echo $id_artiste ?>" >En savoir plus...</a>	
-								
-			                    </footer>
-			                </section>
-							<?php
-						}
-						?>
-					</section>
-				
-			</section>
-			
-		<?php
+		require  ("artistes/AfficheArtistes.html.php"); 
 						
 	}
 
@@ -377,18 +286,9 @@ class Vue {
 	 */
 	public function afficheArtiste($aData = Array()) {
 		extract($aData);
-		?>
-		 <section class="contenu uneOeuvre flex flex-col">
-		 	
-            <section class="artiste flex wrap">
-                <header class="">
-                    <h2 class="nom"><?php echo $Nom .", ". $Prenom?></h2>
-                </header>
-            </section>
-
-        </section>
+	
+        require  ("artistes/AfficheArtiste.html.php"); 
 			
-		<?php
 		
 	}
 

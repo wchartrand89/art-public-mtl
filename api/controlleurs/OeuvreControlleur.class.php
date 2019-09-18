@@ -19,7 +19,6 @@
  
 class OeuvreControlleur extends Controlleur 
 {
-	
 	// GET : 
 	// 		/oeuvre/ - Liste des oeuvres
 	// 		/oeuvre/{id}/ - Une oeuvre
@@ -52,7 +51,6 @@ class OeuvreControlleur extends Controlleur
 			
 			$oVue = new Vue();
 			$oeuvreVue = new OeuvreVue();
-			$oVue->afficheHead();
 			$oVue->afficheEntete();
 			
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))

@@ -72,6 +72,54 @@ h2{
     .nom{
         font-size:2.6rem;
     }
+}
 
+/**
+ * menuAdmin
+ */
 
+#menuadmin{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(240, 238, 238);
+}
+
+#textMenuAdmin{
+    width:100%;
+    background-color: var(--couleur-marine);
+    color: var(--couleur-fond);
+    padding: 15px;
+      
+     
+}
+fieldset{
+    border-color:var(--couleur-orange);
+}
+
+#fieldset{
+    display:flex;
+    flex-direction: row;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+    margin-top:5px;
+    font-size: 1.2em;
+}
+
+a:hover{    
+    font-style: italic;
+    color:var(--couleur-orange);  
+}
+
+#textlegend{
+    font-size: 1.2em;
+    margin:1px;
+    color: var(--couleur-marine);
+}
+fieldset{
+    width:150px;
 }
