@@ -27,7 +27,6 @@ class ArtisteControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
-
 		$res = array();
 		// var_dump($requete->url_elements[0]);
 
@@ -38,7 +37,7 @@ class ArtisteControlleur extends Controlleur
             $res = $this->getArtiste($id_artiste);
             
         } 
-        else 	// Liste des artistes
+        else 	// Liste des oeuvres
         {
         	$res = $this->getListeArtiste();
 			
