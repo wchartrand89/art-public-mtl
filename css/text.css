@@ -16,11 +16,21 @@ h2{
     color:var(--couleur-marine);
 }
 
-.btn{
+.btn, h3{
     font-weight:bold;
     font-size:1.6rem;
     color:var(--couleur-fond);
 }
+h3{
+    color:var(--couleur-marine);
+}
+
+.txtLien{
+    font-weight:bold;
+    font-size:1.4rem;
+    color:var(--couleur-orange);
+}
+
 
 h1{
     font-family: 'Pacifico', cursive;

@@ -1,3 +1,14 @@
+main{
+    flex-direction: column;
+}
+
+.sesOeuvres{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .unArtiste > .oeuvre
 {
     width: 900px;
