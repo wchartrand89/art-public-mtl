@@ -26,8 +26,9 @@ class OeuvreControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
+        
 		$res = array();
-		var_dump($requete->url_elements);
+//		var_dump($requete->url_elements);
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
 		{
             $id_oeuvre = (int)$requete->url_elements[0];
@@ -71,7 +72,13 @@ class OeuvreControlleur extends Controlleur
 	}
 	
 	
-	
+    protected function getOeuvreByID($id_oeuvre)
+	{
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getOeuvreByID($id_oeuvre);
+		
+		return $aOeuvre;
+	}
 	
 		
 	protected function getOeuvre($id_oeuvre)

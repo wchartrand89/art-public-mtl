@@ -88,7 +88,8 @@ class AdminControlleur extends Controlleur
 		{
 			/* Instanciation du controlleur */
             $nomControlleur = ucfirst($requete->url_elements[0]) . 'AdminControlleur';
-            //echo $nomControlleur;
+//            var_dump($requete->url_elements[0]);
+//            echo $nomControlleur;
             if (class_exists($nomControlleur)) {
                 $oControlleur = new $nomControlleur();
                 $nomAction = strtolower($requete->verbe) . 'Action';
@@ -103,7 +104,7 @@ class AdminControlleur extends Controlleur
     
 	public function postAction(){        
         if(!empty($_POST)){
-
+            var_dump($requete->url_elements[0]);
   		    $authentification = new Authentification();
             $retour = $authentification->verification($_POST['login'], $_POST['mdp']);
             if($retour == true){ //login et mdp sont corrects
