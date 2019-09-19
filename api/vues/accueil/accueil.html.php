@@ -7,21 +7,7 @@
 		</section>
 		<section class="nvlOeuvres">
 			<h2>Nouvelles oeuvres</h2>
-			<!-- <ul class="carrousel"> -->
-				<!-- Générer les articles en php, structure HTML voulue : -->
-				<!-- <li><a href="lien vers la page de l'oeuvre"></a><img src="lien image de l'oeuvre" alt="Nom de l'oeuvre"></li> -->
-				<!-- test pour CSS, à supprimer -->
-				<!-- <li><a href="#"></a><img src="../img/oeuvres/962_1.jpg" alt="Nom de l'oeuvre"></li> -->
-				<!-- <li><a href="#"></a><img src="../img/oeuvres/1099_1.jpg" alt="Nom de l'oeuvre"></li> -->
-				<!-- <li><a href="#"></a><img src="../img/oeuvres/1119_1.jpg" alt="Nom de l'oeuvre"></li> -->
-				<!-- <li><a href="#"></a><img src="../img/oeuvres/1127_1.jpg" alt="Nom de l'oeuvre"></li> -->
-			<!-- </ul> -->
-			<div class="points">
-
-			</div>
-			
-
-			<!-- TEST SLIDER -->
+			<!--SLIDER -->
 			<!-- ref : https://www.w3schools.com/howto/howto_js_slideshow.asp -->
 
 			<!-- A FAIRE AVEC javascript/php en ayant requete SQL: 
