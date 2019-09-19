@@ -11,7 +11,7 @@ window.addEventListener("load", function(){
             else if(fleche.classList.contains("next")){
                 plusSlides(1);
             }
-
+                 
         })
     });
 
@@ -20,7 +20,7 @@ window.addEventListener("load", function(){
         point.addEventListener("click", function(){
            console.log(point.dataset.slide);
            currentSlide(point.dataset.slide);
-
+                 
         })
     });
     // Next/previous controls
@@ -50,3 +50,9 @@ window.addEventListener("load", function(){
         }
 
 });
+
+
+
+
+
+   
