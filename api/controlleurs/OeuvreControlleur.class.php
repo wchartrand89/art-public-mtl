@@ -28,10 +28,10 @@ class OeuvreControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$res = array();
-		var_dump($requete->url_elements);
-		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
+		//var_dump($requete->url_elements);
+		if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]))	// Normalement l'id de l'oeuvre 
 		{
-            $id_oeuvre = (int)$requete->url_elements[0];
+            $id_oeuvre = (int)$requete->url_elements[1];
             
             $res = $this->getOeuvre($id_oeuvre);
             
@@ -56,7 +56,7 @@ class OeuvreControlleur extends Controlleur
 			$oVue->afficheHead();
 			$oVue->afficheEntete();
 			
-			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
+			if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]))
 			{
 				$oeuvreVue->afficheOeuvre($res);
 			}
