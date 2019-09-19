@@ -13,7 +13,6 @@
 	<p class="lettre">E</p>
 	<p class="lettre">F</p>
 	<p class="lettre">G</p>
-		
 </aside>	
 <!-- <section class="liste">
 			<a class="lienArtiste" href="">DANGERS, Manon</a>
@@ -33,31 +32,29 @@
 			<a class="lienArtiste" href="">DANGERS, Manon</a>
 			<a class="lienArtiste" href="">DANGERS, Manon</a>
 		</section> -->
+		<section class="liste">
 
 <?php
+
 foreach ($aData as $cle => $artiste) {
 	extract($artiste);
-	?>
- 	<section class="artiste carte">
- 		<header class="">
- 			<h2 class="nom">
-<?php 
 		if(isset($Nom) && $Nom!=""){
-		echo $Nom .", ". $Prenom;
+		echo '<a class="lienArtiste" href="artiste/'.$id_artiste.'">'.$Nom .", ". $Prenom.'</a>';
 	}
 	else
 	{
-		echo $NomCollectif;
+		echo '<a class="lienArtiste" href="">'.$NomCollectif.'</a>' ;
 	}
 		
 		
 ?>
-		</h2> 
-		<footer class="barre-action">
+	
+		<!-- <footer class="barre-action">
 		<a class="ouvrir-oeuvre" href="artiste/<?php echo $id_artiste ?>" >En savoir plus...</a>	
 		
-		</footer>
-	</section>
+		</footer> -->
+	
 	<?php 
 	}
 	?>
+	</section>

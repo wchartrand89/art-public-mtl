@@ -51,7 +51,7 @@ class OeuvreControlleur extends Controlleur
 			
 			$oVue = new Vue();
 			$oeuvreVue = new OeuvreVue();
-			$oVue->afficheEntete();
+			$oVue->afficheEntete($requete->url_elements[0]);
 			
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
 			{

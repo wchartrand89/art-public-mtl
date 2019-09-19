@@ -19,9 +19,8 @@ class Vue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheEntete() {
+	public function afficheEntete($page) {
 		require("entetepied/entete.html.php");
-		
 	}
 
 

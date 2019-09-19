@@ -25,7 +25,7 @@ class AccueilControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$oVue = new Vue();
-		$oVue->afficheEntete();
+		$oVue->afficheEntete($requete->url_elements[0]);
 		$oVue->afficheAccueil();				
 		$oVue->affichePied();
 

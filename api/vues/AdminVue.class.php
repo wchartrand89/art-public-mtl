@@ -20,7 +20,7 @@ class AdminVue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheEntete() {
+	public function afficheEntete($page) {
         require("entetepied/enteteAdmin.html.php");
 		
 	}
