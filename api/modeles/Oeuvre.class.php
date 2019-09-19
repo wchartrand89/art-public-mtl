@@ -87,9 +87,9 @@ class Oeuvre extends Modele {
 	{
 		$res = Array();
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre
-					left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
-					inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste 
+					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre"
+					// left join . self::TABLE_OEUVRE_DONNEES_EXTERNES . OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
+					."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste 
 					where id=". $id;
 				
 		if($mrResultat = $this->_db->query($query))
@@ -127,6 +127,31 @@ class Oeuvre extends Modele {
 		return $res;
 	}
 	
+    
+        
+    
+public function getOeuvreByID($id)
+{
+    $request="SELECT * FROM oeuvre WHERE id_oeuvre='$id'";
+    $result = $this->_db->query($request);
+    
+    if ($result !== FALSE) 
+    {
+        $infoTitre = $result->fetch_assoc();
+ return $infoTitre;              
+
+    } 
+    else 
+    {
+    return "wrong code";
+    }
+}
+
+
+
+
+
+
 	
 	/**
 	 * Récupère les oeuvres avec l'id d'un artiste

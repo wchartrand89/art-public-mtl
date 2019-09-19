@@ -30,6 +30,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	public function getAction(Requete $requete)
 	{
 //        echo 'getOeuvres';
+
 		$res = array();
 		var_dump($requete->url_elements);
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
@@ -46,11 +47,18 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		}
         else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "modifier")
         {
-            echo "MODIFICATION";
-        $id=$requete->url_elements[2];
             
+            $id=$requete->url_elements[2];
+            $res = $this->getOeuvreByID($id);
             $oVue = new AdminVue();
-            $oVue->afficheFormulaireModification($id);
+            $oVue->afficheEntete();
+            $oVue->afficheFormulaireModification($res);
+            $oVue->affichePied();
+        }
+        else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "oeuvre")
+        {
+            echo "test";
+            var_dump($_POST);
         }
         else 	// Liste des oeuvres
         {
@@ -58,31 +66,35 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 			
         }
 		
-		if(isset($_GET['json']))
-		{
-			echo json_encode($res);	
-		}
-		else
-		{
+        if($requete->url_elements[1] == NULL)
+        {
+            if(isset($_GET['json']))
+		      {
+			// echo json_encode($res);	
+		      }
+		      else
+		      {
 				
 			
-			$oVue = new AdminVue();
-			$oVue->afficheEntete();
-			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
-			{
-				//var_dump($res);
-                //die;
-				$oVue->afficheOeuvre($res);
-                
-			}
-			else
-			{
-				$oVue->afficheOeuvres($res);
-			}	
-			
-			$oVue->affichePied();
-			
-		}
+                $oVue = new AdminVue();
+                $oVue->afficheEntete();
+                if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
+                {
+                    //var_dump($res);
+                    //die;
+                    $oVue->afficheOeuvre($res);
+
+                }
+                if($requete->url_elements[0]=="oeuvre")
+                {
+                    $oVue->afficheOeuvres($res);
+                }	
+
+                $oVue->affichePied();
+
+            }
+        }
+		
 			
 		
 		
@@ -91,6 +103,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	
 	public function postAction(Requete $requete)
 	{
+        var_dump($_POST);
 		$res = array();
         //var_dump($requete->url_elements);
         //var_dump($requete);
@@ -119,7 +132,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         //rediriger vers la page des oeuvres
         header("Location: ../oeuvre");
         
-		
         
 	}
 	
