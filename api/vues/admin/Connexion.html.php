@@ -1,6 +1,6 @@
 
 
-            <form id='connection' action="" method="post">	
+            <form id='connexion' action="?action=connexion" method="post">	
                 <div>
                     <label for="name">Nom d'usager:</label>
                     <input type="text" id="name" name="login">

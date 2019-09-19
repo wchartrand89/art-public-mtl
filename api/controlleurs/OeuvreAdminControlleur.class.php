@@ -29,60 +29,69 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	
 	public function getAction(Requete $requete)
 	{
-//        echo 'getOeuvres';
-		$res = array();
-		var_dump($requete->url_elements);
-		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
-		{
-            $id_oeuvre = (int)$requete->url_elements[0];
-            
-            $res = $this->getOeuvre($id_oeuvre);
-            
-        } 
-		else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "miseajour")
-		{
-			$res = $this->mettreAJour();
-            echo "MISE A JOUR";
-		}
-        else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "modifier")
+		if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
         {
-            echo "MODIFICATION";
-        $id=$requete->url_elements[2];
-            
-            $oVue = new AdminVue();
-            $oVue->afficheFormulaireModification($id);
-        }
-        else 	// Liste des oeuvres
-        {
-        	$res = $this->getListeOeuvre();
-			
-        }
-		
-		if(isset($_GET['json']))
-		{
-			echo json_encode($res);	
-		}
-		else
-		{
-				
-			
-			$oVue = new AdminVue();
-			$oVue->afficheEntete();
-			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
+			$res = array();
+			var_dump($requete->url_elements);
+			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
 			{
-				//var_dump($res);
-                //die;
-				$oVue->afficheOeuvre($res);
-                
+				$id_oeuvre = (int)$requete->url_elements[0];
+				
+				$res = $this->getOeuvre($id_oeuvre);
+				
+			} 
+			else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "miseajour")
+			{
+				$res = $this->mettreAJour();
+				echo "MISE A JOUR";
+			}
+			else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "modifier")
+			{
+				echo "MODIFICATION";
+			$id=$requete->url_elements[2];
+				
+				$oVue = new AdminVue();
+				$oVue->afficheFormulaireModification($id);
+			}
+			else 	// Liste des oeuvres
+			{
+				$res = $this->getListeOeuvre();
+				
+			}
+			
+			if(isset($_GET['json']))
+			{
+				echo json_encode($res);	
 			}
 			else
 			{
-				$oVue->afficheOeuvres($res);
-			}	
-			
-			$oVue->affichePied();
-			
-		}
+					
+				
+				$oVue = new AdminVue();
+				$oVue->afficheEntete();
+				if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
+				{
+					//var_dump($res);
+					//die;
+					$oVue->afficheOeuvre($res);
+					
+				}
+				else
+				{
+					$oVue->afficheOeuvres($res);
+				}	
+				
+				$oVue->affichePied();
+				
+			}
+        }
+        //redirige vers l'accueil si admin pas connecté.
+        else
+        {
+            header("location:http://localhost/art-public-mtl/api/admin");
+            exit();
+        }
+		
 			
 		
 		
@@ -127,7 +136,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	{
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->modifOeuvre($id_oeuvre, $param);
-		
 		return $aOeuvre;
 	}
 	
@@ -140,15 +148,13 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	{
 		$oImportation = new Importation();
 		$oImportation->importerOeuvre();
-		$oImportation->mettreAJour();
-		
+		$oImportation->mettreAJour();	
 	}
 	
 	private function getImages($id_oeuvre)
 	{
 		$oImportation = new Importation();
 		$aImage = $oImportation->telechargementImages($id_oeuvre);
-		
 	}
 	
 }

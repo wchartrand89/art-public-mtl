@@ -129,7 +129,7 @@ class AdminVue {
 		
 		?>
 
-            <form id='connection' action="?controller=authentification&action=connexionPost" method="post">	
+            <form id='connexion' action="?controller=authentification&action=connexionPost" method="post">	
                 <div>
                     <label for="name">Nom d'usager:</label>
                     <input type="text" id="name" name="login">

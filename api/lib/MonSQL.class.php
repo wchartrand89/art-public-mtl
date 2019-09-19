@@ -1,7 +1,7 @@
 <?php
 /**
  * Class MonSQL
- * Classe qui génère ma connection à MySQL à travers un singleton
+ * Classe qui génère ma connexion à MySQL à travers un singleton
  *
  *
  * @author Jonathan Martel
