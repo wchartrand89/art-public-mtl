@@ -77,6 +77,12 @@ require("admin/AfficheOeuvres.html.php");
 	   require("admin/FormulaireModification.html.php");
 		
 	}
+    
+	public function afficheDeconnection() {
+		
+require("admin/Deconnexion.html.php");
+		
+	}
 	
 	public function afficheMenuAdmin() { //location temporaire
 		

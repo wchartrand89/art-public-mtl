@@ -109,10 +109,11 @@ class AdminControlleur extends Controlleur
             $retour = $authentification->verification($_POST['login'], $_POST['mdp']);
             if($retour == true){ //login et mdp sont corrects
 //                echo 'true';
+      //          echo "test";
                 //connecter la personne
                 $_SESSION['login'] = $_POST['login'];
 //                echo $_SESSION['login'];
-//                die;
+        //        die;
                 
                 //redirection vers page privee
                 header("location:http://localhost/art-public-mtl/api/admin/menu");
