@@ -14,9 +14,6 @@
 
 
 class Vue {
-
-
-
 	/**
 	 * Affiche entetes
 	 * @access public
@@ -48,7 +45,7 @@ class Vue {
 	 */
 	public function afficheAccueil() {
 		
-require("accueil/accueil.html.php");
+		require("accueil/accueil.html.php");
 		
 	}
 	
@@ -59,7 +56,7 @@ require("accueil/accueil.html.php");
 	 */
 	public function afficheOeuvres($aData = Array()) {
 		
-require  ("oeuvre/AfficheOeuvres.html.php"); 
+		require  ("oeuvre/AfficheOeuvres.html.php"); 
 		
 	}
 
@@ -72,7 +69,6 @@ require  ("oeuvre/AfficheOeuvres.html.php");
 	 * @return void
 	 */
 	public function afficheArtistes($aData = Array()) {
-		
 		require  ("artistes/AfficheArtistes.html.php"); 
 						
 	}

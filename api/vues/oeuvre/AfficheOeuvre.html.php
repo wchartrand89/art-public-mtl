@@ -57,7 +57,7 @@
 								<h2 class="titre"><a href="/artPublic/api/oeuvre/<?php echo $oeuvre['id'] ?>"><?php echo $oeuvre['Titre']?></a></h2>	
 							</section>
 							 */
-						}
+						};
 						?>
 					</section>
 				
