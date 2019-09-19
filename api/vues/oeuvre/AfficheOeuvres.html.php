@@ -1,4 +1,4 @@
-		?>
+
 		 <section class="contenu listeOeuvres">
          	<section class="recherche"></section>
             <section class="oeuvres flex wrap">
@@ -64,4 +64,3 @@
 				
 			</section>
 			
-		<?php
