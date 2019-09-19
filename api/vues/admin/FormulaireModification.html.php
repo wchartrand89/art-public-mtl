@@ -11,7 +11,7 @@ $info=$_SESSION['res'];
                
                 
 ?>
-            <form id='modification' action="/art-public-mtl/api/admin/modified.php" method="post">	
+            <form id='modification' action="/art-public-mtl/api/admin/oeuvre/modification/" method="post">	
                 <div>
                     <label for="name">ID</label>
                     <input type="text" name="ID" value="<?php echo $info["id_oeuvre"]; ?>" readonly/>

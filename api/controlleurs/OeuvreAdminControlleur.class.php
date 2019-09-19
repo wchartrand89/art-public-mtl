@@ -45,10 +45,10 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 			$res = $this->mettreAJour();
             echo "MISE A JOUR";
 		}
-        else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "modifier")
+        else if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]) && isset($requete->url_elements[2]) && $requete->url_elements[2] == "modifier" )
         {
             
-            $id=$requete->url_elements[2];
+            $id=$requete->url_elements[1];
             $res = $this->getOeuvreByID($id);
             $oVue = new AdminVue();
             $oVue->afficheEntete();
@@ -103,6 +103,20 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	
 	public function postAction(Requete $requete)
 	{
+   
+        
+        if(!empty($_POST)){
+            if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="modification"){
+                $arrayModif=$_POST;
+                $res=$this->modifierOeuvre($arrayModif);
+            }
+            
+        }
+        
+        if(empty($_POST)){
+            echo "erreur";
+        }
+        
         var_dump($_POST);
 		$res = array();
         //var_dump($requete->url_elements);
@@ -130,7 +144,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         
 		}
         //rediriger vers la page des oeuvres
-        header("Location: ../oeuvre");
+        header("Location: /art-public-mtl/api/admin/oeuvre");
         
         
 	}
@@ -156,6 +170,15 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		
 	}
 	
+    	protected function modifierOeuvre($array)
+	{
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->modifierOeuvre($array);
+        var_dump($aOeuvre);
+		return $aOeuvre;
+	}
+    
+    
 	private function getImages($id_oeuvre)
 	{
 		$oImportation = new Importation();
