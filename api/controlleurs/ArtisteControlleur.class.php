@@ -28,18 +28,20 @@ class ArtisteControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$res = array();
-		// var_dump($requete->url_elements[0]);
+		$page= "artistes";
+		//  var_dump($requete->url_elements[1]);
 
-		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'artiste 
+		if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]))	// Normalement l'id de l'artiste 
 		{
             $id_artiste = (int)$requete->url_elements[0];
-            
-            $res = $this->getArtiste($id_artiste);
+			$res = $this->getArtiste($id_artiste);
+			$page = "artiste";
+			// die;
             
         } 
         else 	// Liste des oeuvres
         {
-        	$res = $this->getListeArtiste();
+			$res = $this->getListeArtiste();
 			
         }
 		
@@ -52,8 +54,9 @@ class ArtisteControlleur extends Controlleur
 				
 			
 			$oVue = new Vue();
-			$oVue->afficheEntete($requete->url_elements[0]);
-			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
+			$oVue->afficheEntete($page);
+			echo $page;
+			if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]))
 			{
 				//var_dump($res);
 				$oVue->afficheArtiste($res);	

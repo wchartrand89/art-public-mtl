@@ -9,23 +9,34 @@
 	<meta name="viewport" content="width=device-width">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/var.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/header.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/footer.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/text.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/component.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/flex.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen">
+	
 	<?php
 		if ($page== ""){
+			cssBase("");
 			echo '<link rel="stylesheet" href="../css/home.css" type="text/css" media="screen">';
 			echo '<script src="../js/slider.js"></script>';
 		} 
-		else if ($page== "artiste"){
+		else if ($page== "artistes"){
+			cssBase("artistes");
 			echo '<link rel="stylesheet" href="../css/artistes.css" type="text/css" media="screen">';
 		} 
+		else if ($page== "artiste"){
+			cssBase("artiste");
+			echo '<link rel="stylesheet" href="../../css/artiste.css" type="text/css" media="screen">';
+		} 
 	
+		function cssBase($page){
+			?>
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/reset.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/var.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/header.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/footer.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/text.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/component.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/flex.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/main.css" type="text/css" media="screen">
+			<?php
+		}
 	?>
 
 
