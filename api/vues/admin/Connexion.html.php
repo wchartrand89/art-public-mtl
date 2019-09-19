@@ -1,4 +1,4 @@
-
+?>
 
             <form id='connexion' action="?action=connexion" method="post">	
                 <div>
@@ -14,4 +14,4 @@
                 </div>		
             </form>
 			
-	
+<?php

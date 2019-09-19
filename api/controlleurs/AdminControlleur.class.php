@@ -20,15 +20,15 @@ class AdminControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
-        echo'<br><br><br>';
-		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')// Normalement l'id de l'artiste 
+		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')
         {	
 		  $res = array();
         }
 		//var_dump($requete->url_elements);
 		
-		if(!isset($requete->url_elements[0])){
-			echo 'PAGE ADMIN NON EXISTANTE2';
+		if(!isset($requete->url_elements[0]))
+        {
+			echo 'PAGE ADMIN NON EXISTANTE';
 		}
 		else if ($requete->url_elements[0] == '')
 		{
@@ -43,20 +43,24 @@ class AdminControlleur extends Controlleur
 		{
 			/* Instanciation du controlleur */
             $nomControlleur = ucfirst($requete->url_elements[0]) . 'AdminControlleur';
-            //echo $nomControlleur;
-            if (class_exists($nomControlleur)) {
+            if (class_exists($nomControlleur)) 
+            {
                 $oControlleur = new $nomControlleur();
                 $nomAction = strtolower($requete->verbe) . 'Action';
                 $oControlleur->$nomAction($requete);
-            }else{
+            }
+            else
+            {
 				echo 'PAGE ADMIN NON EXISTANTE';
 			}
 		}
 	}
     
     
-	public function postAction(Requete $requete){        
-        if(!empty($_POST)){
+	public function postAction(Requete $requete)
+    {        
+        if(!empty($_POST))
+        {
 			// var_dump($requete);
 			// echo '<br>'. $_GET['action'] . '<br>';
 			// var_dump($_POST);
@@ -73,8 +77,8 @@ class AdminControlleur extends Controlleur
 			}
 			else //connexion non reconnue
 			{
-                session_destroy();
-                header("location:http://localhost/art-public-mtl/api/admin");
+                session_destroy(); //détruire la session
+                header("location:http://localhost/art-public-mtl/api/admin"); //redirige vers l'accueil (login)
                 exit();
             }
           

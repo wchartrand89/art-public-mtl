@@ -59,7 +59,7 @@ require("admin/AfficheOeuvres.html.php");
 	 * @access public
 	 * @return void
 	 */
-	public function afficheOeuvre($aData = Array()) {
+	public function afficheOeuvre($aData) {
 		
 		require("admin/AfficheOeuvre.html.php");
 		
@@ -72,9 +72,9 @@ require("admin/AfficheOeuvres.html.php");
 	}
     
     
-    public function afficheFormulaireModification() {
-		
-	require("admin/FormulaireModification.html.php");
+    public function afficheFormulaireModification($data) {
+        $_SESSION['res']=$data;
+	   require("admin/FormulaireModification.html.php");
 		
 	}
     
