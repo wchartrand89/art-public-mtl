@@ -239,13 +239,14 @@ main .carte .btnAccueil{
     display: block;
 }
 
+/*------------------ Liste des oeuvres -------------------*/
 
 .oeuvres
 {
     width: 100%;
 }
 
-/*------------------Section d'une oeuvre -------------------*/
+/*------------------ Affichage d'une oeuvre -------------------*/
 
 .contenu.uneOeuvre
 {
