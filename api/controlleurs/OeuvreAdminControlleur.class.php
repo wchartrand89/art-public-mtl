@@ -24,11 +24,15 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	// 		/oeuvre/ - Liste des oeuvres
 	// 		/oeuvre/{id}/ - Une oeuvre
 	// 		/oeuvre/?q=nom,arrond,etc&valeur=chaineDeRecherche
+    //      /oeuvre/modifier/id
+    //      /oeuvre/supprimer/id
 	
 	public function getAction(Requete $requete)
 	{
+//        echo 'getOeuvres';
+
 		$res = array();
-		//var_dump($requete->url_elements);
+		var_dump($requete->url_elements);
 		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
 		{
             $id_oeuvre = (int)$requete->url_elements[0];
@@ -36,42 +40,61 @@ class OeuvreAdminControlleur extends OeuvreControlleur
             $res = $this->getOeuvre($id_oeuvre);
             
         } 
-		else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "miseajour")
+		else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "miseajour")
 		{
 			$res = $this->mettreAJour();
+            echo "MISE A JOUR";
 		}
+        else if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]) && isset($requete->url_elements[2]) && $requete->url_elements[2] == "modifier" )
+        {
+            
+            $id=$requete->url_elements[1];
+            $res = $this->getOeuvreByID($id);
+            $oVue = new AdminVue();
+            $oVue->afficheEntete();
+            $oVue->afficheFormulaireModification($res);
+            $oVue->affichePied();
+        }
+        else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "oeuvre")
+        {
+            echo "test";
+            var_dump($_POST);
+        }
         else 	// Liste des oeuvres
         {
         	$res = $this->getListeOeuvre();
 			
         }
 		
-		if(isset($_GET['json']))
-		{
-			echo json_encode($res);	
-		}
-		else
-		{
+        if($requete->url_elements[1] == NULL)
+        {
+            if(isset($_GET['json']))
+		      {
+			// echo json_encode($res);	
+		      }
+		      else
+		      {
 				
 			
-			$oVue = new AdminVue();
-			$oVue->afficheHead();
-			$oVue->afficheEntete();
-			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
-			{
-				//var_dump($res);
-                //die;
-				$oVue->afficheOeuvre($res);
-                
-			}
-			else
-			{
-				$oVue->afficheOeuvres($res);
-			}	
-			
-			$oVue->affichePied();
-			
-		}
+                $oVue = new AdminVue();
+                $oVue->afficheEntete();
+                if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
+                {
+                    //var_dump($res);
+                    //die;
+                    $oVue->afficheOeuvre($res);
+
+                }
+                if($requete->url_elements[0]=="oeuvre")
+                {
+                    $oVue->afficheOeuvres($res);
+                }	
+
+                $oVue->affichePied();
+
+            }
+        }
+		
 			
 		
 		
@@ -80,6 +103,21 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	
 	public function postAction(Requete $requete)
 	{
+   
+        
+        if(!empty($_POST)){
+            if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="modification"){
+                $arrayModif=$_POST;
+                $res=$this->modifierOeuvre($arrayModif);
+            }
+            
+        }
+        
+        if(empty($_POST)){
+            echo "erreur";
+        }
+        
+        var_dump($_POST);
 		$res = array();
         //var_dump($requete->url_elements);
         //var_dump($requete);
@@ -106,9 +144,8 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         
 		}
         //rediriger vers la page des oeuvres
-        header("Location: ../oeuvre");
+        header("Location: /art-public-mtl/api/admin/oeuvre");
         
-		
         
 	}
 	
@@ -133,6 +170,15 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		
 	}
 	
+    	protected function modifierOeuvre($array)
+	{
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->modifierOeuvre($array);
+        var_dump($aOeuvre);
+		return $aOeuvre;
+	}
+    
+    
 	private function getImages($id_oeuvre)
 	{
 		$oImportation = new Importation();

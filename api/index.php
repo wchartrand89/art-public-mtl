@@ -49,7 +49,6 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
     /** Initialisation des variables **/
     /***************************************************/
 
-   
 	$oReq = new Requete();
 	//var_dump($oReq);
 	/* Instanciation du controlleur */
@@ -58,7 +57,7 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
 	}
 	
 	$nomControlleur = ucfirst($oReq->ressource) . 'Controlleur';
-	
+
 	
 		if (class_exists($nomControlleur)) {
 			$reflectionClass = new ReflectionClass($nomControlleur);
