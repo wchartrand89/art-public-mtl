@@ -12,6 +12,7 @@
 							?>
 							<section class="oeuvre carte">
 			                    <header class="image dummy">
+								<img src="/art-public-mtl/img/placeholder_640_480.jpg" />
 			                        <h2 class="titre"><?php echo $Titre?></h2> 
 			                    </header>
 			                    <section class="texte">
@@ -43,7 +44,7 @@
 			                        <p class="arrondissement"><?php echo $Arrondissement?></p>
 			                    </section>
 			                    <footer class="barre-action">
-								<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id ?>" data-link="/artPublic/api/oeuvre/<?php echo $id ?>/" data-id="<?php echo $id ?>">En savoir plus...</a>	
+								<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">En savoir plus...</a>	
 								<!--<button class="ouvrir-oeuvre" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">En savoir plus...</button>-->
 			                    </footer>
 			                </section>

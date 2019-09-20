@@ -33,6 +33,7 @@ class Oeuvre extends Modele {
 					."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
 					order by Oeu.id_oeuvre ASC
 				";
+
 //		echo $query;
 		//SELECT * FROM `apm__oeuvre` Oeu inner join apm__oeuvre_artiste O_A ON Oeu.id = O_A.id_oeuvre
 		if($mrResultat = $this->_db->query($query))
@@ -87,11 +88,11 @@ class Oeuvre extends Modele {
 	{
 		$res = Array();
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre"
+					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre"
 					// left join . self::TABLE_OEUVRE_DONNEES_EXTERNES . OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
-					."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste 
-					where id=". $id;
-				
+					." inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste 
+					where O_A.id_oeuvre=". $id;
+
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($oeuvre = $mrResultat->fetch_assoc())
@@ -251,7 +252,7 @@ SET Titre = '$Titre', NomCollection ='$NomCollection', NomCollectionAng='$NomCol
 WHERE id_oeuvre='$ID';";
     
     $result = $this->_db->query($request);
-    var_dump($result);
+    //var_dump($result);
     if ($result !== FALSE) 
     {
         return "VALEUR MODIFIÉ";              

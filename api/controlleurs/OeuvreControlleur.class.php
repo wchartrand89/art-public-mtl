@@ -51,18 +51,15 @@ class OeuvreControlleur extends Controlleur
 				
 			
 			$oVue = new Vue();
-			$oeuvreVue = new OeuvreVue();
-			$oeuvresVue = new OeuvresVue();
-			$oVue->afficheHead();
 			$oVue->afficheEntete();
 			
 			if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]))
 			{
-				$oeuvreVue->afficheOeuvre($res);
+				$oVue->afficheOeuvre($res);
 			}
 			else
 			{
-				$oeuvresVue->afficheOeuvres($res);
+				$oVue->afficheOeuvres($res);
 			}
 			
 			$oVue->affichePied();
@@ -96,7 +93,7 @@ class OeuvreControlleur extends Controlleur
 		
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getListe();
-		
+
 		return $aOeuvre;
 	}
 	

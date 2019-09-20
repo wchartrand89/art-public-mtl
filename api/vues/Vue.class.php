@@ -62,6 +62,19 @@ class Vue {
 
 
 
+	/**
+	 * Affiche l'oeuvre
+	 * @access public
+	 * @return void
+	 */
+	public function afficheOeuvre($aData = Array()) {
+		
+		require  ("oeuvre/AfficheOeuvre.html.php"); 
+		
+	}
+
+
+
 	
 	/**
 	 * Affiche la liste des artistes
