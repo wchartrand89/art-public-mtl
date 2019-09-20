@@ -15,23 +15,17 @@
  *
  */
 
- 
- 
 class AccueilControlleur extends Controlleur 
 {
 	
-	// GET : 
-	
+	// GET : 	
 	public function getAction(Requete $requete)
 	{
 		$oVue = new Vue();
 		$oVue->afficheEntete();
 		$oVue->afficheAccueil();				
 		$oVue->affichePied();
-
-		
 	}
-	
 	
 }
 ?>

@@ -78,9 +78,9 @@ require("admin/AfficheOeuvres.html.php");
 		
 	}
     
-	public function afficheDeconnection() {
+	public function afficheDeconnexion() {
 		
-require("admin/Deconnexion.html.php");
+        require("admin/Deconnexion.html.php");
 		
 	}
 	

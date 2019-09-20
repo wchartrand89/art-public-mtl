@@ -1,11 +1,5 @@
 <?php
 
-session_start();
-$_SESSION['id'] = 'something';
-//echo $_SESSION['id'];
-
-ini_set('display_errors', 1);
-error_reporting(~0);
 /**
  * Fichier de lancement du MVC, Il appel le var.init et le gabarit HTML 
  * @author Jonathan Martel
@@ -15,6 +9,13 @@ error_reporting(~0);
  * @license http://creativecommons.org/licenses/by-nc/3.0/deed.fr
  * 
  */
+
+//Ouvrir la session
+session_start();
+$_SESSION['id'] = '';
+ini_set('display_errors', 1);
+error_reporting(~0);
+
 if(isset($_GET['json']))
 {
 	header('Content-Type: application/json; charset=utf8');	
@@ -53,10 +54,9 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
    /***************************************************/
     /** Initialisation des variables **/
     /***************************************************/
-
    
 	$oReq = new Requete();
-//	var_dump($oReq);
+
 	/* Instanciation du controlleur */
 
 /*
@@ -73,13 +73,10 @@ ira chercher le bon controlleur selon l'url (admin/menu, admin/oeuvre, etc.)
 	if (class_exists($nomControlleur)) {
     	$oControlleur = new $nomControlleur();
 		$nomAction = strtolower($oReq->verbe) . 'Action';
-//        echo $nomAction;
+//echo $nomAction;
     	$result = $oControlleur->$nomAction($oReq);
 	}
 
-
-	
-	
 	//http://www.lornajane.net/posts/2012/building-a-restful-php-server-understanding-the-request				
 
 ?>
