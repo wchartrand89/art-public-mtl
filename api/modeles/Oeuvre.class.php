@@ -142,10 +142,6 @@ public function getOeuvreByID($id)
  return $infoTitre;              
 
     } 
-    else 
-    {
-    return "wrong code";
-    }
 }
 
 
@@ -233,19 +229,19 @@ public function getOeuvreByID($id)
     public function modifierOeuvre($array){
     
     
-    $ID=htmlspecialchars($array["ID"]);
-    $Titre=htmlspecialchars($array["Titre"]);
-    $NomCollection=htmlspecialchars($array["NomCollection"]);
-    $NomCollectionAng=htmlspecialchars($array["NomCollectionAng"]);
-    $Technique=htmlspecialchars($array["Technique"]);
-    $TechniqueAng=htmlspecialchars($array["TechniqueAng"]);
-    $Dimensions=htmlspecialchars($array["Dimensions"]);
-    $Arrondissement=htmlspecialchars($array["Arrondissement"]);
-    $Batiment=htmlspecialchars($array["Batiment"]);
-    $AdresseCivique=htmlspecialchars($array["AdresseCivique"]);
-    $CoordonneeLatitude=htmlspecialchars($array["CoordonneeLatitude"]);
-    $CoordonneeLongitude=htmlspecialchars($array["CoordonneeLongitude"]);
-    $dateCreation=htmlspecialchars($array["dateCreation"]);
+    $ID=$this->filtre($array["ID"]);
+    $Titre=$this->filtre($array["Titre"]);
+    $NomCollection=$this->filtre($array["NomCollection"]);
+    $NomCollectionAng=$this->filtre($array["NomCollectionAng"]);
+    $Technique=$this->filtre($array["Technique"]);
+    $TechniqueAng=$this->filtre($array["TechniqueAng"]);
+    $Dimensions=$this->filtre($array["Dimensions"]);
+    $Arrondissement=$this->filtre($array["Arrondissement"]);
+    $Batiment=$this->filtre($array["Batiment"]);
+    $AdresseCivique=$this->filtre($array["AdresseCivique"]);
+    $CoordonneeLatitude=$this->filtre($array["CoordonneeLatitude"]);
+    $CoordonneeLongitude=$this->filtre($array["CoordonneeLongitude"]);
+    $dateCreation=$this->filtre($array["dateCreation"]);
     
     $request="UPDATE oeuvre
 SET Titre = '$Titre', NomCollection ='$NomCollection', NomCollectionAng='$NomCollectionAng',Technique='$Technique', TechniqueAng='$TechniqueAng', Dimensions='$Dimensions', Arrondissement='$Arrondissement', Batiment='$Batiment', AdresseCivique='$AdresseCivique', CoordonneeLatitude='$CoordonneeLatitude', CoordonneeLongitude='$CoordonneeLongitude', dateCreation= '$dateCreation'
@@ -266,7 +262,7 @@ WHERE id_oeuvre='$ID';";
 }
     
     
-    
+
     
     
 	private function verifDonneesExterne($id)
@@ -280,6 +276,16 @@ WHERE id_oeuvre='$ID';";
 		}
 		return (count($res) >0 ? true : false);
 	}
+    
+    
+    
+    function filtre($variable)
+    {
+        $varFiltre = $this->_db->real_escape_string($variable);
+        $varFiltre=htmlspecialchars($varFiltre);
+        //ici, on pourrait appliquer d'autres filtres.... (ex: strip_tags qui enlèverait les tags HTML dans un texte...)
+        return $varFiltre;
+    }
 	
 }
 

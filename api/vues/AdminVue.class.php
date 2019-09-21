@@ -13,6 +13,18 @@
  */
 
 
+//test condition pour empecher d'accéder aux autres vues si login non set
+
+//var_dump($_SESSION['login']);
+//		if(!isset($_SESSION['login']))
+//        {          
+//           // si l'admin n'est pas connecté, rediriger vers l'accueil (login)
+//             require("entetepied/enteteAdmin.html.php");
+//            require("admin/Connexion.html.php");
+//            require("entetepied/piedAdmin.html.php");
+//        }
+
+
 class AdminVue {
 
 /**
@@ -73,7 +85,7 @@ require("admin/AfficheOeuvres.html.php");
     
     
     public function afficheFormulaireModification($data) {
-        $_SESSION['res']=$data;
+      //   $_SESSION['res']=$data;
 	   require("admin/FormulaireModification.html.php");
 		
 	}
