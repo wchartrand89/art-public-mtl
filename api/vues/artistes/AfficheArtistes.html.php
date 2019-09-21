@@ -32,11 +32,6 @@ foreach ($aData as $cle => $artiste) {
 		
 ?>
 	
-		<!-- <footer class="barre-action">
-		<a class="ouvrir-oeuvre" href="artiste/<?php echo $id_artiste ?>" >En savoir plus...</a>	
-		
-		</footer> -->
-	
 	<?php 
 	}
 	?>

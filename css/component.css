@@ -10,7 +10,6 @@
     border-radius: 5px;
 }
 
-<<<<<<< HEAD
 /* BREAK TABLET PORTRAIT UP */
 @media screen and (min-width: 600px) {
     .btn{
@@ -30,9 +29,7 @@
 
 }
 
-=======
 /*-------------------- Onglets --------------------*/
->>>>>>> a11935f55cba6e02b1cad04faf57969df65d1a90
 
 .onglet {
     display:inline-block;

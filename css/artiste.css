@@ -48,9 +48,31 @@ main>section:not(.sesOeuvres){
 /*LIENS EXTERNES*/
 .liensExt{
     display:flex;
+    justify-content: center;
     margin-top: var(--padding-base);
 
 }
 .liensExt .btn{
     margin: var(--padding-base);
+}
+
+/* BREAK TABLET PORTRAIT UP */
+@media screen and (min-width: 600px) {
+
+}
+
+/* BREAK TABLET LANDSCAPE UP */
+@media screen and (min-width: 900px) {
+  .fleches{
+      display:none;
+  }
+   
+
+
+}
+
+/* BREAK DESKTOP UP */
+@media screen and (min-width: 1200px) {
+
+
 }

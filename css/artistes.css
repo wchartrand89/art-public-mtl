@@ -43,7 +43,7 @@ main .liste{
 }
 main .liste a{
     /* width:100%; */
-    height:auto;
+    /* height:auto; */
     padding-left: calc(var(--padding-base) * 3);
     padding-top: var(--padding-base);
     font-size:1.4rem;
@@ -80,4 +80,43 @@ main .liste a{
 .lettreChoisie a svg{
     width:36px;
     height:36px;
+}
+@media screen and (min-width: 600px){
+    main .liste{
+        flex-wrap:wrap;
+    }
+    main .choix{
+        justify-content: space-around;
+    }
+    
+}
+@media screen and (min-width: 600px) and (min-height:801px) {
+    main .liste{
+        max-height:3000px;
+    }
+    .lettre{
+        font-size:10.4rem;
+    }
+    .lettreChoisie p{
+        font-size: 12rem;
+    }
+    .lettreChoisie a svg{
+        width:72px;
+        height:72px;
+    }
+}
+@media screen and (min-width: 600px) and (max-height:799px) {
+    main .liste{
+        max-height:3500px;
+    }
+    .lettre{
+        font-size:8.4rem;
+    }
+    .lettreChoisie p{
+        font-size: 10rem;
+    }
+    .lettreChoisie a svg{
+        width:72px;
+        height:72px;
+    }
 }

@@ -129,6 +129,27 @@
     }
 }
 
+/* BREAK TABLET LANDSCAPE UP */
+@media screen and (min-width: 900px) {
+  .slide {
+    box-sizing: border-box;
+    max-width:33%;
+    flex:1;
+    padding:var(--padding-base);
+  }
+  .slider{
+    display:flex;
+    justify-content: center;
+  }
+  main .carte, .slide a .img {
+    height: 250px;
+}
+
+   
+
+
+}
+
 /* BREAK TABLET DESKTOP UP */
 @media screen and (min-width: 1200px) {
     .slider{
@@ -136,7 +157,7 @@
     }
     /*Agrandir height sections*/
     main .carte, .slide a .img {
-        height: 764px;
+        /* height: 764px; */
     }
     .point {
         height: 20px;
