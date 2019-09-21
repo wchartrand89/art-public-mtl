@@ -32,7 +32,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
         {
 			$res = array();
-			var_dump($requete->url_elements);
+			//var_dump($requete->url_elements);
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
 			{
 				$id_oeuvre = (int)$requete->url_elements[0];
@@ -57,8 +57,8 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 			}
 			else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "oeuvre")
 			{
-				echo "test";
-				var_dump($_POST);
+				//echo "test";
+				//var_dump($_POST);
 			}
 			else 	// Liste des oeuvres
 			{
@@ -168,7 +168,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	{
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->modifierOeuvre($array);
-        var_dump($aOeuvre);
 		return $aOeuvre;
 	}
     
