@@ -33,7 +33,7 @@ class AdminControlleur extends Controlleur
 		else if ($requete->url_elements[0] == '')
 		{
 			// Accueil Admin (connexion)
-			echo 'ACCUEIL ADMIN';
+//			echo 'ACCUEIL ADMIN';
             $oVue = new AdminVue();
     		$oVue->afficheEntete($requete->url_elements[0]);
             $oVue->afficheConnexion();	

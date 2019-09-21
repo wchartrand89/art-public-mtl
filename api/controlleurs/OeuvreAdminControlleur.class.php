@@ -29,8 +29,9 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	public function getAction(Requete $requete)
 	{
         //vérifier que l'admin est connecté
-		if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
-        {
+	if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
+     {
+        error_reporting(E_ALL ^ E_NOTICE);
 			$res = array();
 			//var_dump($requete->url_elements);
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
@@ -70,7 +71,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 				
 			}
 			
-			if($requete->url_elements[1] == NULL)
+			if($requete->url_elements[1] == "")
 			{
 				if(isset($_GET['json']))
 				{
@@ -113,10 +114,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 $res=$this->modifierOeuvre($arrayModif);
             }  
         }        
-        if(empty($_POST))
-        {
-            echo "erreur";
-        }
+     
        // var_dump($_POST);
 		$res = array();
         //var_dump($requete->url_elements);
@@ -172,7 +170,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	{
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->modifierOeuvre($array);
-        //var_dump($aOeuvre);
 		return $aOeuvre;
 	}
     
