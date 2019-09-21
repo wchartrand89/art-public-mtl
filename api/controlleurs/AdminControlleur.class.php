@@ -14,70 +14,25 @@
  * TODO : Commenter selon les standards du département.
  *
  */
-
- 
  
 class AdminControlleur extends Controlleur 
 {
 	
 	public function getAction(Requete $requete)
 	{
-        echo'<br><br><br>';
-		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
-		$res = array();
-		//var_dump($requete->url_elements);
-		/*if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
-		{
-            echo 'MENU ADMIN';
-			//$oVue = new AdminVue();
-			$oVue = new MenuAdminVue();//test
-    		$oVue->afficheHead();
-			$oVue->afficheEntete();
-			$oVue->afficheMenuAdmin();
-			$oVue->affichePied();
-
-			
-        } 
-//        if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='oeuvres')	// Normalement l'id de l'artiste 
-//		{
-//            echo 'OEUVRES';
-//            $oOAC = new OeuvreControlleur();
-//            $oOAC->getAction(Requete $requete);
-//    		$oVue->afficheEntete();
-//    		$oVue->afficheOeuvres($res);
-//    		$oVue->affichePied();
-//        } 
-			$oVue->affichePied();			
-		}
-        else if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='')	// Normalement l'id de l'artiste 
-		{
-            echo 'ACCUEIL ADMIN';
-            $oVue = new AdminVue();
-    		$oVue->afficheHead();
-    		$oVue->afficheEntete();
-            $oVue->afficheConnexion();	
-			$oVue->affichePied();
-			
-		} 
-		
-        else if(isset($requete->url_elements[0])){
-//            var_dump($requete);
-            echo 'PAGE ADMIN NON EXISTANTE';
+		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')
+        {	
+		  $res = array();
         }
-        else 	// Accueil Admin (connection)
-        {
-    		$oVue = new AdminVue();
-    		$oVue->afficheEntete();
-    		$oVue->afficheConnexion();				
-    		$oVue->affichePied();			
-		}*/
+		//var_dump($requete->url_elements);
 		
-		if(!isset($requete->url_elements[0])){
-			echo 'PAGE ADMIN NON EXISTANTE2';
+		if(!isset($requete->url_elements[0]))
+        {
+			echo 'PAGE ADMIN NON EXISTANTE';
 		}
 		else if ($requete->url_elements[0] == '')
 		{
-			// Accueil Admin (connection)
+			// Accueil Admin (connexion)
 			echo 'ACCUEIL ADMIN';
             $oVue = new AdminVue();
     		$oVue->afficheEntete($requete->url_elements[0]);
@@ -88,38 +43,42 @@ class AdminControlleur extends Controlleur
 		{
 			/* Instanciation du controlleur */
             $nomControlleur = ucfirst($requete->url_elements[0]) . 'AdminControlleur';
-            //echo $nomControlleur;
-            if (class_exists($nomControlleur)) {
+            if (class_exists($nomControlleur)) 
+            {
                 $oControlleur = new $nomControlleur();
                 $nomAction = strtolower($requete->verbe) . 'Action';
                 $oControlleur->$nomAction($requete);
-            }else{
+            }
+            else
+            {
 				echo 'PAGE ADMIN NON EXISTANTE';
 			}
 		}
-
 	}
     
     
-	public function postAction(){        
-        if(!empty($_POST)){
-
+	public function postAction(Requete $requete)
+    {        
+        if(!empty($_POST))
+        {
+			// var_dump($requete);
+			// echo '<br>'. $_GET['action'] . '<br>';
+			// var_dump($_POST);
+			// die;
   		    $authentification = new Authentification();
             $retour = $authentification->verification($_POST['login'], $_POST['mdp']);
-            if($retour == true){ //login et mdp sont corrects
-//                echo 'true';
+			if($retour == true) //login et mdp sont corrects
+			{
                 //connecter la personne
                 $_SESSION['login'] = $_POST['login'];
-//                echo $_SESSION['login'];
-//                die;
                 
-                //redirection vers page privee
+                //redirection vers le menu admin
                 header("location:http://localhost/art-public-mtl/api/admin/menu");
-            }else{
-//                $_SESSION['login'] = '';
-                session_destroy();
-//                echo 'false';
-                header("location:http://localhost/art-public-mtl/api/admin");
+			}
+			else //connexion non reconnue
+			{
+                session_destroy(); //détruire la session
+                header("location:http://localhost/art-public-mtl/api/admin"); //redirige vers l'accueil (login)
                 exit();
             }
           

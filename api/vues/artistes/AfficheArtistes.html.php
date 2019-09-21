@@ -1,4 +1,4 @@
-<aside class="choix">
+<aside class="choix" id="prochainSprint">
 	<p class="lettre">A</p>
 	<p class="lettre">B</p>
 	<div class="lettreChoisie">
@@ -13,9 +13,8 @@
 	<p class="lettre">D</p>
 	<p class="lettre">E</p>
 	<p class=" hidden lettre">F</p>
-
-
 </aside>	
+
 <section class="liste">
 
 <?php

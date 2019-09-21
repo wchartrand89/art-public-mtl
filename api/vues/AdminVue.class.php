@@ -59,7 +59,7 @@ require("admin/AfficheOeuvres.html.php");
 	 * @access public
 	 * @return void
 	 */
-	public function afficheOeuvre($aData = Array()) {
+	public function afficheOeuvre($aData) {
 		
 		require("admin/AfficheOeuvre.html.php");
 		
@@ -72,23 +72,15 @@ require("admin/AfficheOeuvres.html.php");
 	}
     
     
-    public function afficheFormulaireModification() {
-		
-	require("admin/FormulaireModification.html.php");
+    public function afficheFormulaireModification($data) {
+        $_SESSION['res']=$data;
+	   require("admin/FormulaireModification.html.php");
 		
 	}
     
-	public function afficheDeconnection() {
+	public function afficheDeconnexion() {
 		
-		?>
-
-            <form id='deconnection' action="?controller=deconnection&action=deconnectionPost" method="post">	
-                <div>
-                    <input type="submit" id="envoyer" value="Déconnection">
-                </div>		
-            </form>
-			
-		<?php
+        require("admin/Deconnexion.html.php");
 		
 	}
 	

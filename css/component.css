@@ -10,6 +10,7 @@
     border-radius: 5px;
 }
 
+<<<<<<< HEAD
 /* BREAK TABLET PORTRAIT UP */
 @media screen and (min-width: 600px) {
     .btn{
@@ -29,4 +30,45 @@
 
 }
 
+=======
+/*-------------------- Onglets --------------------*/
+>>>>>>> a11935f55cba6e02b1cad04faf57969df65d1a90
 
+.onglet {
+    display:inline-block;
+    margin-left:3px;
+    margin-right:3px;
+    padding:3px;
+    border:1px solid black;
+    cursor:pointer;
+}
+
+.onglet_0 {
+    background: var(--couleur-fond);
+    border-bottom:1px solid black;
+}
+
+.onglet_1 {
+    background: var(--couleur-bleu);
+    border-bottom:0px solid black;
+    padding-bottom:4px;
+}
+
+.contenu_onglet {
+    background-color: var(--couleur-fond);
+    /* border:1px solid black; */
+    margin-top:-1px;
+    padding:5px;
+    display:none;
+}
+
+ul {
+    margin-top:0px;
+    margin-bottom:0px;
+    margin-left:-10px
+}
+
+h1 {
+    margin:0px;
+    padding:0px;
+}

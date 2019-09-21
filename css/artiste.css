@@ -1,6 +1,38 @@
 main{
     flex-direction: column;
+    display:flex;
+    justify-content: space-between;
+    /* align-items: center; */
 }
+
+main>section, section>.txtLien{
+    margin: var(--padding-base) 0;
+}
+
+main>section:not(.sesOeuvres){
+    margin-left: var(--padding-base);
+    margin-right: var(--padding-base);
+}
+
+/*RETOUR*/
+
+.flecheLien{
+    color:var(--couleur-orange);
+    padding: 0 8px;
+}
+.txtLien{
+    display:flex;
+}
+
+/* TITRE */
+.titre h1{
+    color: var(--couleur-marine);
+    margin-bottom:var(--padding-base);
+    text-align: center;
+    line-height:1.5;
+}
+
+/*OEUVRES*/
 
 .sesOeuvres{
     width:100%;
@@ -8,117 +40,17 @@ main{
     flex-direction: column;
     align-items: center;
 }
-
-.unArtiste > .oeuvre
-{
-    width: 900px;
-    
-    display: flex;
-    background-color: #FFF;
-    margin: 0px auto;
+.sesOeuvres .infos{
+    background-color: var(--couleur-fond);
+    padding: 0 var(--padding-base);
 }
 
-
-
-.unArtiste > .oeuvre >.image   
-{
-    width: 100%;
-    height: var(--artiste-hauteur-image);
-    position: relative;
-}
-  
-.unArtiste > .oeuvre >.image.dummy
-{
-    background: url("../img/placeholder_640_480.jpg") no-repeat center;
-    background-size: cover;
-}
-  
-.unArtiste > .oeuvre >.image > .titre
-{
-    position: absolute;
-    bottom: 0px;
-    padding: 0px;
-    margin: 0px;
-    padding-left: 16px;
-    padding-right: 8px;
-    margin-top: 24px;
-    margin-bottom: 16px;
-    width: 100%;
-    color: #ffffff;
-}
-
-
-.unArtiste > .retour
-{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: #FFF;
-    font-size: 24px;
-    margin-left: var(--marge-gauche);
-    text-decoration: none;
-    background: url("/artPublic/img/icons/ic_keyboard_backspace_white_48px.svg") no-repeat;
-    height: 48px;
-}
-
-.unArtiste > .retour a
-{
-    text-decoration: none;
-    color: #FFF;
-    padding-left: 48px;
-}
-
-main{
+/*LIENS EXTERNES*/
+.liensExt{
     display:flex;
-    justify-content: space-between;
-    align-items: center;
-}
-main>section{
-    margin-top:var(--padding-base);
-}
-main .choix{
-    /* height:95%; */
-    width:22%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-right: 2px solid var(--couleur-marine);
-}
-main .liste{
-    width:75%;
-}
+    margin-top: var(--padding-base);
 
-.lettre{
-    font-size:6.4rem;
-    font-weight:600;
-    color: var(--couleur-marine);
 }
-.choix >.lettre, .choix .lettreChoisie{
-    padding-bottom:var(--padding-base);
+.liensExt .btn{
+    margin: var(--padding-base);
 }
-.choix>.lettre:first-of-type, .choix> .lettre:last-of-type{
-    padding-top: var(--padding-base);
-} 
-.lettreChoisie p, .lettreChoisie a, .lettreChoisir a svg{
-    color: var(--couleur-orange);
-}
-.lettreChoisie p{
-    font-size: 8rem;
-}
-.lettreChoisie{
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-}
-.lettreChoisie a svg{
-    width:36px;
-    height:36px;
-}
-
-
-main .liste{
-    display:flex;
-    flex-direction: column;    
-
-} 

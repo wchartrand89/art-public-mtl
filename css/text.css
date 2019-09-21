@@ -16,7 +16,15 @@ h2{
     color:var(--couleur-marine);
 }
 
-.btn, h3{
+.titre-oeuvre {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size:2.4rem;
+    color:var(--couleur-marine);
+}
+
+.btn{
     font-weight:bold;
     font-size:1.6rem;
     color:var(--couleur-fond);
@@ -25,12 +33,30 @@ h3{
     color:var(--couleur-marine);
 }
 
-.txtLien{
+.txtLien, .txtLien>a{
     font-weight:bold;
     font-size:1.4rem;
     color:var(--couleur-orange);
 }
 
+.titreDetail.artiste{
+    font-weight:bold;
+    font-size:1.6rem;
+    color:var(--couleur-marine);
+}
+
+h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    color:var(--couleur-marine);
+}
+
+
+
+/**
+ * menuAdmin
+ */
 
 h1{
     font-family: 'Pacifico', cursive;
@@ -40,6 +66,14 @@ h1{
 
 p{
     font-size:1.4rem;
+}
+
+#textMenuAdmin{
+    width:100%;
+    background-color: var(--couleur-marine);
+    color: var(--couleur-fond);
+    padding: 15px;
+    /* font-display:  ; */
 }
 
 
@@ -59,11 +93,7 @@ h2{
     /* text-transform: uppercase; */
 }
 
-.btn{
-    font-weight:bold;
-    font-size:1.6rem;
-    color:var(--couleur-fond);
-}
+
 
 /* BREAK TABLET PORTRAIT UP */
 @media screen and (min-width: 600px) {

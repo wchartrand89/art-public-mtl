@@ -23,6 +23,7 @@ class Requete
         $this->_db = MonSQL::getInstance();
         $this->verbe = $_SERVER['REQUEST_METHOD'];
         $_GET['url'] = (isset($_GET['url']) ? $_GET['url'] : "");
+        //var_dump($_GET['url']);
         $this->url_elements = explode('/', $_GET['url']);
 		$this->parseIncomingParams();
 		$this->ressource = $this->url_elements[0]; 
