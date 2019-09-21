@@ -1,5 +1,5 @@
 <?php 
-// var_dump ($aData);
+ //var_dump ($aData);
 ?>
 <section class="retour txtLien">
     
@@ -11,7 +11,45 @@
     <h1><?php echo $Prenom ." ". $Nom?></h1>
     <p class="description"><?php echo $Description?>Une description de l'artiste quand elle aura été mise dans la base de données.</p>
 </section>
+<section class="sesOeuvres" id="prochainSprint">
+    <div class="slider">
+        
+<?php
+//var_dump($aData['oeuvres']);	
+foreach ($aData['oeuvres'] as $cle => $oeuvre) {
+	extract($oeuvre);
+?>
+<div class="slide art fade">
+<?php
+    echo "<a href='/art-public-mtl/api/oeuvre/".$id_oeuvre."'>";
+?>
+    <div class="img"></div>
+</a>
+<section class="infos">
+                <p class="titreDetail artiste"><?php echo $Titre; ?></p>
+                <p class="description">Description de L'oeuvre, cette oeuvre est une sculpture réalisée en 1983.</p>
+                <div class="txtLien">
+                    <a href="/art-public-mtl/api/oeuvre/<?php echo $id_oeuvre; ?>">Plus de détails</a>
+                    <a href="/art-public-mtl/api/oeuvre<?php echo $id_oeuvre; ?>"class="flecheLien">&#10095;</a>
+                </div>
+            </section>
 
+        </div>
+        
+ 
+    
+
+
+
+<?php
+}
+?>
+       <!-- Next and previous : fleches-->
+       <a class="fleches prev">&#10094;</a>
+        <a class="fleches next">&#10095;</a>
+    </div>
+</section>
+<!-- 
 <section class="sesOeuvres" id="prochainSprint">
     <div class="slider">
         <div class="slide art fade">
@@ -39,13 +77,13 @@
                 <div class="img"></div>
             </a>
             <div class="titreDetail">Nom de l'oeuvre</div>
-        </div>
+        </div> -->
 
         <!-- Next and previous : fleches-->
-        <a class="fleches prev">&#10094;</a>
+        <!-- <a class="fleches prev">&#10094;</a>
         <a class="fleches next">&#10095;</a>
     </div>
-    </section>
+    </section> -->
 			
     <section class="liensExt" id="prochainSprint">
         <div class="reseaux btn">

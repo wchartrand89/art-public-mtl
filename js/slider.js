@@ -37,16 +37,22 @@ window.addEventListener("load", function(){
         var i;
         var slides = document.getElementsByClassName("slide");
         var dots = document.getElementsByClassName("point");
+        
         if (n > slides.length) {slideIndex = 1}
         if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
         }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
+        if(dots.length>0){
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+                console.log(slideIndex-1);
+            }
+            dots[slideIndex-1].className += " active";
         }
+        
         slides[slideIndex-1].style.display = "flex";
-        dots[slideIndex-1].className += " active";
+        
         }
 
 });
