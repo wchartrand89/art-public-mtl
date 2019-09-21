@@ -66,7 +66,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 				
 			}
 			
-			if($requete->url_elements[1] == NULL)
+			if($requete->url_elements[1] == "")
 			{
 				if(isset($_GET['json']))
 				{
@@ -109,11 +109,8 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 $res=$this->modifierOeuvre($arrayModif);
             }  
         }        
-        if(empty($_POST))
-        {
-            echo "erreur";
-        }
-        var_dump($_POST);
+     
+       // var_dump($_POST);
 		$res = array();
         //var_dump($requete->url_elements);
         //var_dump($requete);

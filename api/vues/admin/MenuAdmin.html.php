@@ -8,22 +8,18 @@
 				</fieldset>
 				<fieldset>
 					<legend><p id="textlegend">ARTISTES</p></legend>
-						<a href="">Modifier</a><br>
-						<a href="">Supprimer</a>
+						<a href="#">Voir les artistes</a><br>
 				</fieldset>
 			</div>
 			<div id = "fieldset">
 				<fieldset>
 					<legend><p id="textlegend">PARCOURS</p></legend>
-						<a href="">Ajouter</a><br>
-						<a href="">Modifier</a><br>
-						<a href="">Supprimer</a>
+						<a href="#">Voir les parcours</a><br>
 				</fieldset>
 				<fieldset>
-					<legend><p id="textlegend">ADMINISTRATEUR</p></legend>
-						<a href="">Ajouter</a><br>
-						<a href="">Modifier</a><br>
-						<a href="">Supprimer</a>
+					<legend><p id="textlegend">MODÉRATEUR</p></legend>
+						<a href="#">Ajouter</a><br>
+						<a href="#">Supprimer</a>
 				</fieldset>
 			</div>
 		</section>    
