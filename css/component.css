@@ -10,6 +10,25 @@
     border-radius: 5px;
 }
 
+/* BREAK TABLET PORTRAIT UP */
+@media screen and (min-width: 600px) {
+    .btn{
+        width:168px;
+        height:48px;
+    }
+}
+
+/*BREAK DESKTOP UP*/
+@media screen and (min-width: 1200px) {
+.btn{
+    width:200px;
+    height:60px;
+}
+   
+
+
+}
+
 /*-------------------- Onglets --------------------*/
 
 .onglet {

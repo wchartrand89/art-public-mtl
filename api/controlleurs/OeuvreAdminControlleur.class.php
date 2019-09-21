@@ -38,6 +38,10 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 			{
 				$id_oeuvre = (int)$requete->url_elements[0];
 				
+			
+			$oVue = new AdminVue();
+			$oVue->afficheEntete($requete->url_elements[0]);
+			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
 				$res = $this->getOeuvre($id_oeuvre);
 				
 			} 

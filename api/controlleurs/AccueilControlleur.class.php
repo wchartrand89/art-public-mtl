@@ -22,7 +22,7 @@ class AccueilControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$oVue = new Vue();
-		$oVue->afficheEntete();
+		$oVue->afficheEntete("");
 		$oVue->afficheAccueil();				
 		$oVue->affichePied();
 	}

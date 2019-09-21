@@ -28,12 +28,14 @@ class OeuvreControlleur extends Controlleur
 	{
         
 		$res = array();
-//		var_dump($requete->url_elements);
+		$page ="oeuvres";
+		//var_dump($requete->url_elements);
 		if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]))	// Normalement l'id de l'oeuvre 
 		{
             $id_oeuvre = (int)$requete->url_elements[1];
             
-            $res = $this->getOeuvre($id_oeuvre);
+			$res = $this->getOeuvre($id_oeuvre);
+			$page ="oeuvre";
             
         } 
         else 	// Liste des oeuvres
@@ -51,7 +53,9 @@ class OeuvreControlleur extends Controlleur
 				
 			
 			$oVue = new Vue();
-			$oVue->afficheEntete();
+			//$oeuvreVue = new OeuvreVue();
+			$oVue->afficheEntete($page);
+
 			
 			if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]))
 			{

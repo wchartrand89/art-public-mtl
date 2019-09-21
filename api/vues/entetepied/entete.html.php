@@ -9,25 +9,62 @@
 	<meta name="viewport" content="width=device-width">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/var.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/header.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/footer.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/text.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/component.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/flex.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen">
-	<link rel="stylesheet" href="../css/home.css" type="text/css" media="screen">
+	
+	<?php
+		if ($page== ""){
+			cssBase("");
+			echo '<link rel="stylesheet" href="../css/home.css" type="text/css" media="screen">';
+			echo '<link rel="stylesheet" href="../css/slider.css" type="text/css" media="screen">';
+			echo '<script src="../js/slider.js"></script>';
+			jsBase("");
+		} 
+		else if ($page== "artistes"){
+			cssBase("artistes");
+			echo '<link rel="stylesheet" href="../css/artistes.css" type="text/css" media="screen">';
+			jsBase("artistes");
+		} 
+		else if ($page== "artiste"){
+			cssBase("artiste");
+			echo '<link rel="stylesheet" href="../../css/artiste.css" type="text/css" media="screen">';
+			echo '<link rel="stylesheet" href="../../css/slider.css" type="text/css" media="screen">';
+			jsBase("artiste");
+			echo '<script src="../../js/slider.js"></script>';
+		}  
+		else if ($page== "oeuvres"){
+			cssBase("oeuvres");
+			// echo '<link rel="stylesheet" href="../../css/artiste.css" type="text/css" media="screen">';
+			jsBase("oeuvres");
+		} 
+	
+		function cssBase($page){
+			?>
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/reset.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/var.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/header.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/footer.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/text.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/component.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/flex.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php if($page == "artiste"){echo "../";}?>../css/main.css" type="text/css" media="screen">
+			<?php
+		}
+		function jsBase($page){
+			?>
+				<script src="<?php if($page == "artiste"){echo "../";}?>../js/main.js"></script>
+				<script src="<?php if($page == "artiste"){echo "../";}?>../js/menu.js"></script>
+			<?php
+		}
+	?>
+
+
 	<!--<script src="../../js/plugins.js"></script>-->
-	<script src="../js/main.js"></script>
-	<script src="../js/menu.js"></script>
-	<script src="../js/slider.js"></script>
+
 
 </head>
 <body>
 	<header class="appbar">
 
-		<a class="logo" href="/art-public-mtl/api/"><img src="../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
+		<a class="logo" href="/art-public-mtl/api/"><img src="<?php if($page == "artiste"){echo "../";}?>../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
 		
 		<nav class="menu">
 			<a class="lien" href="/art-public-mtl/api/oeuvre">
@@ -60,10 +97,10 @@
 		</nav>	
 		<div class="icons">
 			
-			<a class="search" href="#"><img src="../img/icons/search_40px.svg" alt="Icone de recherche"></a>
+			<a class="search" href="#"><img src="<?php if($page == "artiste"){echo "../";}?>../img/icons/search_40px.svg" alt="Icone de recherche"></a>
 			<a class="langue hidden" href="#">EN</a>
-			<a class="menuCubes" href="#"><img src="../img/icons/menu.svg" alt="Icone d'ouverture du menu"></a>
-			<a class="fermerMenu hidden" href="#"><img src="../img/icons/close.svg" alt="Icone de fermeture du menu"></a>
+			<a class="menuCubes" href="#"><img src="<?php if($page == "artiste"){echo "../";}?>../img/icons/menu.svg" alt="Icone d'ouverture du menu"></a>
+			<a class="fermerMenu hidden" href="#"><img src="<?php if($page == "artiste"){echo "../";}?>../img/icons/close.svg" alt="Icone de fermeture du menu"></a>
 			<a class="compte" href="#">
 			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>						
 			</a>

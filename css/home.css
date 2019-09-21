@@ -1,7 +1,7 @@
 
 /*---------- ACCUEIL --------*/
 
-main .carte, .slide a .img {
+main .carte {
     height: 270px;
 }
 main .carte{
@@ -36,107 +36,13 @@ main .nvlOeuvres h2{
     margin:var(--padding-base);
 }
 
-/* TEST SLIDER */
 
-/* Slideshow container */
-.slider {
-    max-width: 1024px;
-    position: relative;
-    margin: auto;
-    width:100%;
-  }
-
-  /* Hide the images by default */
-  .slide {
-    display: none;
-    justify-content: center;
-    width:100%
-  }
-
-  .slide a img, .slide a{
-      width:100%;
-      /* max-height:270px; */
-  }
-  .slide a .img{
-    background-position: 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-width:100%;
-
-  }
-  .slider .slide:nth-of-type(1) a .img{
-    background-image: url(../img/oeuvres/962_1.jpg);
-  }
-  .slider .slide:nth-of-type(2) a .img{
-    background-image: url(../img/oeuvres/1099_1.jpg);
-  }
-  .slider .slide:nth-of-type(3) a .img{
-    background-image: url(../img/oeuvres/1119_1.jpg);
-  }
-
-  /* Next & previous buttons */
-  /*Mettre effet de hover*/ 
-  .prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 1.8rem;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-  }
-
-  /* Position the "next button" to the right */
-  .prev{
-    left: 5%;
-  }
-  .next {
-    right: 5%;
-    border-radius: 3px 0 0 3px;
-  }
-
-  /* Caption text : nom */
-  .nom {
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-  }
-
-
-  /* The dots/bullets/indicators */
-  .point {
-    transform: scale(0.8);
-    transition: transform 235ms;
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color:#d3d3d3;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  }
-
-  .active, .point:hover {
-    background-color: var(--couleur-orange);
-    transform: scale(1);
-    transition: transform .15s;
-  }
-
-
-/* BREAK TABLET PORTRAIT UP */
-@media screen and (min-width: 600px) {
+  /* BREAK TABLET PORTRAIT UP */
+  @media screen and (min-width: 600px) {
 
 
     /*Agrandir height sections*/
-    main .carte, .slide a .img {
+    main .carte{
         height: 540px;
     }
 }
@@ -156,22 +62,5 @@ main .nvlOeuvres h2{
     main .carte .text{
         margin-bottom: calc(var(--padding-base) * 6);
     }
-    .slider{
-        max-width:1350px;
-    }
-    /*Agrandir height sections*/
-    main .carte, .slide a .img {
-        height: 764px;
-    }
-    .point {
-        height: 20px;
-        width: 20px;
-        margin: 0 3px;
-      }
-    .prev, .next {
-    font-size: 2.4rem;
-    }
-
-
 
 } 
