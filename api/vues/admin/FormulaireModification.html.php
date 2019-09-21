@@ -1,8 +1,7 @@
 
 <?php
 
-
-$info=$_SESSION['res'];
+$info=$data;
  
 
         

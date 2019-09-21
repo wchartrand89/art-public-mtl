@@ -29,8 +29,9 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	public function getAction(Requete $requete)
 	{
         //vérifier que l'admin est connecté
-		if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
-        {
+	if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
+     {
+        error_reporting(E_ALL ^ E_NOTICE);
 			$res = array();
 			//var_dump($requete->url_elements);
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
