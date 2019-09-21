@@ -16,10 +16,25 @@ h2{
     color:var(--couleur-marine);
 }
 
+.titre-oeuvre {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size:2.4rem;
+    color:var(--couleur-marine);
+}
+
 .btn{
     font-weight:bold;
     font-size:1.6rem;
     color:var(--couleur-fond);
+}
+
+h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 3rem;
+    color:var(--couleur-marine);
 }
 
 /**
@@ -39,7 +54,7 @@ h2{
     background-color: var(--couleur-marine);
     color: var(--couleur-fond);
     padding: 15px;
-    font-display:  
+    /* font-display:  ; */
      
 }
 fieldset{
