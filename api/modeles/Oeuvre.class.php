@@ -16,6 +16,8 @@ class Oeuvre extends Modele {
 	const TABLE_OEUVRE = "oeuvre";
 	const TABLE_LIAISON_ARTISTE_OEUVRE = "artiste_oeuvre";
 	const TABLE_OEUVRE_DONNEES_EXTERNES = "apm__oeuvre_donnees_externes";
+	const TABLE_LIAISON_OEUVRE_CATEGORIE = "categorie_oeuvre";
+	const TABLE_CATEGORIE = "categorie";
 	
 	/**
 	 * Retourne la liste des oeuvres
@@ -93,6 +95,9 @@ class Oeuvre extends Modele {
 					." inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste 
 					where O_A.id_oeuvre=". $id;
 
+// inner join ". self::TABLE_LIAISON_OEUVRE_CATEGORIE ." O_C ON Oeu.id_oeuvre = O_C.id_oeuvre
+//inner join ". self::TABLE_CATEGORIE ." CAT ON CAT.id_categorie = O_C.id_categorie 
+
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($oeuvre = $mrResultat->fetch_assoc())
@@ -102,11 +107,13 @@ class Oeuvre extends Modele {
 				if(count($res) == 0)
 				{
 					$oeuvre['Artistes'] = Array();
+					$oeuvre['Categories'] = Array();
 					$oeuvre['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
 														"Nom"=> $oeuvre['Nom'],
 														"Prenom"=> $oeuvre['Prenom'],
 														"NomCollectif"=> $oeuvre['NomCollectif']
 													);
+					/* $ouvre['Categories'][] = $oeuvre['Nom']; */
 					unset($oeuvre['id_artiste']);
 					unset($oeuvre['Nom']);
 					unset($oeuvre['Prenom']);

@@ -31,23 +31,68 @@
 
 /*-------------------- Onglets --------------------*/
 
+.systeme_onglets {
+    margin: 25px 0px;
+    width: 100%;
+}
+.systeme_onglets > div {
+    margin: 0px 20px;
+}
+
+.onglets {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    /*padding-left: 15px;
+    background-color: var(--couleur-fond);*/
+    display: flex;
+
+}
+
+.contenu_onglet table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.contenu_onglet td {
+    padding: 8px;
+    text-align: left; 
+    border-bottom: 1px solid var(--couleur-orange);
+    color: var(--couleur-marine);
+}
+
+.contenu_onglet td:first-child {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    text-decoration: none;
+    color:var(--couleur-marine);
+    padding-left: 5px;
+}
+
+  .contenu_onglet tr:hover {
+    background-color:#f5f5f5;
+}
+
 .onglet {
     display:inline-block;
-    margin-left:3px;
-    margin-right:3px;
+    margin-left:0px;
+    margin-right:0px;
     padding:3px;
-    border:1px solid black;
     cursor:pointer;
+    flex-grow: 1;
 }
 
 .onglet_0 {
-    background: var(--couleur-fond);
-    border-bottom:1px solid black;
+    background: var(--couleur-bleu);
 }
 
 .onglet_1 {
-    background: var(--couleur-bleu);
-    border-bottom:0px solid black;
+    background: var(--couleur-fond);
     padding-bottom:4px;
 }
 

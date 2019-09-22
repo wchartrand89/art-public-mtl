@@ -41,7 +41,7 @@
 									}
 
 									?>
-			                        <p class="date_creation"><?php echo $dateCreation?></p>
+			                        <p class="date_creation">2007<!-- <?php echo $dateCreation?> --></p>
 			                    </section>
 			                    <!-- <footer class="barre-action">
 			
