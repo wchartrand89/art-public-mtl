@@ -22,23 +22,16 @@
 			<link rel="stylesheet" href="../../css/text.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="../../css/var.css" type="text/css" media="screen">
 
-			<!-- <link rel="stylesheet" href="../../img/icons/infos.svg" type="text/css" media="screen"> -->
-			<link rel="stylesheet" href="../../css/header.css" type="text/css" media="screen">
-			<!-- <link rel="stylesheet" href="../../css/mainAdminConnexion.css" type="text/css" media="screen"> -->
+			<link rel="stylesheet" href="../../img/icons/logoAP.png" type="text/css" media="screen">
+			<link rel="stylesheet" href="../../css/headerAdminConnexion.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="../../css/mainAdminConnexion.css" type="text/css" media="screen">
 
 		</head>
 		<body>
 	    
 			<header class="appbar">
 				 
-				<a class="logo" href="/art-public-mtl/api/"><img src="../../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>	
-				<div class="icons">
-
-					<a class="langue hidden" href="#"><p class="textNavAdmin">EN</p></a>
-					<a class="info" href="#"><img src="../../img/icons/infos.svg" alt="Icone d'information"></a>
-					<a class="" href="#"><p class="textNavAdmin">Déconnexion</p></a>
-				
-				</div>		
+				<a class="logo" href="/art-public-mtl/api/"><img src="../../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>				
 			</header>
 			<main>
 

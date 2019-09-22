@@ -1,78 +1,58 @@
-main{
-    flex-direction: column;
-    display:flex;
-    justify-content: space-between;
-    /* align-items: center; */
-}
-
-main>section, section>.txtLien{
-    margin: var(--padding-base) 0;
-}
-
-main>section:not(.sesOeuvres){
-    margin-left: var(--padding-base);
-    margin-right: var(--padding-base);
-}
-
-/*RETOUR*/
-
-.flecheLien{
-    color:var(--couleur-orange);
-    padding: 0 8px;
-}
-.txtLien{
-    display:flex;
-}
-
-/* TITRE */
-.titre h1{
-    color: var(--couleur-marine);
-    margin-bottom:var(--padding-base);
-    text-align: center;
-    line-height:1.5;
-}
-
-/*OEUVRES*/
-
-.sesOeuvres{
-    width:100%;
+.unArtiste > .oeuvre
+{
+    width: 900px;
+    
     display: flex;
-    flex-direction: column;
+    background-color: #FFF;
+    margin: 0px auto;
+}
+
+
+
+.unArtiste > .oeuvre >.image   
+{
+    width: 100%;
+    height: var(--artiste-hauteur-image);
+    position: relative;
+}
+  
+.unArtiste > .oeuvre >.image.dummy
+{
+    background: url("../img/placeholder_640_480.jpg") no-repeat center;
+    background-size: cover;
+}
+  
+.unArtiste > .oeuvre >.image > .titre
+{
+    position: absolute;
+    bottom: 0px;
+    padding: 0px;
+    margin: 0px;
+    padding-left: 16px;
+    padding-right: 8px;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    width: 100%;
+    color: #ffffff;
+}
+
+
+.unArtiste > .retour
+{
+    display: flex;
+    flex-direction: row;
     align-items: center;
-}
-.sesOeuvres .infos{
-    background-color: var(--couleur-fond);
-    padding: 0 var(--padding-base);
-}
-
-/*LIENS EXTERNES*/
-.liensExt{
-    display:flex;
-    justify-content: center;
-    margin-top: var(--padding-base);
-
-}
-.liensExt .btn{
-    margin: var(--padding-base);
+    color: #FFF;
+    font-size: 24px;
+    margin-left: var(--marge-gauche);
+    text-decoration: none;
+    background: url("/artPublic/img/icons/ic_keyboard_backspace_white_48px.svg") no-repeat;
+    height: 48px;
 }
 
-/* BREAK TABLET PORTRAIT UP */
-@media screen and (min-width: 600px) {
-
-}
-
-/* BREAK TABLET LANDSCAPE UP */
-@media screen and (min-width: 900px) {
-  .fleches{
-      display:none;
-  }
-   
-
-
-}
-
-/* BREAK DESKTOP UP */
-@media screen and (min-width: 1200px) {
-
-
+.unArtiste > .retour a
+{
+    text-decoration: none;
+    color: #FFF;
+    padding-left: 48px;
 }

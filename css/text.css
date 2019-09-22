@@ -16,56 +16,22 @@ h2{
     color:var(--couleur-marine);
 }
 
-.titre-oeuvre {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size:2.4rem;
-    color:var(--couleur-marine);
-}
-
 .btn{
     font-weight:bold;
     font-size:1.6rem;
     color:var(--couleur-fond);
 }
-h3{
-    color:var(--couleur-marine);
-}
-
-.txtLien, .txtLien>a{
-    font-weight:bold;
-    font-size:1.4rem;
-    color:var(--couleur-orange);
-}
-
-.titreDetail.artiste{
-    font-weight:bold;
-    font-size:1.6rem;
-    color:var(--couleur-marine);
-}
-
-h3 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    font-size: 3rem;
-    color:var(--couleur-marine);
-}
-
-
 
 /**
  * menuAdmin
  */
 
-h1{
-    font-family: 'Pacifico', cursive;
-    font-size:4rem;
-    color: var(--couleur-orange);
-}
-
-p{
-    font-size:1.4rem;
+#menuadmin{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(240, 238, 238);
 }
 
 #textMenuAdmin{
@@ -73,69 +39,48 @@ p{
     background-color: var(--couleur-marine);
     color: var(--couleur-fond);
     padding: 15px;
-    /* font-display:  ; */
+    /* font-display:   */
+     
+}
+fieldset{
+    border-color:var(--couleur-orange);
 }
 
+#fieldset{
+    display:flex;
+    flex-direction: row;
+}
 
-h2{
-    font-family: 'Open Sans', sans-serif;
+a{
+    text-decoration: none;
+    color:black;
+    margin-top:5px;
+    font-size: 1.2em;
+}
+
+a:hover{    
+    font-style: italic;
+    color:var(--couleur-orange)  
+}
+
+#textlegend{
+    font-size: 1.2em;
+    margin:1px;
+    color: var(--couleur-marine);
+}
+fieldset{
+    width:150px;
+}
+
+/**
+ * NavAdmin
+ */
+.textNavAdmin{
+    
+    font-family: Open Sans;
+    font-style: normal;
     font-weight: bold;
-    font-size:2.4rem;
+    font-size: 24px;
+    line-height: 33px;
     color:var(--couleur-marine);
-    text-transform: uppercase;
-}
-
-.nom{
-    font-family: 'Open Sans', sans-serif;
-    font-size:1.5rem;
-    color:var(--couleur-fond);
-    font-weight: bold;
-    /* text-transform: uppercase; */
-}
-
-
-
-/* BREAK TABLET PORTRAIT UP */
-@media screen and (min-width: 600px) {
-    h1{
-        font-size:8rem;
-    }
-    h2{
-        font-size:2.8rem;
-    }
-    p{
-        font-size:1.8rem;
-    }
-    .btn{
-        font-size:2rem;
-    }
-}
-
-/* BREAK TABLET LANDSCAPE UP */
-@media screen and (min-width: 900px) {
-  
-   
-
-
-}
-
-/* BREAK DESKTOP UP */
-@media screen and (min-width: 1200px) {
-    h1{
-        font-size:10rem;
-    }
-    h2{
-        font-size:3.6rem;
-    }
-    p{
-        font-size:2.4rem;
-    }
-    .btn{
-        font-size:2.6rem;
-    }
-    .nom{
-        font-size:2.6rem;
-    }
-
-
 }

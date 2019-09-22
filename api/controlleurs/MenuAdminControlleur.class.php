@@ -15,20 +15,20 @@
  *
  */
 
+ 
+ 
 class MenuAdminControlleur extends Controlleur
-{   
+{
     public function getAction(Requete $requete)
     {
-        //Vérifier si l'admin est connecté
         if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
         {
             $oVue = new AdminVue();
-            $oVue->afficheEntete($requete->url_elements[0]);
-            $oVue->afficheDeconnexion();
+            $oVue->afficheEntete();
+            $oVue->afficheDeconnection();
             $oVue->afficheMenuAdmin();
             $oVue->affichePied(); 
         }
-        //redirige vers l'accueil si admin pas connecté.
         else
         {
             header("location:http://localhost/art-public-mtl/api/admin");
@@ -36,28 +36,18 @@ class MenuAdminControlleur extends Controlleur
         }
     }
     
-    //lorsqu'il y a une action depuis un input de type submit
-	public function postAction(Requete $requete)
-    {      
-
-        // var_dump($requete->url_elements);
-        // echo '<br>'. $_GET['action'] . '<br>';
-        // var_dump($_POST);
-        // die;
-
-        //si l'action est déconnexion
-        if($_GET['action']=='deconnexion')
-        {
-            session_start();
-            session_destroy(); //détruit la session
-            header("location:http://localhost/art-public-mtl/api/admin"); //retourne à l'accueil admin (vue de connexion)
+	public function postAction()
+    {        
+            session_start(); //to ensure you are using same session
+            session_destroy(); //destroy the session
+            header("location:http://localhost/art-public-mtl/api/admin");
             exit();
-        }
-        //si l'action n'est pas une des actions définies précédemment
-        else
-        {
-            echo 'action non reconnue';
-        }
-    }    
-}  
+    }
+          
+}
+    
+    
+    
+    
+
 ?>

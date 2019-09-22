@@ -13,7 +13,6 @@ footer{
     color: var(--couleur-marine);
     box-sizing:border-box;
     padding: var(--padding-base);
-    margin-top: var(--padding-base);
 }
 footer .contenu{
     padding: var(--padding-base);
@@ -25,30 +24,10 @@ footer p{
     text-align: center;
 }
 footer .icons svg{
-    width:30px;
-    height:30px;
-    /* background-color:var(--couleur-marine); */
-    /* padding: 10px; */
-    /* border-radius:48%; */
+    padding: var(--padding-base);
+    width:40px;
+    height:40px;
 }
-footer .icons  a{
-    margin: var(--padding-base);
-    color:var(--couleur-fond);
-    padding: 8px;
-}
-footer .icons a:nth-of-type(1){
-    background-color:var(--couleur-marine);
-    border-radius:48%;
-}
-footer .icons a:nth-of-type(2){
-    background-color:var(--couleur-orange);
-    border-radius:48%;
-}
-footer .icons a:nth-of-type(3){
-    background-color:var(--couleur-bleu);
-    border-radius:48%;
-}
-
 footer .icons{
     display:flex;
 }

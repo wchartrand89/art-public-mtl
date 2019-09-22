@@ -33,7 +33,6 @@ class Oeuvre extends Modele {
 					."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
 					order by Oeu.id_oeuvre ASC
 				";
-
 //		echo $query;
 		//SELECT * FROM `apm__oeuvre` Oeu inner join apm__oeuvre_artiste O_A ON Oeu.id = O_A.id_oeuvre
 		if($mrResultat = $this->_db->query($query))
@@ -88,11 +87,11 @@ class Oeuvre extends Modele {
 	{
 		$res = Array();
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre"
-					// left join . self::TABLE_OEUVRE_DONNEES_EXTERNES . OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
-					." inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste 
-					where O_A.id_oeuvre=". $id;
-
+					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre
+					left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
+					inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste 
+					where id=". $id;
+				
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($oeuvre = $mrResultat->fetch_assoc())
@@ -128,27 +127,6 @@ class Oeuvre extends Modele {
 		return $res;
 	}
 	
-    
-        
-    
-public function getOeuvreByID($id)
-{
-    $request="SELECT * FROM oeuvre WHERE id_oeuvre='$id'";
-    $result = $this->_db->query($request);
-    
-    if ($result !== FALSE) 
-    {
-        $infoTitre = $result->fetch_assoc();
- return $infoTitre;              
-
-    } 
-}
-
-
-
-
-
-
 	
 	/**
 	 * Récupère les oeuvres avec l'id d'un artiste
@@ -160,7 +138,7 @@ public function getOeuvreByID($id)
 	{
 		$res = Array();
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
+					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre
 					where id_artiste=". $id;
 				
 		if($mrResultat = $this->_db->query($query))
@@ -223,48 +201,6 @@ public function getOeuvreByID($id)
 		return ($resQuery ? $id : 0);
 	}
 	
-    
-    
-    
-    public function modifierOeuvre($array){
-    
-    
-    $ID=$this->filtre($array["ID"]);
-    $Titre=$this->filtre($array["Titre"]);
-    $NomCollection=$this->filtre($array["NomCollection"]);
-    $NomCollectionAng=$this->filtre($array["NomCollectionAng"]);
-    $Technique=$this->filtre($array["Technique"]);
-    $TechniqueAng=$this->filtre($array["TechniqueAng"]);
-    $Dimensions=$this->filtre($array["Dimensions"]);
-    $Arrondissement=$this->filtre($array["Arrondissement"]);
-    $Batiment=$this->filtre($array["Batiment"]);
-    $AdresseCivique=$this->filtre($array["AdresseCivique"]);
-    $CoordonneeLatitude=$this->filtre($array["CoordonneeLatitude"]);
-    $CoordonneeLongitude=$this->filtre($array["CoordonneeLongitude"]);
-    $dateCreation=$this->filtre($array["dateCreation"]);
-    
-    $request="UPDATE oeuvre
-SET Titre = '$Titre', NomCollection ='$NomCollection', NomCollectionAng='$NomCollectionAng',Technique='$Technique', TechniqueAng='$TechniqueAng', Dimensions='$Dimensions', Arrondissement='$Arrondissement', Batiment='$Batiment', AdresseCivique='$AdresseCivique', CoordonneeLatitude='$CoordonneeLatitude', CoordonneeLongitude='$CoordonneeLongitude', dateCreation= '$dateCreation'
-WHERE id_oeuvre='$ID';";
-    
-    $result = $this->_db->query($request);
-    //var_dump($result);
-    if ($result !== FALSE) 
-    {
-        return "VALEUR MODIFIÉ";              
-    } 
-    else 
-    {
-        return "wrong code";
-    }
-
-
-}
-    
-    
-
-    
-    
 	private function verifDonneesExterne($id)
 	{
 		$res = Array();
@@ -276,16 +212,6 @@ WHERE id_oeuvre='$ID';";
 		}
 		return (count($res) >0 ? true : false);
 	}
-    
-    
-    
-    function filtre($variable)
-    {
-        $varFiltre = $this->_db->real_escape_string($variable);
-        $varFiltre=htmlspecialchars($varFiltre);
-        //ici, on pourrait appliquer d'autres filtres.... (ex: strip_tags qui enlèverait les tags HTML dans un texte...)
-        return $varFiltre;
-    }
 	
 }
 

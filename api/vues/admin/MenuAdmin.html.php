@@ -1,4 +1,4 @@
-?>
+		?>
 		<section id="menuadmin">
 			<h2 id="textMenuAdmin">Menu administrateur</h2>
 			<div id = "fieldset">
@@ -8,20 +8,24 @@
 				</fieldset>
 				<fieldset>
 					<legend><p id="textlegend">ARTISTES</p></legend>
-						<a href="#">Voir les artistes</a><br>
+						<a href="">Modifier</a><br>
+						<a href="">Supprimer</a>
 				</fieldset>
 			</div>
 			<div id = "fieldset">
 				<fieldset>
 					<legend><p id="textlegend">PARCOURS</p></legend>
-						<a href="#">Voir les parcours</a><br>
+						<a href="">Ajouter</a><br>
+						<a href="">Modifier</a><br>
+						<a href="">Supprimer</a>
 				</fieldset>
 				<fieldset>
-					<legend><p id="textlegend">MODÉRATEUR</p></legend>
-						<a href="#">Ajouter</a><br>
-						<a href="#">Supprimer</a>
+					<legend><p id="textlegend">ADMINISTRATEUR</p></legend>
+						<a href="">Ajouter</a><br>
+						<a href="">Modifier</a><br>
+						<a href="">Supprimer</a>
 				</fieldset>
 			</div>
 		</section>    
 			
-<?php
+		<?php

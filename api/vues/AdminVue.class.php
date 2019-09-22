@@ -13,18 +13,6 @@
  */
 
 
-//test condition pour empecher d'accéder aux autres vues si login non set
-
-//var_dump($_SESSION['login']);
-//		if(!isset($_SESSION['login']))
-//        {          
-//           // si l'admin n'est pas connecté, rediriger vers l'accueil (login)
-//             require("entetepied/enteteAdmin.html.php");
-//            require("admin/Connexion.html.php");
-//            require("entetepied/piedAdmin.html.php");
-//        }
-
-
 class AdminVue {
 
 /**
@@ -32,8 +20,12 @@ class AdminVue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheEntete($page) {
+	public function afficheEntete() {
         require("entetepied/enteteAdmin.html.php");
+		
+	}
+	public function afficheEnteteConnexion() {
+        require("entetepied/enteteAdminConnexion.html.php");
 		
 	}
 
@@ -71,9 +63,73 @@ require("admin/AfficheOeuvres.html.php");
 	 * @access public
 	 * @return void
 	 */
-	public function afficheOeuvre($aData) {
+	public function afficheOeuvre($aData = Array()) {
 		
-		require("admin/AfficheOeuvre.html.php");
+		?>
+		 <section class="contenu listeOeuvres">
+         	<section class="recherche"></section>
+            <section class="oeuvres flex flex-col">
+						<?php
+                        
+
+							extract($aData);
+                            
+							?>                        
+                            
+                
+							<section class="oeuvre flex flex-row">
+                                <form method="post" action="">
+                                
+			                    <p class="titre" name="Titre" >Titre : <?php echo $Titre ?></p>
+
+                                <p class="arrondissement" > Arrondissement : <?php echo $Arrondissement ?></p>
+			                     Description : <input type="text" name="Description" class="description" value="<?php echo $Description ?>"><br>
+			                    
+			                     
+			                    <input type="submit" value="Modifier">
+			                    </form>
+			                </section>
+
+					</section>
+				
+			</section>
+			
+		<?php
+		
+	}
+
+	public function afficheVueAdmin() {
+		
+		?>
+		<section id='menuadmin'></section>	
+			<section id='r1'>
+				<fieldset id='oeuvres'>
+					<legend>Oeuvres</legend>
+					<a href="">Ajouter une oeuvre</a><br>
+					<a href="">Modifier une oeuvre</a><br>
+					<a href="">Effacer une oeuvre</a>
+				</fieldset>
+				<fieldset id='parcour'>
+					<legend>Parcours</legend>
+					<a href="">Modifier une parcours</a><br>
+					<a href="">Ajouter une parcours</a>		
+				</fieldset>
+			</section>
+			<section class='r2'>
+				<fieldset id='utilisateur'>
+					<legend>Utilisateurs</legend>
+					<a href="">Ajouter une utilisateur</a><br>
+					<a href="">Modifier une utilisateur</a><br>
+					<a href="">Effacer une utilisateur</a>	
+				</fieldset>
+				<fieldset id='artiste'>
+					<legend>Artistes</legend>
+					<a href="">Modifier une artiste</a><br>
+					<a href="">Effacer une utilisateurs</a>	
+				</fieldset>
+			</section>
+		</section>	
+		<?php
 		
 	}
     
@@ -84,15 +140,23 @@ require("admin/AfficheOeuvres.html.php");
 	}
     
     
-    public function afficheFormulaireModification($data) {
-      //   $_SESSION['res']=$data;
-	   require("admin/FormulaireModification.html.php");
+    public function afficheFormulaireModification() {
+		
+	require("admin/FormulaireModification.html.php");
 		
 	}
     
-	public function afficheDeconnexion() {
+	public function afficheDeconnection() {
 		
-        require("admin/Deconnexion.html.php");
+		?>
+
+            <form id='deconnection' action="?controller=deconnection&action=deconnectionPost" method="post">	
+                <div>
+                    <input type="submit" id="envoyer" value="Déconnection">
+                </div>		
+            </form>
+			
+		<?php
 		
 	}
 	
