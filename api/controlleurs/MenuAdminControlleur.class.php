@@ -22,6 +22,7 @@ class MenuAdminControlleur extends Controlleur
         //Vérifier si l'admin est connecté
         if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
         {
+            // si login = correct alors afficher la page menu
             $oVue = new AdminVue();
             $oVue->afficheEntete($requete->url_elements[0]);
             $oVue->afficheDeconnexion();
@@ -48,6 +49,7 @@ class MenuAdminControlleur extends Controlleur
         //si l'action est déconnexion
         if($_GET['action']=='deconnexion')
         {
+            // si action deconnexion alors detruire la session et rediriger
             session_start();
             session_destroy(); //détruit la session
             header("location:http://localhost/art-public-mtl/api/admin"); //retourne à l'accueil admin (vue de connexion)

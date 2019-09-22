@@ -129,7 +129,8 @@ class Oeuvre extends Modele {
 	}
 	
     
-        
+     
+    //get toutes les infos de l'oeuvres uniquement avec son ID
     
 public function getOeuvreByID($id)
 {
@@ -145,6 +146,17 @@ public function getOeuvreByID($id)
 }
 
 
+    
+    public function SupprimerOeuvreByID($id)
+{
+    $request="DELETE FROM oeuvre WHERE id_oeuvre='$id'";
+    $result = $this->_db->query($request);
+    
+    if ($result !== FALSE) 
+    {
+        return $infoTitre;              
+    } 
+}
 
 
 
@@ -228,7 +240,7 @@ public function getOeuvreByID($id)
     
     public function modifierOeuvre($array){
     
-    
+    //filtre tous les elements du tableau
     $ID=$this->filtre($array["ID"]);
     $Titre=$this->filtre($array["Titre"]);
     $NomCollection=$this->filtre($array["NomCollection"]);
@@ -242,41 +254,53 @@ public function getOeuvreByID($id)
     $CoordonneeLatitude=$this->filtre($array["CoordonneeLatitude"]);
     $CoordonneeLongitude=$this->filtre($array["CoordonneeLongitude"]);
     $dateCreation=$this->filtre($array["dateCreation"]);
+        
+        //si les conditions des champs sont bien respectés
+        if(is_numeric($ID) && is_numeric($CoordonneeLatitude) && is_numeric($CoordonneeLongitude) && is_string($Technique) && is_string($TechniqueAng) && is_string($NomCollection) && is_string($NomCollectionAng)){
+            
+                //requete
+                $request="UPDATE oeuvre
+                        SET Titre = '$Titre', NomCollection ='$NomCollection', NomCollectionAng='$NomCollectionAng',Technique='$Technique', TechniqueAng='$TechniqueAng', Dimensions='$Dimensions', Arrondissement='$Arrondissement', Batiment='$Batiment', AdresseCivique='$AdresseCivique', CoordonneeLatitude='$CoordonneeLatitude', CoordonneeLongitude='$CoordonneeLongitude', dateCreation= '$dateCreation'
+                        WHERE id_oeuvre='$ID';";
     
-    $request="UPDATE oeuvre
-SET Titre = '$Titre', NomCollection ='$NomCollection', NomCollectionAng='$NomCollectionAng',Technique='$Technique', TechniqueAng='$TechniqueAng', Dimensions='$Dimensions', Arrondissement='$Arrondissement', Batiment='$Batiment', AdresseCivique='$AdresseCivique', CoordonneeLatitude='$CoordonneeLatitude', CoordonneeLongitude='$CoordonneeLongitude', dateCreation= '$dateCreation'
-WHERE id_oeuvre='$ID';";
-    
-    $result = $this->_db->query($request);
-    //var_dump($result);
-    if ($result !== FALSE) 
-    {
-        return "VALEUR MODIFIÉ";              
-    } 
-    else 
-    {
-        return "wrong code";
-    }
+                        //execute requete
+                        $result = $this->_db->query($request);
+                        //var_dump($result);
+                        if ($result !== FALSE) 
+                        {
+                            return true;              
+                        }
+                        else 
+                        {
+                            return "wrong code";
+                        }
+            }
+        //si conditions non respectés refresh la page et msg erreur
+        else
+        {
+            header("Location: /art-public-mtl/api/admin/oeuvre/".$ID."/modifier");
+            echo "Veuillez vérifiez vos champs. Vous ne pouvez entrez des caractères dans les coordonnées ou des chiffres dans les techniques !";
+        }
+        
 
-
-}
+        }
     
     
 
     
-    
-	private function verifDonneesExterne($id)
-	{
-		$res = Array();
-		$query = "select * from ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." where id_oeuvre=". $id;
-		//echo $query;
-		if($mrResultat = $this->_db->query($query))
-		{
-			$res = $mrResultat->fetch_assoc();
-		}
-		return (count($res) >0 ? true : false);
-	}
-    
+//    
+//	private function verifDonneesExterne($id)
+//	{
+//		$res = Array();
+//		$query = "select * from ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." where id_oeuvre=". $id;
+//		//echo $query;
+//		if($mrResultat = $this->_db->query($query))
+//		{
+//			$res = $mrResultat->fetch_assoc();
+//		}
+//		return (count($res) >0 ? true : false);
+//	}
+//    
     
     
     function filtre($variable)

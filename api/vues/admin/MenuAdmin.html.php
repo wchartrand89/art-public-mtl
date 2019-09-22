@@ -1,4 +1,4 @@
-?>
+
 		<section id="menuadmin">
 			<h2 id="textMenuAdmin">Menu administrateur</h2>
 			<div id = "fieldset">
@@ -24,4 +24,3 @@
 			</div>
 		</section>    
 			
-<?php

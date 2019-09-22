@@ -37,7 +37,7 @@ $info=$data;
                 </div>                
                 <div>
                     <label for="titre">Dimensions</label>
-                    <input type="text" name="Dimensions" value="<?php echo $info["Dimensions"];  ?>" id="Dimensions" readonly>
+                    <input type="text" name="Dimensions" value="<?php echo $info["Dimensions"];  ?>" id="Dimensions">
                 </div>                
                 <div>
                     <label for="titre">Arrondissement</label>
@@ -61,7 +61,7 @@ $info=$data;
                 </div>
                 <div>
                     <label for="titre">dateCreation</label>
-                    <input type="text" name="dateCreation" value="<?php echo $info["dateCreation"];  ?>" id="dateCreation">
+                    <input type="text" name="dateCreation" value="<?php echo $info["dateCreation"];  ?>" id="dateCreation" readonly>
                 </div>
                 <div>
                     <input type="submit" id="envoyer" value="Modifier">

@@ -12,7 +12,14 @@
  */
 class Authentification extends Modele{
 	public  function verification($lo, $mdp){
-       //requete de verication ici   
+       //requete de verication ici  
+        
+        
+        
+        
+        $lo=$this->filtre($lo);
+        $mdp=$this->filtre($mdp);
+        
         $requete= "SELECT login FROM user WHERE login='$lo' and role='admin' and password='$mdp'";
         $result =$this->_db->query($requete);
 
@@ -28,4 +35,14 @@ class Authentification extends Modele{
         if( $tableau[0]>0)   return true;
         return false;
 	}
+    
+    
+        function filtre($variable)
+    {
+        $varFiltre = $this->_db->real_escape_string($variable);
+        $varFiltre=htmlspecialchars($varFiltre);
+        //ici, on pourrait appliquer d'autres filtres.... (ex: strip_tags qui enlèverait les tags HTML dans un texte...)
+        return $varFiltre;
+    }
+    
 }
