@@ -1,6 +1,0 @@
-if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
-        {
- else
-        {
-            header("location:http://localhost/art-public-mtl/api/admin");
-            exit();
