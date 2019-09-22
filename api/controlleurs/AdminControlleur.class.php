@@ -26,39 +26,27 @@ class AdminControlleur extends Controlleur
 		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
 		$res = array();
 		//var_dump($requete->url_elements);
-		/*if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
+		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
 		{
             echo 'MENU ADMIN';
 			//$oVue = new AdminVue();
 			$oVue = new MenuAdminVue();//test
     		$oVue->afficheHead();
 			$oVue->afficheEntete();
-<<<<<<< HEAD
 			$oVue->afficheMenuAdmin();
 			$oVue->affichePied();
 
 			
         } 
-//        if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='oeuvres')	// Normalement l'id de l'artiste 
-//		{
-//            echo 'OEUVRES';
-//            $oOAC = new OeuvreControlleur();
-//            $oOAC->getAction(Requete $requete);
-//    		$oVue->afficheEntete();
-//    		$oVue->afficheOeuvres($res);
-//    		$oVue->affichePied();
-//        } 
-			$oVue->affichePied();			
+        if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='oeuvres')	// Normalement l'id de l'artiste 
+		{
+            echo 'OEUVRES';
+            $oOAC = new OeuvreControlleur();
+            $oOAC->getAction(Requete $requete);
+   			$oVue->afficheEntete();
+   			$oVue->afficheOeuvres($res);
+   			$oVue->affichePied(); 
 		}
-<<<<<<< HEAD
-		if
-=======
-			$oVue->afficheVueAdmin();			
-    		$oVue->affichePied();
-        } 
->>>>>>> 640b235101dfc9f575e691ccd6af02d7ef207572
-=======
->>>>>>> baa5af8dc6ad24ed39da51ceb92ebbf25f65f69c
         else if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='')	// Normalement l'id de l'artiste 
 		{
             echo 'ACCUEIL ADMIN';
