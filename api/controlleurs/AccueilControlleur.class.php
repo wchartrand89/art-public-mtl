@@ -21,6 +21,7 @@ class AccueilControlleur extends Controlleur
 	// GET : 	
 	public function getAction(Requete $requete)
 	{
+        //affiche l'accueil 
 		$oVue = new Vue();
 		$oVue->afficheEntete("");
 		$oVue->afficheAccueil();				
