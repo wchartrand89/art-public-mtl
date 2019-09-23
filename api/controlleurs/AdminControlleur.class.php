@@ -36,7 +36,7 @@ class AdminControlleur extends Controlleur
                 // Accueil Admin (connexion)
     //			echo 'ACCUEIL ADMIN';
                 $oVue = new AdminVue();
-                $oVue->afficheEntete($requete->url_elements[0]);
+                $oVue->afficheEnteteConnexion();
                 $oVue->afficheConnexion();	
                 $oVue->affichePied(); 
 
