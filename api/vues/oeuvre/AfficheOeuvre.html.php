@@ -5,9 +5,8 @@
 		<?php
 		
 		extract($aData);
-        var_dump($aData);
 		?>
-		<h1 class="uneOeuvre_titre"><?php echo $Titre?></h1>
+		<h1 class="uneOeuvre_titre"><?php echo $titre?></h1>
 		<p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
 		<header class="image dummy">
 			<img src="/art-public-mtl/img/placeholder_640_480.jpg" />
@@ -25,20 +24,20 @@
 					<table>
 						<tr>
 							<td>Catégorie</td>
-							<td>Peinture</td>
+							<td><?php if(isset($categorie)){echo $categorie;}else{echo "inconnu";} ?></td>
 						</tr>
 						<tr>
 						<tr>
 							<td>Matériaux</td>
-							<td>Peinture</td>
+							<td><?php if(isset($materiau)){echo $materiau;}else{echo "inconnu";} ?></td>
 						</tr>
 						<tr>
 							<td>Techniques</td>
-							<td>Oeuvre peinte</td>
+							<td><?php if(isset($technique)){echo $technique;}else{echo "inconnu";} ?></td>
 						</tr>
 						<tr>
 							<td>Date de création</td>
-							<td>2018</td>
+							<td><?php if(isset($dateCreation)){echo $dateCreation;}else{echo "inconnu";} ?></td>
 						</tr>
 					</table>
 					
@@ -46,31 +45,22 @@
 				<div class="contenu_onglet" id="contenu_onglet_artiste">
 					<h1></h1>
 					<section class="texte">
-						<p class="description"><?php echo $Description ?></p>
-						<?php
-		
-						foreach($Artistes as $artiste){
-							extract($artiste);
-							?>
+						<p class=""><?php if(isset($description)){echo $description;}else{echo "description non disponible.";} ?></p>
 							<p class="auteur"><a href="/art-public-mtl/api/artiste/<?php echo $id_artiste ?>"><?php 
-									if(isset($Nom) && $Nom!=""){
-								echo $Nom .", ". $Prenom;
+									if(isset($nom) && $nom!=""){
+								echo $nom .", ". $prenom;
 							
 							}
 							else
 							{
-								echo $NomCollectif;
+								echo $nomCollectif;
 							
 							}
 								
 								
 										?></a></p>
-						<?php
-						}
-
-						?>
 					</section>
-					<a href="" >Plus d'information ></a>
+					<a href="/art-public-mtl/api/artiste/<?php echo $id_artiste ?>" >Plus d'information ></a>
 				</div>
 				<!-- <p class="arrondissement"><?php echo $Arrondissement?></p> -->
 		
