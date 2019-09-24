@@ -26,13 +26,16 @@ class OeuvreControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
+        
 		$res = array();
+		$page ="oeuvres";
 		//var_dump($requete->url_elements);
-		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
+		if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]))	// Normalement l'id de l'oeuvre 
 		{
-            $id_oeuvre = (int)$requete->url_elements[0];
+            $id_oeuvre = (int)$requete->url_elements[1];
             
-            $res = $this->getOeuvre($id_oeuvre);
+			$res = $this->getOeuvre($id_oeuvre);
+			$page ="oeuvre";
             
         } 
         else 	// Liste des oeuvres
@@ -50,17 +53,18 @@ class OeuvreControlleur extends Controlleur
 				
 			
 			$oVue = new Vue();
-			$oeuvreVue = new OeuvreVue();
-			$oVue->afficheEntete();
+			//$oeuvreVue = new OeuvreVue();
+			$oVue->afficheEntete($page);
+
 			
-			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))
+			if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]))
 			{
-				$oeuvreVue->afficheOeuvre($res);
+				$oVue->afficheOeuvre($res);
 			}
 			else
 			{
 				$oVue->afficheOeuvres($res);
-			}	
+			}
 			
 			$oVue->affichePied();
 			
@@ -70,6 +74,14 @@ class OeuvreControlleur extends Controlleur
 		
 	}
 	
+	
+    protected function getOeuvreByID($id_oeuvre)
+	{
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getOeuvreByID($id_oeuvre);
+		
+		return $aOeuvre;
+	}
 	
 		
 	protected function getOeuvre($id_oeuvre)
@@ -85,9 +97,10 @@ class OeuvreControlleur extends Controlleur
 		
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getListe();
-		
+
 		return $aOeuvre;
 	}
+	
 	
 	
 }

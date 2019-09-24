@@ -14,17 +14,13 @@
 
 
 class Vue {
-
-
-
 	/**
 	 * Affiche entetes
 	 * @access public
 	 * @return void
 	 */
-	public function afficheEntete() {
+	public function afficheEntete($page) {
 		require("entetepied/entete.html.php");
-		
 	}
 
 
@@ -48,7 +44,7 @@ class Vue {
 	 */
 	public function afficheAccueil() {
 		
-require("accueil/accueil.html.php");
+		require("accueil/accueil.html.php");
 		
 	}
 	
@@ -59,7 +55,20 @@ require("accueil/accueil.html.php");
 	 */
 	public function afficheOeuvres($aData = Array()) {
 		
-require  ("oeuvre/AfficheOeuvres.html.php"); 
+		require  ("oeuvre/AfficheOeuvres.html.php"); 
+		
+	}
+
+
+
+	/**
+	 * Affiche l'oeuvre
+	 * @access public
+	 * @return void
+	 */
+	public function afficheOeuvre($aData = Array()) {
+		
+		require  ("oeuvre/AfficheOeuvre.html.php"); 
 		
 	}
 
@@ -72,7 +81,6 @@ require  ("oeuvre/AfficheOeuvres.html.php");
 	 * @return void
 	 */
 	public function afficheArtistes($aData = Array()) {
-		
 		require  ("artistes/AfficheArtistes.html.php"); 
 						
 	}

@@ -16,6 +16,8 @@ class Oeuvre extends Modele {
 	const TABLE_OEUVRE = "oeuvre";
 	const TABLE_LIAISON_ARTISTE_OEUVRE = "artiste_oeuvre";
 	const TABLE_OEUVRE_DONNEES_EXTERNES = "apm__oeuvre_donnees_externes";
+	const TABLE_LIAISON_OEUVRE_CATEGORIE = "categorie_oeuvre";
+	const TABLE_CATEGORIE = "categorie";
 	
 	/**
 	 * Retourne la liste des oeuvres
@@ -33,6 +35,7 @@ class Oeuvre extends Modele {
 					."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
 					order by Oeu.id_oeuvre ASC
 				";
+
 //		echo $query;
 		//SELECT * FROM `apm__oeuvre` Oeu inner join apm__oeuvre_artiste O_A ON Oeu.id = O_A.id_oeuvre
 		if($mrResultat = $this->_db->query($query))
@@ -87,11 +90,14 @@ class Oeuvre extends Modele {
 	{
 		$res = Array();
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre
-					left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
-					inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste 
-					where id=". $id;
-				
+					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre"
+					// left join . self::TABLE_OEUVRE_DONNEES_EXTERNES . OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
+					." inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste 
+					where O_A.id_oeuvre=". $id;
+
+// inner join ". self::TABLE_LIAISON_OEUVRE_CATEGORIE ." O_C ON Oeu.id_oeuvre = O_C.id_oeuvre
+//inner join ". self::TABLE_CATEGORIE ." CAT ON CAT.id_categorie = O_C.id_categorie 
+
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($oeuvre = $mrResultat->fetch_assoc())
@@ -101,11 +107,13 @@ class Oeuvre extends Modele {
 				if(count($res) == 0)
 				{
 					$oeuvre['Artistes'] = Array();
+					$oeuvre['Categories'] = Array();
 					$oeuvre['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
 														"Nom"=> $oeuvre['Nom'],
 														"Prenom"=> $oeuvre['Prenom'],
 														"NomCollectif"=> $oeuvre['NomCollectif']
 													);
+					/* $ouvre['Categories'][] = $oeuvre['Nom']; */
 					unset($oeuvre['id_artiste']);
 					unset($oeuvre['Nom']);
 					unset($oeuvre['Prenom']);
@@ -127,6 +135,39 @@ class Oeuvre extends Modele {
 		return $res;
 	}
 	
+    
+     
+    //get toutes les infos de l'oeuvres uniquement avec son ID
+    
+public function getOeuvreByID($id)
+{
+    $request="SELECT * FROM oeuvre WHERE id_oeuvre='$id'";
+    $result = $this->_db->query($request);
+    
+    if ($result !== FALSE) 
+    {
+        $infoTitre = $result->fetch_assoc();
+ return $infoTitre;              
+
+    } 
+}
+
+
+    
+    public function SupprimerOeuvreByID($id)
+{
+    $request="DELETE FROM oeuvre WHERE id_oeuvre='$id'";
+    $result = $this->_db->query($request);
+    
+    if ($result !== FALSE) 
+    {
+        return $infoTitre;              
+    } 
+}
+
+
+
+
 	
 	/**
 	 * Récupère les oeuvres avec l'id d'un artiste
@@ -138,7 +179,7 @@ class Oeuvre extends Modele {
 	{
 		$res = Array();
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id = O_A.id_oeuvre
+					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
 					where id_artiste=". $id;
 				
 		if($mrResultat = $this->_db->query($query))
@@ -201,17 +242,81 @@ class Oeuvre extends Modele {
 		return ($resQuery ? $id : 0);
 	}
 	
-	private function verifDonneesExterne($id)
-	{
-		$res = Array();
-		$query = "select * from ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." where id_oeuvre=". $id;
-		//echo $query;
-		if($mrResultat = $this->_db->query($query))
-		{
-			$res = $mrResultat->fetch_assoc();
-		}
-		return (count($res) >0 ? true : false);
-	}
+    
+    
+    
+    public function modifierOeuvre($array){
+    
+    //filtre tous les elements du tableau
+    $ID=$this->filtre($array["ID"]);
+    $Titre=$this->filtre($array["Titre"]);
+    $NomCollection=$this->filtre($array["NomCollection"]);
+    $NomCollectionAng=$this->filtre($array["NomCollectionAng"]);
+    $Technique=$this->filtre($array["Technique"]);
+    $TechniqueAng=$this->filtre($array["TechniqueAng"]);
+    $Dimensions=$this->filtre($array["Dimensions"]);
+    $Arrondissement=$this->filtre($array["Arrondissement"]);
+    $Batiment=$this->filtre($array["Batiment"]);
+    $AdresseCivique=$this->filtre($array["AdresseCivique"]);
+    $CoordonneeLatitude=$this->filtre($array["CoordonneeLatitude"]);
+    $CoordonneeLongitude=$this->filtre($array["CoordonneeLongitude"]);
+    $dateCreation=$this->filtre($array["dateCreation"]);
+        
+        //si les conditions des champs sont bien respectés
+        if(is_numeric($ID) && is_numeric($CoordonneeLatitude) && is_numeric($CoordonneeLongitude) && is_string($Technique) && is_string($TechniqueAng) && is_string($NomCollection) && is_string($NomCollectionAng)){
+            
+                //requete
+                $request="UPDATE oeuvre
+                        SET Titre = '$Titre', NomCollection ='$NomCollection', NomCollectionAng='$NomCollectionAng',Technique='$Technique', TechniqueAng='$TechniqueAng', Dimensions='$Dimensions', Arrondissement='$Arrondissement', Batiment='$Batiment', AdresseCivique='$AdresseCivique', CoordonneeLatitude='$CoordonneeLatitude', CoordonneeLongitude='$CoordonneeLongitude', dateCreation= '$dateCreation'
+                        WHERE id_oeuvre='$ID';";
+    
+                        //execute requete
+                        $result = $this->_db->query($request);
+                        //var_dump($result);
+                        if ($result !== FALSE) 
+                        {
+                            return true;              
+                        }
+                        else 
+                        {
+                            return "wrong code";
+                        }
+            }
+        //si conditions non respectés refresh la page et msg erreur
+        else
+        {
+            header("Location: /art-public-mtl/api/admin/oeuvre/".$ID."/modifier");
+            echo "Veuillez vérifiez vos champs. Vous ne pouvez entrez des caractères dans les coordonnées ou des chiffres dans les techniques !";
+        }
+        
+
+        }
+    
+    
+
+    
+//    
+//	private function verifDonneesExterne($id)
+//	{
+//		$res = Array();
+//		$query = "select * from ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." where id_oeuvre=". $id;
+//		//echo $query;
+//		if($mrResultat = $this->_db->query($query))
+//		{
+//			$res = $mrResultat->fetch_assoc();
+//		}
+//		return (count($res) >0 ? true : false);
+//	}
+//    
+    
+    
+    function filtre($variable)
+    {
+        $varFiltre = $this->_db->real_escape_string($variable);
+        $varFiltre=htmlspecialchars($varFiltre);
+        //ici, on pourrait appliquer d'autres filtres.... (ex: strip_tags qui enlèverait les tags HTML dans un texte...)
+        return $varFiltre;
+    }
 	
 }
 

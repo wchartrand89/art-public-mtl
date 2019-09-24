@@ -1,5 +1,6 @@
 
-            <h2>ADMINISTRATEUR</h2><br>
+
+<h2>ADMINISTRATEUR</h2><br>
             <form id='connection' action="?controller=authentification&action=connexionPost" method="post">	
                 <div>
                     <label for="name"><p class="pConnexion">Nom d'utilisateur</p></label>
@@ -13,5 +14,8 @@
                     <input class = "btnConnexion" type="submit" id="envoyer" value="Connexion">
                 </div>		
             </form>
-		</main	
-	
+</main>
+
+
+			
+<?php

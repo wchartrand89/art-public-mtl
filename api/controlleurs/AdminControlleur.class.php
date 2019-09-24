@@ -14,112 +14,105 @@
  * TODO : Commenter selon les standards du département.
  *
  */
-
- 
  
 class AdminControlleur extends Controlleur 
 {
 	
 	public function getAction(Requete $requete)
 	{
-        echo'<br><br><br>';
-		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
-		$res = array();
-		//var_dump($requete->url_elements);
-		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')	// Normalement l'id de l'artiste 
-		{
-            echo 'MENU ADMIN';
-			//$oVue = new AdminVue();
-			$oVue = new MenuAdminVue();//test
-    		$oVue->afficheHead();
-			$oVue->afficheEntete();
-			$oVue->afficheMenuAdmin();
-			$oVue->affichePied();
-
-			
-        } 
-        if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='oeuvres')	// Normalement l'id de l'artiste 
-		{
-            echo 'OEUVRES';
-            $oOAC = new OeuvreControlleur();
-            $oOAC->getAction(Requete $requete);
-   			$oVue->afficheEntete();
-   			$oVue->afficheOeuvres($res);
-   			$oVue->affichePied(); 
-		}
-        else if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='')	// Normalement l'id de l'artiste 
-		{
-            echo 'ACCUEIL ADMIN';
-            $oVue = new AdminVue();
-    		$oVue->afficheHead();
-    		$oVue->afficheEntete();
-            $oVue->afficheConnexion();	
-			$oVue->affichePied();
-			
-		} 
-		
-        else if(isset($requete->url_elements[0])){
-//            var_dump($requete);
-            echo 'PAGE ADMIN NON EXISTANTE';
+		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')
+        {	
+		  $res = array();
         }
-        else 	// Accueil Admin (connection)
-        {
-    		$oVue = new AdminVue();
-    		$oVue->afficheEntete();
-    		$oVue->afficheConnexion();				
-    		$oVue->affichePied();			
-		}*/
+		//var_dump($requete->url_elements);
 		
-		if(!isset($requete->url_elements[0])){
-			echo 'PAGE ADMIN NON EXISTANTE2';
+		if(!isset($requete->url_elements[0]))
+        {
+			echo 'PAGE ADMIN NON EXISTANTE';
 		}
 		else if ($requete->url_elements[0] == '')
 		{
-			// Accueil Admin (connection)
-			//echo 'ACCUEIL ADMIN';
-            $oVue = new AdminVue();
-			//$oVue->afficheEntete();
-			$oVue->afficheEnteteConnexion();
-            $oVue->afficheConnexion();	
-			$oVue->affichePied();
+            if(!isset($_SESSION["login"])){
+                // Accueil Admin (connexion)
+    //			echo 'ACCUEIL ADMIN';
+                $oVue = new AdminVue();
+                $oVue->afficheEnteteConnexion();
+                $oVue->afficheConnexion();	
+                $oVue->affichePied(); 
+
+            }else{
+                header("location:http://localhost/art-public-mtl/api/admin/menu");
+            }
 
 		}
 		else
 		{
 			/* Instanciation du controlleur */
             $nomControlleur = ucfirst($requete->url_elements[0]) . 'AdminControlleur';
-            //var_dump($nomControlleur);
-            if (class_exists($nomControlleur)) {
+            if (class_exists($nomControlleur)) 
+            {
                 $oControlleur = new $nomControlleur();
                 $nomAction = strtolower($requete->verbe) . 'Action';
                 $oControlleur->$nomAction($requete);
-            }else{
+            }
+            else
+            {
 				echo 'PAGE ADMIN NON EXISTANTE';
 			}
 		}
-
 	}
     
     
-	public function postAction(){        
-        if(!empty($_POST)){
-
+	public function postAction(Requete $requete)
+    {        
+        if(!empty($_POST))
+        {
+			// var_dump($requete);
+			// echo '<br>'. $_GET['action'] . '<br>';
+			// var_dump($_POST);
+			// die;
+            
+            
+            // EMPECHER LE BRUT FORCE
+            
+//            $apc_key = "{$_SERVER['SERVER_NAME']}~login:{$_SERVER['REMOTE_ADDR']}";
+//            $apc_blocked_key = "{$_SERVER['SERVER_NAME']}~login-blocked:{$_SERVER['REMOTE_ADDR']}";
+//
+//            $tries = (int)apc_fetch($apc_key);
+//
+//
+//
+//            if ($tries >= 5) {
+//                header("HTTP/1.1 429 Too Many Requests");
+//                echo "You've exceeded the number of login attempts. We've blocked IP address {$_SERVER['REMOTE_ADDR']} for a few minutes.";
+//                exit();
+//            }
+            
+            
+            // Si login correct alors set une variable session
   		    $authentification = new Authentification();
             $retour = $authentification->verification($_POST['login'], $_POST['mdp']);
-            if($retour == true){ //login et mdp sont corrects
-//                echo 'true';
+			if($retour == true) //login et mdp sont corrects
+			{
+//                apc_delete($apc_key);
+//                apc_delete($apc_blocked_key);
+                
                 //connecter la personne
                 $_SESSION['login'] = $_POST['login'];
-//                echo $_SESSION['login'];
-//                die;
                 
-                //redirection vers page privee
+                //redirection vers le menu admin
                 header("location:http://localhost/art-public-mtl/api/admin/menu");
-            }else{
-//                $_SESSION['login'] = '';
-                session_destroy();
-//                echo 'false';
-                header("location:http://localhost/art-public-mtl/api/admin");
+			}
+			else //connexion non reconnue
+			{
+                
+//                $blocked = (int)apc_fetch($apc_blocked_key);
+//
+//                apc_store($apc_key, $tries+1, pow(2, $blocked+1)*60);
+//                apc_store($apc_blocked_key, $blocked+1, 86400);
+                
+                session_destroy(); //détruire la session
+                header("location:http://localhost/art-public-mtl/api/admin"); //redirige vers l'accueil (login)
                 exit();
             }
           
