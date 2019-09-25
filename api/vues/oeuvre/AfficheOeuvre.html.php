@@ -3,7 +3,7 @@
 	<section class="retour"><a href="/art-public-mtl/api/oeuvre"> < Retour  </a></section>
 	<section class="oeuvre conteneur_partager">
 		<?php
-		
+		var_dump($aData);
 		extract($aData);
 		?>
 		<h1 class="uneOeuvre_titre"><?php echo $titre?></h1>
