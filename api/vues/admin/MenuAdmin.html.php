@@ -25,6 +25,4 @@
 						<a href="">Supprimer</a>
 				</fieldset>
 			</div>
-		</section>    
-			
-		<?php
+		</section>

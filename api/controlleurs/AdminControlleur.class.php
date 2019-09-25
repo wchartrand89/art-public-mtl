@@ -41,7 +41,7 @@ class AdminControlleur extends Controlleur
                 $oVue->affichePied(); 
 
             }else{
-                header("location:http://localhost/art-public-mtl/api/admin/menu");
+                header("location:/art-public-mtl/api/admin/menu");
             }
 
 		}
@@ -101,7 +101,7 @@ class AdminControlleur extends Controlleur
                 $_SESSION['login'] = $_POST['login'];
                 
                 //redirection vers le menu admin
-                header("location:http://localhost/art-public-mtl/api/admin/menu");
+                header("location:/art-public-mtl/api/admin/menu");
 			}
 			else //connexion non reconnue
 			{
@@ -112,7 +112,7 @@ class AdminControlleur extends Controlleur
 //                apc_store($apc_blocked_key, $blocked+1, 86400);
                 
                 session_destroy(); //détruire la session
-                header("location:http://localhost/art-public-mtl/api/admin"); //redirige vers l'accueil (login)
+                header("location:/art-public-mtl/api/admin"); //redirige vers l'accueil (login)
                 exit();
             }
           

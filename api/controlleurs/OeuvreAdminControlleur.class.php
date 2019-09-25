@@ -67,7 +67,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         {
             $id=$requete->url_elements[1];
             $res = $this->SupprimerOeuvre($id);
-            header("location:http://localhost/art-public-mtl/api/admin/oeuvre");
+            header("location:/art-public-mtl/api/admin/oeuvre");
             exit();
         }
 			else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "oeuvre")
@@ -109,7 +109,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		else
         {
             //si l'admin n'est pas connecté, rediriger vers l'accueil (login)
-            header("location:http://localhost/art-public-mtl/api/admin");
+            header("location:/art-public-mtl/api/admin");
 			exit();
 		}
 	}
