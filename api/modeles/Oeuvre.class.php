@@ -91,7 +91,7 @@ class Oeuvre extends Modele {
 		$res = Array();
 
         
-        $query="SELECT A.Nom as nom, A.Prenom as prenom, A.NomCollectif as nomCollectif, A.Description as description, A.id_artiste as id_artiste, O.Titre as titre, O.dateCreation as dateCreation, M.Nom as materiau, C.Nom as categorie, S.Nom as sous_categorie, O.Technique as technique FROM Oeuvre O 
+        $query="SELECT A.Nom as nom, A.Prenom as prenom, A.NomCollectif as nomCollectif, A.Description as description, A.id_artiste as id_artiste, O.Titre as titre, O.dateCreation as dateCreation,  GROUP_CONCAT(M.Nom SEPARATOR ', ') as materiaux, C.Nom as categorie, S.Nom as sous_categorie, O.Technique as technique FROM Oeuvre O 
 JOIN artiste_Oeuvre AO ON O.id_oeuvre = AO.id_oeuvre 
 JOIN artiste A ON A.id_artiste = AO.id_artiste
 JOIN materiaux_oeuvre MO ON O.id_oeuvre = MO.id_oeuvre 
@@ -105,11 +105,11 @@ WHERE O.id_oeuvre=". $id;
 
 		if($mrResultat = $this->_db->query($query))
 		{
-            
             $res = $mrResultat->fetch_assoc();
 			
 		}
 		return $res;
+        
 	}
 	
     
