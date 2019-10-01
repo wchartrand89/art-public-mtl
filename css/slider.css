@@ -140,7 +140,7 @@
 @media screen and (min-width: 900px) {
   .slide {
     box-sizing: border-box;
-    max-width:33%;
+    min-width:33%;
     flex:1;
     padding:var(--padding-base);
   }
@@ -149,7 +149,7 @@
     justify-content: center;
   }
   .slide a .img {
-    height: 250px;
+    height: 764px;
 }
 
    
