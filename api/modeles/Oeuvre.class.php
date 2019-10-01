@@ -89,50 +89,27 @@ class Oeuvre extends Modele {
 	public function getOeuvre($id) 
 	{
 		$res = Array();
-		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre"
-					// left join . self::TABLE_OEUVRE_DONNEES_EXTERNES . OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
-					." inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste 
-					where O_A.id_oeuvre=". $id;
 
-// inner join ". self::TABLE_LIAISON_OEUVRE_CATEGORIE ." O_C ON Oeu.id_oeuvre = O_C.id_oeuvre
-//inner join ". self::TABLE_CATEGORIE ." CAT ON CAT.id_categorie = O_C.id_categorie 
+        
+        $query="SELECT A.Nom as nom, A.Prenom as prenom, A.NomCollectif as nomCollectif, A.Description as description, A.id_artiste as id_artiste, O.Titre as titre, O.dateCreation as dateCreation,  GROUP_CONCAT(M.Nom SEPARATOR ', ') as materiaux, C.Nom as categorie, S.Nom as sous_categorie, O.Technique as technique FROM Oeuvre O 
+JOIN artiste_Oeuvre AO ON O.id_oeuvre = AO.id_oeuvre 
+JOIN artiste A ON A.id_artiste = AO.id_artiste
+JOIN materiaux_oeuvre MO ON O.id_oeuvre = MO.id_oeuvre 
+JOIN materiaux M ON M.id_mat = MO.id_materiaux
+JOIN categorie_oeuvre CO ON O.id_oeuvre=CO.id_oeuvre
+JOIN categorie C ON C.id_categorie=CO.id_categorie
+JOIN sous_categorie_oeuvre SC ON O.id_oeuvre=SC.id_oeuvre
+JOIN sous_categorie S ON SC.id_sous_categorie=S.id_sous_categorie
+WHERE O.id_oeuvre=". $id;
+
 
 		if($mrResultat = $this->_db->query($query))
 		{
-			while($oeuvre = $mrResultat->fetch_assoc())
-			{
-				//$oeu = $res;
-				
-				if(count($res) == 0)
-				{
-					$oeuvre['Artistes'] = Array();
-					$oeuvre['Categories'] = Array();
-					$oeuvre['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
-														"Nom"=> $oeuvre['Nom'],
-														"Prenom"=> $oeuvre['Prenom'],
-														"NomCollectif"=> $oeuvre['NomCollectif']
-													);
-					/* $ouvre['Categories'][] = $oeuvre['Nom']; */
-					unset($oeuvre['id_artiste']);
-					unset($oeuvre['Nom']);
-					unset($oeuvre['Prenom']);
-					unset($oeuvre['NomCollectif']);
-					$res = $oeuvre;
-				}
-				else
-				{
-					
-					$res['Artistes'][] = Array	(	"id_artiste"=> $oeuvre['id_artiste'], 
-														"Nom"=> $oeuvre['Nom'],
-														"Prenom"=> $oeuvre['Prenom'],
-														"NomCollectif"=> $oeuvre['NomCollectif']
-													);
-				}
-			}
+            $res = $mrResultat->fetch_assoc();
 			
 		}
 		return $res;
+        
 	}
 	
     
@@ -193,54 +170,54 @@ public function getOeuvreByID($id)
 	}
 	
 	
-	
-	/**
-	 * Modifie les informations sur une oeuvre
-	 * @access public
-	 * @param int $id Identifiant de l'oeuvre
-	 * @return Array
-	 */
-	public function modifOeuvre($id, $aData) 
-	{
-		//var_dump($aData);
-		$resQuery = false;
-		$res = Array();
-		if($this->verifDonneesExterne($id))
-		{
-            
-			if(isset($aData['Description']))
-			{
-                
-				foreach ($aData as $cle => $valeur) {
-					$aSet[] = ($cle . "= '".$valeur. "'");
-				}
-                //var_dump($aSet);
-                
-				if(count($aSet) > 0)
-				{
-					$query = "Update ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." SET ";
-					$query .= join(", ", $aSet);
-					
-					$query .= (" WHERE id_oeuvre = ". $id);
-                    //echo $query;
-					$resQuery = $this->_db->query($query);
-					//echo $query;
-				}
-			}
-		}
-		else 
-		{
-			if(extract($aData) > 0)
-			{
-				$query = "INSERT INTO ". self::TABLE_OEUVRE_DONNEES_EXTERNES ."  (`id_oeuvre`, `Description`, `Categorie`, `cote`) 
-				VALUES ('".$id. "','". $Description. "','". $CategorieObjet. "','1')";
-				$resQuery = $this->_db->query($query);
-				//echo $query;
-			}
-		}
-	
-		return ($resQuery ? $id : 0);
-	}
+//	
+//	/**
+//	 * Modifie les informations sur une oeuvre
+//	 * @access public
+//	 * @param int $id Identifiant de l'oeuvre
+//	 * @return Array
+//	 */
+//	public function modifOeuvre($id, $aData) 
+//	{
+//		//var_dump($aData);
+//		$resQuery = false;
+//		$res = Array();
+//		if($this->verifDonneesExterne($id))
+//		{
+//            
+//			if(isset($aData['Description']))
+//			{
+//                
+//				foreach ($aData as $cle => $valeur) {
+//					$aSet[] = ($cle . "= '".$valeur. "'");
+//				}
+//                //var_dump($aSet);
+//                
+//				if(count($aSet) > 0)
+//				{
+//					$query = "Update ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." SET ";
+//					$query .= join(", ", $aSet);
+//					
+//					$query .= (" WHERE id_oeuvre = ". $id);
+//                    //echo $query;
+//					$resQuery = $this->_db->query($query);
+//					//echo $query;
+//				}
+//			}
+//		}
+//		else 
+//		{
+//			if(extract($aData) > 0)
+//			{
+//				$query = "INSERT INTO ". self::TABLE_OEUVRE_DONNEES_EXTERNES ."  (`id_oeuvre`, `Description`, `Categorie`, `cote`) 
+//				VALUES ('".$id. "','". $Description. "','". $CategorieObjet. "','1')";
+//				$resQuery = $this->_db->query($query);
+//				//echo $query;
+//			}
+//		}
+//	
+//		return ($resQuery ? $id : 0);
+//	}
 	
     
     
@@ -295,19 +272,6 @@ public function getOeuvreByID($id)
     
 
     
-//    
-//	private function verifDonneesExterne($id)
-//	{
-//		$res = Array();
-//		$query = "select * from ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." where id_oeuvre=". $id;
-//		//echo $query;
-//		if($mrResultat = $this->_db->query($query))
-//		{
-//			$res = $mrResultat->fetch_assoc();
-//		}
-//		return (count($res) >0 ? true : false);
-//	}
-//    
     
     
     function filtre($variable)

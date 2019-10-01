@@ -32,7 +32,7 @@ class MenuAdminControlleur extends Controlleur
         //redirige vers l'accueil si admin pas connecté.
         else
         {
-            header("location:http://localhost/art-public-mtl/api/admin");
+            header("location:/art-public-mtl/api/admin");
             exit();
         }
     }
@@ -52,7 +52,7 @@ class MenuAdminControlleur extends Controlleur
             // si action deconnexion alors detruire la session et rediriger
             session_start();
             session_destroy(); //détruit la session
-            header("location:http://localhost/art-public-mtl/api/admin"); //retourne à l'accueil admin (vue de connexion)
+            header("location:/art-public-mtl/api/admin"); //retourne à l'accueil admin (vue de connexion)
             exit();
         }
         //si l'action n'est pas une des actions définies précédemment
