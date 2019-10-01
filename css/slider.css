@@ -163,9 +163,9 @@
         max-width:1350px;
     }
     /*Agrandir height sections*/
-    main .carte, .slide a .img {
-        /* height: 764px; */
-    }
+    /* main .carte, .slide a .img {
+        height: 764px;
+    } */
     .point {
         height: 20px;
         width: 20px;

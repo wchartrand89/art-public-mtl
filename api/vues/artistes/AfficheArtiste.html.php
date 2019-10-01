@@ -19,7 +19,7 @@
 foreach ($aData['oeuvres'] as $cle => $oeuvre) {
 	extract($oeuvre);
 ?>
-<div class="slide art fade">
+<div class="slide slideA art fade">
 <?php
     echo "<a href='/art-public-mtl/api/oeuvre/".$id_oeuvre."'>";
 ?>
@@ -43,10 +43,17 @@ foreach ($aData['oeuvres'] as $cle => $oeuvre) {
 
 <?php
 }
+//Ne mettre les fleches que si il y a plus d'une oeuvre
+if(count($aData["oeuvres"])>1){
 ?>
-       <!-- Next and previous : fleches-->
-       <a class="fleches prev">&#10094;</a>
-        <a class="fleches next">&#10095;</a>
+<!-- Next and previous : fleches-->
+<a class="fleches flechesA prev">&#10094;</a>
+        <a class="fleches flechesA next">&#10095;</a>
+        <?php
+}
+?>
+
+       
     </div>
 </section>
 <!-- 
