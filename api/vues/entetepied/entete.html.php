@@ -36,12 +36,13 @@
 		}  
 		else if ($page== "oeuvres"){
 			cssBase("oeuvres");
-			// echo '<link rel="stylesheet" href="../../css/artiste.css" type="text/css" media="screen">';
+			echo '<link rel="stylesheet" href="../css/oeuvres.css" type="text/css" media="screen">';
 			jsBase("oeuvres");
 		} 
 		else if ($page== "oeuvre"){
 			cssBase("oeuvre");
 			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+			echo '<link rel="stylesheet" href="../../css/oeuvres.css" type="text/css" media="screen">';
 			echo '<script src="../../js/onglets.js"></script>';
 			jsBase("oeuvre");
 		} 

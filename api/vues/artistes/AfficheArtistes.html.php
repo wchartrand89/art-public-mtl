@@ -31,9 +31,7 @@ foreach ($aData as $cle => $artiste) {
 	else if($lettre1Collectif === 0)
 	{
 		echo '<a class="lienArtiste" href="">'.$NomCollectif.'</a>' ;
-	}
-		
-		
+	}	
 ?>
 	
 	<?php 
