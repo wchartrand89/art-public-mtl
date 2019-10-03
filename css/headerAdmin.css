@@ -110,6 +110,7 @@ main{
 a > img{
     width:30px;
     height:23px;
+    padding-right: 15px;
 }
 
 .text_menu{    
@@ -189,15 +190,26 @@ form{
     border: 2px solid var(--couleur-marine);    
 }
 
-.nomChamp{
+.nomsChamps{
     display:flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     font-family: Open Sans;
     font-style: normal;
+    margin-left: 50px;
     
 }
+
+.nomsChamps > p{
+    width: 25%;
+    font-weight: 600;
+}
+
+.nomsChamps > p:nth-child(3){
+    
+}
+
 
 /* CONTENU OEUVREs */
 
@@ -211,6 +223,7 @@ form{
     width:100%;
     display:flex;
     flex-direction: column;
+    /* padding-left: 50px; */
     
 }
 
@@ -254,9 +267,46 @@ form{
 .info_oeuvre{
     display:flex;
     flex-direction:row;
-    justify-content: space-around;
-    width:100%;
-    
+    justify-content: space-evenly;
+    align-items: center; 
+    width:100%; 
+    padding-left: 50px;   
+}
+.info_oeuvre:nth-child(odd) {
+    background-color:var(--couleur-fond);
+  }
+
+.info_oeuvre > p{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;    
+}
+
+.info_oeuvre > span{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex start;
+}
+
+
+.valeur_info_oeuvre{
+    width:25%;
+}
+
+.valeur_info_oeuvre > a{
+    width:45px;
+    height:45px;
+}
+
+#crayon:hover{
+    width:55px;
+    height:33px;
+}
+
+#poubelle:hover{
+    width:55px;
+    height:33px;
 }
 
 .columns{

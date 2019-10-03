@@ -1,8 +1,8 @@
 
 	
 			<footer>
-				Certains droits réservés @ Jonathan Martel (2019)<br>
-				Sous licence Creative Commons (BY-NC 3.0)
+			<p>Copyright 2019 - Art Public Montréal<br>Tous droits réservés</p>	
+			
 			</footer>
 		</main>
 	</body>

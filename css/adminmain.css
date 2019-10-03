@@ -201,6 +201,13 @@ main > footer {
     padding-left: var(--marge-gauche);
     height: 35px;
     background-color: #eee;
+    height:80px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 8px;
     
     position: fixed;
     bottom: 0;
