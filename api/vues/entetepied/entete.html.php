@@ -22,6 +22,10 @@
 			cssBase("artistes");
 			echo '<link rel="stylesheet" href="../css/artistes.css" type="text/css" media="screen">';
 			jsBase("artistes");
+			echo '<script src="../js/liste.js"></script>';
+			echo '<script src="../js/xhr.js"></script>';
+
+
 		} 
 		else if ($page== "artiste"){
 			cssBase("artiste");
