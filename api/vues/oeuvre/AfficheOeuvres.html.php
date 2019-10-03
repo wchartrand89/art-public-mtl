@@ -1,4 +1,102 @@
+<article class="filtres">
+				<section class="mesOeuvres">
+					<h2>Mes oeuvres</h2>
+					<div>
+						<i class="material-icons">check_circle_outline</i>
+						<p>Déja visitées</p>
+					</div>
+					<div>
+						<i class="material-icons">star_border</i>
+						<p>À visiter</p>
+					</div>
+					<div>
+						<i class="material-icons">favorite_border</i>
+						<p>Favorites</p>
+					</div>
+				</section>
+				<section class="type">
+					<!-- Faire L'affichage des types d'oeuvre dynamiquement -->
+					<?php
+						var_dump($aTypes);
+						foreach ($aTypes as $cle => $type) {
+							//echo $type[];
+						}
+							?>
+							
+								
 
+
+
+
+					<h2>Type d'oeuvre</h2>
+					<section>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Sculpture</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Installation</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Vitrail</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Peinture</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Mozaïque</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Photographie</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Techniques mixtes</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Céramique</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Techniques mixtes</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Techniques mixtes</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Techniques mixtes</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Techniques mixtes</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Techniques mixtes</p>
+						</div>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>Techniques mixtes</p>
+						</div>
+					</section>
+
+
+				</section>
+				<section class="date">
+					<h2>Dates</h2>
+				</section>
+				<section class="arrond">
+					<h2>Arrondissement</h2>
+				</section>
+			</article>
 		<section class="recherche">
 			<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 			<div class="vueChoisie">
@@ -71,12 +169,7 @@
 				
 			</section>
 			<article class="filtre">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+				<i class="material-icons">filter_list</i>
 			</article>
-			<article class="filtres hidden">
-				<section class="mesOeuvres"></section>
-				<section class="type"></section>
-				<section class="date"></section>
-				<section class="arrond"></section>
-			</article>
+			
 			

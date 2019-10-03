@@ -53,7 +53,7 @@ class Vue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheOeuvres($aData = Array()) {
+	public function afficheOeuvres($aData = Array(), $aTypes= Array()) {
 		
 		require  ("oeuvre/AfficheOeuvres.html.php"); 
 		

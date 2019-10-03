@@ -49,6 +49,7 @@
 	
 		function cssBase($page){
 			?>
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/reset.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/var.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/header.css" type="text/css" media="screen">
@@ -57,6 +58,8 @@
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/component.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/flex.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/main.css" type="text/css" media="screen">
+
+			
 			<?php
 		}
 		function jsBase($page){

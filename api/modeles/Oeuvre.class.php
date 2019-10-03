@@ -111,6 +111,27 @@ WHERE O.id_oeuvre=". $id;
 		return $res;
         
 	}
+
+
+	/**
+	 * Récupère les différentes sous catégories possibles pour les oeuvres
+	 * @access public
+	 * @return Array
+	 */
+	public function getTypes() 
+	{
+		$res = Array();     
+		$query="SELECT * FROM sous_categorie";
+		$mrResultat = $this->_db->query($query);
+
+		if($mrResultat !== FALSE)
+		{
+            $res = $mrResultat->fetch_assoc();
+			
+		}
+		return $res;
+        
+	}
 	
     
      

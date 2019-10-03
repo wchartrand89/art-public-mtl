@@ -26,7 +26,7 @@ class OeuvreControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
-        
+        $types=array();
 		$res = array();
 		$page ="oeuvres";
 		//var_dump($requete->url_elements);
@@ -41,7 +41,7 @@ class OeuvreControlleur extends Controlleur
         else 	// Liste des oeuvres
         {
         	$res = $this->getListeOeuvre();
-			
+			$types= $this->getType();
         }
 		
 		if(isset($_GET['json']))
@@ -63,7 +63,7 @@ class OeuvreControlleur extends Controlleur
 			}
 			else
 			{
-				$oVue->afficheOeuvres($res);
+				$oVue->afficheOeuvres($res, $types);
 			}
 			
 			$oVue->affichePied();
@@ -97,6 +97,15 @@ class OeuvreControlleur extends Controlleur
 		
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getListe();
+
+		return $aOeuvre;
+	}
+	
+	protected function getType()
+	{
+		
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getTypes();
 
 		return $aOeuvre;
 	}
