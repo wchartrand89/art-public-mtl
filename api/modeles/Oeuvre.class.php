@@ -73,10 +73,6 @@ class Oeuvre extends Modele {
 				  
 			}
 		}
-//        else
-//        {
-//            echo $this->_db->query($query);
-//        }
 		return $res;
 	}
 	
@@ -86,21 +82,43 @@ class Oeuvre extends Modele {
 	 * @param int $id Identifiant de l'oeuvre
 	 * @return Array
 	 */
+     // @author Fred
 	public function getOeuvre($id) 
 	{
-		$res = Array();
+		
 
         
-        $query="SELECT A.Nom as nom, A.Prenom as prenom, A.NomCollectif as nomCollectif, A.Description as description, A.id_artiste as id_artiste, O.Titre as titre, O.dateCreation as dateCreation,  GROUP_CONCAT(M.Nom SEPARATOR ', ') as materiaux, C.Nom as categorie, S.Nom as sous_categorie, O.Technique as technique FROM Oeuvre O 
-JOIN artiste_Oeuvre AO ON O.id_oeuvre = AO.id_oeuvre 
-JOIN artiste A ON A.id_artiste = AO.id_artiste
-JOIN materiaux_oeuvre MO ON O.id_oeuvre = MO.id_oeuvre 
-JOIN materiaux M ON M.id_mat = MO.id_materiaux
-JOIN categorie_oeuvre CO ON O.id_oeuvre=CO.id_oeuvre
-JOIN categorie C ON C.id_categorie=CO.id_categorie
-JOIN sous_categorie_oeuvre SC ON O.id_oeuvre=SC.id_oeuvre
-JOIN sous_categorie S ON SC.id_sous_categorie=S.id_sous_categorie
-WHERE O.id_oeuvre=". $id;
+        $query="SELECT A.Nom as nom, 
+        A.Prenom as prenom, 
+        A.NomCollectif as nomCollectif, 
+        A.Description as description, 
+        A.id_artiste as id_artiste, 
+        O.Titre as titre, 
+        O.id_oeuvre as id_oeuvre, 
+        O.NomCollection as nomCollection, 
+        O.NomCollectionAng as nomCollectionAng, 
+        O.dateCreation as dateCreation,  
+        GROUP_CONCAT(M.Nom SEPARATOR ', ') as materiaux, 
+        C.Nom as categorie, 
+        S.Nom as sous_categorie, 
+        O.Dimensions as dimensions,
+        O.Arrondissement as arrondissement,
+        O.Batiment as batiment,
+        O.AdresseCivique  as adresseCivique,
+        O.CoordonneeLatitude as coordonneeLatitude ,
+        O.CoordonneeLongitude as coordonneeLongitude,
+        O.Dimensions as dimensions,
+        O.TechniqueAng as techniqueAng,
+        O.Technique as technique FROM Oeuvre O 
+        LEFT JOIN artiste_Oeuvre AO ON O.id_oeuvre = AO.id_oeuvre 
+        LEFT JOIN artiste A ON A.id_artiste = AO.id_artiste
+        LEFT JOIN materiaux_oeuvre MO ON O.id_oeuvre = MO.id_oeuvre 
+        LEFT JOIN materiaux M ON M.id_mat = MO.id_materiaux
+        LEFT JOIN categorie_oeuvre CO ON O.id_oeuvre=CO.id_oeuvre
+        LEFT JOIN categorie C ON C.id_categorie=CO.id_categorie
+        LEFT JOIN sous_categorie_oeuvre SC ON O.id_oeuvre=SC.id_oeuvre
+        LEFT JOIN sous_categorie S ON SC.id_sous_categorie=S.id_sous_categorie
+        WHERE O.id_oeuvre=$id";
 
 
 		if($mrResultat = $this->_db->query($query))
@@ -115,32 +133,33 @@ WHERE O.id_oeuvre=". $id;
     
      
     //get toutes les infos de l'oeuvres uniquement avec son ID
-    
-public function getOeuvreByID($id)
-{
-    $request="SELECT * FROM oeuvre WHERE id_oeuvre='$id'";
-    $result = $this->_db->query($request);
-    
-    if ($result !== FALSE) 
-    {
-        $infoTitre = $result->fetch_assoc();
- return $infoTitre;              
+     // @author Fred
+        public function getOeuvreByID($id)
+        {
+            $request="SELECT * FROM oeuvre WHERE id_oeuvre='$id'";
+            $result = $this->_db->query($request);
 
-    } 
-}
+            if ($result !== FALSE) 
+            {
+                $infoTitre = $result->fetch_assoc();
+         return $infoTitre;              
+
+            } 
+        }
 
 
     
-    public function SupprimerOeuvreByID($id)
-{
-    $request="DELETE FROM oeuvre WHERE id_oeuvre='$id'";
-    $result = $this->_db->query($request);
-    
-    if ($result !== FALSE) 
-    {
-        return $infoTitre;              
-    } 
-}
+         // @author Fred
+        public function SupprimerOeuvreByID($id)
+        {
+            $request="DELETE FROM oeuvre WHERE id_oeuvre='$id'";
+            $result = $this->_db->query($request);
+
+            if ($result !== FALSE) 
+            {
+                return $infoTitre;              
+            } 
+        }
 
 
 
@@ -221,22 +240,22 @@ public function getOeuvreByID($id)
 	
     
     
-    
+    // @author Fred
     public function modifierOeuvre($array){
     
     //filtre tous les elements du tableau
     $ID=$this->filtre($array["ID"]);
-    $Titre=$this->filtre($array["Titre"]);
-    $NomCollection=$this->filtre($array["NomCollection"]);
-    $NomCollectionAng=$this->filtre($array["NomCollectionAng"]);
-    $Technique=$this->filtre($array["Technique"]);
-    $TechniqueAng=$this->filtre($array["TechniqueAng"]);
-    $Dimensions=$this->filtre($array["Dimensions"]);
-    $Arrondissement=$this->filtre($array["Arrondissement"]);
-    $Batiment=$this->filtre($array["Batiment"]);
-    $AdresseCivique=$this->filtre($array["AdresseCivique"]);
-    $CoordonneeLatitude=$this->filtre($array["CoordonneeLatitude"]);
-    $CoordonneeLongitude=$this->filtre($array["CoordonneeLongitude"]);
+    $Titre=$this->filtre($array["titre"]);
+    $NomCollection=$this->filtre($array["nomCollection"]);
+    $NomCollectionAng=$this->filtre($array["nomCollectionAng"]);
+    $Technique=$this->filtre($array["technique"]);
+    $TechniqueAng=$this->filtre($array["techniqueAng"]);
+    $Dimensions=$this->filtre($array["dimensions"]);
+    $Arrondissement=$this->filtre($array["arrondissement"]);
+    $Batiment=$this->filtre($array["batiment"]);
+    $AdresseCivique=$this->filtre($array["adresseCivique"]);
+    $CoordonneeLatitude=$this->filtre($array["coordonneeLatitude"]);
+    $CoordonneeLongitude=$this->filtre($array["coordonneeLongitude"]);
     $dateCreation=$this->filtre($array["dateCreation"]);
         
         //si les conditions des champs sont bien respectés
@@ -270,8 +289,53 @@ public function getOeuvreByID($id)
         }
     
     
+    // @author Fred
+    public function modifierMateriaux($array){
+    // recup ID oeuvre modifié
+        $ID = $array["ID"];
+        // separe les matériaux ajoutés
+        $materiaux=explode (", ", $this->filtre($array["materiaux"]));
+ 
+        //compte le nombre de matériaux
+        $n=count($materiaux);
 
-    
+        //boucle dans le tableau de materiaux
+        for ($i = 0; $i < $n; $i++) {
+            //on associe a value un mat du tableau
+             $value = $materiaux[$i];
+            //verifie si le tableau existe deja
+            $request = "SELECT * FROM materiaux WHERE Nom='$value'";
+            $result = $this->_db->query($request);
+            $rows=$result->num_rows;
+            $exist=$result->fetch_assoc();
+            //s'il existe alors ne pas l'ajouté
+            if ($rows>0) {
+                //verifie si le lien existe entre l'oeuvre et le materiau
+                $id_mat=$exist["id_mat"];
+                $request = "SELECT * FROM materiaux_oeuvre WHERE id_oeuvre='$ID' and id_materiaux='$id_mat'";
+                $result = $this->_db->query($request);
+                $rows=$result->num_rows;
+                //si le lien existe pas alors return
+                if($rows==0){
+                    //si le lien n'existe pas , on le crée
+                    echo $value;
+                    $request = "INSERT INTO materiaux_oeuvre(id_materiaux, id_oeuvre) VALUES($id_mat, $ID)";
+                    $result = $this->_db->query($request); 
+                    return true;
+                }
+            //sinon ajouté le matériaux dans la table matériaux.
+            }else{
+                $request = "INSERT INTO materiaux(Nom) VALUES('$value')";
+               
+                // si le matériau a bien été ajouté, on add les liens dans la table intermédiaire. (+ recup dernier ID crée dans la table matériaux.)
+                if( $result = $this->_db->query($request)){
+                     $request = "INSERT INTO materiaux_oeuvre(id_materiaux, id_oeuvre) VALUES((SELECT MAX(id_mat) FROM materiaux), $ID)";
+                    $result = $this->_db->query($request);
+                    return true;
+                }
+            }
+        }
+    }
     
     
     function filtre($variable)

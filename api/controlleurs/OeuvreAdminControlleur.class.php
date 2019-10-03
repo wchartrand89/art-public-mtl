@@ -57,7 +57,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 			{
 				
 				$id=$requete->url_elements[1];
-				$res = $this->getOeuvreByID($id);
+				$res = $this->getOeuvre($id);
 				$oVue = new AdminVue();
 				$oVue->afficheEntete("");
 				$oVue->afficheFormulaireModification($res);
@@ -125,11 +125,18 @@ class OeuvreAdminControlleur extends OeuvreControlleur
             {
                 // envoyer la data a la function qui envoie sur le modele Oeuvre.class pour avoir les infos de l'oeuvre
                 $arrayModif=$_POST;
-                if($res=$this->modifierOeuvre($arrayModif)){
+                if($res=$this->modifierOeuvre($arrayModif) && $res2=$this->modifierArtiste($arrayModif) && $res3 = $this->modifierMateriaux($arrayModif)){
+                       
                       //rediriger vers la page des oeuvres si le resultat est correct
                       header("Location: /art-public-mtl/api/admin/oeuvre");
                 }else{
                     //sinon echo erreur
+                    var_dump($res);
+                    echo "<br>";
+                    var_dump($res2);
+                    echo "<br>";
+                    var_dump($res3);
+                    echo "<br>";
                     echo "Veuillez vérifier vos champs.";
                 }
                 
@@ -138,25 +145,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
             }  
         }        
      
-       // var_dump($_POST);
-//		$res = array();
-//        //var_dump($requete->url_elements);
-//        //var_dump($requete);
-//		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
-//		{
-//            $id_oeuvre = (int)$requete->url_elements[0];
-//            $parametres=array();
-//            //tableau dans lequel on met toutes les variables POST
-//            foreach ( $_POST as $post => $val )  {
-//                $parametres["$post"] = $val;
-//            }
-//
-//            //var_dump($requete->parametres);
-//            //echo $id_oeuvre;
-//
-//            $res = $this->modifOeuvre($id_oeuvre, $parametres);
-//            
-//        } 
 		
 		if(isset($_GET['json']))
 		{
@@ -168,12 +156,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         
 	}
 	
-//	protected function modifOeuvre($id_oeuvre, $param)
-//	{
-//		$oOeuvre = new Oeuvre();
-//		$aOeuvre = $oOeuvre->modifOeuvre($id_oeuvre, $param);	
-//		return $aOeuvre;
-//	}
 	
 	/**
 	 * Fait l'importation et la mise à jour des oeuvres et des artistes 
@@ -186,15 +168,28 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		return $aOeuvre;
     }
     
-	private function mettreAJour()
-	{
-		$oImportation = new Importation();
-		$oImportation->importerOeuvre();
-		$oImportation->mettreAJour();
-		
-	}
 	
-    	protected function modifierOeuvre($array)
+    private function modifierArtiste($array){
+        
+        $idArtiste=$array["id_artiste"];
+        $oArtiste = new Artiste();
+        // si l'artiste est existant (non null)
+        if($oArtiste->getArtiste($idArtiste)){
+            $oArtiste = $oArtiste->modifierArtiste($array);
+            return "true";
+        }else{
+            return "true";
+        }
+		
+    }
+    
+    private function modifierMateriaux($array){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->modifierMateriaux($array);
+		return $aOeuvre;
+    }
+    
+    protected function modifierOeuvre($array)
 	{
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->modifierOeuvre($array);
@@ -202,11 +197,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	}
     
     
-	private function getImages($id_oeuvre)
-	{
-		$oImportation = new Importation();
-		$aImage = $oImportation->telechargementImages($id_oeuvre);
-	}
+
 	
 }
 ?>
