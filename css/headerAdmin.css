@@ -1,0 +1,325 @@
+:root {
+    --taille-appbar : 100px;
+    background-color:white;
+    /* align-items: center; */
+}
+   
+body{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    height: 1024px; 
+    background-color: var(--couleur-fond);               
+    align-items:center;
+    margin: auto;
+}
+
+img{
+    width:286px;
+    height:149px;
+}
+
+/* HEADER */
+.appbar{
+    padding: 0px;
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    height:var(--taille-appbar);
+    height:100px;
+    align-items: center;
+    background-color:var(--couleur-fond);
+     
+}
+
+.logo > img{
+    position: absolute;
+    width:130px;
+    height:67px;
+    left: 2.5%;
+    right: 83.61%;
+    top: 15.33%;
+    bottom: 12%;
+}
+
+.Inter_Deconn:hover{
+    text-transform: uppercase;
+}
+
+.appbar > .Inter{
+    position: absolute;
+    left: 73.75%;
+    right: 20.9%;
+    top: 40%;
+    bottom: 26.67%;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    color: var(--couleur-marine);
+}
+
+.appbar > .Deconn{
+    position: absolute;
+    left: 83.89%;
+    top: 40%;
+    bottom: 28.67%;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    color: var(--couleur-marine);
+    
+}
+
+.Inter:hover{
+    text-transform: uppercase;
+}
+.Deconn:hover{
+    text-transform: uppercase;
+}
+
+/* MAIN */
+main{
+    position: absolute;
+    top:100px;
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    background-color: white;
+}
+
+/* MENU ASIDE */
+#menu_aside{
+    width:230px;
+    display: flex;
+    flex-direction: column;        
+    background-color: var(--couleur-marine);
+    padding-top: 10px;
+}
+#menu_aside > a{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 18px;
+}
+
+a > img{
+    width:30px;
+    height:23px;
+}
+
+.text_menu{    
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;    
+}
+
+#menu_aside > a:hover{
+    text-transform: uppercase;    
+}
+
+/* CONTENU LISTE OEUVRES */
+
+.contenu_listeOeuvres{
+    padding:0px;
+    width:100%;
+}
+
+
+.recherche{
+    width:100%;
+    height:71px;
+}
+
+form{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width:100%;
+    height:100%;
+}
+.bar_image{
+    display:flex;
+    flex-direction: row;
+}
+#bar_recherche{
+    
+    width: 267px;
+    height: 30px;
+    border: 2px solid var(--couleur-marine);
+    box-sizing: border-box;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    color:var(--couleur-marine);
+    text-align: center;
+}
+#img_recherche{
+    
+    font-family: Material Icons;
+    width: 31.65px;
+    height: 30px;
+    background: var(--couleur-marine);
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+
+}
+
+#btn_submit{
+   
+    width: 202px;
+    height: 30px;
+    background: var(--couleur-marine);
+    border-radius: 5px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    color:white;
+    border: 2px solid var(--couleur-marine);    
+}
+
+.nomChamp{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-family: Open Sans;
+    font-style: normal;
+    
+}
+
+/* CONTENU OEUVREs */
+
+.contenu_listeOeuvres{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+}
+
+#liste_oeuvres{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    
+}
+
+/* INFO OEUVRE */
+
+.bar_titre{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-around;
+    background-color:var(--couleur-fond);
+    height:63px;
+    width:100%;
+    
+}
+
+#images{
+    display:flex;
+    flex-direction: row;
+    padding-right: 70px;
+    
+}
+
+#images > img{
+    width:30px;
+    height:30px;
+}
+
+.bar_titre > .titre{
+    width:298.65px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    
+}
+#images > #img_modifier{
+    padding-right: 32px;
+}
+
+.info_oeuvre{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    width:100%;
+    
+}
+
+.columns{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.columns > span{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: baseline; 
+    height:43px;   
+}
+
+span > p:nth-child(1){
+    width: 183px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;    
+}
+
+span > p:nth-child(2){
+    width: 183px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+#column_1{
+    padding-left: 90px;
+}
+
+span > p{
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
