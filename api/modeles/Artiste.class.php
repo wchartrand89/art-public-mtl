@@ -54,7 +54,26 @@ class Artiste extends Modele {
 		return $res;
 	}
     
-     public function modifierArtiste($array){
+    // @author fred
+    public function creerArtisteOeuvre($array)
+    {
+        $nom=$this->filtre($array["nom"]);
+        $prenom=$this->filtre($array["prenom"]);
+        $ID=$this->filtre($array["ID"]);
+        //ajouter l'artiste
+        $query = "INSERT INTO artiste (Nom, Prenom)
+                  VALUES ('$nom', '$prenom')";
+        $result = $this->_db->query($query);
+        // si l'insertion a bien été faite, alors on veut faire le lien entre l'artiste et l'oeuvre
+        if($result===true){
+             $request = "INSERT INTO artiste_oeuvre(id_artiste, id_oeuvre) VALUES((SELECT MAX(id_artiste) FROM artiste), $ID)";
+            $result = $this->_db->query($request);
+        }
+        return $result;
+    }
+      // @author fred
+     public function modifierArtiste($array)
+     {
     
     //filtre tous les elements du tableau
     $nom=$this->filtre($array["nom"]);
@@ -64,9 +83,10 @@ class Artiste extends Modele {
   
         
         //si les conditions des champs sont bien respectés
-         if(isset($id_artiste)){
-             if(is_string($nom) && is_string($prenom) && is_numeric($id_artiste)){
-            
+         if(isset($id_artiste))
+         {
+             if(is_string($nom) && is_string($prenom) && is_numeric($id_artiste))
+             {
                 //requete
                 $request="UPDATE artiste
                         SET Nom = '$nom', Prenom ='$prenom' WHERE id_artiste='$id_artiste';";
@@ -84,7 +104,6 @@ class Artiste extends Modele {
                         }
             }
          }
-        
         //si conditions non respectés refresh la page et msg erreur
         else
         {
@@ -93,8 +112,8 @@ class Artiste extends Modele {
         }
         
 
-        }
-    
+    }
+      // @author fred
 	   function filtre($variable)
     {
         $varFiltre = $this->_db->real_escape_string($variable);

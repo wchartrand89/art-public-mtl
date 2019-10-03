@@ -291,14 +291,23 @@ class Oeuvre extends Modele {
     
     // @author Fred
     public function modifierMateriaux($array){
+        
+       
     // recup ID oeuvre modifié
         $ID = $array["ID"];
+        //reset le tableau intermediaire pour l'oeuvre en question
+        $request = "DELETE FROM materiaux_oeuvre WHERE id_oeuvre='$ID'";
+        $result = $this->_db->query($request);
+        
+        
         // separe les matériaux ajoutés
         $materiaux=explode (", ", $this->filtre($array["materiaux"]));
  
         //compte le nombre de matériaux
         $n=count($materiaux);
-
+        if($n==0){
+            return true;
+        }
         //boucle dans le tableau de materiaux
         for ($i = 0; $i < $n; $i++) {
             //on associe a value un mat du tableau
@@ -308,6 +317,51 @@ class Oeuvre extends Modele {
             $result = $this->_db->query($request);
             $rows=$result->num_rows;
             $exist=$result->fetch_assoc();
+            //s'il existe alors ne pas l'ajouté
+            if ($rows>0) {
+                //verifie si le lien existe entre l'oeuvre et le materiau
+                $id_mat=$exist["id_mat"];
+                $request = "SELECT * FROM materiaux_oeuvre WHERE id_oeuvre='$ID' and id_materiaux='$id_mat'";
+                $result = $this->_db->query($request);
+                $rows=$result->num_rows;
+                //si le lien existe pas alors return
+                if($rows==0){
+                    //si le lien n'existe pas , on le crée
+                    echo $value;
+                    $request = "INSERT INTO materiaux_oeuvre(id_materiaux, id_oeuvre) VALUES($id_mat, $ID)";
+                    $result = $this->_db->query($request); 
+                }
+            //sinon ajouté le matériaux dans la table matériaux.
+            }else{
+                $request = "INSERT INTO materiaux(Nom) VALUES('$value')";
+               
+                // si le matériau a bien été ajouté, on add les liens dans la table intermédiaire. (+ recup dernier ID crée dans la table matériaux.)
+                if( $result = $this->_db->query($request)){
+                     $request = "INSERT INTO materiaux_oeuvre(id_materiaux, id_oeuvre) VALUES((SELECT MAX(id_mat) FROM materiaux), $ID)";
+                    $result = $this->_db->query($request);
+                }
+            }
+        }
+        return true;
+    }
+    
+    
+        
+    // @author Fred
+    public function modifierCat($array){
+    // recup ID oeuvre modifié
+        $ID = $array["ID"];
+        echo "test";
+        die();
+        $categorie = $array["categorie"];
+
+            //verifie si le tableau existe deja
+            $request = "SELECT * FROM categorie WHERE Nom='$categorie'";
+            $result = $this->_db->query($request);
+            $rows=$result->num_rows;
+            $exist=$result->fetch_assoc();
+//            var_dump($exist["id_categorie"]);
+//        die();
             //s'il existe alors ne pas l'ajouté
             if ($rows>0) {
                 //verifie si le lien existe entre l'oeuvre et le materiau
@@ -333,7 +387,7 @@ class Oeuvre extends Modele {
                     $result = $this->_db->query($request);
                     return true;
                 }
-            }
+            
         }
     }
     
