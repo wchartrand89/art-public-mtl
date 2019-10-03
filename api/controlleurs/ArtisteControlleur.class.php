@@ -80,6 +80,7 @@ class ArtisteControlleur extends Controlleur
 	protected function getArtiste($id_artiste)
 	{
 		$oArtiste= new Artiste();
+        // on regarde si l'artiste entré existe
 		$aArtiste = $oArtiste->getArtiste($id_artiste);
 		$oOeuvre = new Oeuvre();
 		$aArtiste['oeuvres'] = $oOeuvre->getOeuvresParArtiste($id_artiste);

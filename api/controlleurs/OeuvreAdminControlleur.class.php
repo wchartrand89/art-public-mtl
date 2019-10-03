@@ -120,15 +120,24 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         // si on recoit quelque chose
         if(!empty($_POST))
         {
+            // @author fred
             // et que l'action est modification
             if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="modification")
             {
                 // envoyer la data a la function qui envoie sur le modele Oeuvre.class pour avoir les infos de l'oeuvre
                 $arrayModif=$_POST;
-                if($res=$this->modifierOeuvre($arrayModif) && $res2=$this->modifierArtiste($arrayModif) && $res3 = $this->modifierMateriaux($arrayModif)){
-                       
-                      //rediriger vers la page des oeuvres si le resultat est correct
-                      header("Location: /art-public-mtl/api/admin/oeuvre");
+                if($res=$this->modifierOeuvre($arrayModif) 
+                   && $res2=$this->modifierArtiste($arrayModif) 
+                   && $res3=$this->modifierMateriaux($arrayModif) 
+//                   && $res4=$this->modifierCat($arrayModif) 
+//                   && $res5=$this->modifierSousCat($arrayModif)
+                  ){
+                    var_dump($res);
+                    var_dump($res2);
+                    var_dump($res3);
+                    die();
+                    //rediriger vers la page des oeuvres si le resultat est correct
+                    header("Location: /art-public-mtl/api/admin/oeuvre");
                 }else{
                     //sinon echo erreur
                     var_dump($res);
@@ -137,6 +146,10 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                     echo "<br>";
                     var_dump($res3);
                     echo "<br>";
+//                    var_dump($res4);
+//                    echo "<br>";
+//                    var_dump($res5);
+//                    echo "<br>";
                     echo "Veuillez vérifier vos champs.";
                 }
                 
@@ -162,33 +175,34 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	 * @access private
 	 * @TODO Ajouter la mise à jour des artistes
 	 */
+    // @author fred
     private function SupprimerOeuvre($id){
         $oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->SupprimerOeuvreByID($id);
 		return $aOeuvre;
     }
     
-	
+	// @author fred
     private function modifierArtiste($array){
         
         $idArtiste=$array["id_artiste"];
         $oArtiste = new Artiste();
         // si l'artiste est existant (non null)
-        if($oArtiste->getArtiste($idArtiste)){
+        if($res=$oArtiste->getArtiste($idArtiste))
+        {
             $oArtiste = $oArtiste->modifierArtiste($array);
-            return "true";
         }else{
-            return "true";
+            $oArtiste = $oArtiste->creerArtisteOeuvre($array);
         }
-		
+		return $oArtiste;
     }
-    
+    // @author fred
     private function modifierMateriaux($array){
         $oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->modifierMateriaux($array);
 		return $aOeuvre;
     }
-    
+    // @author fred
     protected function modifierOeuvre($array)
 	{
 		$oOeuvre = new Oeuvre();
@@ -197,7 +211,20 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	}
     
     
-
+    // @author fred
+    protected function modifierCat($array){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->modifierCat($array);
+		return $aOeuvre;
+    }
+    
+    // @author fred
+    protected function modifierSousCat($array){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->modifierSousCat($array);
+		return $aOeuvre;
+    }
+    
 	
 }
 ?>
