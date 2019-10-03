@@ -53,7 +53,55 @@ class Artiste extends Modele {
 		}
 		return $res;
 	}
-	
+    
+     public function modifierArtiste($array){
+    
+    //filtre tous les elements du tableau
+    $nom=$this->filtre($array["nom"]);
+    $id_artiste=$this->filtre($array["id_artiste"]);
+    $ID=$this->filtre($array["ID"]);
+    $prenom=$this->filtre($array["prenom"]);
+  
+        
+        //si les conditions des champs sont bien respectés
+         if(isset($id_artiste)){
+             if(is_string($nom) && is_string($prenom) && is_numeric($id_artiste)){
+            
+                //requete
+                $request="UPDATE artiste
+                        SET Nom = '$nom', Prenom ='$prenom' WHERE id_artiste='$id_artiste';";
+    
+                        //execute requete
+                        $result = $this->_db->query($request);
+                        //var_dump($result);
+                        if ($result !== FALSE) 
+                        {
+                            return true;              
+                        }
+                        else 
+                        {
+                            return "wrong code";
+                        }
+            }
+         }
+        
+        //si conditions non respectés refresh la page et msg erreur
+        else
+        {
+            header("Location: /art-public-mtl/api/admin/oeuvre/".$ID."/modifier");
+            echo "Veuillez vérifiez vos champs. Vous ne pouvez entrez des caractères dans les coordonnées ou des chiffres dans les techniques !";
+        }
+        
+
+        }
+    
+	   function filtre($variable)
+    {
+        $varFiltre = $this->_db->real_escape_string($variable);
+        $varFiltre=htmlspecialchars($varFiltre);
+        //ici, on pourrait appliquer d'autres filtres.... (ex: strip_tags qui enlèverait les tags HTML dans un texte...)
+        return $varFiltre;
+    }
 }
 
 
