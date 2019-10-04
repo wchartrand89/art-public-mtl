@@ -26,18 +26,25 @@
 					<?php
 					$compt=0;
 					foreach ($aData as $cle => $oeuvre) {
-						extract($oeuvre);
+						extract($oeuvre);            
 						++$compt;
 											
 					?>
 
 						<div class="info_oeuvre">
 							<p class="valeur_info_oeuvre"><?php echo $Titre ?></p>
-							<p class="valeur_info_oeuvre"><?php echo "lorem ipsum" ?></p>
+							<p class="valeur_info_oeuvre"><?php foreach($Artistes as $value=> $test){
+                    
+                            echo $test["Nom"];
+                            echo " ";
+                            echo $test["Prenom"];
+                        
+                       
+                    } ?></p>
 							<p class="valeur_info_oeuvre"><?php echo $Arrondissement ?></p>
 							<span class="valeur_info_oeuvre">
-								<a href=""><img id='crayon' src="../../img/icons/crayon.svg" alt="Modifier"></a>
-								<a href=""><img id='poubelle' src="../../img/icons/poubelle.svg" alt="Supprimer"></a>
+								<a href="/art-public-mtl/api/admin/oeuvre/<?php echo $id_oeuvre ?>/modifier"><img id='crayon' src="../../img/icons/crayon.svg" alt="Modifier"></a>
+								<a href="/art-public-mtl/api/admin/oeuvre/<?php echo $id_oeuvre ?>/supprimer"><img id='poubelle' src="../../img/icons/poubelle.svg" alt="Supprimer"></a>
 							</span>
 
 						</div>
