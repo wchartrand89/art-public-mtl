@@ -33,17 +33,57 @@
 						<?php
 						}
 							?>
-							
-	
 					</section>
-
-
 				</section>
+
+				<!-- Faire L'affichage des dates dynamiquement -->
+				<!-- Aller chercher dans la BD les dates la plus récente et la plus vieille-->
 				<section class="date">
 					<h2>Dates</h2>
 				</section>
+				<!-- Faire L'affichage des arrondissements dynamiquement -->
 				<section class="arrond">
 					<h2>Arrondissement</h2>
+					<section>
+
+					<?php
+					$aArrond=[];
+					foreach ($aData as $cle => $oeuvre) {
+						extract($oeuvre);
+						$verif="";
+						//echo $Arrondissement;
+						if(count($aArrond)>0){
+							foreach($aArrond as $cle => $arrond){
+								if($Arrondissement !== $arrond && $verif !== false){
+									$verif = true;
+								}else if ($Arrondissement == $arrond) {
+									$verif = false;
+								}
+							}
+							if($verif){
+								$aArrond[]= $Arrondissement;
+							}
+						}else{
+							$aArrond[]= $Arrondissement;
+						}
+						
+						
+						
+
+				
+					}
+					sort($aArrond); 
+					foreach($aArrond as $cle => $arrond){
+						?>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p><?php echo $arrond?></p>
+						</div>
+						<?php
+					}
+					
+					?>
+					</section>
 				</section>
 			</article>
 		<section class="recherche">
