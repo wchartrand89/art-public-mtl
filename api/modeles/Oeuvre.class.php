@@ -126,7 +126,10 @@ WHERE O.id_oeuvre=". $id;
 
 		if($mrResultat !== FALSE)
 		{
-            $res = $mrResultat->fetch_assoc();
+			while($oeuvre = $mrResultat->fetch_assoc())
+			{
+				$res[] = $oeuvre;
+			}
 			
 		}
 		return $res;

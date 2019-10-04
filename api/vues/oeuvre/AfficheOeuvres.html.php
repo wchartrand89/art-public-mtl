@@ -15,77 +15,26 @@
 					</div>
 				</section>
 				<section class="type">
+					<h2>Type d'oeuvre</h2>
+					<section>
 					<!-- Faire L'affichage des types d'oeuvre dynamiquement -->
 					<?php
-						var_dump($aTypes);
+						//var_dump($aTypes);
 						foreach ($aTypes as $cle => $type) {
-							//echo $type[];
+							?>
+							<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p>
+							<?php
+							echo $type["Nom"];
+							?>
+							</p>
+						</div>
+						<?php
 						}
 							?>
 							
-								
-
-
-
-
-					<h2>Type d'oeuvre</h2>
-					<section>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Sculpture</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Installation</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Vitrail</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Peinture</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Mozaïque</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Photographie</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Techniques mixtes</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Céramique</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Techniques mixtes</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Techniques mixtes</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Techniques mixtes</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Techniques mixtes</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Techniques mixtes</p>
-						</div>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>Techniques mixtes</p>
-						</div>
+	
 					</section>
 
 
