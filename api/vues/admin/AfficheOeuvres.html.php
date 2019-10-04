@@ -26,7 +26,7 @@
 					<?php
 					$compt=0;
 					foreach ($aData as $cle => $oeuvre) {
-						extract($oeuvre);            
+						extract($oeuvre);  
 						++$compt;
 											
 					?>
@@ -34,10 +34,16 @@
 						<div class="info_oeuvre">
 							<p class="valeur_info_oeuvre"><?php echo $Titre ?></p>
 							<p class="valeur_info_oeuvre"><?php foreach($Artistes as $value=> $test){
-                    
+                    if($test["Nom"]!=""){
                             echo $test["Nom"];
                             echo " ";
                             echo $test["Prenom"];
+                    }
+                        
+                    if($test["NomCollectif"]!=""){
+                        echo $test["NomCollectif"];
+                    }
+                            
                         
                        
                     } ?></p>
