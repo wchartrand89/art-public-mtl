@@ -302,7 +302,6 @@ class Oeuvre extends Modele {
         
         // separe les matériaux ajoutés
         $materiaux=explode (", ", $this->filtre($array["materiaux"]));
- 
         //compte le nombre de matériaux
         $n=count($materiaux);
         if($n==0){

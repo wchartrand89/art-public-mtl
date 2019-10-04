@@ -79,6 +79,14 @@ $info=$data;
                     <input type="text" name="sousCategorie" value="<?php echo $info["sous_categorie"];  ?>" id="SousCatégorie" >
                 </div>
                 
+             <?php
+
+           
+   if(isset($info["nom"]) && $info["nom"]!=""){
+
+               
+?>   
+                
                 <h1>ARTISTE</h1>
                 <div>
                     <label for="titre">Nom</label>
@@ -95,7 +103,29 @@ $info=$data;
         
 <?php
 
-           
+            
+   }
+   if(isset($info["nomCollectif"]) && $info["nomCollectif"]!="" ){
+       
    
                
 ?>
+
+
+                 <h1>NOM COLLECTIF</h1>
+                <div>
+                    <label for="titre">Nom du collectif</label>
+                    <input type="text" name="nomCollectif" value="<?php echo $info["nomCollectif"];  ?>" id="nom" >
+                </div>
+                <div>
+                    <input type="submit" id="envoyer" value="Modifier">
+                </div>		
+            </form>
+            
+           <?php
+   }
+       
+      
+          
+         ?>
+               
