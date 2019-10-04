@@ -40,6 +40,51 @@
 				<!-- Aller chercher dans la BD les dates la plus récente et la plus vieille-->
 				<section class="date">
 					<h2>Dates</h2>
+					<section>
+					<?php
+					// POUR AFFICHER DATE : voir cette reference
+					// https://stackoverflow.com/questions/16749778/php-date-format-date1365004652303-0500
+
+
+					$aDates=[];
+					foreach ($aData as $cle => $oeuvre) {
+						extract($oeuvre);
+						$verif="";
+						//echo $Arrondissement;
+						if(count($aDates)>0){
+							foreach($aDates as $cle => $date){
+								if($dateCreation !== $date && $verif !== false){
+									$verif = true;
+								}else if ($dateCreation == $date) {
+									$verif = false;
+								}
+							}
+							if($verif && !is_null($dateCreation)){
+								$aDates[]= $dateCreation;
+							}
+						}else{
+							if(!is_null($dateCreation)){
+								$aDates[]= $dateCreation;
+							}
+							
+						}
+					}
+					sort($aDates); 
+					foreach($aDates as $cle => $date){
+						?>
+						<div>
+							<i class="material-icons">check_box_outline_blank</i>
+							<p><?php 
+							
+							preg_match( "#/Date\((\d{10})\d{3}(.*?)\)/#", $date, $match);
+    						echo date( "r", $match[1] );
+							//echo $nvlDate; ?></p>
+						</div>
+						<?php
+					}
+					?>
+					</section>
+
 				</section>
 				<!-- Faire L'affichage des arrondissements dynamiquement -->
 				<section class="arrond">
@@ -52,7 +97,7 @@
 						extract($oeuvre);
 						$verif="";
 						//echo $Arrondissement;
-						if(count($aArrond)>0){
+						if(count($aArrond)>0 && !is_null($Arrondissement)){
 							foreach($aArrond as $cle => $arrond){
 								if($Arrondissement !== $arrond && $verif !== false){
 									$verif = true;
@@ -60,17 +105,12 @@
 									$verif = false;
 								}
 							}
-							if($verif){
+							if($verif && !is_null($Arrondissement)){
 								$aArrond[]= $Arrondissement;
 							}
 						}else{
 							$aArrond[]= $Arrondissement;
 						}
-						
-						
-						
-
-				
 					}
 					sort($aArrond); 
 					foreach($aArrond as $cle => $arrond){
@@ -81,7 +121,6 @@
 						</div>
 						<?php
 					}
-					
 					?>
 					</section>
 				</section>
@@ -99,7 +138,6 @@
 			<!-- <section class="rechercher"></section> -->
             <section class="oeuvres flex wrap">
 						<?php
-    
 						foreach ($aData as $cle => $oeuvre) {
 							extract($oeuvre);
 							?>
@@ -120,19 +158,14 @@
                            <?php 
                             if(isset($Nom) && $Nom!=""){
                                 echo $Nom .", ". $Prenom;
-                     
                             }
                             else
                             {
                                 echo $NomCollectif;
-                        
                             }
-                                
-                                
                                         ?></a></p>
 									<?php
 									}
-
 									?>
 			                        <p class="date_creation"><?php echo $dateCreation?></p>
 			                    </section>
@@ -141,11 +174,6 @@
 								<!<button class="ouvrir-oeuvre" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">En savoir plus...</button>
 			                    </footer> -->
 			                </section>
-							
-							
-							
-							
-							
 							<?php
 							/*
 							 <section class="oeuvre">
