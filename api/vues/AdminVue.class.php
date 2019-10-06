@@ -89,8 +89,7 @@ require("admin/AfficheOeuvres.html.php");
 	}
     
     
-    public function afficheFormulaireModification($data) {
-      //   $_SESSION['res']=$data;
+    public function afficheFormulaireModification($data, $data2, $data3) {
 	   require("admin/FormulaireModification.html.php");
 		
 	}

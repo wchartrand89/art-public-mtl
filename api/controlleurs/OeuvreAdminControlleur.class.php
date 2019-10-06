@@ -58,9 +58,11 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 				
 				$id=$requete->url_elements[1];
 				$res = $this->getOeuvre($id);
+				$res2 = $this->getCategorie();
+				$res3 = $this->getSousCategorie();
 				$oVue = new AdminVue();
 				$oVue->afficheEntete("");
-				$oVue->afficheFormulaireModification($res);
+				$oVue->afficheFormulaireModification($res, $res2, $res3);
 				$oVue->affichePied();
 			}
         else if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]) && isset($requete->url_elements[2]) && $requete->url_elements[2] == "supprimer")
@@ -129,13 +131,15 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 if($res=$this->modifierOeuvre($arrayModif) 
                    && $res2=$this->modifierArtiste($arrayModif) 
                    && $res3=$this->modifierMateriaux($arrayModif) 
-//                   && $res4=$this->modifierCat($arrayModif) 
-//                   && $res5=$this->modifierSousCat($arrayModif)
+                   && $res4=$this->modifierCat($arrayModif) 
+                   && $res5=$this->modifierSousCat($arrayModif)
                   ){
-                    var_dump($res);
-                    var_dump($res2);
-                    var_dump($res3);
-                    die();
+//                    var_dump($res);
+//                    var_dump($res2);
+//                    var_dump($res3);
+//                    var_dump($res4);
+//                    var_dump($res5);
+//                    die();
                     //rediriger vers la page des oeuvres si le resultat est correct
                     header("Location: /art-public-mtl/api/admin/oeuvre");
                 }else{
@@ -224,7 +228,18 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		$aOeuvre = $oOeuvre->modifierSousCat($array);
 		return $aOeuvre;
     }
+     // @author fred
+    protected function getCategorie(){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getCategorie();
+		return $aOeuvre;
+    }
+	 // @author fred
+    protected function getSousCategorie(){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getSousCategorie();
+		return $aOeuvre;
+    }
     
-	
 }
 ?>

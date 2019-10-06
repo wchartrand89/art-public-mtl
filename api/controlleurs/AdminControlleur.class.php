@@ -101,7 +101,7 @@ class AdminControlleur extends Controlleur
                 $_SESSION['login'] = $_POST['login'];
                 
                 //redirection vers le menu admin
-                header("location:/art-public-mtl/api/admin/menu");
+                header("location:/art-public-mtl/api/admin/oeuvre");
 			}
 			else //connexion non reconnue
 			{

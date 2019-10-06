@@ -71,21 +71,26 @@ class Artiste extends Modele {
         }
         return $result;
     }
+    
       // @author fred
      public function modifierArtiste($array)
      {
     
     //filtre tous les elements du tableau
-    $nom=$this->filtre($array["nom"]);
+    $nom=@$this->filtre($array["nom"]);
     $id_artiste=$this->filtre($array["id_artiste"]);
     $ID=$this->filtre($array["ID"]);
-    $prenom=$this->filtre($array["prenom"]);
+    $prenom=@$this->filtre($array["prenom"]);
+    $nomCollectif=@$this->filtre($array["nomCollectif"]);
+
+  
   
         
         //si les conditions des champs sont bien respectés
          if(isset($id_artiste))
          {
-             if(is_string($nom) && is_string($prenom) && is_numeric($id_artiste))
+             // si artiste  rempli
+             if(isset($nom) && is_string($nom) && $nom!="" && isset($prenom) && is_string($prenom) && $prenom!="" && is_numeric($id_artiste))
              {
                 //requete
                 $request="UPDATE artiste
@@ -103,6 +108,26 @@ class Artiste extends Modele {
                             return "wrong code";
                         }
             }
+            
+             // si nom Collectif rempli
+             if( is_string($nomCollectif)  && is_numeric($id_artiste) &&  $nomCollectif!="")
+             {
+                //requete
+                $request="UPDATE artiste
+                        SET NomCollectif = '$nomCollectif' WHERE id_artiste='$id_artiste';";
+    
+                        //execute requete
+                        $result = $this->_db->query($request);
+                        //var_dump($result);
+                        if ($result !== FALSE) 
+                        {
+                            return true;              
+                        }
+                        else 
+                        {
+                            return "wrong code";
+                        }
+             }
          }
         //si conditions non respectés refresh la page et msg erreur
         else
@@ -118,6 +143,7 @@ class Artiste extends Modele {
     {
         $varFiltre = $this->_db->real_escape_string($variable);
         $varFiltre=htmlspecialchars($varFiltre);
+        $varFiltre=utf8_decode($varFiltre);
         //ici, on pourrait appliquer d'autres filtres.... (ex: strip_tags qui enlèverait les tags HTML dans un texte...)
         return $varFiltre;
     }
