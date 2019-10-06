@@ -134,12 +134,12 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                    && $res4=$this->modifierCat($arrayModif) 
                    && $res5=$this->modifierSousCat($arrayModif)
                   ){
-//                    var_dump($res);
-//                    var_dump($res2);
-//                    var_dump($res3);
-//                    var_dump($res4);
-//                    var_dump($res5);
-//                    die();
+                    var_dump($res);
+                    var_dump($res2);
+                    var_dump($res3);
+                    var_dump($res4);
+                    var_dump($res5);
+                    die();
                     //rediriger vers la page des oeuvres si le resultat est correct
                     header("Location: /art-public-mtl/api/admin/oeuvre");
                 }else{

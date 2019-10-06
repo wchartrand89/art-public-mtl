@@ -1,7 +1,7 @@
 
 <?php
 
-$info= array_map('utf8_encode', $data);
+$info= $data;
 $info2= $data2;
 $info3= $data3;
   
