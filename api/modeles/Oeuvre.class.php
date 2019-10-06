@@ -126,6 +126,7 @@ class Oeuvre extends Modele {
             $res = $mrResultat->fetch_assoc();
 			
 		}
+        $res= array_map('utf8_encode', $res);
 		return $res;
         
 	}
@@ -142,19 +143,58 @@ class Oeuvre extends Modele {
             if ($result !== FALSE) 
             {
                 $infoTitre = $result->fetch_assoc();
-         return $infoTitre;              
+                return $infoTitre;              
 
             } 
         }
 
-
+    
+        // @author Fred
+        public function getCategorie(){
+            
+  		$res = Array();
+		$query ="SELECT nom FROM categorie";;
+		if($mrResultat = $this->_db->query($query))
+		{
+			while($categorie = $mrResultat->fetch_assoc())
+			{
+				foreach($categorie as $cle=> $valeur)
+				{
+					$categorie[$cle] = utf8_decode(utf8_encode($valeur));
+				}
+				$res[] = $categorie;
+			}
+		}
+		return $res;   
+        }
+    
+        // @author Fred
+        public function getSousCategorie(){
+            
+  		$res = Array();
+		$query ="SELECT nom FROM sous_categorie";;
+		if($mrResultat = $this->_db->query($query))
+		{
+			while($souscat = $mrResultat->fetch_assoc())
+			{
+				foreach($souscat as $cle=> $valeur)
+				{
+					$souscat[$cle] = utf8_decode(utf8_encode($valeur));
+				}
+				$res[] = $souscat;
+			}
+		}
+		return $res;   
+        }
     
          // @author Fred
         public function SupprimerOeuvreByID($id)
         {
+            $id=$this->filtre($id);
+            
             $request="DELETE FROM oeuvre WHERE id_oeuvre='$id'";
             $result = $this->_db->query($request);
-
+            
             if ($result !== FALSE) 
             {
                 return $infoTitre;              
@@ -294,7 +334,7 @@ class Oeuvre extends Modele {
         
        
     // recup ID oeuvre modifié
-        $ID = $array["ID"];
+        $ID = $this->filtre($array["ID"]);
         //reset le tableau intermediaire pour l'oeuvre en question
         $request = "DELETE FROM materiaux_oeuvre WHERE id_oeuvre='$ID'";
         $result = $this->_db->query($request);
@@ -326,7 +366,6 @@ class Oeuvre extends Modele {
                 //si le lien existe pas alors return
                 if($rows==0){
                     //si le lien n'existe pas , on le crée
-                    echo $value;
                     $request = "INSERT INTO materiaux_oeuvre(id_materiaux, id_oeuvre) VALUES($id_mat, $ID)";
                     $result = $this->_db->query($request); 
                 }
@@ -349,57 +388,70 @@ class Oeuvre extends Modele {
     // @author Fred
     public function modifierCat($array){
     // recup ID oeuvre modifié
-        $ID = $array["ID"];
-        echo "test";
-        die();
-        $categorie = $array["categorie"];
+        $ID = $this->filtre($array["ID"]);
+        $categorie = $this->filtre($array["categorie"]);
 
             //verifie si le tableau existe deja
             $request = "SELECT * FROM categorie WHERE Nom='$categorie'";
             $result = $this->_db->query($request);
             $rows=$result->num_rows;
             $exist=$result->fetch_assoc();
-//            var_dump($exist["id_categorie"]);
-//        die();
-            //s'il existe alors ne pas l'ajouté
+        
+            //s'il existe alors update
             if ($rows>0) {
                 //verifie si le lien existe entre l'oeuvre et le materiau
-                $id_mat=$exist["id_mat"];
-                $request = "SELECT * FROM materiaux_oeuvre WHERE id_oeuvre='$ID' and id_materiaux='$id_mat'";
+                $id_cat=$exist["id_categorie"];
+                $request = "UPDATE categorie_oeuvre
+                SET id_oeuvre = '$ID', id_categorie = '$id_cat'
+                WHERE id_oeuvre = '$ID'";
                 $result = $this->_db->query($request);
-                $rows=$result->num_rows;
-                //si le lien existe pas alors return
-                if($rows==0){
-                    //si le lien n'existe pas , on le crée
-                    echo $value;
-                    $request = "INSERT INTO materiaux_oeuvre(id_materiaux, id_oeuvre) VALUES($id_mat, $ID)";
-                    $result = $this->_db->query($request); 
-                    return true;
                 }
             //sinon ajouté le matériaux dans la table matériaux.
-            }else{
-                $request = "INSERT INTO materiaux(Nom) VALUES('$value')";
-               
-                // si le matériau a bien été ajouté, on add les liens dans la table intermédiaire. (+ recup dernier ID crée dans la table matériaux.)
-                if( $result = $this->_db->query($request)){
-                     $request = "INSERT INTO materiaux_oeuvre(id_materiaux, id_oeuvre) VALUES((SELECT MAX(id_mat) FROM materiaux), $ID)";
-                    $result = $this->_db->query($request);
-                    return true;
+            else{
+                echo "erreur";
                 }
+        return true;
             
         }
-    }
     
+        // @author Fred
+    public function modifierSousCat($array){
+    // recup ID oeuvre modifié
+        $ID = $this->filtre($array["ID"]);
+        $sous_categorie = $this->filtre($array["sousCategorie"]);
+            //verifie si le tableau existe deja
+            $request = "SELECT * FROM sous_categorie WHERE Nom='$sous_categorie'";
+            $result = $this->_db->query($request);
+            $rows=$result->num_rows;
+            $exist=$result->fetch_assoc();
+
+            //s'il existe alors update
+            if ($rows>0) {
+                //verifie si le lien existe entre l'oeuvre et le materiau
+                $id_sous_cat=$exist["id_sous_categorie"];
+                $request = "UPDATE sous_categorie_oeuvre
+                SET id_oeuvre = '$ID', id_sous_categorie = '$id_sous_cat'
+                WHERE id_oeuvre = '$ID'";
+                $result = $this->_db->query($request);
+                }
+            //sinon ajouté le matériaux dans la table matériaux.
+            else{
+                echo "erreur";
+                }
+      return true;
+        }
     
     function filtre($variable)
     {
         $varFiltre = $this->_db->real_escape_string($variable);
         $varFiltre=htmlspecialchars($varFiltre);
+        $varFiltre=utf8_decode($varFiltre);
         //ici, on pourrait appliquer d'autres filtres.... (ex: strip_tags qui enlèverait les tags HTML dans un texte...)
         return $varFiltre;
     }
-	
 }
+	
+
 
 
 

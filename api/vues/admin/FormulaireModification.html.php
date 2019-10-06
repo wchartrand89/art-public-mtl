@@ -1,13 +1,10 @@
 
 <?php
 
-$info=$data;
- 
-
-        
+$info= array_map('utf8_encode', $data);
+$info2= $data2;
+$info3= $data3;
   
-      
-               
                 
 ?>
             <form id='modification' action="/art-public-mtl/api/admin/oeuvre/modification/" method="post">	
@@ -69,24 +66,54 @@ $info=$data;
                 <div>
                     <label for="titre">Matériaux</label>
                     <input type="text" name="materiaux" value="<?php echo $info["materiaux"];  ?>" id="Matériaux" >
-                </div>               
+                </div>                            
                 <div>
                     <label for="titre">Catégorie</label>
-                    <input type="text" name="categorie" value="<?php echo $info["categorie"];  ?>" id="Catégorie" >
-                </div>                
-                <div>
-                    <label for="titre">SousCatégorie</label>
-                    <input type="text" name="sousCategorie" value="<?php echo $info["sous_categorie"];  ?>" id="SousCatégorie" >
-                </div>
-                
-             <?php
-
-           
-   if(isset($info["nom"]) && $info["nom"]!=""){
+                    <select name="categorie">
+                    <?php
+                    
+                        
+                        foreach($info2 as $key=>$value){
+                            $value=array_map('utf8_encode', $value);
+                            foreach($value as $val){
+                                if($val==$info["categorie"]){
+                                    echo "<option value='$val' selected>$val</option>";
+                                }else{
+                                    echo "<option value='$val'>$val</option>";
+                                }
+                                  
+                            }
+                          
+                        }
+                        
+                        ?>
+               
+                    </select>
+                </div>  
+                    <label for="titre">Sous catégorie</label>
+                    <select name="sousCategorie">
+             <?php 
+                        foreach($info3 as $key=>$value){
+                            $value=array_map('utf8_encode', $value);
+                            foreach($value as $val){
+                                  if($val==$info["sous_categorie"]){
+                                    echo "<option value='$val' selected>$val</option>";
+                                }else{
+                                    echo "<option value='$val'>$val</option>";
+                                }
+                            }
+                          
+                        }
+                        
+                        ?>
+               
+                    </select>
+                </div>  
+                <?php
+                if(isset($info["nom"]) && $info["nom"]!=""){
 
                
-?>   
-                
+                ?>   
                 <h1>ARTISTE</h1>
                 <div>
                     <label for="titre">Nom</label>
@@ -101,15 +128,13 @@ $info=$data;
                 </div>		
             </form>
         
-<?php
+            <?php
 
             
-   }
-   if(isset($info["nomCollectif"]) && $info["nomCollectif"]!="" ){
-       
-   
-               
-?>
+            }
+
+            if(isset($info["nomCollectif"]) && $info["nomCollectif"]!="" ){
+            ?>
 
 
                  <h1>NOM COLLECTIF</h1>
@@ -123,9 +148,9 @@ $info=$data;
             </form>
             
            <?php
-   }
+            }
        
       
           
-         ?>
+          ?>
                
