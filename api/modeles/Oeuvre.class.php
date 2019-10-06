@@ -126,6 +126,7 @@ class Oeuvre extends Modele {
             $res = $mrResultat->fetch_assoc();
 			
 		}
+        
         $res= array_map('utf8_encode', $res);
 		return $res;
         
@@ -300,7 +301,7 @@ class Oeuvre extends Modele {
         
         //si les conditions des champs sont bien respectés
         if(is_numeric($ID) && is_numeric($CoordonneeLatitude) && is_numeric($CoordonneeLongitude) && is_string($Technique) && is_string($TechniqueAng) && is_string($NomCollection) && is_string($NomCollectionAng)){
-            
+                
                 //requete
                 $request="UPDATE oeuvre
                         SET Titre = '$Titre', NomCollection ='$NomCollection', NomCollectionAng='$NomCollectionAng',Technique='$Technique', TechniqueAng='$TechniqueAng', Dimensions='$Dimensions', Arrondissement='$Arrondissement', Batiment='$Batiment', AdresseCivique='$AdresseCivique', CoordonneeLatitude='$CoordonneeLatitude', CoordonneeLongitude='$CoordonneeLongitude', dateCreation= '$dateCreation'
