@@ -82,6 +82,11 @@ require("admin/AfficheOeuvres.html.php");
 		
 	}
     
+        /**
+	 * Affiche la page de connexion admin
+	 * @access public
+	 * @return void
+	 */
 	public function afficheConnexion() {
 		
         require("admin/Connexion.html.php");
@@ -91,6 +96,11 @@ require("admin/AfficheOeuvres.html.php");
     
     public function afficheFormulaireModification($data, $data2, $data3) {
 	   require("admin/FormulaireModification.html.php");
+		
+	}
+    
+    public function afficheFormulaireAjout($data2, $data3) {
+	   require("admin/FormulaireAjout.html.php");
 		
 	}
     

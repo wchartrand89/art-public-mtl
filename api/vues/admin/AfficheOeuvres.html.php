@@ -12,7 +12,7 @@
 							<input id="bar_recherche" type="text" name="recherche" value="Recherche une oeuvre">
 							<img id="img_recherche" src="../../img/icons/search_40px.svg" alt="search">
 						</div>						
-						<input id="btn_submit" type="submit" name="submit" value="+ Ajouter une oeuvre">
+                        <a href="/art-public-mtl/api/admin/oeuvre/ajout" id="btn_submit" alt="ajout">+ Ajouter une oeuvre</a>
 						
 					</form>
 				</section>

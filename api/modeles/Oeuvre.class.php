@@ -188,21 +188,7 @@ class Oeuvre extends Modele {
 		return $res;   
         }
     
-         // @author Fred
-        public function SupprimerOeuvreByID($id)
-        {
-            $id=$this->filtre($id);
-            
-            $request="DELETE FROM oeuvre WHERE id_oeuvre='$id'";
-            $result = $this->_db->query($request);
-            
-            if ($result !== FALSE) 
-            {
-                return $infoTitre;              
-            } 
-        }
-
-
+        
 
 
 	
@@ -229,58 +215,24 @@ class Oeuvre extends Modele {
 		return $res;
 	}
 	
-	
-//	
-//	/**
-//	 * Modifie les informations sur une oeuvre
-//	 * @access public
-//	 * @param int $id Identifiant de l'oeuvre
-//	 * @return Array
-//	 */
-//	public function modifOeuvre($id, $aData) 
-//	{
-//		//var_dump($aData);
-//		$resQuery = false;
-//		$res = Array();
-//		if($this->verifDonneesExterne($id))
-//		{
-//            
-//			if(isset($aData['Description']))
-//			{
-//                
-//				foreach ($aData as $cle => $valeur) {
-//					$aSet[] = ($cle . "= '".$valeur. "'");
-//				}
-//                //var_dump($aSet);
-//                
-//				if(count($aSet) > 0)
-//				{
-//					$query = "Update ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." SET ";
-//					$query .= join(", ", $aSet);
-//					
-//					$query .= (" WHERE id_oeuvre = ". $id);
-//                    //echo $query;
-//					$resQuery = $this->_db->query($query);
-//					//echo $query;
-//				}
-//			}
-//		}
-//		else 
-//		{
-//			if(extract($aData) > 0)
-//			{
-//				$query = "INSERT INTO ". self::TABLE_OEUVRE_DONNEES_EXTERNES ."  (`id_oeuvre`, `Description`, `Categorie`, `cote`) 
-//				VALUES ('".$id. "','". $Description. "','". $CategorieObjet. "','1')";
-//				$resQuery = $this->_db->query($query);
-//				//echo $query;
-//			}
-//		}
-//	
-//		return ($resQuery ? $id : 0);
-//	}
-	
+	// ---------------------------------------------SUPPRIMER OEUVRE---------------------------------------
+	   // @author Fred
+        public function SupprimerOeuvreByID($id)
+        {
+            $id=$this->filtre($id);
+            
+            $request="DELETE FROM oeuvre WHERE id_oeuvre='$id'";
+            $result = $this->_db->query($request);
+            
+            if ($result !== FALSE) 
+            {
+                return $infoTitre;              
+            } 
+        }
     
     
+    
+    // ---------------------------------------------MODIFIER OEUVRE-----------------------------------------------
     // @author Fred
     public function modifierOeuvre($array){
     
@@ -442,6 +394,30 @@ class Oeuvre extends Modele {
       return true;
         }
     
+    
+    
+    public function getXmlCoordsFromAdress($array)
+    {
+        $adresseComplete= $this->filtre($array["adresseCivique"]);
+        var_dump(urlencode($adresseComplete));
+        $coords=array();
+        $base_url="https://maps.googleapis.com/maps/api/geocode/xml?";
+        // ajouter &region=FR si ambiguité (lieu de la requete pris par défaut)
+        $request_url = $base_url . "address=" . urlencode($adresseComplete).'&sensor=false&key=AIzaSyDnHiKY4EfV1GMVgQR48AMJsfVnJWilVSE';
+        $xml = simplexml_load_file($request_url) or die("url not loading");
+        //print_r($xml);
+        $coords['lat']=$coords['lon']='';
+        $coords['status'] = $xml->status ;
+        if($coords['status']=='OK')
+        {
+            $coords['lat'] = $xml->result->geometry->location->lat ;
+            $coords['lon'] = $xml->result->geometry->location->lng ;
+        }
+        return $coords;
+    }
+    
+    // author Fred 
+    // filtre qui empeche les injections sql/ XSS + utf8 encode.
     function filtre($variable)
     {
         $varFiltre = $this->_db->real_escape_string($variable);
