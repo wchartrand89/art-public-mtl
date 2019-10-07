@@ -45,87 +45,20 @@
 		<h2>Dates</h2>
 		<section>
 		<?php
-		// POUR AFFICHER DATE : voir cette reference
-		// https://stackoverflow.com/questions/16749778/php-date-format-date1365004652303-0500
-
-
-		// $aDates=[];
-		// foreach ($aData as $cle => $oeuvre) {
-		// 	extract($oeuvre);
-		// 	$verif="";
-		// 	//echo $Arrondissement;
-		// 	if(count($aDates)>0){
-		// 		foreach($aDates as $cle => $date){
-		// 			if($dateCreation !== $date && $verif !== false){
-		// 				$verif = true;
-		// 			}else if ($dateCreation == $date) {
-		// 				$verif = false;
-		// 			}
-		// 		}
-		// 		if($verif && !is_null($dateCreation)){
-		// 			$aDates[]= $dateCreation;
-		// 		}
-		// 	}else{
-		// 		if(!is_null($dateCreation)){
-		// 			$aDates[]= $dateCreation;
-		// 		}
-				
-		// 	}
-		// }
-		 $aDatesC =[];
+	
+		$aDatesC=[];
 		foreach($aDates as $cle => $date){
-			$str = $date["dateCreation"];
-				if($str !== NULL){
-					preg_match( "#/Date\(((\-))(\d{8,13})\d{3}(.*?)\)/#", $str, $match );
-				   if(count($match)>0){
-					   $temps= -1 * $match[3];
-						//echo date( "Y", $temps ); 
-						//echo "<br>";
-						$laDate= date( "Y", $temps ); 
-				   }else{
-					    preg_match( "#/Date\((\d{8,13})\d{3}(.*?)\)/#", $str, $match );
-						//echo date( "Y", $match[1] ); 
-						$laDate= date( "Y", $match[1]); 
-						//echo "<br>";
-				   }
-				   $aDatesC[]=$laDate; 
+			if($date["dateCreation"] !== NULL && $date["dateCreation"] !== "NULL"){
+				$dates= explode("/", $date["dateCreation"]);
+				if(count($dates)>1){
+					$aDatesC[] = $dates[2];
 				}
-			
-				
-				
-				
-				// if($match[2]=="-"){
-				// 	echo date( "r", $match[3] ); 
-				// }
-				// else{
-				// 	echo date( "r", $match[2] ); 
-				// }
-			
-
-
-		
-
-
-				//preg_match('/(\d{10})(\d{3})([\+\-]\d{4})/', $date, $matches);
-			// 	if(count($matches)>0){
-			// var_dump($matches);
-			// $timestamp = $matches[1]/1000;
-			// $operator = $matches[2];
-			// $hours = $matches[3]*36; // Get the seconds
-
-			// $datetime = new DateTime();
-
-			// $datetime->setTimestamp($timestamp);
-			// $datetime->modify($operator . $hours . ' seconds');
-			// var_dump($datetime->format('Y-m-d H:i:s'));
-			// 	}
+			}
 		}
-		
 		sort($aDatesC);
-		var_dump($aDatesC);
-		echo count($aDatesC);
-		echo $aDatesC[0];
-		echo $aDatesC[count($aDatesC)-1];
+		echo "<p>".$aDatesC[0]."</p>";
+		echo "<p>".$aDatesC[count($aDatesC)-1]."</p>";
+
 		?>
 		</section>
 	</section>
