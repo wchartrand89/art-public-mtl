@@ -19,17 +19,54 @@
 </aside>	
 <section class="liste">
 <?php
+
+// VERSION OK SI ARTISTES pas bien classés (nom collectif/nom )
+// foreach ($aData as $cle => $artiste) {
+// 	extract($artiste);
+// 	//var_dump($artiste);
+// 	//$lettre1 = strpos($Nom, "A");
+// 	//$lettre1Collectif = strpos($NomCollectif, "A");
+// 		if(isset($Nom) && $Nom!=""){
+// 			$aNoms[]= $artiste;
+
+// 		//echo '<a class="lienArtiste" href="artiste/'.$id_artiste.'">'.$Nom .", ". $Prenom.'</a>';
+// 	}
+// 	else
+// 	{
+// 		$aNoms[]= $artiste;
+// 		//echo '<a class="lienArtiste" href="">'.$NomCollectif.'</a>' ;
+// 	}	
+	
+// }
+
+
+$Noms=[];
+$i=0;
 foreach ($aData as $cle => $artiste) {
-	extract($artiste);
-	//$lettre1 = strpos($Nom, "A");
-	//$lettre1Collectif = strpos($NomCollectif, "A");
-		if(isset($Nom) && $Nom!=""){
-		echo '<a class="lienArtiste" href="artiste/'.$id_artiste.'">'.$Nom .", ". $Prenom.'</a>';
+	
+		if(isset($artiste["Nom"]) && $artiste["Nom"]!=""){
+			$Noms[$i]["nom"]=$artiste["Nom"]." ".$artiste["Prenom"];
+			$Noms[$i]["id"]=$artiste["id_artiste"];
 	}
 	else
 	{
-		echo '<a class="lienArtiste" href="">'.$NomCollectif.'</a>' ;
+		$Noms[$i]["nom"]= $artiste["NomCollectif"];
+		$Noms[$i]["id"]=$artiste["id_artiste"];
+	}	
+	$i++;
+}
+sort($Noms);
+
+foreach ($Noms as $cle => $artiste) {
+	extract($artiste);
+		if(isset($nom) && $nom!=""){
+		echo '<a class="lienArtiste '.$nom[0].'" href="artiste/'.$id.'">'.$nom .'</a>';
+	}
+	else
+	{
+		echo '<a class="lienArtiste '.$nom[0].'" href="artiste/'.$id.'">'.$nom.'</a>' ;
 	}	
 }
+
 ?>
 </section>
