@@ -1,7 +1,5 @@
 window.addEventListener("load", function(){
-    var objXhr= getXHR();
-    console.log(artistes);
-    //console.log(tableauArtistes);
+    //console.log(artistes);
     let body=document.querySelector("body");
     let listeLettres = Array("A", "B", "C", "D", "E","F", "G", "H", "I","J","K", "L", "M", "N", "O","P", "Q", "R", "S", "T","U","V","W","X","Y","Z");
     let lettreChoisie=document.querySelector(".focus");
@@ -13,17 +11,6 @@ window.addEventListener("load", function(){
     fleches.forEach(function(fleche){
         fleche.addEventListener("click", function(){
             //TEST AJAX
-
-            objXhr.onreadystatechange = function(){
-                if(objXhr.readyState == 4 && objXhr.status == 200){ 
-                    liste.innerHTML = objXhr.responseText;
-                    }
-            }
-            objXhr.open("POST", "../js/traitement.php", true);
-            objXhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            objXhr.send("artistes="+artistes);
-
-
                 //changer le contenu des lettres en fonction de la fleche sur laquelle l'utilisateur a cliqué
                 lettres.forEach(function(lettre){
                     let change = false;
