@@ -55,7 +55,36 @@ body{
 .filtres{
     background-color: var(--couleur-marine);
     color:var(--couleur-fond);
+    margin-bottom: var(--padding-base);
 }
+.filtres h2{
+    margin-bottom: var(--padding-base);
+}
+.filtres>section{
+    margin-bottom: var(--padding-base);
+    padding: var(--padding-base);
+}
+.filtres>section:not(.back) {
+    display:flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+}
+.filtres>section>section{
+    display:flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+}
+.filtres .critere{
+    display:flex;
+    align-items: center;
+    width:45%;
+    margin:0 var(--padding-base) var(--padding-base) 0;
+
+}
+.filtres .critere i{
+    margin-right:15px;
+}
+
 .filtres h2{
     color:var(--couleur-fond);
 }
@@ -63,6 +92,22 @@ body{
     font-size:3.6rem;
 }
 
+/*------------------ Retour filtre  -------------------*/
+.back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+}
+.back i{
+position:absolute;
+top:0;
+font-size: 3.6rem;
+background-color: var(--couleur-marine);
+border: solid white 3px;
+padding:5px;
+border-radius: 25px;
+}
 
 /*------------------ Liste des oeuvres -------------------*/
 

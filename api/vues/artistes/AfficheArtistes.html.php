@@ -17,25 +17,19 @@
 	<p class="lettre">C</p>
 	<!-- <p class=" hidden lettre">F</p> -->
 </aside>	
-
 <section class="liste">
-
 <?php
 foreach ($aData as $cle => $artiste) {
 	extract($artiste);
-	$lettre1 = strpos($Nom, "A");
-	$lettre1Collectif = strpos($NomCollectif, "A");
-		if(isset($Nom) && $Nom!="" && $lettre1 === 0){
+	//$lettre1 = strpos($Nom, "A");
+	//$lettre1Collectif = strpos($NomCollectif, "A");
+		if(isset($Nom) && $Nom!=""){
 		echo '<a class="lienArtiste" href="artiste/'.$id_artiste.'">'.$Nom .", ". $Prenom.'</a>';
 	}
-	else if($lettre1Collectif === 0)
+	else
 	{
 		echo '<a class="lienArtiste" href="">'.$NomCollectif.'</a>' ;
 	}	
+}
 ?>
-	
-	<?php 
-	}
-	?>
-
 </section>

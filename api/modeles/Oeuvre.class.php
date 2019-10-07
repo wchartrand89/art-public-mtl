@@ -135,6 +135,29 @@ WHERE O.id_oeuvre=". $id;
 		return $res;
         
 	}
+
+	/**
+	 * Récupère les différents arrondissements des oeuvres
+	 * @access public
+	 * @return Array
+	 */
+	public function getArrondissements() 
+	{
+		$res = Array();     
+		$query="SELECT DISTINCT Arrondissement FROM ". self::TABLE_OEUVRE . " ORDER BY Arrondissement";
+		$mrResultat = $this->_db->query($query);
+
+		if($mrResultat !== FALSE)
+		{
+			while($oeuvre = $mrResultat->fetch_assoc())
+			{
+				$res[] = $oeuvre;
+			}
+			
+		}
+		return $res;
+        
+	}
 	
     
      

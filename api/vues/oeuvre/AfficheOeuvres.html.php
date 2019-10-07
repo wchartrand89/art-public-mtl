@@ -1,130 +1,207 @@
 <article class="filtres">
-				<section class="mesOeuvres">
-					<h2>Mes oeuvres</h2>
-					<div>
-						<i class="material-icons">check_circle_outline</i>
-						<p>Déja visitées</p>
-					</div>
-					<div>
-						<i class="material-icons">star_border</i>
-						<p>À visiter</p>
-					</div>
-					<div>
-						<i class="material-icons">favorite_border</i>
-						<p>Favorites</p>
-					</div>
-				</section>
-				<section class="type">
-					<h2>Type d'oeuvre</h2>
-					<section>
-					<!-- Faire L'affichage des types d'oeuvre dynamiquement -->
-					<?php
-						//var_dump($aTypes);
-						foreach ($aTypes as $cle => $type) {
-							?>
-							<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p>
-							<?php
-							echo $type["Nom"];
-							?>
-							</p>
-						</div>
-						<?php
-						}
-							?>
-					</section>
-				</section>
+	<section class="mesOeuvres">
+		<h2>Mes oeuvres</h2>
+		<section>
+			<div class= "critere">
+				<i class="material-icons">check_circle_outline</i>
+				<p>Déja visitées</p>
+			</div>
+			<div class= "critere">
+				<i class="material-icons">star_border</i>
+				<p>À visiter</p>
+			</div>
+			<div class= "critere">
+				<i class="material-icons">favorite_border</i>
+				<p>Favorites</p>
+			</div>
+		</section>
+		
+	</section>
+	<section class="type">
+		<h2>Type d'oeuvre</h2>
+		<section>
+		<!-- Faire L'affichage des types d'oeuvre dynamiquement -->
+		<?php
+			//var_dump($aTypes);
+			foreach ($aTypes as $cle => $type) {
+				?>
+				<div class= "critere">
+				<i class="material-icons">check_box_outline_blank</i>
+				<p>
+				<?php
+				echo $type["Nom"];
+				?>
+				</p>
+			</div>
+			<?php
+			}
+				?>
+		</section>
+	</section>
 
-				<!-- Faire L'affichage des dates dynamiquement -->
-				<!-- Aller chercher dans la BD les dates la plus récente et la plus vieille-->
-				<section class="date">
-					<h2>Dates</h2>
-					<section>
-					<?php
-					// POUR AFFICHER DATE : voir cette reference
-					// https://stackoverflow.com/questions/16749778/php-date-format-date1365004652303-0500
+	<!-- Faire L'affichage des dates dynamiquement -->
+	<!-- Aller chercher dans la BD les dates la plus récente et la plus vieille-->
+	<section class="date">
+		<h2>Dates</h2>
+		<section>
+		<?php
+		// POUR AFFICHER DATE : voir cette reference
+		// https://stackoverflow.com/questions/16749778/php-date-format-date1365004652303-0500
 
 
-					$aDates=[];
-					foreach ($aData as $cle => $oeuvre) {
-						extract($oeuvre);
-						$verif="";
-						//echo $Arrondissement;
-						if(count($aDates)>0){
-							foreach($aDates as $cle => $date){
-								if($dateCreation !== $date && $verif !== false){
-									$verif = true;
-								}else if ($dateCreation == $date) {
-									$verif = false;
-								}
-							}
-							if($verif && !is_null($dateCreation)){
-								$aDates[]= $dateCreation;
-							}
-						}else{
-							if(!is_null($dateCreation)){
-								$aDates[]= $dateCreation;
-							}
-							
-						}
+		$aDates=[];
+		foreach ($aData as $cle => $oeuvre) {
+			extract($oeuvre);
+			$verif="";
+			//echo $Arrondissement;
+			if(count($aDates)>0){
+				foreach($aDates as $cle => $date){
+					if($dateCreation !== $date && $verif !== false){
+						$verif = true;
+					}else if ($dateCreation == $date) {
+						$verif = false;
 					}
-					sort($aDates); 
-					foreach($aDates as $cle => $date){
-						?>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p><?php 
-							
-							preg_match( "#/Date\((\d{10})\d{3}(.*?)\)/#", $date, $match);
-    						echo date( "r", $match[1] );
-							//echo $nvlDate; ?></p>
-						</div>
-						<?php
-					}
+				}
+				if($verif && !is_null($dateCreation)){
+					$aDates[]= $dateCreation;
+				}
+			}else{
+				if(!is_null($dateCreation)){
+					$aDates[]= $dateCreation;
+				}
+				
+			}
+		}
+		sort($aDates); 
+		foreach($aDates as $cle => $date){
+			// $str = "/Date(1365004652303-0500)/";
+			$str = $date;
+			// echo "ok";
+			//echo $date;
+			 echo "<br>";
+				//preg_match( "#/Date\((\d{10})\d{3}(.*?)\)/#", $str, $match );
+				preg_match( "#/Date\(((\-))(\d{8,13})\d{3}(.*?)\)/#", $str, $match );
+				//echo (count($match));
+				if(count($match)>0){
+					//var_dump($match);
+					echo date( "Y", $match[3] ); 
+					echo "<br>";
+				}else{
+					preg_match( "#/Date\((\d{8,13})\d{3}(.*?)\)/#", $str, $match );
+					//var_dump($match);
+					echo date( "Y", $match[1] ); 
+					echo "<br>";
+				}
+				
+				
+				// if($match[2]=="-"){
+				// 	echo date( "r", $match[3] ); 
+				// }
+				// else{
+				// 	echo date( "r", $match[2] ); 
+				// }
+			
+
+
+		
+
+
+				//preg_match('/(\d{10})(\d{3})([\+\-]\d{4})/', $date, $matches);
+			// 	if(count($matches)>0){
+			// var_dump($matches);
+			// $timestamp = $matches[1]/1000;
+			// $operator = $matches[2];
+			// $hours = $matches[3]*36; // Get the seconds
+
+			// $datetime = new DateTime();
+
+			// $datetime->setTimestamp($timestamp);
+			// $datetime->modify($operator . $hours . ' seconds');
+			// var_dump($datetime->format('Y-m-d H:i:s'));
+			// 	}
+			
+			
+			?>
+	
+
+			<!-- <div class= "critere">
+				<i class="material-icons">check_box_outline_blank</i>
+				<p><?php 
+			
+				echo $date; ?></p>
+			</div> -->
+			<?php
+		}
+		?>
+		</section>
+	</section>
+	<!-- Faire L'affichage des arrondissements dynamiquement -->
+	<section class="arrond">
+		<h2>Arrondissement</h2>
+		<section>
+
+		<!-- Faire L'affichage des arrondissements dynamiquement -->
+		<?php
+			//var_dump($aArrond);
+			foreach ($aArrond as $cle => $arrond) {
+				?>
+				<div class= "critere">
+				<i class="material-icons">check_box_outline_blank</i>
+				<p>
+				<?php
+				echo $arrond["Arrondissement"];
+				?>
+				</p>
+			</div>
+			<?php
+			}
+				?>
+
+
+
+
+		<?php
+		// $aArrond=[];
+		// foreach ($aData as $cle => $oeuvre) {
+		// 	extract($oeuvre);
+		// 	$verif="";
+			//echo $Arrondissement;
+		// 	if(count($aArrond)>0 && !is_null($Arrondissement)){
+		// 		foreach($aArrond as $cle => $arrond){
+		// 			if($Arrondissement !== $arrond && $verif !== false){
+		// 				$verif = true;
+		// 			}else if ($Arrondissement == $arrond) {
+		// 				$verif = false;
+		// 			}
+		// 		}
+		// 		if($verif && !is_null($Arrondissement)){
+		// 			$aArrond[]= $Arrondissement;
+		// 		}
+		// 	}else{
+		// 		$aArrond[]= $Arrondissement;
+		// 	}
+		// }
+		// sort($aArrond); 
+		// foreach($aArrond as $cle => $arrond){
+			?>
+			<!-- <div class= "critere">
+				<i class="material-icons">check_box_outline_blank</i>
+				<p>-->
+					<?php 
+					//echo $arrond
 					?>
-					</section>
+				<!-- </p> 
+			</div> -->
+			<?php
+		// }
+		?> 
 
-				</section>
-				<!-- Faire L'affichage des arrondissements dynamiquement -->
-				<section class="arrond">
-					<h2>Arrondissement</h2>
-					<section>
-
-					<?php
-					$aArrond=[];
-					foreach ($aData as $cle => $oeuvre) {
-						extract($oeuvre);
-						$verif="";
-						//echo $Arrondissement;
-						if(count($aArrond)>0 && !is_null($Arrondissement)){
-							foreach($aArrond as $cle => $arrond){
-								if($Arrondissement !== $arrond && $verif !== false){
-									$verif = true;
-								}else if ($Arrondissement == $arrond) {
-									$verif = false;
-								}
-							}
-							if($verif && !is_null($Arrondissement)){
-								$aArrond[]= $Arrondissement;
-							}
-						}else{
-							$aArrond[]= $Arrondissement;
-						}
-					}
-					sort($aArrond); 
-					foreach($aArrond as $cle => $arrond){
-						?>
-						<div>
-							<i class="material-icons">check_box_outline_blank</i>
-							<p><?php echo $arrond?></p>
-						</div>
-						<?php
-					}
-					?>
-					</section>
-				</section>
-			</article>
+		</section>
+	</section>
+	<section class="back">
+		<i class="material-icons">arrow_back</i>
+	</section>
+</article>
 		<section class="recherche">
 			<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 			<div class="vueChoisie">

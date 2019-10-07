@@ -42,6 +42,7 @@ class OeuvreControlleur extends Controlleur
         {
         	$res = $this->getListeOeuvre();
 			$types= $this->getType();
+			$arrondissements= $this->getArrondissement();
         }
 		
 		if(isset($_GET['json']))
@@ -63,7 +64,7 @@ class OeuvreControlleur extends Controlleur
 			}
 			else
 			{
-				$oVue->afficheOeuvres($res, $types);
+				$oVue->afficheOeuvres($res, $types, $arrondissements);
 			}
 			
 			$oVue->affichePied();
@@ -106,6 +107,15 @@ class OeuvreControlleur extends Controlleur
 		
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->getTypes();
+
+		return $aOeuvre;
+	}
+	
+	protected function getArrondissement()
+	{
+		
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getArrondissements();
 
 		return $aOeuvre;
 	}
