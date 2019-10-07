@@ -161,7 +161,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 {
                        // envoyer la data a la function qui envoie sur le modele Oeuvre.class pour avoir les infos de l'oeuvre
                 $arrayModif=$_POST;
-                if($res=$this->getXmlcoords($arrayModif) 
+                if($res=$this->getJsonCoordsFromAdress($arrayModif) 
 //                   && $res2=$this->ajoutOeuvre($res, $arrayModif) 
 //                   && $res3=$this->ajoutMateriaux($arrayModif) 
 //                   && $res4=$this->ajoutCat($arrayModif) 
@@ -269,9 +269,9 @@ class OeuvreAdminControlleur extends OeuvreControlleur
     
     
     // AJOUT OEUVRE
-    protected function getXmlcoords($array){
+    protected function getJsonCoordsFromAdress($array){
         $oOeuvre = new Oeuvre();
-		$aOeuvre = $oOeuvre->getXmlCoordsFromAdress($array);
+		$aOeuvre = $oOeuvre->getJsonCoordsFromAdress($array);
         var_dump($aOeuvre);
         die();
 		return $aOeuvre;

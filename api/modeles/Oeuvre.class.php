@@ -127,7 +127,7 @@ class Oeuvre extends Modele {
 			
 		}
         
-        $res= array_map('utf8_encode', $res);
+
 		return $res;
         
 	}
@@ -161,7 +161,7 @@ class Oeuvre extends Modele {
 			{
 				foreach($categorie as $cle=> $valeur)
 				{
-					$categorie[$cle] = utf8_decode(utf8_encode($valeur));
+					$categorie[$cle] = (utf8_decode($valeur));
 				}
 				$res[] = $categorie;
 			}
@@ -180,7 +180,7 @@ class Oeuvre extends Modele {
 			{
 				foreach($souscat as $cle=> $valeur)
 				{
-					$souscat[$cle] = utf8_decode(utf8_encode($valeur));
+					$souscat[$cle] = (utf8_decode($valeur));
 				}
 				$res[] = $souscat;
 			}
@@ -395,11 +395,11 @@ class Oeuvre extends Modele {
         }
     
     
-    
+      // @author Fred 
+    // API GOOGLE GEOCODING => on envoie l'adresse et on recoit lat long
     public function getXmlCoordsFromAdress($array)
     {
         $adresseComplete= $this->filtre($array["adresseCivique"]);
-        var_dump(urlencode($adresseComplete));
         $coords=array();
         $base_url="https://maps.googleapis.com/maps/api/geocode/xml?";
         // ajouter &region=FR si ambiguité (lieu de la requete pris par défaut)
@@ -416,13 +416,45 @@ class Oeuvre extends Modele {
         return $coords;
     }
     
+    public function getJsonCoordsFromAdress($array){
+    
+        $curl = curl_init();
+    
+        $adresseComplete= $this->filtre($array["adresseCivique"]);
+
+        // fictional URL to an existing file with no data in it (ie. 0 byte file)
+        $url = 'https://maps.googleapis.com/maps/api/geocode/json?adress';
+
+
+
+        $data = array(
+            'address' => $adresseComplete,
+            'sensor' => false,
+            'key' => "AIzaSyDnHiKY4EfV1GMVgQR48AMJsfVnJWilVSE"
+
+        );
+
+        $data_string = http_build_query($data);
+        $url = 'https://maps.googleapis.com/maps/api/geocode/xml?'.$data_string;
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_URL, $url);
+
+        $resp = curl_exec($curl);
+        //dumps an associative array representation of the json
+        $result = json_decode($resp, true);
+
+        return $result;
+        // Close request to clear up some resources
+        curl_close($curl);
+    }
+    
     // author Fred 
     // filtre qui empeche les injections sql/ XSS + utf8 encode.
     function filtre($variable)
     {
         $varFiltre = $this->_db->real_escape_string($variable);
         $varFiltre=htmlspecialchars($varFiltre);
-        $varFiltre=utf8_decode($varFiltre);
         //ici, on pourrait appliquer d'autres filtres.... (ex: strip_tags qui enlèverait les tags HTML dans un texte...)
         return $varFiltre;
     }
