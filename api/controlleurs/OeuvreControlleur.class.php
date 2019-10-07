@@ -41,8 +41,9 @@ class OeuvreControlleur extends Controlleur
         else 	// Liste des oeuvres
         {
         	$res = $this->getListeOeuvre();
-			$types= $this->getType();
-			$arrondissements= $this->getArrondissement();
+			$types= $this->getListeType();
+			$arrondissements= $this->getListeArrondissement();
+			$dates= $this->getListeDate();
         }
 		
 		if(isset($_GET['json']))
@@ -64,7 +65,7 @@ class OeuvreControlleur extends Controlleur
 			}
 			else
 			{
-				$oVue->afficheOeuvres($res, $types, $arrondissements);
+				$oVue->afficheOeuvres($res, $types, $arrondissements, $dates);
 			}
 			
 			$oVue->affichePied();
@@ -102,22 +103,31 @@ class OeuvreControlleur extends Controlleur
 		return $aOeuvre;
 	}
 	
-	protected function getType()
+	protected function getListeType()
 	{
 		
-		$oOeuvre = new Oeuvre();
-		$aOeuvre = $oOeuvre->getTypes();
+		$oType = new Type();
+		$aType = $oType->getListe();
 
-		return $aOeuvre;
+		return $aType;
 	}
 	
-	protected function getArrondissement()
+	protected function getListeArrondissement()
 	{
 		
-		$oOeuvre = new Oeuvre();
-		$aOeuvre = $oOeuvre->getArrondissements();
+		$oArrondissement = new Arrondissement();
+		$aArrondissement = $oArrondissement->getListe();
 
-		return $aOeuvre;
+		return $aArrondissement;
+	}
+	
+	protected function getListeDate()
+	{
+		
+		$oDate = new Date();
+		$aDate = $oDate->getListe();
+
+		return $aDate;
 	}
 	
 	

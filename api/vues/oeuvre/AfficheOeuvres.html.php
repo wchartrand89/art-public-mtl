@@ -49,49 +49,49 @@
 		// https://stackoverflow.com/questions/16749778/php-date-format-date1365004652303-0500
 
 
-		$aDates=[];
-		foreach ($aData as $cle => $oeuvre) {
-			extract($oeuvre);
-			$verif="";
-			//echo $Arrondissement;
-			if(count($aDates)>0){
-				foreach($aDates as $cle => $date){
-					if($dateCreation !== $date && $verif !== false){
-						$verif = true;
-					}else if ($dateCreation == $date) {
-						$verif = false;
-					}
-				}
-				if($verif && !is_null($dateCreation)){
-					$aDates[]= $dateCreation;
-				}
-			}else{
-				if(!is_null($dateCreation)){
-					$aDates[]= $dateCreation;
-				}
+		// $aDates=[];
+		// foreach ($aData as $cle => $oeuvre) {
+		// 	extract($oeuvre);
+		// 	$verif="";
+		// 	//echo $Arrondissement;
+		// 	if(count($aDates)>0){
+		// 		foreach($aDates as $cle => $date){
+		// 			if($dateCreation !== $date && $verif !== false){
+		// 				$verif = true;
+		// 			}else if ($dateCreation == $date) {
+		// 				$verif = false;
+		// 			}
+		// 		}
+		// 		if($verif && !is_null($dateCreation)){
+		// 			$aDates[]= $dateCreation;
+		// 		}
+		// 	}else{
+		// 		if(!is_null($dateCreation)){
+		// 			$aDates[]= $dateCreation;
+		// 		}
 				
-			}
-		}
-		sort($aDates); 
+		// 	}
+		// }
+		 $aDatesC =[];
 		foreach($aDates as $cle => $date){
-			// $str = "/Date(1365004652303-0500)/";
-			$str = $date;
-			// echo "ok";
-			//echo $date;
-			 echo "<br>";
-				//preg_match( "#/Date\((\d{10})\d{3}(.*?)\)/#", $str, $match );
-				preg_match( "#/Date\(((\-))(\d{8,13})\d{3}(.*?)\)/#", $str, $match );
-				//echo (count($match));
-				if(count($match)>0){
-					//var_dump($match);
-					echo date( "Y", $match[3] ); 
-					echo "<br>";
-				}else{
-					preg_match( "#/Date\((\d{8,13})\d{3}(.*?)\)/#", $str, $match );
-					//var_dump($match);
-					echo date( "Y", $match[1] ); 
-					echo "<br>";
+			$str = $date["dateCreation"];
+				if($str !== NULL){
+					preg_match( "#/Date\(((\-))(\d{8,13})\d{3}(.*?)\)/#", $str, $match );
+				   if(count($match)>0){
+					   $temps= -1 * $match[3];
+						//echo date( "Y", $temps ); 
+						//echo "<br>";
+						$laDate= date( "Y", $temps ); 
+				   }else{
+					    preg_match( "#/Date\((\d{8,13})\d{3}(.*?)\)/#", $str, $match );
+						//echo date( "Y", $match[1] ); 
+						$laDate= date( "Y", $match[1]); 
+						//echo "<br>";
+				   }
+				   $aDatesC[]=$laDate; 
 				}
+			
+				
 				
 				
 				// if($match[2]=="-"){
@@ -119,19 +119,13 @@
 			// $datetime->modify($operator . $hours . ' seconds');
 			// var_dump($datetime->format('Y-m-d H:i:s'));
 			// 	}
-			
-			
-			?>
-	
-
-			<!-- <div class= "critere">
-				<i class="material-icons">check_box_outline_blank</i>
-				<p><?php 
-			
-				echo $date; ?></p>
-			</div> -->
-			<?php
 		}
+		
+		sort($aDatesC);
+		var_dump($aDatesC);
+		echo count($aDatesC);
+		echo $aDatesC[0];
+		echo $aDatesC[count($aDatesC)-1];
 		?>
 		</section>
 	</section>
