@@ -1,4 +1,4 @@
-<article class="filtres">
+<article class="filtres hidden">
 	<section class="mesOeuvres">
 		<h2>Mes oeuvres</h2>
 		<section>
