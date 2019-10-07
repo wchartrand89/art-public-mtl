@@ -11,6 +11,7 @@
 		    
 		    <script src="./js/define.js"></script>
 		    <script src="./js/admin.js"></script>
+		    
 			
 			<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico&display=swap" rel="stylesheet">
 		    <link rel="stylesheet" href="../../css/flex.css" type="text/css" media="screen">							
