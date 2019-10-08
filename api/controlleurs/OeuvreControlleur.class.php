@@ -132,5 +132,11 @@ class OeuvreControlleur extends Controlleur
 	
 	
 	
+	public function postAction(Requete $requete)
+    {
+		if(!empty($_POST)){
+			echo "POST";
+		}         
+	}
 }
 ?>
