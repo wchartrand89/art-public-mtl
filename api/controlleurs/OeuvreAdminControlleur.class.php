@@ -31,10 +31,35 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         //vérifier que l'admin est connecté
 	if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
      {
-        error_reporting(E_ALL ^ E_NOTICE);
+            error_reporting(E_ALL ^ E_NOTICE);
 			$res = array();
 			//var_dump($requete->url_elements);
-        
+
+
+            /*
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            sert a récupérer des données pour localisation des oeuvres sur une carte 
+            ---ne pas effacer svp
+            (william)
+            */
+                        $oOeuvre = new Oeuvre();
+                        $res = $oOeuvre->getLocalisations2();
+                        echo $res;
+                        die;
+
+            /*
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            */
+
+
+
+
             
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
 			{
@@ -46,21 +71,31 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 				$res = $this->getOeuvre($id_oeuvre);
 				
 			} 
-			else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "miseajour")
+//			else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "miseajour")
+//			{
+//				$res = $this->mettreAJour();
+//				echo "MISE A JOUR";
+//			}
+            else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "ajout")
 			{
-				$res = $this->mettreAJour();
-				echo "MISE A JOUR";
+                $res2 = $this->getCategorie();
+				$res3 = $this->getSousCategorie();
+				$oVue = new AdminVue();
+                $oVue->afficheEntete("");
+				$oVue->afficheFormulaireAjout($res2, $res3);
+                $oVue->affichePied();
 			}
-        
         // si url = oeuvre/id/modifier alors get l'oeuvre avec l'ID => afficher le formulaire prerempli
 			else if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]) && isset($requete->url_elements[2]) && $requete->url_elements[2] == "modifier" )
 			{
 				
 				$id=$requete->url_elements[1];
-				$res = $this->getOeuvreByID($id);
+				$res = $this->getOeuvre($id);
+				$res2 = $this->getCategorie();
+				$res3 = $this->getSousCategorie();
 				$oVue = new AdminVue();
 				$oVue->afficheEntete("");
-				$oVue->afficheFormulaireModification($res);
+				$oVue->afficheFormulaireModification($res, $res2, $res3);
 				$oVue->affichePied();
 			}
         else if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]) && isset($requete->url_elements[2]) && $requete->url_elements[2] == "supprimer")
@@ -120,43 +155,60 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         // si on recoit quelque chose
         if(!empty($_POST))
         {
+            // @author fred
             // et que l'action est modification
             if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="modification")
             {
                 // envoyer la data a la function qui envoie sur le modele Oeuvre.class pour avoir les infos de l'oeuvre
                 $arrayModif=$_POST;
-                if($res=$this->modifierOeuvre($arrayModif)){
-                      //rediriger vers la page des oeuvres si le resultat est correct
-                      header("Location: /art-public-mtl/api/admin/oeuvre");
+                if($res=$this->modifierOeuvre($arrayModif) 
+                   && $res2=$this->modifierArtiste($arrayModif) 
+                   && $res3=$this->modifierMateriaux($arrayModif) 
+                   && $res4=$this->modifierCat($arrayModif) 
+                   && $res5=$this->modifierSousCat($arrayModif)
+                  ){
+//                    var_dump($res);
+//                    var_dump($res2);
+//                    var_dump($res3);
+//                    var_dump($res4);
+//                    var_dump($res5);
+//                    die();
+                    //rediriger vers la page des oeuvres si le resultat est correct
+                    header("Location: /art-public-mtl/api/admin/oeuvre");
                 }else{
-                    //sinon echo erreur
                     echo "Veuillez vérifier vos champs.";
                 }
+            }
                 
-          
+                
+//                 AJOUT OEUVREEEEEEEEE
+                else if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="ajouterOeuvre")
+                {
+                       // envoyer la data a la function qui envoie sur le modele Oeuvre.class pour avoir les infos de l'oeuvre
+                $arrayModif=$_POST;
+                if($res=$this->getXmlCoordsFromAdress($arrayModif)) {
+                    if($res2=$this->ajoutOeuvre( $arrayModif, $res) )
+//                   && $res3=$this->ajoutMateriaux($arrayModif) 
+//                   && $res4=$this->ajoutCat($arrayModif) 
+//                   && $res5=$this->ajoutSousCat($arrayModif)
+                  {
+//                    var_dump($res);
+//                    var_dump($res2);
+//                    var_dump($res3);
+//                    var_dump($res4);
+//                    var_dump($res5);
+//                    die();
+                    //rediriger vers la page des oeuvres si le resultat est correct
+                    header("Location: /art-public-mtl/api/admin/oeuvre");
+                }
+
+                }else{
+                    echo "Veuillez vérifier vos champs.";
+                }
       
             }  
         }        
      
-       // var_dump($_POST);
-//		$res = array();
-//        //var_dump($requete->url_elements);
-//        //var_dump($requete);
-//		if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
-//		{
-//            $id_oeuvre = (int)$requete->url_elements[0];
-//            $parametres=array();
-//            //tableau dans lequel on met toutes les variables POST
-//            foreach ( $_POST as $post => $val )  {
-//                $parametres["$post"] = $val;
-//            }
-//
-//            //var_dump($requete->parametres);
-//            //echo $id_oeuvre;
-//
-//            $res = $this->modifOeuvre($id_oeuvre, $parametres);
-//            
-//        } 
 		
 		if(isset($_GET['json']))
 		{
@@ -168,33 +220,47 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         
 	}
 	
-//	protected function modifOeuvre($id_oeuvre, $param)
-//	{
-//		$oOeuvre = new Oeuvre();
-//		$aOeuvre = $oOeuvre->modifOeuvre($id_oeuvre, $param);	
-//		return $aOeuvre;
-//	}
 	
 	/**
 	 * Fait l'importation et la mise à jour des oeuvres et des artistes 
 	 * @access private
 	 * @TODO Ajouter la mise à jour des artistes
 	 */
+    
+    
+    // SUPPRESION OEUVRE
+    // @author fred
     private function SupprimerOeuvre($id){
         $oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->SupprimerOeuvreByID($id);
 		return $aOeuvre;
     }
     
-	private function mettreAJour()
-	{
-		$oImportation = new Importation();
-		$oImportation->importerOeuvre();
-		$oImportation->mettreAJour();
-		
-	}
-	
-    	protected function modifierOeuvre($array)
+    
+    
+    // MODIFIER OEUVRE
+	// @author fred
+    private function modifierArtiste($array){
+        
+        $idArtiste=$array["id_artiste"];
+        $oArtiste = new Artiste();
+        // si l'artiste est existant (non null)
+        if($res=$oArtiste->getArtiste($idArtiste))
+        {
+            $oArtiste = $oArtiste->modifierArtiste($array);
+        }else{
+            $oArtiste = $oArtiste->creerArtisteOeuvre($array);
+        }
+		return $oArtiste;
+    }
+    // @author fred
+    private function modifierMateriaux($array){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->modifierMateriaux($array);
+		return $aOeuvre;
+    }
+    // @author fred
+    protected function modifierOeuvre($array)
 	{
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->modifierOeuvre($array);
@@ -202,11 +268,56 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	}
     
     
-	private function getImages($id_oeuvre)
+    // @author fred
+    protected function modifierCat($array){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->modifierCat($array);
+		return $aOeuvre;
+    }
+    
+    // @author fred
+    protected function modifierSousCat($array){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->modifierSousCat($array);
+		return $aOeuvre;
+    }
+     // @author fred
+    protected function getCategorie(){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getCategorie();
+		return $aOeuvre;
+    }
+	 // @author fred
+    protected function getSousCategorie(){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getSousCategorie();
+		return $aOeuvre;
+    }
+    
+    
+    // AJOUT OEUVRE
+    // @author fred
+    protected function ajoutOeuvre($array, $array2)
 	{
-		$oImportation = new Importation();
-		$aImage = $oImportation->telechargementImages($id_oeuvre);
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->ajoutOeuvre($array, $array2);
+		return $aOeuvre;
 	}
-	
+    
+    // @author fred
+    protected function getXmlCoordsFromAdress($array){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getXmlCoordsFromAdress($array);
+        $array = json_decode(json_encode((array)$aOeuvre), TRUE);
+        echo "<br>";
+        foreach($array as $key=>$value){
+            foreach($value as $val){
+                $newArray[$key] = $val;
+                
+            }
+        }
+		return $newArray;
+    }
+    
 }
 ?>

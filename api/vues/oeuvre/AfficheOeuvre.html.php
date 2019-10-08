@@ -1,9 +1,7 @@
-
 <section class="contenu uneOeuvre flex flex-col">
 	<section class="retour"><a href="/art-public-mtl/api/oeuvre"> < Retour  </a></section>
 	<section class="oeuvre conteneur_partager">
 		<?php
-		
 		extract($aData);
 		?>
 		<h1 class="uneOeuvre_titre"><?php echo $titre?></h1>
@@ -29,7 +27,7 @@
 						<tr>
 						<tr>
 							<td>Matériaux</td>
-							<td><?php if(isset($materiau)){echo $materiau;}else{echo "inconnu";} ?></td>
+							<td><?php if(isset($materiaux)){echo $materiaux;}else{echo "inconnu";} ?></td>
 						</tr>
 						<tr>
 							<td>Techniques</td>

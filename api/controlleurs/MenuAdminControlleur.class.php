@@ -22,6 +22,7 @@ class MenuAdminControlleur extends Controlleur
         //Vérifier si l'admin est connecté
         if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
         {
+<<<<<<< HEAD
             // si login = correct alors afficher la page menu
 
             $oOeuvre = new Oeuvre();
@@ -37,6 +38,10 @@ class MenuAdminControlleur extends Controlleur
             $oVue->afficheDeconnexion();
             $oVue->afficheMenuAdmin();
             $oVue->affichePied(); 
+=======
+            // si login = correct alors afficher la page principal menu
+            header("location:/art-public-mtl/api/admin/oeuvre");
+>>>>>>> c247ab0649b27e446da74630ff06c3e4cab9d96e
         }
         //redirige vers l'accueil si admin pas connecté.
         else
