@@ -393,6 +393,55 @@ class Oeuvre extends Modele {
       return true;
         }
     
+      // ---------------------------------------------MODIFIER OEUVRE-----------------------------------------------
+    // @author Fred
+    public function ajoutOeuvre($array, $array2){
+    
+    //filtre tous les elements du tableau
+    $Titre=$this->filtre($array["titre"]);
+    $NomCollection=$this->filtre($array["nomCollection"]);
+    $NomCollectionAng=$this->filtre($array["nomCollectionAng"]);
+    $Technique=$this->filtre($array["technique"]);
+    $TechniqueAng=$this->filtre($array["techniqueAng"]);
+    $Dimensions=$this->filtre($array["dimensions"]);
+    $Arrondissement=$this->filtre($array["arrondissement"]);
+    $Batiment=$this->filtre($array["batiment"]);
+    $AdresseCivique=$this->filtre($array["adresseCivique"]);
+    $CoordonneeLatitude=$this->filtre($array2["lat"]);
+    $CoordonneeLongitude=$this->filtre($array2["lon"]);
+    $dateCreation=$this->filtre($array["dateCreation"]);
+        
+        //si les conditions des champs sont bien respectés
+        if(is_numeric($CoordonneeLatitude) && is_numeric($CoordonneeLongitude) && is_string($Technique) && is_string($TechniqueAng) && is_string($NomCollection) && is_string($NomCollectionAng)){
+                
+                //requete
+                $request="INSERT INTO oeuvre (Titre, NomCollection, NomCollectionAng, Technique, TechniqueAng, Dimensions, Arrondissement, Batiment, AdresseCivique, CoordonneeLatitude, CoordonneeLongitude, dateCreation)
+VALUES ('$Titre', '$NomCollection', '$NomCollectionAng', '$Technique', '$TechniqueAng', '$Dimensions', '$Arrondissement', '$Batiment', '$AdresseCivique', '$CoordonneeLatitude', '$CoordonneeLongitude', '$dateCreation')";
+    
+                        //execute requete
+                        $result = $this->_db->query($request);
+                        //var_dump($result);
+                        if ($result !== FALSE) 
+                        {
+                            return true;              
+                        }
+                        else 
+                        {
+                            return "wrong code";
+                        }
+            }
+        //si conditions non respectés refresh la page et msg erreur
+        else
+        {
+            header("Location: /art-public-mtl/api/admin/oeuvre/ajout");
+            echo "Veuillez vérifiez vos champs. Vous ne pouvez entrez des caractères dans les coordonnées ou des chiffres dans les techniques !";
+        }
+        
+
+        }
+    
+    // AJOUT MAT, SOUS CAT, CAT, ARTISTE.
+    
     
       // @author Fred 
     // API GOOGLE GEOCODING => on envoie l'adresse et on recoit lat long
@@ -415,38 +464,40 @@ class Oeuvre extends Modele {
         return $coords;
     }
     
-    public function getJsonCoordsFromAdress($array){
     
-        $curl = curl_init();
     
-        $adresseComplete= $this->filtre($array["adresseCivique"]);
-
-        // fictional URL to an existing file with no data in it (ie. 0 byte file)
-        $url = 'https://maps.googleapis.com/maps/api/geocode/json?adress';
-
-
-
-        $data = array(
-            'address' => $adresseComplete,
-            'sensor' => false,
-            'key' => "AIzaSyDnHiKY4EfV1GMVgQR48AMJsfVnJWilVSE"
-
-        );
-
-        $data_string = http_build_query($data);
-        $url = 'https://maps.googleapis.com/maps/api/geocode/xml?'.$data_string;
-
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_URL, $url);
-
-        $resp = curl_exec($curl);
-        //dumps an associative array representation of the json
-        $result = json_decode($resp, true);
-
-        return $result;
-        // Close request to clear up some resources
-        curl_close($curl);
-    }
+//    public function getJsonCoordsFromAdress($array){
+//    
+//        $curl = curl_init();
+//    
+//        $adresseComplete= $this->filtre($array["adresseCivique"]);
+//
+//        // fictional URL to an existing file with no data in it (ie. 0 byte file)
+//        $url = 'https://maps.googleapis.com/maps/api/geocode/json?adress';
+//
+//
+//
+//        $data = array(
+//            'address' => $adresseComplete,
+//            'sensor' => false,
+//            'key' => "AIzaSyDnHiKY4EfV1GMVgQR48AMJsfVnJWilVSE"
+//
+//        );
+//
+//        $data_string = http_build_query($data);
+//        $url = 'https://maps.googleapis.com/maps/api/geocode/xml?'.$data_string;
+//
+//        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+//        curl_setopt($curl, CURLOPT_URL, $url);
+//
+//        $resp = curl_exec($curl);
+//        //dumps an associative array representation of the json
+//        $result = json_decode($resp, true);
+//
+//        return $result;
+//        // Close request to clear up some resources
+//        curl_close($curl);
+//    }
     
     // author Fred 
     // filtre qui empeche les injections sql/ XSS + utf8 encode.

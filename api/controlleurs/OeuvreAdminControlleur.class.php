@@ -161,12 +161,12 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 {
                        // envoyer la data a la function qui envoie sur le modele Oeuvre.class pour avoir les infos de l'oeuvre
                 $arrayModif=$_POST;
-                if($res=$this->getJsonCoordsFromAdress($arrayModif) 
-//                   && $res2=$this->ajoutOeuvre($res, $arrayModif) 
+                if($res=$this->getXmlCoordsFromAdress($arrayModif)) {
+                    if($res2=$this->ajoutOeuvre( $arrayModif, $res) )
 //                   && $res3=$this->ajoutMateriaux($arrayModif) 
 //                   && $res4=$this->ajoutCat($arrayModif) 
 //                   && $res5=$this->ajoutSousCat($arrayModif)
-                  ){
+                  {
 //                    var_dump($res);
 //                    var_dump($res2);
 //                    var_dump($res3);
@@ -175,6 +175,8 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 //                    die();
                     //rediriger vers la page des oeuvres si le resultat est correct
                     header("Location: /art-public-mtl/api/admin/oeuvre");
+                }
+
                 }else{
                     echo "Veuillez vérifier vos champs.";
                 }
@@ -269,12 +271,27 @@ class OeuvreAdminControlleur extends OeuvreControlleur
     
     
     // AJOUT OEUVRE
-    protected function getJsonCoordsFromAdress($array){
-        $oOeuvre = new Oeuvre();
-		$aOeuvre = $oOeuvre->getJsonCoordsFromAdress($array);
-        var_dump($aOeuvre);
-        die();
+    // @author fred
+    protected function ajoutOeuvre($array, $array2)
+	{
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->ajoutOeuvre($array, $array2);
 		return $aOeuvre;
+	}
+    
+    // @author fred
+    protected function getXmlCoordsFromAdress($array){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getXmlCoordsFromAdress($array);
+        $array = json_decode(json_encode((array)$aOeuvre), TRUE);
+        echo "<br>";
+        foreach($array as $key=>$value){
+            foreach($value as $val){
+                $newArray[$key] = $val;
+                
+            }
+        }
+		return $newArray;
     }
     
 }
