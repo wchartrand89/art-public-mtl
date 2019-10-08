@@ -12,6 +12,7 @@
 		    
 		    <script src="./js/define.js"></script>
 		    <script src="./js/admin.js"></script>
+		    <script src="../../js/modal.js"></script>
 		    
 			
 			<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico&display=swap" rel="stylesheet">
@@ -20,7 +21,8 @@
 			<link rel="stylesheet" href="../../css/var.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="../../css/adminmain.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="../../css/headerAdmin.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="../../css/footerAdmin.css" type="text/css" media="screen">
+<!--			<link rel="stylesheet" href="../../css/footerAdmin.css" type="text/css" media="screen">-->
+			<link rel="stylesheet" href="../../css/modal.css" type="text/css" media="screen">
 			
 		</head>
 		<body>
