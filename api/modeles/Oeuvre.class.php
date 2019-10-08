@@ -18,6 +18,7 @@ class Oeuvre extends Modele {
 	const TABLE_OEUVRE_DONNEES_EXTERNES = "apm__oeuvre_donnees_externes";
 	const TABLE_LIAISON_OEUVRE_CATEGORIE = "categorie_oeuvre";
 	const TABLE_CATEGORIE = "categorie";
+	const TABLE_IMAGE = "ref_image";
 	
 	/**
 	 * Retourne la liste des oeuvres
@@ -201,8 +202,11 @@ class Oeuvre extends Modele {
 	{
 		$res = Array();
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
-					where id_artiste=". $id;
+                    inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
+                    LEFT JOIN ". self::TABLE_IMAGE ." i ON Oeu.id_oeuvre = i.NoInterne
+                    where id_artiste=". $id;
+                    
+                    
 				
 		if($mrResultat = $this->_db->query($query))
 		{
