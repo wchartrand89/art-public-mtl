@@ -65,7 +65,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         // si url = oeuvre/id/modifier alors get l'oeuvre avec l'ID => afficher le formulaire prerempli
 			else if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]) && isset($requete->url_elements[2]) && $requete->url_elements[2] == "modifier" )
 			{
-				
+				$page = $requete->url_elements[2];
 				$id=$requete->url_elements[1];
                 //va chercher les infos de l'oeuvre présent dans la table oeuvre ou id = id url
 				$res = $this->getOeuvre($id);
@@ -75,7 +75,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 
                 //affiche la vue Admin de form de modification
 				$oVue = new AdminVue();
-				$oVue->afficheEntete("");
+				$oVue->afficheEntete($page);
 				$oVue->afficheFormulaireModification($res, $res2, $res3);
 				$oVue->affichePied();
 			}
