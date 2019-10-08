@@ -111,6 +111,7 @@ class Oeuvre extends Modele {
         O.CoordonneeLongitude as coordonneeLongitude,
         O.Dimensions as dimensions,
         O.TechniqueAng as techniqueAng,
+        i.NoImage,
         O.Technique as technique FROM Oeuvre O 
         LEFT JOIN artiste_Oeuvre AO ON O.id_oeuvre = AO.id_oeuvre 
         LEFT JOIN artiste A ON A.id_artiste = AO.id_artiste
@@ -120,6 +121,7 @@ class Oeuvre extends Modele {
         LEFT JOIN categorie C ON C.id_categorie=CO.id_categorie
         LEFT JOIN sous_categorie_oeuvre SC ON O.id_oeuvre=SC.id_oeuvre
         LEFT JOIN sous_categorie S ON SC.id_sous_categorie=S.id_sous_categorie
+        LEFT JOIN ". self::TABLE_IMAGE ." i ON O.id_oeuvre = i.NoInterne
         WHERE O.id_oeuvre=$id";
 
 

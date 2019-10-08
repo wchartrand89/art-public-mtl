@@ -146,8 +146,11 @@
 							extract($oeuvre);
 							?>
 							<section class="oeuvre conteneur_oeuvre_courante">
+								
 			                    <header class="image dummy image_oeuvre_courante">
-									<h2 class="titre-oeuvre"><?php echo $Titre?></h2>
+								<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">
+								<h2 class="titre-oeuvre"><?php echo $Titre?></h2>
+								</a>	
 									<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>"><div class="img"<?php if($NoImage !== ""){ echo 'data-img="'.$NoImage.'"';}?>></div>
 									<!-- <img src="/art-public-mtl/img/placeholder_640_480.jpg" /> -->
 								</a>

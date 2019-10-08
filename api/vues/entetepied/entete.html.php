@@ -45,6 +45,7 @@
 			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
 			echo '<link rel="stylesheet" href="../../css/oeuvres.css" type="text/css" media="screen">';
 			echo '<script src="../../js/onglets.js"></script>';
+			echo '<script src="../../js/imgOeuvre.js"></script>';
 			jsBase("oeuvre");
 		} 
 	
