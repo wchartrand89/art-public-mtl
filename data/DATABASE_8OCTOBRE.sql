@@ -1857,11 +1857,27 @@ CREATE TABLE `parcours_oeuvre` (
 -- Structure de la table `ref_image`
 --
 
+
 CREATE TABLE `ref_image` (
   `id` int(11) NOT NULL,
   `NoInterne` int(11) NOT NULL,
-  `NoImage` int(11) NOT NULL
+  `NoImage` varchar(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+
+INSERT INTO `ref_image` (`id`, `NoInterne`, `NoImage`) VALUES
+(1, 1, "962_1"),
+(2, 2, '1099_1'),
+(3, 3, '1119_1'),
+(4, 4, '1127_1'),
+(5, 5, '1137_1'),
+(6, 6, '1151_1'),
+(7, 138, '1668_1'),
+(8, 138, '1668_2'),
+(9, 138, '1668_3');
+
 
 -- --------------------------------------------------------
 
