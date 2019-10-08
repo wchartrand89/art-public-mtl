@@ -57,17 +57,18 @@ window.addEventListener("load", function(){
 
 
         function adaptatif(x) {
-            var slides = document.getElementsByClassName("slide");
+            let slides = document.getElementsByClassName("slideA");
+            let flechesA = document.getElementsByClassName("flechesA");
             if (x.matches) { // If media query matches
                 showSlides(1);
                 for(i=0; i<fleches.length; i++){
-                    fleches[i].classList.remove("hidden");
+                    flechesA[i].classList.remove("hidden");
                 }
             } else {
                 /*enlever les fleches*/
                 
                 for(i=0; i<fleches.length; i++){
-                    fleches[i].classList.add("hidden");
+                    flechesA[i].classList.add("hidden");
                 }
                 /*display flex sur toutes les slides*/ 
                 for(i=0; i<slides.length; i++){

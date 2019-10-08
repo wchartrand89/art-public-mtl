@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
--- Client :  127.0.0.1
--- Généré le :  Mar 08 Octobre 2019 à 20:05
--- Version du serveur :  5.7.11
--- Version de PHP :  7.0.4
+-- Hôte : 127.0.0.1
+-- Généré le :  lun. 07 oct. 2019 à 20:47
+-- Version du serveur :  5.7.17
+-- Version de PHP :  7.1.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -36,7 +38,7 @@ CREATE TABLE `artiste` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `artiste`
+-- Déchargement des données de la table `artiste`
 --
 
 INSERT INTO `artiste` (`id_artiste`, `Nom`, `Prenom`, `NomCollectif`, `Description`, `site_web`) VALUES
@@ -255,7 +257,7 @@ CREATE TABLE `artiste_oeuvre` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `artiste_oeuvre`
+-- Déchargement des données de la table `artiste_oeuvre`
 --
 
 INSERT INTO `artiste_oeuvre` (`id_artiste`, `id_oeuvre`) VALUES
@@ -524,17 +526,6 @@ INSERT INTO `artiste_oeuvre` (`id_artiste`, `id_oeuvre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `a_visiter`
---
-
-CREATE TABLE `a_visiter` (
-  `id_user` int(11) NOT NULL,
-  `id_oeuvre` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `categorie`
 --
 
@@ -544,7 +535,7 @@ CREATE TABLE `categorie` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `categorie`
+-- Déchargement des données de la table `categorie`
 --
 
 INSERT INTO `categorie` (`id_categorie`, `Nom`) VALUES
@@ -563,7 +554,7 @@ CREATE TABLE `categorie_oeuvre` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `categorie_oeuvre`
+-- Déchargement des données de la table `categorie_oeuvre`
 --
 
 INSERT INTO `categorie_oeuvre` (`id_categorie`, `id_oeuvre`) VALUES
@@ -870,17 +861,6 @@ INSERT INTO `categorie_oeuvre` (`id_categorie`, `id_oeuvre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `favoris`
---
-
-CREATE TABLE `favoris` (
-  `id_user` int(11) NOT NULL,
-  `id_oeuvre` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `materiaux`
 --
 
@@ -890,7 +870,7 @@ CREATE TABLE `materiaux` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `materiaux`
+-- Déchargement des données de la table `materiaux`
 --
 
 INSERT INTO `materiaux` (`id_mat`, `Nom`) VALUES
@@ -976,7 +956,7 @@ CREATE TABLE `materiaux_oeuvre` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `materiaux_oeuvre`
+-- Déchargement des données de la table `materiaux_oeuvre`
 --
 
 INSERT INTO `materiaux_oeuvre` (`id_materiaux`, `id_oeuvre`) VALUES
@@ -1514,7 +1494,7 @@ CREATE TABLE `oeuvre` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `oeuvre`
+-- Déchargement des données de la table `oeuvre`
 --
 
 INSERT INTO `oeuvre` (`id_oeuvre`, `Titre`, `NomCollection`, `NomCollectionAng`, `Technique`, `TechniqueAng`, `Dimensions`, `Arrondissement`, `Batiment`, `AdresseCivique`, `CoordonneeLatitude`, `CoordonneeLongitude`, `dateCreation`, `Description`) VALUES
@@ -1834,7 +1814,7 @@ CREATE TABLE `parcours` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `parcours`
+-- Déchargement des données de la table `parcours`
 --
 
 INSERT INTO `parcours` (`id_parcours`, `Nom`, `Description`) VALUES
@@ -1857,7 +1837,6 @@ CREATE TABLE `parcours_oeuvre` (
 -- Structure de la table `ref_image`
 --
 
-
 CREATE TABLE `ref_image` (
   `id` int(11) NOT NULL,
   `NoInterne` int(11) NOT NULL,
@@ -1878,7 +1857,6 @@ INSERT INTO `ref_image` (`id`, `NoInterne`, `NoImage`) VALUES
 (8, 138, '1668_2'),
 (9, 138, '1668_3');
 
-
 -- --------------------------------------------------------
 
 --
@@ -1891,7 +1869,7 @@ CREATE TABLE `sous_categorie` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `sous_categorie`
+-- Déchargement des données de la table `sous_categorie`
 --
 
 INSERT INTO `sous_categorie` (`id_sous_categorie`, `Nom`) VALUES
@@ -1922,7 +1900,7 @@ CREATE TABLE `sous_categorie_oeuvre` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `sous_categorie_oeuvre`
+-- Déchargement des données de la table `sous_categorie_oeuvre`
 --
 
 INSERT INTO `sous_categorie_oeuvre` (`id_sous_categorie`, `id_oeuvre`) VALUES
@@ -2241,7 +2219,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `user`
+-- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id_user`, `login`, `password`, `role`, `courriel`) VALUES
@@ -2260,7 +2238,7 @@ CREATE TABLE `vote` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Index pour les tables exportées
+-- Index pour les tables déchargées
 --
 
 --
@@ -2277,13 +2255,6 @@ ALTER TABLE `artiste_oeuvre`
   ADD KEY `id_artiste` (`id_artiste`);
 
 --
--- Index pour la table `a_visiter`
---
-ALTER TABLE `a_visiter`
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_oeuvre` (`id_oeuvre`);
-
---
 -- Index pour la table `categorie`
 --
 ALTER TABLE `categorie`
@@ -2294,13 +2265,6 @@ ALTER TABLE `categorie`
 --
 ALTER TABLE `categorie_oeuvre`
   ADD KEY `id_categorie` (`id_categorie`),
-  ADD KEY `id_oeuvre` (`id_oeuvre`);
-
---
--- Index pour la table `favoris`
---
-ALTER TABLE `favoris`
-  ADD KEY `id_user` (`id_user`),
   ADD KEY `id_oeuvre` (`id_oeuvre`);
 
 --
@@ -2369,19 +2333,24 @@ ALTER TABLE `vote`
   ADD KEY `id_oeuvre` (`id_oeuvre`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
 -- AUTO_INCREMENT pour la table `artiste`
 --
 ALTER TABLE `artiste`
-  MODIFY `id_artiste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
+  MODIFY `id_artiste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
+--
+-- AUTO_INCREMENT pour la table `categorie`
+--
+ALTER TABLE `categorie`
+  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `materiaux`
 --
 ALTER TABLE `materiaux`
-  MODIFY `id_mat` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Selon le NoInterne', AUTO_INCREMENT=92;
+  MODIFY `id_mat` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Selon le NoInterne', AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT pour la table `oeuvre`
 --
@@ -2392,6 +2361,12 @@ ALTER TABLE `oeuvre`
 --
 ALTER TABLE `sous_categorie`
   MODIFY `id_sous_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

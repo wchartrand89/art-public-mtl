@@ -18,6 +18,7 @@ class Oeuvre extends Modele {
 	const TABLE_OEUVRE_DONNEES_EXTERNES = "apm__oeuvre_donnees_externes";
 	const TABLE_LIAISON_OEUVRE_CATEGORIE = "categorie_oeuvre";
 	const TABLE_CATEGORIE = "categorie";
+	const TABLE_IMAGE = "ref_image";
 	
     
     
@@ -43,7 +44,8 @@ class Oeuvre extends Modele {
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
 					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
 					"//left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
-					."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
+                    ."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
+                    LEFT JOIN ". self::TABLE_IMAGE ." i ON Oeu.id_oeuvre = i.NoInterne
 					order by Oeu.id_oeuvre ASC
 				";
 
@@ -120,6 +122,7 @@ class Oeuvre extends Modele {
         O.CoordonneeLongitude as coordonneeLongitude,
         O.Dimensions as dimensions,
         O.TechniqueAng as techniqueAng,
+        i.NoImage,
         O.Technique as technique FROM Oeuvre O 
         LEFT JOIN artiste_Oeuvre AO ON O.id_oeuvre = AO.id_oeuvre 
         LEFT JOIN artiste A ON A.id_artiste = AO.id_artiste
@@ -129,6 +132,7 @@ class Oeuvre extends Modele {
         LEFT JOIN categorie C ON C.id_categorie=CO.id_categorie
         LEFT JOIN sous_categorie_oeuvre SC ON O.id_oeuvre=SC.id_oeuvre
         LEFT JOIN sous_categorie S ON SC.id_sous_categorie=S.id_sous_categorie
+        LEFT JOIN ". self::TABLE_IMAGE ." i ON O.id_oeuvre = i.NoInterne
         WHERE O.id_oeuvre=$id";
 
 
@@ -142,8 +146,7 @@ class Oeuvre extends Modele {
 		return $res;
         
 	}
-	
-    
+
      
     //get toutes les infos de l'oeuvres uniquement avec son ID
      // @author Fred
@@ -213,9 +216,10 @@ class Oeuvre extends Modele {
 	{
 		$res = Array();
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
-					where id_artiste=". $id;
-				
+                    inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
+                    LEFT JOIN ". self::TABLE_IMAGE ." i ON Oeu.id_oeuvre = i.NoInterne
+                    where id_artiste=". $id;
+                    	
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($oeuvre = $mrResultat->fetch_assoc())

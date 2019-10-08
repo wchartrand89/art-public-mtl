@@ -1836,7 +1836,7 @@ CREATE TABLE `parcours_oeuvre` (
 CREATE TABLE `ref_image` (
   `id` int(11) NOT NULL,
   `NoInterne` int(11) NOT NULL,
-  `NoImage` int(11) NOT NULL
+  `NoImage` varchar(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

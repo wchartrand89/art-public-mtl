@@ -1,5 +1,5 @@
 <?php 
- //var_dump ($aData);
+//  var_dump ($aData);
 ?>
 <section class="retour txtLien">
     
@@ -9,9 +9,9 @@
 </section>
 <section class="titre">
     <h1><?php echo $Prenom ." ". $Nom?></h1>
-    <p class="description"><?php echo $Description?>Une description de l'artiste quand elle aura été mise dans la base de données.</p>
+    <p class="description"><?php echo $Description?></p>
 </section>
-<section class="sesOeuvres" id="prochainSprint">
+<section class="sesOeuvres">
     <div class="slider">
         
 <?php
@@ -19,15 +19,15 @@
 foreach ($aData['oeuvres'] as $cle => $oeuvre) {
 	extract($oeuvre);
 ?>
-<div class="slide art fade">
+<div class="slide slideA art fade">
 <?php
     echo "<a href='/art-public-mtl/api/oeuvre/".$id_oeuvre."'>";
 ?>
-    <div class="img"></div>
+    <div class="img"<?php if($NoImage !== ""){ echo 'data-img="'.$NoImage.'"';}?>></div>
 </a>
 <section class="infos">
                 <p class="titreDetail artiste"><?php echo $Titre; ?></p>
-                <p class="description">Description de L'oeuvre, cette oeuvre est une sculpture réalisée en 1983.</p>
+                <p class="description"><?php echo $Description; ?></p>
                 <div class="txtLien">
                     <a href="/art-public-mtl/api/oeuvre/<?php echo $id_oeuvre; ?>">Plus de détails</a>
                     <a href="/art-public-mtl/api/oeuvre<?php echo $id_oeuvre; ?>"class="flecheLien">&#10095;</a>
@@ -35,18 +35,20 @@ foreach ($aData['oeuvres'] as $cle => $oeuvre) {
             </section>
 
         </div>
-        
- 
-    
-
-
 
 <?php
 }
+//Ne mettre les fleches que si il y a plus d'une oeuvre
+if(count($aData["oeuvres"])>1){
 ?>
-       <!-- Next and previous : fleches-->
-       <a class="fleches prev">&#10094;</a>
-        <a class="fleches next">&#10095;</a>
+<!-- Next and previous : fleches-->
+<a class="fleches flechesA prev">&#10094;</a>
+        <a class="fleches flechesA next">&#10095;</a>
+        <?php
+}
+?>
+
+       
     </div>
 </section>
 <!-- 
