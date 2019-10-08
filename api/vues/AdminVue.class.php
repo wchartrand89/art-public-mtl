@@ -33,6 +33,7 @@ class AdminVue {
 	 * @return void
 	 */
 	public function afficheEntete($page) {
+		
         require("entetepied/enteteAdmin.html.php");
 		
 	}
@@ -56,7 +57,7 @@ class AdminVue {
 	 */
 	public function affichePied() {
  
-		require("entetepied/piedAdmin.html.php");
+		//require("entetepied/piedAdmin.html.php");
 	}
 	
 

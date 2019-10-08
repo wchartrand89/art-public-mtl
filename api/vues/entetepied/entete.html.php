@@ -12,6 +12,7 @@
 	
 	<?php
 		if ($page== ""){
+			
 			cssBase("");
 			echo '<link rel="stylesheet" href="../css/home.css" type="text/css" media="screen">';
 			echo '<link rel="stylesheet" href="../css/slider.css" type="text/css" media="screen">';
@@ -73,6 +74,7 @@
 		<a class="logo" href="/art-public-mtl/api/"><img src="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
 		
 		<nav class="menu">
+			
 			<a class="lien" href="/art-public-mtl/api/oeuvre">
 			<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/>
 			<path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
