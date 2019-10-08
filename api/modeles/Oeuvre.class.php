@@ -86,6 +86,28 @@ class Oeuvre extends Modele {
 	 * @param int $id Identifiant de l'oeuvre
 	 * @return Array
 	 */
+
+	public function getLocalisations(){
+		$res = Array();
+        $query= "SELECT CoordonneeLatitude, CoordonneeLongitude FROM oeuvre";
+
+		if($mrResultat = $this->_db->query($query))
+		{
+
+			while($oeuvre = $mrResultat->fetch_assoc()){
+				array_push($res, $oeuvre);
+			}
+		}
+		return $res;
+	}
+    
+//	public function getLocalisations()
+//    {
+//
+//	}
+    
+    
+
 	public function getOeuvre($id) 
 	{
 		$res = Array();

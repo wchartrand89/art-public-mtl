@@ -38,9 +38,14 @@ class OeuvreControlleur extends Controlleur
 			$page ="oeuvre";
             
         } 
+        else if	(isset($requete->url_elements[1]) && $requete->url_elements[1]=='carte')// Liste des oeuvres
+        {
+//        	$res = $this->getCarteOeuvres();	
+        }
         else 	// Liste des oeuvres
         {
         	$res = $this->getListeOeuvre();
+//        	$res = $this->getCarteOeuvres();
 			
         }
 		
@@ -100,6 +105,15 @@ class OeuvreControlleur extends Controlleur
 
 		return $aOeuvre;
 	}
+    
+//	protected function getCarteOeuvres()
+//	{
+//		
+//		$oOeuvre = new Oeuvre();
+//		$aOeuvre = $oOeuvre->getCarte();
+//
+//		return $aOeuvre;
+//	}
 	
 	
 	

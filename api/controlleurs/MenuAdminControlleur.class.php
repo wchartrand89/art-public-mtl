@@ -23,6 +23,15 @@ class MenuAdminControlleur extends Controlleur
         if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
         {
             // si login = correct alors afficher la page menu
+
+            $oOeuvre = new Oeuvre();
+            $res = $oOeuvre->getLocalisations();
+            // var_dump($res);
+            foreach($res as $a => $b){
+                echo $b["CoordonneeLatitude"]. "N ".substr($b["CoordonneeLongitude"], 1). "W, ";
+            }
+            die;
+
             $oVue = new AdminVue();
             $oVue->afficheEntete($requete->url_elements[0]);
             $oVue->afficheDeconnexion();

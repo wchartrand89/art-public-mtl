@@ -1,3 +1,8 @@
+
+		 <section class="contenu listeOeuvres">
+         	<section class="recherche"></section>
+            <section class="oeuvres flex wrap">
+<div id="map"></div>      
     <script>
         var map;
         function initMap() 
@@ -84,16 +89,17 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
     async defer>
-    </script>
-    <div id="map"></div>      
-
-		 <section class="contenu listeOeuvres">
-         	<section class="recherche"></section>
-            <section class="oeuvres flex wrap">
+    </script>     
+                
+                
+                
+                
+                
+                
 						<?php
         
-echo '<pre>';
-//print_r($aData);
+echo '<pre>';   
+print_r($aData);
 echo '</pre>';
 						foreach ($aData as $cle => $oeuvre) {
 							extract($oeuvre);

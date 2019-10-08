@@ -1,3 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>      
     <script>
         var map;
         function initMap() 
@@ -81,75 +103,10 @@
         }
     }   
         
+        
+        
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
-    async defer>
-    </script>
-    <div id="map"></div>      
-
-		 <section class="contenu listeOeuvres">
-         	<section class="recherche"></section>
-            <section class="oeuvres flex wrap">
-						<?php
-        
-echo '<pre>';
-//print_r($aData);
-echo '</pre>';
-						foreach ($aData as $cle => $oeuvre) {
-							extract($oeuvre);
-							?>
-							<section class="oeuvre conteneur_oeuvre_courante">
-			                    <header class="image dummy image_oeuvre_courante">
-									<h2 class="titre-oeuvre"><?php echo $Titre?></h2>
-									<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>"><img src="/art-public-mtl/img/placeholder_640_480.jpg" /></a>
-			                    </header>
-			                    <section class="texte_pied_image">
-			                        <!-- <p class="description">
-			                            <?php echo $Description ?> 
-									</p> -->
-									<?php 
-									foreach($Artistes as $artiste){
-										extract($artiste);
-										?>
-										<p class="auteur_liste_oeuvre"><a href="artiste/<?php echo $id_artiste ?>">
-                           <?php 
-                            if(isset($Nom) && $Nom!=""){
-                                echo $Nom .", ". $Prenom;
-                     
-                            }
-                            else
-                            {
-                                echo $NomCollectif;
-                        
-                            }
-                                
-                                
-                                        ?></a></p>
-									<?php
-									}
-
-									?>
-			                        <p class="date_creation"><?php echo $dateCreation?></p>
-			                    </section>
-			                    <!-- <footer class="barre-action">
-			
-								<!<button class="ouvrir-oeuvre" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">En savoir plus...</button>
-			                    </footer> -->
-			                </section>
-							
-							
-							
-							
-							
-							<?php
-							/*
-							 <section class="oeuvre">
-								<h2 class="titre"><a href="/artPublic/api/oeuvre/<?php echo $oeuvre['id'] ?>"><?php echo $oeuvre['Titre']?></a></h2>	
-							</section>
-							 */
-						}
-						?>
-					</section>
-				
-			</section>
-			
+    async defer></script>
+  </body>
+</html>
