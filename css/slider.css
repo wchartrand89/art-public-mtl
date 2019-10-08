@@ -25,10 +25,10 @@
     .slide a .img {
         height: 270px;
         margin-bottom:5px;
-        position:relative
+        position:relative;
     }
     .slide a {
-        position:relative
+        position:relative;
     }
 
   .slide a img, .slide>a{

@@ -38,6 +38,7 @@
 			cssBase("oeuvres");
 			echo '<link rel="stylesheet" href="../css/oeuvres.css" type="text/css" media="screen">';
 			jsBase("oeuvres");
+			echo '<script src="../js/imgOeuvre.js"></script>';
 		} 
 		else if ($page== "oeuvre"){
 			cssBase("oeuvre");

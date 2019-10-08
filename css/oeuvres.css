@@ -116,6 +116,7 @@ border-radius: 25px;
     flex-direction: column;
     padding: 15px;
     margin: 10px;
+    width:100%;
 }
 
 .conteneur_oeuvre_courante:nth-child(2n-1) {
@@ -133,9 +134,37 @@ border-radius: 25px;
 }
 
 .image_oeuvre_courante img {
-    
     max-width: 100%;
 }
+
+.img{
+    height: 270px;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width:100%;
+    background-color: var(--couleur-fond);
+    background-image: url(../../img/oeuvres/962_1.jpg); 
+}
+
+ /* BREAK TABLET PORTRAIT UP */
+ @media screen and (min-width: 600px) {
+    /* .img {
+        height: 540px;
+    } */
+}
+
+/* BREAK TABLET LANDSCAPE UP */
+@media screen and (min-width: 900px) {
+  /* .img {
+    height: 764px;
+    } */
+    .conteneur_oeuvre_courante {
+        width:25%;
+    }
+
+}
+
 
 .texte_pied_image {
     display: flex;
@@ -162,6 +191,8 @@ border-radius: 25px;
 .oeuvres
 {
     width: 100%;
+    justify-content: center;
+    align-items:center;
 }
 
 

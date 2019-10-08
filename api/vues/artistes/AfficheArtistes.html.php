@@ -103,9 +103,9 @@ foreach ($Noms as $cle => $artiste) {
 	}
 	/*Affichage des noms des artistes en lien vers leur page personnelle */
 	if(isset($nom) && $nom!=""){
-	echo '<a class="lienArtiste '.$nom[0].'" href="artiste/'.$id.'">'.$nom .'</a>';
+	echo '<a class="lienArtiste'.$nom[0].'" href="artiste/'.$id.'">'.$nom .'</a>';
 	}else{
-		echo '<a class="lienArtiste '.$nom[0].'" href="artiste/'.$id.'">'.$nom.'</a>' ;
+		echo '<a class="lienArtiste" href="artiste/'.$id.'">'.$nom.'</a>' ;
 	}	
 }
 

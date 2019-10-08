@@ -148,7 +148,9 @@
 							<section class="oeuvre conteneur_oeuvre_courante">
 			                    <header class="image dummy image_oeuvre_courante">
 									<h2 class="titre-oeuvre"><?php echo $Titre?></h2>
-									<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>"><img src="/art-public-mtl/img/placeholder_640_480.jpg" /></a>
+									<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>"><div class="img"<?php if($NoImage !== ""){ echo 'data-img="'.$NoImage.'"';}?>></div>
+									<!-- <img src="/art-public-mtl/img/placeholder_640_480.jpg" /> -->
+								</a>
 			                    </header>
 			                    <section class="texte_pied_image">
 			                        <!-- <p class="description">
@@ -161,7 +163,7 @@
 										<p class="auteur_liste_oeuvre"><a href="artiste/<?php echo $id_artiste ?>">
                            <?php 
                             if(isset($Nom) && $Nom!=""){
-                                echo $Nom .", ". $Prenom;
+                                echo $Nom ." ". $Prenom;
                             }
                             else
                             {
@@ -171,7 +173,15 @@
 									<?php
 									}
 									?>
-			                        <p class="date_creation"><?php echo $dateCreation?></p>
+									<p class="date_creation">
+										<?php 
+										$dateOeuvre= explode("/", $dateCreation);
+										if(count($dateOeuvre)>1){
+											$anneeOeuvre = $dateOeuvre[2];
+										}
+										echo $anneeOeuvre;
+									
+									?></p>
 			                    </section>
 			                    <!-- <footer class="barre-action">
 			
