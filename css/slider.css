@@ -15,6 +15,9 @@
     justify-content: center;
     width:100%;
   }
+  .slide p{
+    color:var(--couleur-marine);
+  }
 
   .slide.art{
     flex-direction: column;
@@ -37,8 +40,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     min-width:100%;
+    background-color: var(--couleur-fond);
   }
-  .slider .slide:nth-of-type(1) a .img{
+  /* .slider .slide:nth-of-type(1) a .img{
     background-image: url(../img/oeuvres/962_1.jpg);
   }
   .slider .slide:nth-of-type(2) a .img{
@@ -46,7 +50,7 @@
   }
   .slider .slide:nth-of-type(3) a .img{
     background-image: url(../img/oeuvres/1119_1.jpg);
-  }
+  } */
 
   /* Next & previous buttons */
   /*Mettre effet de hover*/ 

@@ -32,6 +32,7 @@
 			echo '<link rel="stylesheet" href="../../css/slider.css" type="text/css" media="screen">';
 			jsBase("artiste");
 			echo '<script src="../../js/slider.js"></script>';
+			echo '<script src="../../js/imgOeuvre.js"></script>';
 		}  
 		else if ($page== "oeuvres"){
 			cssBase("oeuvres");

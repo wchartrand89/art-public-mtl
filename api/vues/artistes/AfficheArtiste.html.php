@@ -11,7 +11,7 @@
     <h1><?php echo $Prenom ." ". $Nom?></h1>
     <p class="description"><?php echo $Description?></p>
 </section>
-<section class="sesOeuvres" id="prochainSprint">
+<section class="sesOeuvres">
     <div class="slider">
         
 <?php
@@ -23,7 +23,7 @@ foreach ($aData['oeuvres'] as $cle => $oeuvre) {
 <?php
     echo "<a href='/art-public-mtl/api/oeuvre/".$id_oeuvre."'>";
 ?>
-    <div class="img"></div>
+    <div class="img"<?php if($NoImage !== ""){ echo 'data-img="'.$NoImage.'"';}?>></div>
 </a>
 <section class="infos">
                 <p class="titreDetail artiste"><?php echo $Titre; ?></p>
