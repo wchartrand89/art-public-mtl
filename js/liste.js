@@ -1,5 +1,4 @@
 window.addEventListener("load", function(){
-    //console.log(artistes);
     let body=document.querySelector("body");
     let listeLettres = Array("A", "B", "C", "D", "E","F", "G", "H", "I","J","K", "L", "M", "N", "O","P", "Q", "R", "S", "T","U","V","W","X","Y","Z");
     let lettreChoisie=document.querySelector(".focus");
@@ -10,10 +9,8 @@ window.addEventListener("load", function(){
     let fleches=document.querySelectorAll(".fleches");
     let flecheNext=document.querySelector(".next");
     let flechePrev=document.querySelector(".prev");
-    let adresse =0;
     fleches.forEach(function(fleche){
         fleche.addEventListener("click", function(){
-            //TEST AJAX
                 //changer le contenu des lettres en fonction de la fleche sur laquelle l'utilisateur a cliqué
                 lettres.forEach(function(lettre){
                     let change = false;
@@ -39,46 +36,12 @@ window.addEventListener("load", function(){
                     }
                 });
 
-                //changer le lien des fleches en fonction de celle sur laquelle on a cliqué
-                console.log(adresse);
-                // if(fleche.classList.contains("next")){
-                //     if(adresse ==0){
-                //         flecheNext.href="#"+listeLettres[adresse+25];
-                //         flechePrev.href="#"+listeLettres[adresse];
-                //         adresse=25;
-                //     }else if(adresse==25){
-                //         flechePrev.href="#"+listeLettres[25];
-                //         adresse= 24;
-                //     }
-                //     else{
-                //         flecheNext.href="#"+listeLettres[adresse-1];
-                //         flechePrev.href="#"+listeLettres[adresse];
-                //         adresse =adresse-1;
-                //     }
-                // }else{
-                //     if(adresse ==0){
-                //         // flecheNext.href="#"+listeLettres[adresse];
-                //         flechePrev.href="#"+listeLettres[adresse+2];
-                //         adresse++;
-                //     }else if(adresse==24){
-                //         flechePrev.href="#"+listeLettres[0];
-                //         adresse++;
-                //     }else if(adresse==25){
-                //         flechePrev.href="#"+listeLettres[1];
-                //         adresse=0;
-                //     }
-                //     else{
-                //         // flecheNext.href="#"+listeLettres[adresse-1];
-                //         flechePrev.href="#"+listeLettres[adresse+2];
-                //         adresse++;
-                //     }
-                // }
+                //Au clic sur les fleches, changer le lien vers ancre dans la page en fonction de la lettre choisie
                 if(fleche.classList.contains("next")){
                     flecheNext.href="#"+document.querySelector(".focus").innerHTML;
                 }else{
                     flechePrev.href="#"+document.querySelector(".focus").innerHTML;
                 }
-                console.log(adresse);
         });
     });
 
