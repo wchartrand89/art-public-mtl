@@ -52,14 +52,6 @@ $info3= $data3;
                     <input type="text" name="adresseCivique" value="<?php echo $info["adresseCivique"];  ?>" id="AdresseCivique">
                 </div>
                 <div>
-                    <label for="titre">CoordonneeLatitude</label>
-                    <input type="text" name="coordonneeLatitude" value="<?php echo $info["coordonneeLatitude"];  ?>" id="CoordonneeLatitude">
-                </div>
-                <div>
-                    <label for="titre">CoordonneeLongitude</label>
-                    <input type="text" name="coordonneeLongitude" value="<?php echo $info["coordonneeLongitude"];  ?>" id="CoordonneeLongitude">
-                </div>
-                <div>
                     <label for="titre">dateCreation</label>
                     <input type="text" name="dateCreation" value="<?php echo $info["dateCreation"];  ?>" id="dateCreation" >
                 </div>

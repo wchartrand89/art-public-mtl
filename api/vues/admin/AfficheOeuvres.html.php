@@ -1,4 +1,4 @@
-	
+
 		 
 		 	<aside id="menu_aside">
 				<a id="menu_oeuvre" href=""><img src="../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
@@ -11,10 +11,14 @@
 						<div class=bar_image>
 							<input id="bar_recherche" type="text" name="recherche" value="Recherche une oeuvre">
 							<img id="img_recherche" src="../../img/icons/search_40px.svg" alt="search">
-						</div>						
+						</div>	
+                       <p><?php if(isset($_GET['update']) && $_GET['update']=="error") echo "Une erreur est survenue, veuillez vérifiez vos champs."; ?></p>					
                         <a href="/art-public-mtl/api/admin/oeuvre/ajout" id="btn_submit" alt="ajout">+ Ajouter une oeuvre</a>
+                        
+						
 						
 					</form>
+					
 				</section>
 				<section class="nomsChamps">
 					<P>TITRE</P>
@@ -50,7 +54,7 @@
 							<p class="valeur_info_oeuvre"><?php echo $Arrondissement ?></p>
 							<span class="valeur_info_oeuvre">
 								<a href="/art-public-mtl/api/admin/oeuvre/<?php echo $id_oeuvre ?>/modifier"><img id='crayon' src="../../img/icons/crayon.svg" alt="Modifier"></a>
-								<a href="/art-public-mtl/api/admin/oeuvre/<?php echo $id_oeuvre ?>/supprimer"><img id='poubelle' src="../../img/icons/poubelle.svg" alt="Supprimer"></a>
+								<a data-href="/art-public-mtl/api/admin/oeuvre/<?php echo $id_oeuvre ?>/supprimer" class="modalPopup" onclick="handle(this);"><img id='poubelle' src="../../img/icons/poubelle.svg" alt="Supprimer"></a>
 							</span>
 
 						</div>
@@ -62,4 +66,18 @@
 				</section>
 					
 			</section>
+                       
+                       <!-- The Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="confirm-buttons">
+    <p>Etes-vous sur de vouloir supprimer cet article ?</p>
+        <a href="" id="linkSupprimer" class="confirm-ok">Supprimer</a>
+        <a class="close confirm-ok">Annuler</a>
+    </div>
+  </div>
+
+</div>
+                        
+
 							
