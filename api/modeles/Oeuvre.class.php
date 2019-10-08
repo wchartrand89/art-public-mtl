@@ -324,7 +324,7 @@ class Oeuvre extends Modele {
     
     // ---------------------------------------------MODIFIER OEUVRE-----------------------------------------------
     // @author Fred
-    public function modifierOeuvre($array){
+    public function modifierOeuvre($array, $array2){
     
     //filtre tous les elements du tableau
     $ID=$this->filtre($array["ID"]);
@@ -337,8 +337,8 @@ class Oeuvre extends Modele {
     $Arrondissement=$this->filtre($array["arrondissement"]);
     $Batiment=$this->filtre($array["batiment"]);
     $AdresseCivique=$this->filtre($array["adresseCivique"]);
-    $CoordonneeLatitude=$this->filtre($array["coordonneeLatitude"]);
-    $CoordonneeLongitude=$this->filtre($array["coordonneeLongitude"]);
+    $CoordonneeLatitude=$this->filtre($array2["lat"]);
+    $CoordonneeLongitude=$this->filtre($array2["lon"]);
     $dateCreation=$this->filtre($array["dateCreation"]);
         
         //si les conditions des champs sont bien respectés
@@ -502,9 +502,6 @@ class Oeuvre extends Modele {
         $CoordonneeLongitude=$this->filtre($array2["lon"]);
         $dateCreation=$this->filtre($array["dateCreation"]);
 
-        $b = array_map('$this->filtre', $array);
-        var_dump($b);
-        die();
         
         //si les conditions des champs sont bien respectés
         if(is_numeric($CoordonneeLatitude) && is_numeric($CoordonneeLongitude) && is_string($Technique) && is_string($TechniqueAng) && is_string($NomCollection) && is_string($NomCollectionAng)){
