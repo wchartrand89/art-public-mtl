@@ -19,6 +19,17 @@ class Oeuvre extends Modele {
 	const TABLE_LIAISON_OEUVRE_CATEGORIE = "categorie_oeuvre";
 	const TABLE_CATEGORIE = "categorie";
 	
+    
+    
+    
+    
+    
+    
+    
+    
+    //----------------------------------------------------GET----------------------------------------------------------//
+    
+    
 	/**
 	 * Retourne la liste des oeuvres
 	 * @access public
@@ -214,6 +225,11 @@ class Oeuvre extends Modele {
 		}
 		return $res;
 	}
+    
+    
+    
+    
+    
 	
 	// ---------------------------------------------SUPPRIMER OEUVRE---------------------------------------
 	   // @author Fred
@@ -226,9 +242,83 @@ class Oeuvre extends Modele {
             
             if ($result !== FALSE) 
             {
-                return $infoTitre;              
+                return true;              
             } 
         }
+    
+    
+    // @author Fred
+        public function SupprimerLienArtisteOeuvre($id){
+            
+            $id=$this->filtre($id);
+            
+            $request="DELETE FROM artiste_oeuvre WHERE id_oeuvre='$id'";
+            $result = $this->_db->query($request);
+            
+            if ($result !== FALSE) 
+            {
+                return true;              
+            } 
+        }
+    
+    // @author Fred
+    public function SupprimerLienMateriauxOeuvre($id){
+            
+            $id=$this->filtre($id);
+            
+            $request="DELETE FROM materiaux_oeuvre WHERE id_oeuvre='$id'";
+            $result = $this->_db->query($request);
+            
+            if ($result !== FALSE) 
+            {
+                return true;              
+            } 
+        }
+    
+    // @author Fred
+    public function SupprimerLienCategorieOeuvre($id){
+            
+            $id=$this->filtre($id);
+            
+            $request="DELETE FROM categorie_oeuvre WHERE id_oeuvre='$id'";
+            $result = $this->_db->query($request);
+            
+            if ($result !== FALSE) 
+            {
+                return true;              
+            } 
+        }
+    
+    // @author Fred
+    public function SupprimerLienSousCategorieOeuvre($id){
+            
+            $id=$this->filtre($id);
+            
+            $request="DELETE FROM sous_categorie_oeuvre WHERE id_oeuvre='$id'";
+            $result = $this->_db->query($request);
+            
+            if ($result !== FALSE) 
+            {
+                return true;              
+            } 
+        }
+    
+        // @author Fred
+    public function SupprimerLienParcousOeuvre($id){
+            
+            $id=$this->filtre($id);
+            
+            $request="DELETE FROM parcours_oeuvre WHERE id_oeuvre='$id'";
+            $result = $this->_db->query($request);
+            
+            if ($result !== FALSE) 
+            {
+                return true;              
+            } 
+        }
+    
+    
+    
     
     
     
@@ -352,14 +442,14 @@ class Oeuvre extends Modele {
         
             //s'il existe alors update
             if ($rows>0) {
-                //verifie si le lien existe entre l'oeuvre et le materiau
+                //verifie si le lien existe entre l'oeuvre et la categorie
                 $id_cat=$exist["id_categorie"];
                 $request = "UPDATE categorie_oeuvre
                 SET id_oeuvre = '$ID', id_categorie = '$id_cat'
                 WHERE id_oeuvre = '$ID'";
                 $result = $this->_db->query($request);
                 }
-            //sinon ajouté le matériaux dans la table matériaux.
+            //sinon msg erreur.
             else{
                 echo "erreur";
                 }
@@ -380,56 +470,60 @@ class Oeuvre extends Modele {
 
             //s'il existe alors update
             if ($rows>0) {
-                //verifie si le lien existe entre l'oeuvre et le materiau
+                //verifie si le lien existe entre l'oeuvre et la categorie
                 $id_sous_cat=$exist["id_sous_categorie"];
                 $request = "UPDATE sous_categorie_oeuvre
                 SET id_oeuvre = '$ID', id_sous_categorie = '$id_sous_cat'
                 WHERE id_oeuvre = '$ID'";
                 $result = $this->_db->query($request);
                 }
-            //sinon ajouté le matériaux dans la table matériaux.
+            //sinon msg erreur.
             else{
                 echo "erreur";
                 }
       return true;
         }
     
-      // ---------------------------------------------MODIFIER OEUVRE-----------------------------------------------
+      // ---------------------------------------------AJOUTER OEUVRE-----------------------------------------------
     // @author Fred
     public function ajoutOeuvre($array, $array2){
     
-    //filtre tous les elements du tableau
-    $Titre=$this->filtre($array["titre"]);
-    $NomCollection=$this->filtre($array["nomCollection"]);
-    $NomCollectionAng=$this->filtre($array["nomCollectionAng"]);
-    $Technique=$this->filtre($array["technique"]);
-    $TechniqueAng=$this->filtre($array["techniqueAng"]);
-    $Dimensions=$this->filtre($array["dimensions"]);
-    $Arrondissement=$this->filtre($array["arrondissement"]);
-    $Batiment=$this->filtre($array["batiment"]);
-    $AdresseCivique=$this->filtre($array["adresseCivique"]);
-    $CoordonneeLatitude=$this->filtre($array2["lat"]);
-    $CoordonneeLongitude=$this->filtre($array2["lon"]);
-    $dateCreation=$this->filtre($array["dateCreation"]);
+        //filtre tous les elements du tableau
+        $Titre=$this->filtre($array["titre"]);
+        $NomCollection=$this->filtre($array["nomCollection"]);
+        $NomCollectionAng=$this->filtre($array["nomCollectionAng"]);
+        $Technique=$this->filtre($array["technique"]);
+        $TechniqueAng=$this->filtre($array["techniqueAng"]);
+        $Dimensions=$this->filtre($array["dimensions"]);
+        $Arrondissement=$this->filtre($array["arrondissement"]);
+        $Batiment=$this->filtre($array["batiment"]);
+        $AdresseCivique=$this->filtre($array["adresseCivique"]);
+        $CoordonneeLatitude=$this->filtre($array2["lat"]);
+        $CoordonneeLongitude=$this->filtre($array2["lon"]);
+        $dateCreation=$this->filtre($array["dateCreation"]);
+
+        $b = array_map('$this->filtre', $array);
+        var_dump($b);
+        die();
         
         //si les conditions des champs sont bien respectés
         if(is_numeric($CoordonneeLatitude) && is_numeric($CoordonneeLongitude) && is_string($Technique) && is_string($TechniqueAng) && is_string($NomCollection) && is_string($NomCollectionAng)){
                 
                 //requete
                 $request="INSERT INTO oeuvre (Titre, NomCollection, NomCollectionAng, Technique, TechniqueAng, Dimensions, Arrondissement, Batiment, AdresseCivique, CoordonneeLatitude, CoordonneeLongitude, dateCreation)
-VALUES ('$Titre', '$NomCollection', '$NomCollectionAng', '$Technique', '$TechniqueAng', '$Dimensions', '$Arrondissement', '$Batiment', '$AdresseCivique', '$CoordonneeLatitude', '$CoordonneeLongitude', '$dateCreation')";
+                VALUES ('$Titre', '$NomCollection', '$NomCollectionAng', '$Technique', '$TechniqueAng', '$Dimensions', '$Arrondissement', '$Batiment', '$AdresseCivique', '$CoordonneeLatitude', '$CoordonneeLongitude', '$dateCreation')";
     
-                        //execute requete
-                        $result = $this->_db->query($request);
-                        //var_dump($result);
-                        if ($result !== FALSE) 
-                        {
-                            return true;              
-                        }
-                        else 
-                        {
-                            return "wrong code";
-                        }
+                //execute requete
+                $result = $this->_db->query($request);
+                //var_dump($result);
+                if ($result !== FALSE) 
+                {
+                    return true;              
+                }
+                else 
+                {
+                    return "wrong code";
+                }
             }
         //si conditions non respectés refresh la page et msg erreur
         else
@@ -439,7 +533,7 @@ VALUES ('$Titre', '$NomCollection', '$NomCollectionAng', '$Technique', '$Techniq
         }
         
 
-        }
+    }
     
     // AJOUT MAT, SOUS CAT, CAT, ARTISTE.
     
@@ -466,39 +560,6 @@ VALUES ('$Titre', '$NomCollection', '$NomCollectionAng', '$Technique', '$Techniq
     }
     
     
-    
-//    public function getJsonCoordsFromAdress($array){
-//    
-//        $curl = curl_init();
-//    
-//        $adresseComplete= $this->filtre($array["adresseCivique"]);
-//
-//        // fictional URL to an existing file with no data in it (ie. 0 byte file)
-//        $url = 'https://maps.googleapis.com/maps/api/geocode/json?adress';
-//
-//
-//
-//        $data = array(
-//            'address' => $adresseComplete,
-//            'sensor' => false,
-//            'key' => "AIzaSyDnHiKY4EfV1GMVgQR48AMJsfVnJWilVSE"
-//
-//        );
-//
-//        $data_string = http_build_query($data);
-//        $url = 'https://maps.googleapis.com/maps/api/geocode/xml?'.$data_string;
-//
-//        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-//        curl_setopt($curl, CURLOPT_URL, $url);
-//
-//        $resp = curl_exec($curl);
-//        //dumps an associative array representation of the json
-//        $result = json_decode($resp, true);
-//
-//        return $result;
-//        // Close request to clear up some resources
-//        curl_close($curl);
-//    }
     
     // author Fred 
     // filtre qui empeche les injections sql/ XSS + utf8 encode.
