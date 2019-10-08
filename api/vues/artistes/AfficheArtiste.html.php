@@ -9,7 +9,7 @@
 </section>
 <section class="titre">
     <h1><?php echo $Prenom ." ". $Nom?></h1>
-    <p class="description"><?php echo $Description?>Une description de l'artiste quand elle aura été mise dans la base de données.</p>
+    <p class="description"><?php echo $Description?></p>
 </section>
 <section class="sesOeuvres" id="prochainSprint">
     <div class="slider">
@@ -27,7 +27,7 @@ foreach ($aData['oeuvres'] as $cle => $oeuvre) {
 </a>
 <section class="infos">
                 <p class="titreDetail artiste"><?php echo $Titre; ?></p>
-                <p class="description">Description de L'oeuvre, cette oeuvre est une sculpture réalisée en 1983.</p>
+                <p class="description"><?php echo $Description; ?></p>
                 <div class="txtLien">
                     <a href="/art-public-mtl/api/oeuvre/<?php echo $id_oeuvre; ?>">Plus de détails</a>
                     <a href="/art-public-mtl/api/oeuvre<?php echo $id_oeuvre; ?>"class="flecheLien">&#10095;</a>
@@ -35,11 +35,6 @@ foreach ($aData['oeuvres'] as $cle => $oeuvre) {
             </section>
 
         </div>
-        
- 
-    
-
-
 
 <?php
 }
