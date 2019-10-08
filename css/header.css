@@ -6,9 +6,6 @@
 
 /*ANIMATIONS */
 
-   
-
-
     .appbar{
         background-color: var(--couleur-fond);
         height:var(--taille-appbar);
@@ -19,6 +16,8 @@
         align-items:center;
         padding: var(--padding-base);
         z-index:1;
+        position: sticky;
+        top: 0;
     }
 
 
@@ -160,12 +159,18 @@
         width:150px;
         height:150px;
     }
-
+    /*Adapter taille logo*/
+    .appbar .logo img{
+        max-width:160px;
+        height:auto;
+    }
 
 }
 
 /* BREAK TABLET LANDSCAPE UP */
 @media screen and (min-width: 900px) {
+
+
     /*Affichage ou non des icones de menu*/
     /* .appbar .menu,*/ .appbar .icons .menuCubes{ 
         display:none;

@@ -6,7 +6,7 @@ main{
 }
 
 main>section, section>.txtLien{
-    margin: var(--padding-base) 0;
+    margin: var(--padding-base) 0 calc(var(--padding-base) * 2);
 }
 
 main>section:not(.sesOeuvres){
@@ -42,7 +42,7 @@ main>section:not(.sesOeuvres){
 }
 .sesOeuvres .infos{
     background-color: var(--couleur-fond);
-    padding: 0 var(--padding-base);
+    padding: var(--padding-base);
 }
 
 /*LIENS EXTERNES*/

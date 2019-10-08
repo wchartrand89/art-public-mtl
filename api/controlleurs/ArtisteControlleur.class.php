@@ -59,13 +59,14 @@ class ArtisteControlleur extends Controlleur
 			{
 				//var_dump($res);
 				$oVue->afficheArtiste($res);	
+				$oVue->affichePied();
 			}
 			else
 			{
 				$oVue->afficheArtistes($res);
 			}	
 			
-			$oVue->affichePied();
+			
 			
 		}
 			

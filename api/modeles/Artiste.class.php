@@ -22,8 +22,9 @@ class Artiste extends Modele {
 	 */
 	public function getListe() 
 	{
-		$res = Array();
-		$query = "select * from ". self::TABLE_ARTISTE;
+		$res = Array();		
+		//trier les artistes par lettre nom famille
+		$query = "select * from ". self::TABLE_ARTISTE ." ORDER BY Nom, NomCollectif";
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($artiste = $mrResultat->fetch_assoc())

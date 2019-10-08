@@ -23,6 +23,9 @@
 			cssBase("artistes");
 			echo '<link rel="stylesheet" href="../css/artistes.css" type="text/css" media="screen">';
 			jsBase("artistes");
+			echo '<script src="../js/liste.js"></script>';
+
+
 		} 
 		else if ($page== "artiste"){
 			cssBase("artiste");
@@ -30,21 +33,26 @@
 			echo '<link rel="stylesheet" href="../../css/slider.css" type="text/css" media="screen">';
 			jsBase("artiste");
 			echo '<script src="../../js/slider.js"></script>';
+			echo '<script src="../../js/imgOeuvre.js"></script>';
 		}  
 		else if ($page== "oeuvres"){
 			cssBase("oeuvres");
-			// echo '<link rel="stylesheet" href="../../css/artiste.css" type="text/css" media="screen">';
+			echo '<link rel="stylesheet" href="../css/oeuvres.css" type="text/css" media="screen">';
 			jsBase("oeuvres");
+			echo '<script src="../js/imgOeuvre.js"></script>';
 		} 
 		else if ($page== "oeuvre"){
 			cssBase("oeuvre");
 			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+			echo '<link rel="stylesheet" href="../../css/oeuvres.css" type="text/css" media="screen">';
 			echo '<script src="../../js/onglets.js"></script>';
+			echo '<script src="../../js/imgOeuvre.js"></script>';
 			jsBase("oeuvre");
 		} 
 	
 		function cssBase($page){
 			?>
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/reset.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/var.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/header.css" type="text/css" media="screen">
@@ -53,6 +61,8 @@
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/component.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/flex.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/main.css" type="text/css" media="screen">
+
+			
 			<?php
 		}
 		function jsBase($page){

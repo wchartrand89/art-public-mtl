@@ -26,7 +26,7 @@ class OeuvreControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
-        
+        $types=array();
 		$res = array();
 		$page ="oeuvres";
 		//var_dump($requete->url_elements);
@@ -41,7 +41,9 @@ class OeuvreControlleur extends Controlleur
         else 	// Liste des oeuvres
         {
         	$res = $this->getListeOeuvre();
-			
+			$types= $this->getListeType();
+			$arrondissements= $this->getListeArrondissement();
+			$dates= $this->getListeDate();
         }
 		
 		if(isset($_GET['json']))
@@ -63,7 +65,7 @@ class OeuvreControlleur extends Controlleur
 			}
 			else
 			{
-				$oVue->afficheOeuvres($res);
+				$oVue->afficheOeuvres($res, $types, $arrondissements, $dates);
 			}
 			
 			$oVue->affichePied();
@@ -99,6 +101,33 @@ class OeuvreControlleur extends Controlleur
 		$aOeuvre = $oOeuvre->getListe();
 
 		return $aOeuvre;
+	}
+	
+	protected function getListeType()
+	{
+		
+		$oType = new Type();
+		$aType = $oType->getListe();
+
+		return $aType;
+	}
+	
+	protected function getListeArrondissement()
+	{
+		
+		$oArrondissement = new Arrondissement();
+		$aArrondissement = $oArrondissement->getListe();
+
+		return $aArrondissement;
+	}
+	
+	protected function getListeDate()
+	{
+		
+		$oDate = new Date();
+		$aDate = $oDate->getListe();
+
+		return $aDate;
 	}
 	
 	

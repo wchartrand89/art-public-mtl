@@ -1,0 +1,333 @@
+
+/*------------------ Choix affichage liste -------------------*/
+.recherche{
+    width:100%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--couleur-marine);
+}
+.recherche svg{
+    width: 40px;
+    height:40px;
+    fill: var(--couleur-marine);
+}
+
+.recherche .focus{
+width:60px;
+height:60px;
+fill:var(--couleur-orange);
+}
+
+.vueChoisie{
+    display:flex;
+    align-items: center;
+}
+.vueChoisie a{
+    padding:var(--padding-base);
+    color:var(--couleur-orange);
+    font-size:18px;
+}
+/*------------------ section selection Filtre  -------------------*/
+body{
+    position:relative;
+}
+.filtre{
+    position:sticky;
+    bottom:0;
+    width:100%;
+    background-color: rgba(245,245,245,0.8);   
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filtre i{
+    font-size:3.6rem;
+    background-color: var(--couleur-marine);
+    color:white;
+    border-radius:25px;
+    padding: 5px;
+}
+
+
+/*------------------ liste filtres  -------------------*/
+.filtres{
+    background-color: var(--couleur-marine);
+    color:var(--couleur-fond);
+    margin-bottom: var(--padding-base);
+}
+.filtres h2{
+    margin-bottom: var(--padding-base);
+}
+.filtres>section{
+    margin-bottom: var(--padding-base);
+    padding: var(--padding-base);
+}
+.filtres>section:not(.back) {
+    display:flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+}
+.filtres>section>section{
+    display:flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+}
+.filtres .critere{
+    display:flex;
+    align-items: center;
+    width:45%;
+    margin:0 var(--padding-base) var(--padding-base) 0;
+
+}
+.filtres .critere i{
+    margin-right:15px;
+}
+
+.filtres h2{
+    color:var(--couleur-fond);
+}
+.filtres .mesOeuvres i{
+    font-size:3.6rem;
+}
+
+/*------------------ Retour filtre  -------------------*/
+.back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+}
+.back i{
+position:absolute;
+top:0;
+font-size: 3.6rem;
+background-color: var(--couleur-marine);
+border: solid white 3px;
+padding:5px;
+border-radius: 25px;
+}
+
+/*------------------ Liste des oeuvres -------------------*/
+
+.conteneur_oeuvre_courante {
+    display:flex;
+    flex-direction: column;
+    padding: 15px;
+    margin: 10px;
+    width:100%;
+}
+
+.conteneur_oeuvre_courante:nth-child(2n-1) {
+    background-color: var(--couleur-fond);
+}
+
+.conteneur_oeuvre_courante:nth-child(2n) {
+    background-color: var(--couleur-bleu);
+}
+
+.image_oeuvre_courante {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.image_oeuvre_courante img {
+    max-width: 100%;
+}
+
+.img{
+    height: 270px;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width:100%;
+    background-color: var(--couleur-fond);
+    background-image: url(../../img/oeuvres/962_1.jpg); 
+}
+
+ /* BREAK TABLET PORTRAIT UP */
+ @media screen and (min-width: 600px) {
+    /* .img {
+        height: 540px;
+    } */
+}
+
+/* BREAK TABLET LANDSCAPE UP */
+@media screen and (min-width: 900px) {
+  /* .img {
+    height: 764px;
+    } */
+    .conteneur_oeuvre_courante {
+        width:25%;
+    }
+
+}
+
+
+.texte_pied_image {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.auteur_liste_oeuvre a {
+    color: var(--couleur-marine);
+    font-size: 24px;
+}
+
+.date_creation {
+    color: var(--couleur-marine);
+    font-size: 18px;
+}
+
+.auteur_liste_oeuvre {
+    font-family: 'Pacifico';
+}
+
+.oeuvres
+{
+    width: 100%;
+    justify-content: center;
+    align-items:center;
+}
+
+
+
+/*------------------ Affichage d'une oeuvre -------------------*/
+
+.uneOeuvre_titre {
+    font-family: Pacifico;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 63px;
+    text-align: left;
+    padding-left: 20px;
+    color: var(--couleur-marine);
+
+}
+
+.contenu.uneOeuvre
+{
+    padding-left: 0px;
+}
+
+.uneOeuvre > .oeuvre
+{
+    /* width: 900px; */
+    flex-direction: column;
+    display: flex;
+    background-color: #FFF;
+    margin: 0px auto;
+    align-items: flex-start;
+}
+
+.uneOeuvre > .oeuvre > .titre {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 63px;
+    text-align: center;
+    color: #103C61;
+}
+
+.uneOeuvre > .oeuvre > .image
+{
+    width: 100%;
+    height: var(--oeuvre-hauteur-image);
+    position: relative;
+    overflow: hidden;
+}
+.uneOeuvre > .oeuvre > .image > img
+{
+    width: 100%;
+    
+    position: relative;
+}
+
+
+.uneOeuvre > .oeuvre .image .dummy
+{
+    background: url("../img/placeholder_640_480.jpg") no-repeat center;
+    background-size: cover;
+}
+  
+.uneOeuvre > .oeuvre .image > .titre
+{
+    position: absolute;
+    bottom: 0px;
+    padding: 0px;
+    margin: 0px;
+    padding-left: 16px;
+    padding-right: 8px;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    width: 100%;
+    color: #ffffff;
+}
+
+
+.uneOeuvre > .oeuvre .texte
+{
+    width: 100%;
+}
+
+
+.uneOeuvre > .retour
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--couleur-orange);
+    font-size: 24px;
+    margin-left: var(--marge-gauche);
+    text-decoration: none;
+    background: url("/artPublic/img/icons/ic_keyboard_backspace_white_48px.svg") no-repeat;
+    height: 48px;
+}
+
+.uneOeuvre > .retour a
+{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    text-decoration: none;
+    color:var(--couleur-orange);
+    padding-left: 20px;
+}
+
+.uneOeuvre p {
+    font-family: Open Sans;
+    padding: 25px 20px;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+    padding-left: 20px;
+    color: var(--couleur-marine);
+}
+
+.conteneur_partager {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.conteneur_btn_partager {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.lien-pager
+{
+    margin-left: 5px;
+    margin-top: 5px;
+}
