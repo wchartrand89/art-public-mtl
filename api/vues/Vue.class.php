@@ -54,8 +54,8 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheOeuvres($aData = Array(), $aTypes= Array(), $aArrond=Array(), $aDates=Array()) {
-		
-		require  ("oeuvre/AfficheOeuvres.html.php"); 
+		require("oeuvre/AfficheFiltreMesOeuvres.html.php");
+		require ("oeuvre/AfficheOeuvres.html.php"); 
 		
 	}
 

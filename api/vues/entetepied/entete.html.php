@@ -124,3 +124,9 @@
 		</div>
 	</header>
 	<main>
+
+	<?php
+	if($page == "oeuvres"){
+		echo "<article class='filtres'>";
+	}
+	?>

@@ -1,4 +1,7 @@
-<article class="filtres hidden">
+<!-- <article class='filtres'>
+	<?php
+	// vérifier que l'utilisateur est connecté pour afficher le filtre "mes oeuvres"
+	?>
 	<section class="mesOeuvres">
 		<h2>Mes oeuvres</h2>
 		<section>
@@ -16,7 +19,7 @@
 			</div>
 		</section>
 		
-	</section>
+	</section> -->
 	<section class="type">
 		<h2>Type d'oeuvre</h2>
 		<section>
