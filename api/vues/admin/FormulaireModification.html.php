@@ -10,8 +10,8 @@ $info3= $data3;
                 
 ?>  
             <aside id="menu_aside">
-				<a id="menu_oeuvre" href=""><img src="../../../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
-				<a id="menu_artistes" href=""><img src="../../../../img/icons/paletteBlanch.svg" alt="icon image"><p class="text_menu">Artistes</p></a>
+				<a id="menu_oeuvre" href="/art-public-mtl/api/admin/oeuvre"><img src="../../../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
+				<a id="menu_artistes" href="/art-public-mtl/api/admin/artiste"><img src="../../../../img/icons/paletteBlanch.svg" alt="icon image"><p class="text_menu">Artistes</p></a>
 				<a id="menu_utilisateurs" href=""><img src="../../../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Utilisateurs</p></a>
 			</aside>
             <div id="formAdmin">

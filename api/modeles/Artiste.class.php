@@ -145,6 +145,8 @@ class Artiste extends Modele {
     $nom=@$this->filtre($array["nom"]);
     $prenom=@$this->filtre($array["prenom"]);
     $nomCollectif=@$this->filtre($array["nomCollectif"]);
+    $description=@$this->filtre($array["description"]);
+    $siteWeb=@$this->filtre($array["siteWeb"]);
  
          
     $request = "SELECT * FROM artiste WHERE Nom='$nom' AND Prenom='$prenom' AND NomCollectif='$nomCollectif'";
@@ -157,11 +159,11 @@ class Artiste extends Modele {
     }
          
              // si artiste  rempli
-             if(isset($nom) && is_string($nom) && $nom!="" && isset($prenom) && is_string($prenom) && $prenom!="" && $nomCollectif=="")
-             {
+//             if(isset($nom) && is_string($nom) && $nom!="" && isset($prenom) && is_string($prenom) && $prenom!="" && $nomCollectif=="")
+//             {
                 //requete
-                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif)
-                        VALUES('$nom','$prenom','');";
+                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif, Description, site_web)
+                        VALUES('$nom','$prenom','$nomCollectif', '$description','$siteWeb');";
     
                         //execute requete
                         $result = $this->_db->query($request);
@@ -174,45 +176,45 @@ class Artiste extends Modele {
                         {
                             return "wrong code";
                         }
-            }
+//            }
             
-             // si nom Collectif rempli
-             else if( is_string($nomCollectif)  &&  $nomCollectif!="" && $nom=="" && $prenom=="")
-             {
-                //requete
-                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif)
-                        VALUES('','','$nomCollectif');";
-    
-                        //execute requete
-                        $result = $this->_db->query($request);
-                        //var_dump($result);
-                        if ($result !== FALSE) 
-                        {
-                            return true;              
-                        }
-                        else 
-                        {
-                            return "wrong code";
-                        }
-             }
-            //si les deux sont remplis
-            else if (is_string($nomCollectif)  &&  $nomCollectif!="" && isset($nom) && is_string($nom) && $nom!="" && isset($prenom) && is_string($prenom) && $prenom!=""){
-                //requete
-                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif)
-                        VALUES('$nom','$prenom','$nomCollectif');";
-    
-                        //execute requete
-                        $result = $this->_db->query($request);
-                        //var_dump($result);
-                        if ($result !== FALSE) 
-                        {
-                            return true;              
-                        }
-                        else 
-                        {
-                            return "wrong code";
-                        }
-            }
+//             // si nom Collectif rempli
+//             else if( is_string($nomCollectif)  &&  $nomCollectif!="" && $nom=="" && $prenom=="")
+//             {
+//                //requete
+//                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif)
+//                        VALUES('','','$nomCollectif');";
+//    
+//                        //execute requete
+//                        $result = $this->_db->query($request);
+//                        //var_dump($result);
+//                        if ($result !== FALSE) 
+//                        {
+//                            return true;              
+//                        }
+//                        else 
+//                        {
+//                            return "wrong code";
+//                        }
+//             }
+//            //si les deux sont remplis
+//            else if (is_string($nomCollectif)  &&  $nomCollectif!="" && isset($nom) && is_string($nom) && $nom!="" && isset($prenom) && is_string($prenom) && $prenom!=""){
+//                //requete
+//                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif)
+//                        VALUES('$nom','$prenom','$nomCollectif');";
+//    
+//                        //execute requete
+//                        $result = $this->_db->query($request);
+//                        //var_dump($result);
+//                        if ($result !== FALSE) 
+//                        {
+//                            return true;              
+//                        }
+//                        else 
+//                        {
+//                            return "wrong code";
+//                        }
+//            }
          
         
 

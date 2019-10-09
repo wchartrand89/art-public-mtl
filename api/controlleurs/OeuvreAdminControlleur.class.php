@@ -23,7 +23,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	// 		/oeuvre/ - Liste des oeuvres
 	// 		/oeuvre/{id}/ - Une oeuvre
 	// 		/oeuvre/?q=nom,arrond,etc&valeur=chaineDeRecherche
-    //      /oeuvre/modifier/id
+    //      /oeuvre/id/modifier/
     //      /oeuvre/supprimer/id
 	
 	public function getAction(Requete $requete)
@@ -98,7 +98,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
             header("Location: /art-public-mtl/api/admin/oeuvre?update=ok");
             exit();
         }
-			else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "oeuvre")
+			else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "oeuvre" )
 			{
 				//echo "test";
 				//var_dump($_POST);
