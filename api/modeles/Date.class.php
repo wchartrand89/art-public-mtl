@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Arrondissement
+ * Class Date
  * 
  * @author Jonathan Martel
  * @version 1.0
@@ -11,25 +11,25 @@
  * 
  * 
  */
-class Arrondissement extends Modele {	
+class Date extends Modele {	
 	const TABLE_OEUVRE = "oeuvre";
-	const TABLE_ARROND = "Arrondissement";
-	//const TABLE_LIAISON_ARTISTE_OEUVRE = "apm__oeuvre_artiste";
+	const COL_DATE = "dateCreation";
+
 		
 	/**
-	 * Retourne la liste des arrondissement
+	 * Retourne la liste des dates des oeuvres
 	 * @access public
 	 * @return Array
 	 */
 	public function getListe() 
 	{
 		$res = Array();
-		$query = "select DISTINCT". self::TABLE_ARROND." from ". self::TABLE_OEUVRE. " ORDER BY Arrondissement";
+		$query = "select ". self::COL_DATE ." from ". self::TABLE_OEUVRE;
 		if($mrResultat = $this->_db->query($query))
 		{
-			while($arrond = $mrResultat->fetch_assoc())
+			while($date = $mrResultat->fetch_assoc())
 			{
-				$res[] = $arrond;
+				$res[] = $date;
 			}
 		}
 		return $res;

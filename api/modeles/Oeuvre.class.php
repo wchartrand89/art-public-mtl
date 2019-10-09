@@ -18,6 +18,7 @@ class Oeuvre extends Modele {
 	const TABLE_OEUVRE_DONNEES_EXTERNES = "apm__oeuvre_donnees_externes";
 	const TABLE_LIAISON_OEUVRE_CATEGORIE = "categorie_oeuvre";
 	const TABLE_CATEGORIE = "categorie";
+	const TABLE_IMAGE = "ref_image";
 	
     
     
@@ -43,7 +44,8 @@ class Oeuvre extends Modele {
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
 					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
 					"//left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
-					."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
+                    ."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
+                    LEFT JOIN ". self::TABLE_IMAGE ." i ON Oeu.id_oeuvre = i.NoInterne
 					order by Oeu.id_oeuvre ASC
 				";
 
@@ -162,6 +164,7 @@ class Oeuvre extends Modele {
         O.CoordonneeLongitude as coordonneeLongitude,
         O.Dimensions as dimensions,
         O.TechniqueAng as techniqueAng,
+        i.NoImage,
         O.Technique as technique FROM Oeuvre O 
         LEFT JOIN artiste_Oeuvre AO ON O.id_oeuvre = AO.id_oeuvre 
         LEFT JOIN artiste A ON A.id_artiste = AO.id_artiste
@@ -171,6 +174,7 @@ class Oeuvre extends Modele {
         LEFT JOIN categorie C ON C.id_categorie=CO.id_categorie
         LEFT JOIN sous_categorie_oeuvre SC ON O.id_oeuvre=SC.id_oeuvre
         LEFT JOIN sous_categorie S ON SC.id_sous_categorie=S.id_sous_categorie
+        LEFT JOIN ". self::TABLE_IMAGE ." i ON O.id_oeuvre = i.NoInterne
         WHERE O.id_oeuvre=$id";
 
 
@@ -184,8 +188,7 @@ class Oeuvre extends Modele {
 		return $res;
         
 	}
-	
-    
+
      
     //get toutes les infos de l'oeuvres uniquement avec son ID
      // @author Fred
@@ -255,9 +258,10 @@ class Oeuvre extends Modele {
 	{
 		$res = Array();
 		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
-					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
-					where id_artiste=". $id;
-				
+                    inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
+                    LEFT JOIN ". self::TABLE_IMAGE ." i ON Oeu.id_oeuvre = i.NoInterne
+                    where id_artiste=". $id;
+                    	
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($oeuvre = $mrResultat->fetch_assoc())
@@ -366,7 +370,7 @@ class Oeuvre extends Modele {
     
     // ---------------------------------------------MODIFIER OEUVRE-----------------------------------------------
     // @author Fred
-    public function modifierOeuvre($array){
+    public function modifierOeuvre($array, $array2){
     
     //filtre tous les elements du tableau
     $ID=$this->filtre($array["ID"]);
@@ -379,8 +383,8 @@ class Oeuvre extends Modele {
     $Arrondissement=$this->filtre($array["arrondissement"]);
     $Batiment=$this->filtre($array["batiment"]);
     $AdresseCivique=$this->filtre($array["adresseCivique"]);
-    $CoordonneeLatitude=$this->filtre($array["coordonneeLatitude"]);
-    $CoordonneeLongitude=$this->filtre($array["coordonneeLongitude"]);
+    $CoordonneeLatitude=$this->filtre($array2["lat"]);
+    $CoordonneeLongitude=$this->filtre($array2["lon"]);
     $dateCreation=$this->filtre($array["dateCreation"]);
         
         //si les conditions des champs sont bien respectés
@@ -544,9 +548,6 @@ class Oeuvre extends Modele {
         $CoordonneeLongitude=$this->filtre($array2["lon"]);
         $dateCreation=$this->filtre($array["dateCreation"]);
 
-        $b = array_map('$this->filtre', $array);
-        var_dump($b);
-        die();
         
         //si les conditions des champs sont bien respectés
         if(is_numeric($CoordonneeLatitude) && is_numeric($CoordonneeLongitude) && is_string($Technique) && is_string($TechniqueAng) && is_string($NomCollection) && is_string($NomCollectionAng)){
@@ -577,7 +578,105 @@ class Oeuvre extends Modele {
 
     }
     
-    // AJOUT MAT, SOUS CAT, CAT, ARTISTE.
+    
+    
+        // @author Fred
+    public function ajoutMateriaux($array){
+        
+        
+        
+        // separe les matériaux ajoutés
+        $materiaux=explode (", ", $this->filtre($array["materiaux"]));
+        //compte le nombre de matériaux
+        $n=count($materiaux);
+        if($n==0){
+            return true;
+        }
+        //boucle dans le tableau de materiaux
+        for ($i = 0; $i < $n; $i++) {
+            //on associe a value un mat du tableau
+             $value = $materiaux[$i];
+            //verifie si le tableau existe deja
+            $request = "SELECT * FROM materiaux WHERE Nom='$value'";
+            $result = $this->_db->query($request);
+            $rows=$result->num_rows;
+            $exist=$result->fetch_assoc();
+            //s'il existe alors ne pas l'ajouté
+            if ($rows>0) {
+                // faire le lien entre le mat existant et l'oeuvre créée
+                $id_mat=$exist["id_mat"];
+                //requete d'ajout dans la table mat oeuvre
+                $request = "INSERT INTO materiaux_oeuvre(id_materiaux, id_oeuvre) VALUES($id_mat, (SELECT MAX(id_oeuvre) FROM oeuvre))";
+                $result = $this->_db->query($request); 
+            //sinon ajouté le matériaux dans la table matériaux.
+            }else{
+                $request = "INSERT INTO materiaux(Nom) VALUES('$value')";
+               
+                // si le matériau a bien été ajouté, on add les liens dans la table intermédiaire. (+ recup dernier ID crée dans la table matériaux.)
+                if( $result = $this->_db->query($request)){
+                     $request = "INSERT INTO materiaux_oeuvre(id_materiaux, id_oeuvre) VALUES((SELECT MAX(id_mat) FROM materiaux), (SELECT MAX(id_oeuvre) FROM oeuvre))";
+                    $result = $this->_db->query($request);
+                }
+            }
+        }
+        return true;
+    }
+    
+   // @author Fred
+    public function ajoutCat($array){
+        
+            // recup categorie del'oeuvre ajoutée
+            $categorie = $this->filtre($array["categorie"]);
+
+            //verifie si le tableau existe deja
+            $request = "SELECT * FROM categorie WHERE Nom='$categorie'";
+            $result = $this->_db->query($request);
+            $rows=$result->num_rows;
+            $exist=$result->fetch_assoc();
+        
+            //s'il existe alors update
+            if ($rows>0) {
+                //verifie si le lien existe entre l'oeuvre et la categorie
+                $id_cat=$exist["id_categorie"];
+                $request = "INSERT INTO categorie_oeuvre(id_oeuvre, id_categorie)
+                VALUES((SELECT MAX(id_oeuvre) FROM oeuvre), '$id_cat')";
+                $result = $this->_db->query($request);
+                }
+            //sinon msg erreur.
+            else{
+                echo "erreur";
+                }
+        return true;
+            
+        }
+    
+       // @author Fred
+    public function ajoutSousCat($array){
+        
+            // recup categorie del'oeuvre ajoutée
+            $sous_categorie = $this->filtre($array["sousCategorie"]);
+
+            //verifie si le tableau existe deja
+            $request = "SELECT * FROM sous_categorie WHERE Nom='$sous_categorie'";
+            $result = $this->_db->query($request);
+            $rows=$result->num_rows;
+            $exist=$result->fetch_assoc();
+        
+            //s'il existe alors update
+            if ($rows>0) {
+                //verifie si le lien existe entre l'oeuvre et la categorie
+                $id_sous_cat=$exist["id_sous_categorie"];
+                $request = "INSERT INTO sous_categorie_oeuvre(id_oeuvre, id_sous_categorie)
+                VALUES((SELECT MAX(id_oeuvre) FROM oeuvre), '$id_sous_cat')";
+                $result = $this->_db->query($request);
+                }
+            //sinon msg erreur.
+            else{
+                echo "erreur";
+                }
+        return true;
+            
+        }
     
     
       // @author Fred 

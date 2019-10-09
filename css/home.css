@@ -49,14 +49,18 @@ main .nvlOeuvres h2{
 
 /* BREAK TABLET LANDSCAPE UP */
 @media screen and (min-width: 900px) {
-
-
+    .slide a .img {
+        height: 250px;
+    }
 }
 
 /* BREAK TABLET DESKTOP UP */
 @media screen and (min-width: 1200px) {
     main{
         max-width:1350px;
+    }
+    main .carte {
+        height: 764px;
     }
     /*Section titre :*/
     main .carte .text{

@@ -22,8 +22,9 @@ class Artiste extends Modele {
 	 */
 	public function getListe() 
 	{
-		$res = Array();
-		$query = "select * from ". self::TABLE_ARTISTE;
+		$res = Array();		
+		//trier les artistes par lettre nom famille
+		$query = "select * from ". self::TABLE_ARTISTE ." ORDER BY Nom, NomCollectif";
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($artiste = $mrResultat->fetch_assoc())
@@ -83,9 +84,6 @@ class Artiste extends Modele {
     $prenom=@$this->filtre($array["prenom"]);
     $nomCollectif=@$this->filtre($array["nomCollectif"]);
 
-  
-  
-        
         //si les conditions des champs sont bien respectés
          if(isset($id_artiste))
          {
@@ -138,6 +136,141 @@ class Artiste extends Modele {
         
 
     }
+    
+    //author fred
+     public function ajoutArtiste($array){
+
+    
+    //filtre tous les elements du tableau
+    $nom=@$this->filtre($array["nom"]);
+    $prenom=@$this->filtre($array["prenom"]);
+    $nomCollectif=@$this->filtre($array["nomCollectif"]);
+    $description=@$this->filtre($array["description"]);
+    $siteWeb=@$this->filtre($array["siteWeb"]);
+ 
+         
+    $request = "SELECT * FROM artiste WHERE Nom='$nom' AND Prenom='$prenom' AND NomCollectif='$nomCollectif'";
+    $result = $this->_db->query($request);
+    $rows=$result->num_rows;
+    $exist=$result->fetch_assoc();
+    //s'il existe alors ne pas l'ajouté
+    if ($rows>0) {
+        return true;
+    }
+         
+             // si artiste  rempli
+//             if(isset($nom) && is_string($nom) && $nom!="" && isset($prenom) && is_string($prenom) && $prenom!="" && $nomCollectif=="")
+//             {
+                //requete
+                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif, Description, site_web)
+                        VALUES('$nom','$prenom','$nomCollectif', '$description','$siteWeb');";
+    
+                        //execute requete
+                        $result = $this->_db->query($request);
+                        //var_dump($result);
+                        if ($result !== FALSE) 
+                        {
+                            return true;              
+                        }
+                        else 
+                        {
+                            return "wrong code";
+                        }
+//            }
+            
+//             // si nom Collectif rempli
+//             else if( is_string($nomCollectif)  &&  $nomCollectif!="" && $nom=="" && $prenom=="")
+//             {
+//                //requete
+//                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif)
+//                        VALUES('','','$nomCollectif');";
+//    
+//                        //execute requete
+//                        $result = $this->_db->query($request);
+//                        //var_dump($result);
+//                        if ($result !== FALSE) 
+//                        {
+//                            return true;              
+//                        }
+//                        else 
+//                        {
+//                            return "wrong code";
+//                        }
+//             }
+//            //si les deux sont remplis
+//            else if (is_string($nomCollectif)  &&  $nomCollectif!="" && isset($nom) && is_string($nom) && $nom!="" && isset($prenom) && is_string($prenom) && $prenom!=""){
+//                //requete
+//                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif)
+//                        VALUES('$nom','$prenom','$nomCollectif');";
+//    
+//                        //execute requete
+//                        $result = $this->_db->query($request);
+//                        //var_dump($result);
+//                        if ($result !== FALSE) 
+//                        {
+//                            return true;              
+//                        }
+//                        else 
+//                        {
+//                            return "wrong code";
+//                        }
+//            }
+         
+        
+
+    }
+    
+    
+    public function ajoutLienArtisteOeuvre($array){
+        
+            //filtre tous les elements du tableau
+    $nom=@$this->filtre($array["nom"]);
+    $prenom=@$this->filtre($array["prenom"]);
+    $nomCollectif=@$this->filtre($array["nomCollectif"]);
+        
+            $request = "SELECT * FROM artiste WHERE Nom='$nom' AND Prenom='$prenom' AND NomCollectif='$nomCollectif'";
+            $result = $this->_db->query($request);
+            $rows=$result->num_rows;
+            $exist=$result->fetch_assoc();
+            //s'il existe alors faire le lien entre artiste existant et oeuvre ajoutée
+        if ($rows>0) 
+        {
+            $id_artiste=$exist["id_artiste"];
+
+             $request = "INSERT INTO artiste_oeuvre(id_artiste, id_oeuvre) VALUES('$id_artiste', (SELECT MAX(id_oeuvre) FROM oeuvre))";
+            $result = $this->_db->query($request);
+    
+                 if ($result !== FALSE) 
+                    {
+                        return true;              
+                    }
+                    else 
+                    {
+                        return "wrong code";
+                    }
+        }
+        // sil nexiste pas alors le dernier artiste ajouté est l'artiste de l'oeuvre
+        else
+        {  
+            $request = "INSERT INTO artiste_oeuvre(id_artiste, id_oeuvre) VALUES((SELECT MAX(id_artiste) FROM artiste), (SELECT MAX(id_oeuvre) FROM oeuvre))";
+            $result = $this->_db->query($request);
+        
+                     if ($result !== FALSE) 
+                        {
+                            return true;              
+                        }
+                        else 
+                        {
+                            return "wrong code";
+                        }
+                
+        }
+        
+          
+    }
+    
+    
+    
       // @author fred
 	   function filtre($variable)
     {

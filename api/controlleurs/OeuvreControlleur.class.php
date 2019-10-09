@@ -13,9 +13,7 @@
  /*
  * TODO : Commenter selon les standards du département.
  *
- */
-
- 
+ */ 
  
 class OeuvreControlleur extends Controlleur 
 {
@@ -26,7 +24,7 @@ class OeuvreControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
-        
+        $types=array();
 		$res = array();
 		$page ="oeuvres";
 		//var_dump($requete->url_elements);
@@ -44,9 +42,10 @@ class OeuvreControlleur extends Controlleur
         }
         else 	// Liste des oeuvres
         {
-        	$res = $this->getListeOeuvre();
-//        	$res = $this->getCarteOeuvres();
-			
+			$res = $this->getListeOeuvre();
+			$types= $this->getListeType();
+			$arrondissements= $this->getListeArrondissement();
+			$dates= $this->getListeDate();
         }
 		
 		if(isset($_GET['json']))
@@ -54,31 +53,21 @@ class OeuvreControlleur extends Controlleur
 			echo json_encode($res);	
 		}
 		else
-		{
-				
-			
+		{			
 			$oVue = new Vue();
 			//$oeuvreVue = new OeuvreVue();
-			$oVue->afficheEntete($page);
-
-			
+			$oVue->afficheEntete($page);			
 			if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]))
 			{
 				$oVue->afficheOeuvre($res);
 			}
 			else
 			{
-				$oVue->afficheOeuvres($res);
-			}
-			
-			$oVue->affichePied();
-			
-		}
-			
-		
-		
-	}
-	
+				$oVue->afficheOeuvres($res, $types, $arrondissements, $dates);
+			}			
+			$oVue->affichePied();			
+		}		
+	}	
 	
     protected function getOeuvreByID($id_oeuvre)
 	{
@@ -86,8 +75,7 @@ class OeuvreControlleur extends Controlleur
 		$aOeuvre = $oOeuvre->getOeuvreByID($id_oeuvre);
 		
 		return $aOeuvre;
-	}
-	
+	}	
 		
 	protected function getOeuvre($id_oeuvre)
 	{
@@ -105,17 +93,32 @@ class OeuvreControlleur extends Controlleur
 
 		return $aOeuvre;
 	}
-    
-//	protected function getCarteOeuvres()
-//	{
-//		
-//		$oOeuvre = new Oeuvre();
-//		$aOeuvre = $oOeuvre->getCarte();
-//
-//		return $aOeuvre;
-//	}
 	
+	protected function getListeType()
+	{
+		
+		$oType = new Type();
+		$aType = $oType->getListe();
+
+		return $aType;
+	}
 	
+	protected function getListeArrondissement()
+	{
+		
+		$oArrondissement = new Arrondissement();
+		$aArrondissement = $oArrondissement->getListe();
+
+		return $aArrondissement;
+	}
 	
+	protected function getListeDate()
+	{
+		
+		$oDate = new Date();
+		$aDate = $oDate->getListe();
+
+		return $aDate;
+	}	
 }
 ?>

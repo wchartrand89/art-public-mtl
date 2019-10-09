@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Arrondissement
+ * Class Type
  * 
  * @author Jonathan Martel
  * @version 1.0
@@ -11,25 +11,24 @@
  * 
  * 
  */
-class Arrondissement extends Modele {	
-	const TABLE_OEUVRE = "oeuvre";
-	const TABLE_ARROND = "Arrondissement";
-	//const TABLE_LIAISON_ARTISTE_OEUVRE = "apm__oeuvre_artiste";
+class Type extends Modele {	
+	const TABLE_TYPE = "sous_categorie";
+
 		
 	/**
-	 * Retourne la liste des arrondissement
+	 * Retourne la liste des sous catégories
 	 * @access public
 	 * @return Array
 	 */
 	public function getListe() 
 	{
 		$res = Array();
-		$query = "select DISTINCT". self::TABLE_ARROND." from ". self::TABLE_OEUVRE. " ORDER BY Arrondissement";
+		$query = "select * from ". self::TABLE_TYPE. " ORDER BY Nom";
 		if($mrResultat = $this->_db->query($query))
 		{
-			while($arrond = $mrResultat->fetch_assoc())
+			while($type = $mrResultat->fetch_assoc())
 			{
-				$res[] = $arrond;
+				$res[] = $type;
 			}
 		}
 		return $res;

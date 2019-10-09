@@ -15,7 +15,7 @@
 
 html,
 body {
-    height: 100%;
+    /* height: 100%; */
     font-family: 'Open Sans', sans-serif;
     margin:0px 0px 0px 0px;
     box-sizing:border-box;
@@ -247,64 +247,64 @@ main .carte .btnAccueil{
 
 /*------------------ Liste des oeuvres -------------------*/
 
-.conteneur_oeuvre_courante {
+/* .conteneur_oeuvre_courante {
     display:flex;
     flex-direction: column;
     padding: 15px;
     margin: 10px;
-}
+} */
 
-.conteneur_oeuvre_courante:nth-child(2n-1) {
+/* .conteneur_oeuvre_courante:nth-child(2n-1) {
     background-color: var(--couleur-fond);
-}
+} */
 
-.conteneur_oeuvre_courante:nth-child(2n) {
+/* .conteneur_oeuvre_courante:nth-child(2n) {
     background-color: var(--couleur-bleu);
-}
+} */
 
-.image_oeuvre_courante {
+/* .image_oeuvre_courante {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
+} */
+/* 
 .image_oeuvre_courante img {
     
     max-width: 100%;
-}
-
+} */
+/* 
 .texte_pied_image {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
-}
+} */
 
-.auteur_liste_oeuvre a {
+/* .auteur_liste_oeuvre a {
     color: var(--couleur-marine);
     font-size: 24px;
-}
+} */
 
-.date_creation {
+/* .date_creation {
     color: var(--couleur-marine);
     font-size: 18px;
-}
+} */
 
-.auteur_liste_oeuvre {
+/* .auteur_liste_oeuvre {
     font-family: 'Pacifico';
-}
-
+} */
+/* 
 .oeuvres
 {
     width: 100%;
-}
+} */
 
 
 
 /*------------------ Affichage d'une oeuvre -------------------*/
 
-.uneOeuvre_titre {
+/* .uneOeuvre_titre {
     font-family: Pacifico;
     font-style: normal;
     font-weight: normal;
@@ -314,24 +314,26 @@ main .carte .btnAccueil{
     padding-left: 20px;
     color: var(--couleur-marine);
 
-}
+} */
 
-.contenu.uneOeuvre
+/* .contenu.uneOeuvre
 {
     padding-left: 0px;
-}
+} */
 
-.uneOeuvre > .oeuvre
-{
+/* .uneOeuvre > .oeuvre*/
+/* { */
     /* width: 900px; */
+    /*
     flex-direction: column;
     display: flex;
     background-color: #FFF;
     margin: 0px auto;
     align-items: flex-start;
-}
+} 
+*/
 
-.uneOeuvre > .oeuvre > .titre {
+/* .uneOeuvre > .oeuvre > .titre {
     font-family: 'Pacifico';
     font-style: normal;
     font-weight: normal;
@@ -339,30 +341,30 @@ main .carte .btnAccueil{
     line-height: 63px;
     text-align: center;
     color: #103C61;
-}
+} */
 
-.uneOeuvre > .oeuvre > .image
+/* .uneOeuvre > .oeuvre > .image
 {
     width: 100%;
     height: var(--oeuvre-hauteur-image);
     position: relative;
     overflow: hidden;
-}
-.uneOeuvre > .oeuvre > .image > img
+} */
+/* .uneOeuvre > .oeuvre > .image > img
 {
     width: 100%;
     
     position: relative;
-}
+} */
 
 
-.uneOeuvre > .oeuvre .image .dummy
+/* .uneOeuvre > .oeuvre .image .dummy
 {
     background: url("../img/placeholder_640_480.jpg") no-repeat center;
     background-size: cover;
-}
+} */
   
-.uneOeuvre > .oeuvre .image > .titre
+/* .uneOeuvre > .oeuvre .image > .titre
 {
     position: absolute;
     bottom: 0px;
@@ -374,15 +376,15 @@ main .carte .btnAccueil{
     margin-bottom: 16px;
     width: 100%;
     color: #ffffff;
-}
+} */
 
-
+/* 
 .uneOeuvre > .oeuvre .texte
 {
     width: 100%;
-}
+} */
 
-
+/* 
 .uneOeuvre > .retour
 {
     display: flex;
@@ -394,9 +396,9 @@ main .carte .btnAccueil{
     text-decoration: none;
     background: url("/artPublic/img/icons/ic_keyboard_backspace_white_48px.svg") no-repeat;
     height: 48px;
-}
+} */
 
-.uneOeuvre > .retour a
+/* .uneOeuvre > .retour a
 {
     font-family: Open Sans;
     font-style: normal;
@@ -406,9 +408,9 @@ main .carte .btnAccueil{
     text-decoration: none;
     color:var(--couleur-orange);
     padding-left: 20px;
-}
+} */
 
-.uneOeuvre p {
+/* .uneOeuvre p {
     font-family: Open Sans;
     padding: 25px 20px;
     font-size: 16px;
@@ -416,36 +418,36 @@ main .carte .btnAccueil{
     text-align: left;
     padding-left: 20px;
     color: var(--couleur-marine);
-}
+} */
 
-.conteneur_partager {
+/* .conteneur_partager {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-}
+} */
 
-.conteneur_btn_partager {
+/* .conteneur_btn_partager {
     width: 100%;
     display: flex;
     justify-content: center;
-}
+} */
 
-.lien-pager
+/* .lien-pager
 {
     margin-left: 5px;
     margin-top: 5px;
-}
+} */
 
 /**
  * Google map
  */
-.carte-generale
+/* .carte-generale
 {
     width: 900px;
     height: 500px;
     margin-top: 32px;
-}
+} */
 
 /**
  * Recherche

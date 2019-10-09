@@ -12,6 +12,7 @@
 	
 	<?php
 		if ($page== ""){
+			
 			cssBase("");
 			echo '<link rel="stylesheet" href="../css/home.css" type="text/css" media="screen">';
 			echo '<link rel="stylesheet" href="../css/slider.css" type="text/css" media="screen">';
@@ -22,6 +23,9 @@
 			cssBase("artistes");
 			echo '<link rel="stylesheet" href="../css/artistes.css" type="text/css" media="screen">';
 			jsBase("artistes");
+			echo '<script src="../js/liste.js"></script>';
+
+
 		} 
 		else if ($page== "artiste"){
 			cssBase("artiste");
@@ -29,21 +33,26 @@
 			echo '<link rel="stylesheet" href="../../css/slider.css" type="text/css" media="screen">';
 			jsBase("artiste");
 			echo '<script src="../../js/slider.js"></script>';
+			echo '<script src="../../js/imgOeuvre.js"></script>';
 		}  
 		else if ($page== "oeuvres"){
 			cssBase("oeuvres");
-			// echo '<link rel="stylesheet" href="../../css/artiste.css" type="text/css" media="screen">';
+			echo '<link rel="stylesheet" href="../css/oeuvres.css" type="text/css" media="screen">';
 			jsBase("oeuvres");
+			echo '<script src="../js/imgOeuvre.js"></script>';
 		} 
 		else if ($page== "oeuvre"){
 			cssBase("oeuvre");
 			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+			echo '<link rel="stylesheet" href="../../css/oeuvres.css" type="text/css" media="screen">';
 			echo '<script src="../../js/onglets.js"></script>';
+			echo '<script src="../../js/imgOeuvre.js"></script>';
 			jsBase("oeuvre");
 		} 
 	
 		function cssBase($page){
 			?>
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/reset.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/var.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/header.css" type="text/css" media="screen">
@@ -52,6 +61,8 @@
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/component.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/flex.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/main.css" type="text/css" media="screen">
+
+			
 			<?php
 		}
 		function jsBase($page){
@@ -73,6 +84,7 @@
 		<a class="logo" href="/art-public-mtl/api/"><img src="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
 		
 		<nav class="menu">
+			
 			<a class="lien" href="/art-public-mtl/api/oeuvre">
 			<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/>
 			<path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>

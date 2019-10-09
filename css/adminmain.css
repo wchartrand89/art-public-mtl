@@ -151,7 +151,7 @@ buttons {
     left: 0;
     z-index: 2;
     height: 64px;
-    background-color: #CCCCCC;
+    background-color: var(--couleur-fond);
     color: #FFFFFF;
     
     padding-left: var(--marge-gauche);
