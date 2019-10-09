@@ -83,6 +83,19 @@ require("admin/AfficheOeuvres.html.php");
 		
 	}
     
+    
+    /**
+	 * Affiche la liste des artiste
+	 * @access public
+	 * @return void
+	 */
+    public function afficheArtistes($aData = Array()) {
+		
+        require("admin/AfficheArtistes.html.php");
+		
+	}
+    
+    
         /**
 	 * Affiche la page de connexion admin
 	 * @access public
@@ -102,6 +115,12 @@ require("admin/AfficheOeuvres.html.php");
     
     public function afficheFormulaireAjout($data2, $data3) {
 	   require("admin/FormulaireAjout.html.php");
+		
+	}
+    
+    
+    public function afficheFormulaireAjoutArtiste() {
+	   require("admin/FormulaireAjoutArtiste.html.php");
 		
 	}
     
