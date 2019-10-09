@@ -102,6 +102,10 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         {
             $id=$requete->url_elements[1];
             $res = $this->SupprimerOeuvre($id);
+            $res = $this->SupprimerLienArtisteOeuvre($id);
+            $res = $this->SupprimerLienMateriauxOeuvre($id);
+            $res = $this->SupprimerLienCategorieOeuvre($id);
+            $res = $this->SupprimerLienSousCategorieOeuvre($id);
             header("location:/art-public-mtl/api/admin/oeuvre");
             exit();
         }
@@ -174,9 +178,10 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 //                    var_dump($res5);
 //                    die();
                     //rediriger vers la page des oeuvres si le resultat est correct
-                    header("Location: /art-public-mtl/api/admin/oeuvre");
+                    header("Location: /art-public-mtl/api/admin/oeuvre?update=ok");
                 }else{
-                    echo "Veuillez vérifier vos champs.";
+                    header("Location:/art-public-mtl/api/admin/oeuvre?update=error");
+                    die;
                 }
             }
                 
@@ -236,7 +241,29 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		return $aOeuvre;
     }
     
+    private function SupprimerLienArtisteOeuvre($id){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->SupprimerLienArtisteOeuvre($id);
+		return $aOeuvre;
+    }
     
+    private function SupprimerLienMateriauxOeuvre($id){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->SupprimerLienMateriauxOeuvre($id);
+		return $aOeuvre;
+    }
+    
+    private function SupprimerLienCategorieOeuvre($id){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->SupprimerLienCategorieOeuvre($id);
+		return $aOeuvre;
+    }
+    
+    private function SupprimerLienSousCategorieOeuvre($id){
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->SupprimerLienSousCategorieOeuvre($id);
+		return $aOeuvre;
+    }
     
     // MODIFIER OEUVRE
 	// @author fred

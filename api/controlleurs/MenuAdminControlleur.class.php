@@ -22,26 +22,21 @@ class MenuAdminControlleur extends Controlleur
         //Vérifier si l'admin est connecté
         if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
         {
-<<<<<<< HEAD
             // si login = correct alors afficher la page menu
 
-            $oOeuvre = new Oeuvre();
-            $res = $oOeuvre->getLocalisations();
-            // var_dump($res);
-            foreach($res as $a => $b){
-                echo $b["CoordonneeLatitude"]. "N ".substr($b["CoordonneeLongitude"], 1). "W, ";
-            }
-            die;
+            // $oOeuvre = new Oeuvre();
+            // $res = $oOeuvre->getLocalisations();
+            // // var_dump($res);
+            // foreach($res as $a => $b){
+            //     echo $b["CoordonneeLatitude"]. "N ".substr($b["CoordonneeLongitude"], 1). "W, ";
+            // }
+            // die;
 
             $oVue = new AdminVue();
             $oVue->afficheEntete($requete->url_elements[0]);
             $oVue->afficheDeconnexion();
             $oVue->afficheMenuAdmin();
             $oVue->affichePied(); 
-=======
-            // si login = correct alors afficher la page principal menu
-            header("location:/art-public-mtl/api/admin/oeuvre");
->>>>>>> c247ab0649b27e446da74630ff06c3e4cab9d96e
         }
         //redirige vers l'accueil si admin pas connecté.
         else
