@@ -196,20 +196,22 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                         && $res5=$this->ajoutCat($arrayModif) 
                         && $res6=$this->ajoutSousCat($arrayModif)
                       ){
-                        var_dump($res);
-                        var_dump($res2);
-                       // var_dump($res3);
-                        var_dump($res4);
-                        var_dump($res5);
-                        die();
+//                        var_dump($res);
+//                        var_dump($res2);
+//                       // var_dump($res3);
+//                        var_dump($res4);
+//                        var_dump($res5);
+//                        die();
                         //rediriger vers la page des oeuvres si le resultat est correct
                         header("Location: /art-public-mtl/api/admin/oeuvre?update=ok");
-                }
+                        }
 
-                }else{
+                    }
+                    else
+                    {
                     header("Location:/art-public-mtl/api/admin/oeuvre?update=error");
                     die;
-                }
+                    }
       
             }  
         }        
