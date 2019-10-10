@@ -3,11 +3,9 @@
     GOOGLE API KEY (TODO : SECURISER)
 
     -->
-<!--
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
     async defer>
     </script>
--->
 
 <section class="contenu uneOeuvre flex flex-col">
 	<section class="retour"><a href="javascript:history.back()"> < Retour  </a></section>
