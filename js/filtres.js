@@ -4,23 +4,25 @@ window.addEventListener("load", function(){
     /* Afficher les options de filtre au clic sur l'icone*/
     let iFiltre=document.querySelector(".filtre");
     let secFiltres=document.querySelector(".filtres");
+    let flecheBack=document.querySelector(".back");
+
+    flecheBack.addEventListener("click", function(){
+        // secFiltres.setAttribute("id", "hidden");
+        secFiltres.classList.replace("selec", "cache");
+        iFiltre.setAttribute("id", "visible");
+    });
 
     iFiltre.addEventListener("click", function(){
-        console.log(secFiltres.attributes[1].nodeValue);
-        if(secFiltres.attributes[1].nodeValue == "visible"){
-            secFiltres.setAttribute("id", "hidden");
-        }else{
-            secFiltres.setAttribute("id", "visible");
-            iFiltre.setAttribute("id", "hidden");
-        }
-        
+        //secFiltres.setAttribute("id", "visible");
+        secFiltres.classList.replace("cache", "selec");
+        iFiltre.setAttribute("id", "hidden");
     });
 
     /* Enlever les options de filtre au clic sur l'icone croix*/
     let retour =document.querySelector(".retour i");
     retour.addEventListener("click", function(){
-        console.log("retour");
-        secFiltres.setAttribute("id", "hidden");
+        //secFiltres.setAttribute("id", "hidden");
+        secFiltres.classList.replace("selec", "cache");
         iFiltre.setAttribute("id", "visible");
 
     });

@@ -99,15 +99,17 @@ body{
 
 
 /* ANIMATIONS FILTRE*/
-.sousFiltre.cache{
-    transform:ScaleY(0);
+.filtres.cache{
+    /* transform:ScaleY(0); */
     transform-origin: 50% 0%;
     transition: transform .15s;
+    transform:translateY(-100%);
 }
-.sousFiltre.selec{
-    transform: ScaleY(1);
+.filtres.selec{
+    /* transform: ScaleY(1); */
     transform-origin: 50% 0%;
     transition: transform 235ms;
+    transform:translateY(0%);
 }
 
 /*------------------ Retour filtre  -------------------*/
