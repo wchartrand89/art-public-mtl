@@ -4,9 +4,7 @@
 $info= $data;
 $info2= $data2;
 $info3= $data3;
-
-//var_dump($info);
-  
+$info4= $data4;
                 
 ?>  
             <aside id="menu_aside">
@@ -16,7 +14,7 @@ $info3= $data3;
 			</aside>
             <div id="formAdmin">
                 <span id="retour">
-                    <a id="a_image" href=""><img src="../../../../img/icons/retour_fleche.svg" alt=""></a>
+                    <a id="a_image" href="/art-public-mtl/api/admin/oeuvre"><img src="../../../../img/icons/retour_fleche.svg" alt=""></a>
                     <p>Retour</p>
                 </span>
                 <p id="text_form_admin">MODIFICATION DE L'OEUVRE</p>
@@ -83,7 +81,7 @@ $info3= $data3;
                         <input class="box" type="text" name="nomCollection" value="<?php echo $info["nomCollection"];  ?>" id="NomCollection">
                     </div> 
                     <div class="div_form">
-                        <label for="titre">NomCollectionAng</label>
+                        <label for="titre">Collection (ENG)</label>
                         <input class="box" type="text" name="nomCollectionAng" value="<?php echo $info["nomCollectionAng"];  ?>" id="NomCollectionAng">
                     </div>   
                     <div class="div_form">
@@ -91,7 +89,7 @@ $info3= $data3;
                         <input class="box" type="text" name="technique" value="<?php echo $info["technique"];  ?>" id="Technique">
                     </div>
                     <div class="div_form">
-                        <label for="titre">TechniqueAng</label>
+                        <label for="titre">Technique (ENG)</label>
                         <input class="box" type="text" name="techniqueAng" value="<?php echo $info["techniqueAng"];  ?>" id="TechniqueAng">
                     </div>       
                     <div class="div_form">
@@ -100,7 +98,23 @@ $info3= $data3;
                     </div>
                     <div class="div_form">
                         <label for="titre">Arrondissement</label>
-                        <input class="box" type="text"  name="arrondissement" value="<?php echo $info["arrondissement"];  ?>" id="Arrondissement">
+                        <select class="box" name="arrondissement">
+                         <?php 
+                            foreach($info4 as $key=>$value){
+                                $value=array_map('utf8_encode', $value);
+                                foreach($value as $val){
+                                    if($val==$info["arrondissement"]){
+                                        echo "<option value='$val' selected>$val</option>";
+                                    }else{
+                                        echo "<option value='$val'>$val</option>";
+                                    }
+                                }
+                            
+                            }
+                            
+                            ?>
+                
+                        </select>
                     </div> 
                     <div class="div_form">
                         <label for="titre">Batiment</label>
@@ -111,7 +125,7 @@ $info3= $data3;
                         <input class="box" type="text" name="adresseCivique" value="<?php echo $info["adresseCivique"];  ?>" id="AdresseCivique">
                     </div> 
                     <div class="div_form">
-                        <label for="titre">dateCreation</label>
+                        <label for="titre">Date de création</label>
                         <input class="box" type="text" name="dateCreation" value="<?php echo $info["dateCreation"];  ?>" id="dateCreation" >
                     </div>                                  
                      
@@ -130,11 +144,7 @@ $info3= $data3;
                         <label for="titre">Prénom artiste</label>
                         <input class="box" type="text" name="prenom" value="<?php echo $info["prenom"];  ?>" id="prenom" >
                     </div>
-                    <div id=btns_form>
-                        <input type="button" id="annuler" value="Annuler">
-                        <input type="submit" id="envoyer" value="Modifier">                        
-                    </div>		
-                </form>
+
             
                 <?php
 
@@ -150,11 +160,7 @@ $info3= $data3;
                         <label for="titre">Nom du collectif</label>
                         <input class="box" type="text" name="nomCollectif" value="<?php echo $info["nomCollectif"];  ?>" id="nom" >
                     </div>
-                    <div id=btns_form>
-                        <input type="button" id="annuler" value="Annuler">
-                        <input type="submit" id="envoyer" value="Modifier">  
-                    </div>		 
-            </form>
+
             
            <?php
             }
@@ -162,6 +168,10 @@ $info3= $data3;
       
           
           ?>
-               
+                                  <div id=btns_form>
+                        <input type="button" id="annuler" value="Annuler">
+                        <input type="submit" id="envoyer" value="Modifier">  
+                    </div>		 
+            </form> 
             </div>        
             

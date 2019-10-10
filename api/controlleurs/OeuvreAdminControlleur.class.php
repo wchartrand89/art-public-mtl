@@ -56,11 +56,12 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 //va chercher toutes les catégories et sous catégories
                 $res2 = $this->getCategorie();
 				$res3 = $this->getSousCategorie();
+                $res4 = $this->getArrondissement();
                 
                 //affiche la vue Admin de form d'ajout
 				$oVue = new AdminVue();
                 $oVue->afficheEntete($page);
-				$oVue->afficheFormulaireAjout($res2, $res3);
+				$oVue->afficheFormulaireAjout($res2, $res3, $res4);
                 $oVue->affichePied();
 			}
         
@@ -75,11 +76,12 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 //va chercher toutes les catégories et sous catégories
 				$res2 = $this->getCategorie();
 				$res3 = $this->getSousCategorie();
+                $res4 = $this->getArrondissement();
                 
                 //affiche la vue Admin de form de modification
 				$oVue = new AdminVue();
 				$oVue->afficheEntete($page);
-				$oVue->afficheFormulaireModification($res, $res2, $res3);
+				$oVue->afficheFormulaireModification($res, $res2, $res3, $res4);
 				$oVue->affichePied();
 			}
         // @author fred
@@ -322,6 +324,14 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		$aOeuvre = $oOeuvre->getSousCategorie();
 		return $aOeuvre;
     }
+    
+	protected function getArrondissement()
+	{
+		
+		 $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getArrondissement();
+		return $aOeuvre;
+	}
     
     
     // AJOUT OEUVRE

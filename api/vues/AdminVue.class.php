@@ -108,12 +108,12 @@ require("admin/AfficheOeuvres.html.php");
 	}
     
     
-    public function afficheFormulaireModification($data, $data2, $data3) {
+    public function afficheFormulaireModification($data, $data2, $data3, $data4) {
 	   require("admin/FormulaireModification.html.php");
 		
 	}
     
-    public function afficheFormulaireAjout($data2, $data3) {
+    public function afficheFormulaireAjout($data2, $data3, $data4) {
 	   require("admin/FormulaireAjout.html.php");
 		
 	}
@@ -121,6 +121,11 @@ require("admin/AfficheOeuvres.html.php");
     
     public function afficheFormulaireAjoutArtiste() {
 	   require("admin/FormulaireAjoutArtiste.html.php");
+		
+	}
+    
+    public function afficheFormulaireModificationArtiste($data) {
+	   require("admin/FormulaireModificationArtiste.html.php");
 		
 	}
     

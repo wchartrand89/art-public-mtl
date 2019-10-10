@@ -15,7 +15,7 @@ $info3= $data3;
 			</aside>
             <div id="formAdmin">
                 <span id="retour">
-                    <a id="a_image" href=""><img src="../../../img/icons/retour_fleche.svg" alt=""></a>
+                    <a id="a_image" href="/art-public-mtl/api/admin/oeuvre"><img src="../../../img/icons/retour_fleche.svg" alt=""></a>
                     <p>Retour</p>
                 </span>
                 <p id="text_form_admin">AJOUT D'UNE OEUVRE</p>
@@ -99,7 +99,23 @@ $info3= $data3;
                     </div>
                     <div class="div_form">
                         <label for="titre">Arrondissement</label>
-                        <input class="box" type="text"  name="arrondissement" value="" id="Arrondissement">
+                        <select class="box" name="arrondissement">
+                         <?php 
+                            foreach($info4 as $key=>$value){
+                                $value=array_map('utf8_encode', $value);
+                                foreach($value as $val){
+                                    if($val==$info["arrondissement"]){
+                                        echo "<option value='$val' selected>$val</option>";
+                                    }else{
+                                        echo "<option value='$val'>$val</option>";
+                                    }
+                                }
+                            
+                            }
+                            
+                            ?>
+                
+                        </select>
                     </div> 
                     <div class="div_form">
                         <label for="titre">Batiment</label>
