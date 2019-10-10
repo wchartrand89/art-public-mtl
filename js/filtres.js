@@ -4,20 +4,26 @@ window.addEventListener("load", function(){
     /* Afficher les options de filtre au clic sur l'icone*/
     let iFiltre=document.querySelector(".filtre");
     let secFiltres=document.querySelector(".filtres");
-    document.addEventListener("click", function(){
+
+    iFiltre.addEventListener("click", function(){
         console.log(secFiltres.attributes[1].nodeValue);
         if(secFiltres.attributes[1].nodeValue == "visible"){
-            console.log("ici");
             secFiltres.setAttribute("id", "hidden");
         }else{
             secFiltres.setAttribute("id", "visible");
+            iFiltre.setAttribute("id", "hidden");
         }
         
     });
 
-    /* Enlever les options de filtre au clic sur l'icone*/
+    /* Enlever les options de filtre au clic sur l'icone croix*/
+    let retour =document.querySelector(".retour i");
+    retour.addEventListener("click", function(){
+        console.log("retour");
+        secFiltres.setAttribute("id", "hidden");
+        iFiltre.setAttribute("id", "visible");
 
-
+    });
     /* Au clic sur une des section de filtre, affichage des options*/
 
 
