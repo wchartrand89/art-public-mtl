@@ -14,9 +14,8 @@ $info4= $data4;
 			</aside>
             <div id="formAdmin">
                 <span id="retour">
-                    <a id="a_image" href="/art-public-mtl/api/admin/oeuvre"><img src="../../../../img/icons/retour_fleche.svg" alt=""></a>
-                    <p>Retour</p>
-              </span>
+                    <a id="a_image" href="javascript:history.back()"><img src="../../../../img/icons/retour_fleche.svg" alt=""><p>Retour</p></a>                   
+                </span>
                 <p id="text_form_admin">MODIFICATION DE L'OEUVRE</p>
                 <form id='inputs_form' action="/art-public-mtl/api/admin/oeuvre/modification/" method="post">	
                     

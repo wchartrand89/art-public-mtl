@@ -1,5 +1,14 @@
+    <!-- 
+
+    GOOGLE API KEY (TODO : SECURISER)
+
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
+    async defer>
+    </script>
+
 <section class="contenu uneOeuvre flex flex-col">
-	<section class="retour"><a href="/art-public-mtl/api/oeuvre"> < Retour  </a></section>
+	<section class="retour"><a href="javascript:history.back()"> < Retour  </a></section>
 	<section class="oeuvre conteneur_partager">
 		<?php
 		extract($aData);
@@ -14,7 +23,7 @@
 		<h1 class="uneOeuvre_titre"><?php echo $titre?></h1>
 		<p><?php echo $description; ?></p>
 		<header class="image dummy">
-			<div class="img"<?php if($NoImage !== ""){ echo 'data-img="'.$NoImage.'"';}?>></div>
+			<div class="img" data-img="<?php if(isset($NoImage) && !empty($NoImage)){ echo $NoImage;}else{ echo "default";}?>"></div>
 			<!-- <img src="/art-public-mtl/img/placeholder_640_480.jpg" /> -->
 		</header>
 
@@ -322,14 +331,7 @@
     }
     </script>
 
-    <!-- 
 
-    GOOGLE API KEY (TODO : SECURISER)
-
-    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
-    async defer>
-    </script>
 
     <div id="map" class="carte" style="height:500px; width:100%;"></div>    
 					
