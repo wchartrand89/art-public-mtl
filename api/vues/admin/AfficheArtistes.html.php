@@ -9,7 +9,7 @@
 				<section class="recherche">
 					<form action="">
 						<div class=bar_image>
-							<input id="bar_recherche" type="text" name="recherche" value="" placeholder="Recherche un nom">
+							<input id="bar_recherche" type="text" name="recherche" placeholder="Recherche un nom">
 							<img id="img_recherche" src="../../img/icons/search_40px.svg" alt="search">
 						</div>	
                        <p><?php if(isset($_GET['update']) && $_GET['update']=="error") echo "Une erreur est survenue, veuillez vérifiez vos champs."; ?></p>					

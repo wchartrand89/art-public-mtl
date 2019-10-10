@@ -95,7 +95,49 @@ class Oeuvre extends Modele {
 	 * @param int $id Identifiant de l'oeuvre
 	 * @return Array
 	 */
-     // @author Fred
+
+	public function getLocalisations1(){
+		$res = Array();
+		// $query= "SELECT CoordonneeLatitude, CoordonneeLongitude FROM oeuvre";
+		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
+		inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
+		"//left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
+		."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
+		order by Oeu.id_oeuvre ASC
+		";
+
+		if($mrResultat = $this->_db->query($query))
+		{
+
+			while($oeuvre = $mrResultat->fetch_assoc()){
+				array_push($res, $oeuvre);
+			}
+		}
+		return $res;
+	}   
+	
+	public function getLocalisations2(){
+		$oOeuvre = new Oeuvre();
+		$res = $oOeuvre->getLocalisations1();
+		// var_dump($res);
+		// ['MARKER 1', 45.5609420, -73.6352330, 4],
+		foreach($res as $a => $b){
+
+			// var_dump ($b);
+			$contentString .='["'.$b["Titre"].'", ' .$b["CoordonneeLatitude"].', '.$b["CoordonneeLongitude"].", ";
+			if (isset($b['Nom'])&&$b['Nom']!=''){
+				$contentString .= '"'.$b["Nom"].'", ';
+			}
+			if ($b['dateCreation']!= 'NULL'){
+				$contentString .= substr($b["dateCreation"], 6);
+			}
+			$contentString .= ", ".$b["id_oeuvre"];			
+			$contentString .= "], <br>";
+		}
+		return $contentString;
+		// die;
+	}
+
 	public function getOeuvre($id) 
 	{
 		

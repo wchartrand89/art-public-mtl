@@ -1,8 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>      
 <script>
         var map;
         function initMap() 
-        {
-            var myMapOptions = { clickableIcons: false }
+        {     
             var styledMapType = new google.maps.StyledMapType(
                 [
                   {
@@ -181,13 +202,22 @@
                 disableDefaultUI: true,
                 zoomControl: true,
                 draggable : true
-
             }
-            
-            var map = new google.maps.Map(document.getElementById('map'), options);  
+            var icon1 = {
+                url: '../../../img/icons/mapmarker.png',
+                size: new google.maps.Size(28, 40),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(0, 0),
+            }
+            var map = new google.maps.Map(document.getElementById('map'), options);
+//            var marker = new google.maps.Marker({
+//                position : {lat: 45.553873, lng: -73.7041081},
+//                map : map,
+//                icon : icon
+//            })  
             
         map.mapTypes.set('styled_map', styledMapType);
-        map.setMapTypeId('styled_map');
+        map.setMapTypeId('styled_map')
             
             var contentString = 'string1';
             var infowindow = new google.maps.InfoWindow({
@@ -195,98 +225,10 @@
             });
             setMarkers(map);
             
-            
-            // Try HTML5 geolocation.
-            if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude
-                };
-
-//                marker.setPosition(pos);
-//                infowindow.setContent('Location found.');
-                console.log('pos');
-//                infowindow.open(map);
-                map.setCenter(pos);
-              }, function() {
-                handleLocationError(true, infowindow, map.getCenter());
-              });
-            } else {
-              // Browser doesn't support Geolocation
-              handleLocationError(false, infowindow, map.getCenter());
-            }
-                        
-            function addYourLocationButton() 
-            {
-                var myposition = {
-                url: "../img/icons/myposition.png", // url
-                scaledSize: new google.maps.Size(50, 50), // size
-                };
-                var positionDefault = {lat:55.553873, lng:-73.7041081};
-                var marker2 = new google.maps.Marker({
-                    map: map,
-            		animation: google.maps.Animation.DROP,
-                    icon: myposition,
-                    position: positionDefault
-                });
-                console.log('addLOC');
-                var controlDiv = document.createElement('div');
-
-                var firstChild = document.createElement('button');
-                firstChild.style.backgroundColor = '#fff';
-                firstChild.style.border = 'none';
-                firstChild.style.outline = 'none';
-                firstChild.style.width = '28px';
-                firstChild.style.height = '28px';
-                firstChild.style.borderRadius = '2px';
-                firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
-                firstChild.style.cursor = 'pointer';
-                firstChild.style.marginRight = '10px';
-                firstChild.style.padding = '0px';
-                firstChild.title = 'Your Location';
-                controlDiv.appendChild(firstChild);
-
-                var secondChild = document.createElement('div');
-                secondChild.style.margin = '5px';
-                secondChild.style.width = '18px';
-                secondChild.style.height = '18px';
-                secondChild.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-1x.png)';
-                secondChild.style.backgroundSize = '180px 18px';
-                secondChild.style.backgroundPosition = '0px 0px';
-                secondChild.style.backgroundRepeat = 'no-repeat';
-                secondChild.id = 'you_location_img';
-                firstChild.appendChild(secondChild);
-
-                firstChild.addEventListener('click', function() {
-                    var imgX = '0';
-                    var animationInterval = setInterval(function(){
-                        if(imgX == '-18') imgX = '0';
-                        else imgX = '-18';
-                        $('#you_location_img').css('background-position', imgX+'px 0px');
-                    }, 500);
-                    if(navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(function(position) {
-                            var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                            marker2.setPosition(latlng);
-                            map.setCenter(latlng);
-                            clearInterval(animationInterval);
-                            $('#you_location_img').css('background-position', '-144px 0px');
-                        });
-                    }
-                    else{
-                        clearInterval(animationInterval);
-                        $('#you_location_img').css('background-position', '0px 0px');
-                    }
-                });
-
-                controlDiv.index = 1;
-                map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
-            }
-	    addYourLocationButton();
         }
         
-    //data oeuvres        
+    //data oeuvres
+        
         
     var oeuvres = [
         ["Source", 45.4664050, -73.6316480, "Coutu", 2010, 1],
@@ -552,43 +494,42 @@
         ["Spatio-mobile #1", 45.4303170, -73.6663150, 1966, 262]
     ];
 
-    function setMarkers(map) 
-    {
-        //marqueur pour chaque oeuvre
+    function setMarkers(map) {
+        console.log('marqueurs allez');
+        // Adds markers to the map.
+
+        // Marker sizes are expressed as a Size of X,Y where the origin of the image
+        // (0,0) is located in the top left of the image.
+
+        // Origins, anchor positions and coordinates of the marker increase in the X
+        // direction to the right and in the Y direction down.
         var icon = {
-            url: "../img/icons/mapmarker.png", // url
+            url: '../../../img/icons/mapmarker.png', // url
              scaledSize: new google.maps.Size(28, 40), // size
         };
-
-        console.log("l");
-        
-        //pour chaque oeuvre dans le tableau
-        for (var i = 0; i < oeuvres.length; i++) 
-        {
+        // Shapes define the clickable region of the icon. The type defines an HTML
+        // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+        // The final coordinate closes the poly by connecting to the first coordinate.
+        var shape = {
+        coords: [1, 1, 1, 28, 20, 28, 20, 1],
+        type: 'poly'
+        };
+        for (var i = 0; i < oeuvres.length; i++) {
             var oeuvre = oeuvres[i];
-
-            
-/************
-*************
-            
-TODO : enlever inline CSS
-            
-*************
-*************
-*/
-            //contenu de la bulle d'information
-            var content = '<div><p style="color:#103C61; font-size:30px; font-family: Open Sans; font-style: normal; font-weight: bold; font-size: 18px; line-height: 25px; display: flex; align-items: center; text-transform: uppercase;">'+oeuvre[0]+'</p>'+'<p style="color:#103C61;">'+oeuvre[3]+', '+oeuvre[4]+'</p>'+'<a href="oeuvre/'+oeuvre[5]+'" style="color:#DF8E32; text-decoration:none;">'+"Plus d'informations >"+'</a></div>';
+            var style = ''
+            var content = '<div><p style="color:#103C61; font-size:30px; font-family: Open Sans; font-style: normal; font-weight: bold; font-size: 18px; line-height: 25px; display: flex; align-items: center; text-transform: uppercase;">'+oeuvre[0]+'</p>'+'<p style="color:#103C61;">'+oeuvre[3]+', '+oeuvre[4]+'</p>'+'<a href="../../oeuvre/'+oeuvre[5]+'" style="color:#DF8E32; text-decoration:none;">'+"Plus d'informations >"+'</a></div>';
             var infowindow = new google.maps.InfoWindow();
-            
-            //paramètres des marqueurs
+
+//            console.log(oeuvre[0]);
             var marker = new google.maps.Marker({
                 position: {lat: oeuvre[1], lng: oeuvre[2]},
                 map: map,
                 icon: icon,
+                shape: shape,
                 title: oeuvre[0]
+//                zIndex: oeuvre[3]
+//                content: oeuvre[0]
             });  
-            
-            //ouvrir la bulle d'information de l'oeuvre
             google.maps.event.addListener(marker, 'click', function(content)
             {
                 return function()
@@ -597,17 +538,16 @@ TODO : enlever inline CSS
                     infowindow.open(map, this);
                 }
             }(content));
-            
-            // Limites de la carte
-            var allowedBounds = new google.maps.LatLngBounds(
-                new google.maps.LatLng(45.4079982, -73.9446209), 
-                new google.maps.LatLng(45.6876557, -73.5051969));
-                // Après avoir drag (glissé) le curseur
-                google.maps.event.addListener(map, 'dragend', function()
-                {
-                    if (allowedBounds.contains(map.getCenter())) return;
+            // Bounds for North America
+               var allowedBounds = new google.maps.LatLngBounds(
+                 new google.maps.LatLng(45.4079982, -73.9446209), 
+                 new google.maps.LatLng(45.6876557, -73.5051969));
 
-                 // Rediriger la carte vers la dernière limite connue
+               // Listen for the dragend event
+               google.maps.event.addListener(map, 'dragend', function() {
+                 if (allowedBounds.contains(map.getCenter())) return;
+
+                 // Out of bounds - Move the map back within the bounds
 
                  var c = map.getCenter(),
                      x = c.lng(),
@@ -625,242 +565,12 @@ TODO : enlever inline CSS
                  map.setCenter(new google.maps.LatLng(y, x));
                });
         }
-    }
-    
-//    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-//        infoWindow.setPosition(pos);
-//        infoWindow.setContent(browserHasGeolocation ?
-//                              'Error: The Geolocation service failed.' :
-//                              'Error: Your browser doesn\'t support geolocation.');
-//        infoWindow.open(map);
-//    }
+    }   
+        
+        
         
     </script>
-
-    <!-- 
-
-    GOOGLE API KEY (TODO : SECURISER)
-
-    -->
-<!--
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
-    async defer>
-    </script>
--->
-
-    <div id="map" class="carte" style="height:500px;"></div>      
-<article class="filtres hidden">
-	<section class="mesOeuvres">
-		<h2>Mes oeuvres</h2>
-		<section>
-			<div class= "critere">
-				<i class="material-icons">check_circle_outline</i>
-				<p>Déja visitées</p>
-			</div>
-			<div class= "critere">
-				<i class="material-icons">star_border</i>
-				<p>À visiter</p>
-			</div>
-			<div class= "critere">
-				<i class="material-icons">favorite_border</i>
-				<p>Favorites</p>
-			</div>
-		</section>
-		
-	</section>
-	<section class="type">
-		<h2>Type d'oeuvre</h2>
-		<section>
-		<!-- Faire L'affichage des types d'oeuvre dynamiquement -->
-		<?php
-			//var_dump($aTypes);
-			foreach ($aTypes as $cle => $type) {
-				?>
-				<div class= "critere">
-				<i class="material-icons">check_box_outline_blank</i>
-				<p>
-				<?php
-				echo $type["Nom"];
-				?>
-				</p>
-			</div>
-			<?php
-			}
-				?>
-		</section>
-	</section>
-
-	<!-- Faire L'affichage des dates dynamiquement -->
-	<!-- Aller chercher dans la BD les dates la plus récente et la plus vieille-->
-	<section class="date">
-		<h2>Dates</h2>
-		<section>
-		<?php
-	
-		$aDatesC=[];
-		foreach($aDates as $cle => $date){
-			if($date["dateCreation"] !== NULL && $date["dateCreation"] !== "NULL"){
-				$dates= explode("/", $date["dateCreation"]);
-				if(count($dates)>1){
-					$aDatesC[] = $dates[2];
-				}
-			}
-		}
-		sort($aDatesC);
-		echo "<p>".$aDatesC[0]."</p>";
-		echo "<p>".$aDatesC[count($aDatesC)-1]."</p>";
-
-		?>
-		</section>
-	</section>
-	<!-- Faire L'affichage des arrondissements dynamiquement -->
-	<section class="arrond">
-		<h2>Arrondissement</h2>
-		<section>
-
-		<!-- Faire L'affichage des arrondissements dynamiquement -->
-		<?php
-			//var_dump($aArrond);
-			foreach ($aArrond as $cle => $arrond) {
-				?>
-				<div class= "critere">
-				<i class="material-icons">check_box_outline_blank</i>
-				<p>
-				<?php
-				echo $arrond["Arrondissement"];
-				?>
-				</p>
-			</div>
-			<?php
-			}
-				?>
-
-
-
-
-		<?php
-		// $aArrond=[];
-		// foreach ($aData as $cle => $oeuvre) {
-		// 	extract($oeuvre);
-		// 	$verif="";
-			//echo $Arrondissement;
-		// 	if(count($aArrond)>0 && !is_null($Arrondissement)){
-		// 		foreach($aArrond as $cle => $arrond){
-		// 			if($Arrondissement !== $arrond && $verif !== false){
-		// 				$verif = true;
-		// 			}else if ($Arrondissement == $arrond) {
-		// 				$verif = false;
-		// 			}
-		// 		}
-		// 		if($verif && !is_null($Arrondissement)){
-		// 			$aArrond[]= $Arrondissement;
-		// 		}
-		// 	}else{
-		// 		$aArrond[]= $Arrondissement;
-		// 	}
-		// }
-		// sort($aArrond); 
-		// foreach($aArrond as $cle => $arrond){
-			?>
-			<!-- <div class= "critere">
-				<i class="material-icons">check_box_outline_blank</i>
-				<p>-->
-					<?php 
-					//echo $arrond
-					?>
-				<!-- </p> 
-			</div> -->
-			<?php
-		// }
-		?> 
-
-		</section>
-	</section>
-	<section class="back">
-		<i class="material-icons">arrow_back</i>
-	</section>
-</article>
-		<section class="recherche">
-			<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-			<div class="vueChoisie">
-				<a href="" class="flecheLien">❮</a>
-				<svg class = "focus" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-				<a href="" class="flecheLien">❯</a>
-			</div>
-			<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-		</section>
-		 <section class="contenu listeOeuvres">
-			<!-- <section class="rechercher"></section> -->
-            <section class="oeuvres flex wrap">
-						<?php
-
-        
-//echo '<pre>';
-//print_r($aData);
-//echo '</pre>';
-
-						foreach ($aData as $cle => $oeuvre) {
-							extract($oeuvre);
-							?>
-							<section class="oeuvre conteneur_oeuvre_courante">
-								
-			                    <header class="image dummy image_oeuvre_courante">
-								<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">
-								<h2 class="titre-oeuvre"><?php echo $Titre?></h2>
-								</a>	
-									<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>"><div class="img" data-img="<?php if(isset($NoImage) && !empty($NoImage)){ echo $NoImage;}?>"></div>
-									<!-- <img src="/art-public-mtl/img/placeholder_640_480.jpg" /> -->
-								</a>
-			                    </header>
-			                    <section class="texte_pied_image">
-			                        <!-- <p class="description">
-			                            <?php echo $Description ?> 
-									</p> -->
-									<?php 
-									foreach($Artistes as $artiste){
-										extract($artiste);
-										?>
-										<p class="auteur_liste_oeuvre"><a href="artiste/<?php echo $id_artiste ?>">
-                           <?php 
-                            if(isset($Nom) && $Nom!=""){
-                                echo $Nom ." ". $Prenom;
-                            }
-                            else
-                            {
-                                echo $NomCollectif;
-                            }
-                                        ?></a></p>
-									<?php
-									}
-									?>
-									<p class="date_creation">
-										<?php 
-										$dateOeuvre= explode("/", $dateCreation);
-										if(count($dateOeuvre)>1){
-											$anneeOeuvre = $dateOeuvre[2];
-										}
-										echo $anneeOeuvre;
-									
-									?></p>
-			                    </section>
-			                    <!-- <footer class="barre-action">
-			
-								<!<button class="ouvrir-oeuvre" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">En savoir plus...</button>
-			                    </footer> -->
-			                </section>
-							<?php
-							/*
-							 <section class="oeuvre">
-								<h2 class="titre"><a href="/artPublic/api/oeuvre/<?php echo $oeuvre['id'] ?>"><?php echo $oeuvre['Titre']?></a></h2>	
-							</section>
-							 */
-						}
-						?>
-					</section>
-				
-			</section>
-			<article class="filtre">
-				<i class="material-icons">filter_list</i>
-			</article>
-			
-			
+    async defer></script>
+  </body>
+</html>
