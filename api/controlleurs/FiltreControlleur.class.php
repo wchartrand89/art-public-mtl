@@ -24,20 +24,20 @@ class FiltreControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
-		$res = array();
-		$filtre ="filtre";
+		echo "get filtre";
         
-        $oFiltre = new Filtre();
-		$aFiltre = $oFiltre->getOeuvres($filtre);	
 	}
 	
 	public function postAction(Requete $requete)
     {
-		if(!empty($_POST)){
+		//echo (JSON_encode($requete));
+		if(!empty($requete->parametres)){
             //renvoyer le tableau des oeuvres filtrées
-			$oFiltre = new Filtre();
-		    $aFiltre = $oFiltre->getOeuvres($requete);	
-		}         
+			//$oFiltre = new Filtre();
+			//$aFiltre = $oFiltre->getOeuvres($requete);	
+			echo "allo";
+		}        
+		//echo "allo"; 
 	}
 }
 ?>

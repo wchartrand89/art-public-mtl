@@ -21,9 +21,12 @@ class Filtre extends Modele {
 	const TABLE_IMAGE = "ref_image";
 	
     
-    /* Get Oeuvres filtrées */
-    public function getOeuvres($f="") {
-        return "LISTE OEUVRES FILTREES : ";
+    /* Get Oeuvres filtrées 
+    Retourner tableau des oeuvres
+    */
+    public function getOeuvres($f=""){
+        $aOeuvres= ["oeuvre1", "oeuvre2"];
+        return $aOeuvres;
     }
     
     /* */

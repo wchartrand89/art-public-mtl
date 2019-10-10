@@ -1,14 +1,24 @@
-// window.addEventListener("load", function(){
-//     console.log("filtres");
-//     var xhttp = new XMLHttpRequest();
-//     xhttp.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-//             document.body.innerHTML =this.responseText;
-//         }
-// };
+/*gérer affichage des filtre etc.*/ 
 
 
-//     xhttp.open("POST", "./filtre", true);
-//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//     xhttp.send("un truc");
-// })
+window.addEventListener("load", function(){
+    console.log("filtres");
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', "./filtre");
+    xhr.onreadystatechange=function(){
+        if(this.readyState == 4 && this.status == 200){
+            console.log(xhr.responseText);
+            //console.log(JSON.parse(evt.target.response));
+        }
+        
+    };
+
+
+
+    
+    xhr.setRequestHeader("Content-Type", "application/json");
+    /*envoyer un objet json donnant les filtres choisis*/
+    let test =JSON.stringify({id:"un truc"});
+    console.log(test);
+    xhr.send(test);
+})
