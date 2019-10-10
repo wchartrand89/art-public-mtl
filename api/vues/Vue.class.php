@@ -105,6 +105,27 @@ class Vue {
 		
 	}
 
+	/**
+	 * Affiche la page À propos
+	 * @access public
+	 * @return void
+	 */
+	public function afficheAPropos() {
+		
+		require("apropos/apropos.html.php");
+		
+	}
+
+	/**
+	 * Affiche la page Contact
+	 * @access public
+	 * @return void
+	 */
+	public function afficheContact() {
+		
+		require("contact/contact.html.php");
+		
+	}
 
 }
 ?>

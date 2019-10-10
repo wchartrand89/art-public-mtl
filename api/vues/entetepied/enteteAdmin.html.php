@@ -20,30 +20,26 @@
             
 			if($page=="modifier")
 			{
+				
 				echo'<link rel="stylesheet" href="../../../../css/headerAdmin.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../../css/adminmain.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../../css/formulairesAdmin.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../../css/var.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../../css/flex.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../../css/text.css" type="text/css" media="screen">';
-				echo'<link rel="stylesheet" href="../../../../css/footerAdmin.css" type="text/css" media="screen">';
+				echo'<link rel="stylesheet" href="../../../../css/footer.css" type="text/css" media="screen">';
 
 
-			}
-            else if($page=="ajout")
-			{
+			}else if($page=="ajout"){
 				echo'<link rel="stylesheet" href="../../../css/headerAdmin.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../css/adminmain.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../css/formulairesAdmin.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../css/var.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../css/flex.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../css/text.css" type="text/css" media="screen">';
-				echo'<link rel="stylesheet" href="../../../css/footerAdmin.css" type="text/css" media="screen">';
-
-
-			}
-            
-            else{
+				echo'<link rel="stylesheet" href="../../../css/footer.css" type="text/css" media="screen">';
+			}else{
+				
 				echo'<link rel="stylesheet" href="../../css/headerAdmin.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/adminmain.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/var.css" type="text/css" media="screen">';
@@ -51,29 +47,21 @@
 				echo'<link rel="stylesheet" href="../../css/flex.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/text.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/footerAdmin.css" type="text/css" media="screen">';
+				echo'<link rel="stylesheet" href="../../css/footer.css" type="text/css" media="screen">';
 
 			}
 			?>
 			<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico&display=swap" rel="stylesheet">
-
+		    		
+						
 		</head>
 		<body>
 
 			<header class="appbar">	
-
-				<a class="logo" href="/art-public-mtl/api/"><img src="
-				<?php 
-                    if($page=="modifier")
-                    {
-                        echo"../../";
-                    }
-                    else if ($page=="ajout")
-                    {
-                        echo"../";
-                    }
-                    ?>../../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
-				<a class = "Inter" href="#">En</a>
-				<a class = "Deconn" href="#">Déconnexion</a>			
 				
+				<a class="logo" href="/art-public-mtl/api/"><img src="<?php if($page=="modifier"){echo"../../";}else if($page=="ajout"){echo"../";}?>../../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
+				<a class = "Inter" href="#">En</a>
+				<a class = "Deconn" href="#">Déconnexion</a>
+								
 			</header>
 			<main>

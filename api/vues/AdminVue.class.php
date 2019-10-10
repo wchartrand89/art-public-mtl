@@ -57,7 +57,7 @@ class AdminVue {
 	 */
 	public function affichePied() {
  
-		//require("entetepied/piedAdmin.html.php");
+		require("entetepied/piedAdmin.html.php");
 	}
 	
 
