@@ -164,7 +164,7 @@ body{
 }
 .back i{
 position:absolute;
-top:0;
+/* top:0; */
 font-size: 3.6rem;
 background-color: var(--couleur-marine);
 border: solid white 3px;

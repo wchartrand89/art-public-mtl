@@ -34,7 +34,32 @@ class OeuvreAdminControlleur extends OeuvreControlleur
             error_reporting(E_ALL ^ E_NOTICE);
 			$res = array();
 			//var_dump($requete->url_elements);
-        
+
+
+            /*
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            sert a récupérer des données pour localisation des oeuvres sur une carte 
+            ---ne pas effacer svp
+            (william)
+            */
+//                        $oOeuvre = new Oeuvre();
+//                        $res = $oOeuvre->getLocalisations2();
+//                        echo $res;
+//                        die;
+
+            /*
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            */
+
+
+
+
             
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
 			{
@@ -54,11 +79,12 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 //va chercher toutes les catégories et sous catégories
                 $res2 = $this->getCategorie();
 				$res3 = $this->getSousCategorie();
+                $res4 = $this->getArrondissement();
                 
                 //affiche la vue Admin de form d'ajout
 				$oVue = new AdminVue();
                 $oVue->afficheEntete($page);
-				$oVue->afficheFormulaireAjout($res2, $res3);
+				$oVue->afficheFormulaireAjout($res2, $res3, $res4);
                 $oVue->affichePied();
 			}
         
@@ -73,11 +99,12 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 //va chercher toutes les catégories et sous catégories
 				$res2 = $this->getCategorie();
 				$res3 = $this->getSousCategorie();
+                $res4 = $this->getArrondissement();
                 
                 //affiche la vue Admin de form de modification
 				$oVue = new AdminVue();
 				$oVue->afficheEntete($page);
-				$oVue->afficheFormulaireModification($res, $res2, $res3);
+				$oVue->afficheFormulaireModification($res, $res2, $res3, $res4);
 				$oVue->affichePied();
 			}
         // @author fred
@@ -320,6 +347,14 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 		$aOeuvre = $oOeuvre->getSousCategorie();
 		return $aOeuvre;
     }
+    
+	protected function getArrondissement()
+	{
+		
+		 $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getArrondissement();
+		return $aOeuvre;
+	}
     
     
     // AJOUT OEUVRE

@@ -58,6 +58,12 @@ class Vue {
 		require ("oeuvre/AfficheOeuvres.html.php"); 
 		
 	}
+    
+	public function afficheCarte($aData = Array()) {
+		
+		require  ("oeuvre/AfficheCarte.html.php"); 
+		
+	}
 
 
 

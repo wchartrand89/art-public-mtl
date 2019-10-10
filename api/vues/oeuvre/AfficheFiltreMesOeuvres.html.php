@@ -20,7 +20,7 @@
 	<section class="mesOeuvres">
 		<h2>Mes oeuvres</h2>
 		<section>
-			<div class= "critere" id="hidden">
+			<div class= "critere">
 				<i class="material-icons">check_circle_outline</i>
 				<p>Déja visitées</p>
 			</div>
