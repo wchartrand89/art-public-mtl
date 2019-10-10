@@ -20,7 +20,7 @@
 		</section>
 		
 	</section> -->
-	<section class="type">
+	<section class="types">
 		<h2>Type d'oeuvre</h2>
 		<section>
 		<!-- Faire L'affichage des types d'oeuvre dynamiquement -->
@@ -28,7 +28,9 @@
 			//var_dump($aTypes);
 			foreach ($aTypes as $cle => $type) {
 				?>
-				<div class= "critere">
+				<div class= "critere type" data-id="<?php
+				echo $type["id_sous_categorie"];
+				?>">
 				<i class="material-icons">check_box_outline_blank</i>
 				<p>
 				<?php

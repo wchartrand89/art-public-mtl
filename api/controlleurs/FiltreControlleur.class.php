@@ -35,7 +35,7 @@ class FiltreControlleur extends Controlleur
             //renvoyer le tableau des oeuvres filtrées
 			//$oFiltre = new Filtre();
 			//$aFiltre = $oFiltre->getOeuvres($requete);	
-			echo "allo";
+			echo JSON_encode($requete->parametres);
 		}        
 		//echo "allo"; 
 	}
