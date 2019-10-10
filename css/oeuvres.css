@@ -69,7 +69,7 @@ body{
     margin-bottom: var(--padding-base);
     padding: var(--padding-base);
 }
-.filtres>section:not(.back) {
+.filtres>section:not(.back):not(.btnSupp) {
     display:flex;
     /* flex-wrap: wrap; */
     flex-direction: column;
@@ -97,8 +97,23 @@ body{
     font-size:3.6rem;
 }
 
+/* BOUTON SUPPRIMER FILTRES*/
+.btnSupp{
+    background-color: var(--couleur-fond);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnSupp i{
+    padding: 0 var(--padding-base);
+    color:var(--couleur-bleu);
+}
+.btnSupp p{
+    color:var(--couleur-marine);
+}
 
 /* ANIMATIONS FILTRE*/
+
 .filtres.cache{
     /* transform:ScaleY(0); */
     transform-origin: 50% 0%;
@@ -123,6 +138,21 @@ body{
     transform-origin: 50% 0%;
     transition: transform 235ms;
     transform:translateY(0%);
+}
+
+.btnSupp.cache{
+    transform-origin: 50% 0%;
+    transition: transform .15s, opacity .15s;
+    transform:translateY(10%);
+    opacity:0;
+
+}
+.btnSupp.selec{
+
+    transform-origin: 50% 0%;
+    transition: transform 235ms, opacity 235ms;
+    transform:translateY(0%);
+    opacity:1;
 }
 
 /*------------------ Retour filtre  -------------------*/

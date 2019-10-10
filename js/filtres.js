@@ -1,10 +1,12 @@
 /*gérer affichage des filtre etc.*/ 
 
 window.addEventListener("load", function(){
-    /* Afficher les options de filtre au clic sur l'icone*/
+   
     let iFiltre=document.querySelector(".filtre");
     let secFiltres=document.querySelector(".filtres");
     let flecheBack=document.querySelector(".back");
+    let btnSupp= document.querySelector(".btnSupp");
+
 
     flecheBack.addEventListener("click", function(){
         // secFiltres.setAttribute("id", "hidden");
@@ -12,7 +14,8 @@ window.addEventListener("load", function(){
         iFiltre.classList.replace("cache", "selec");
         // iFiltre.setAttribute("id", "visible");
     });
-
+    
+     /* Afficher les options de filtre au clic sur l'icone*/
     iFiltre.addEventListener("click", function(){
         //secFiltres.setAttribute("id", "visible");
         secFiltres.classList.replace("cache", "selec");
@@ -33,7 +36,10 @@ window.addEventListener("load", function(){
 
 
     /* Afficher "supprimer tous les filtres" si il y en a au moins un selectionné */
-
+    btnSupp.addEventListener("click", function(){
+        console.log("click");
+        btnSupp.classList.replace("selec", "cache");
+    });
 
     //créer un objet pour le filtre TYPE
     let aTypes=[];
@@ -50,12 +56,30 @@ window.addEventListener("load", function(){
                 remove(aTypes, check);
                 checkbox.innerHTML="check_box_outline_blank";
             };
+            if(aTypes.length > 0){
+                // suppOption(true);
+            }else{
+                // suppOption(false);
+            }
             ajax(aTypes);
-            console.log(aTypes);
+
+            
         });
         
     });
+    /*Fonction qui fait apparaître un bouton
+    @param {bool} bool : true si il y a des options de tri choisies, false si il n'y en a aucunes
+    */
+    function suppOption(bool){
+        if(bool){
+            /* Afficher le bouton "supprimer les options" */ 
+            btnSupp.classList.replace("cache", "selec");
 
+        }else{
+            /* Afficher le bouton "supprimer les options" */ 
+            btnSupp.classList.replace("cache", "selec");
+        }
+    }
 
     /*Fonction ajax à laquelle on envoi un tableau et qui le passe en paramètre au POST du ajax
     @param {array} data : un tableau près à être convertit en JSON

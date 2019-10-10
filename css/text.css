@@ -27,7 +27,7 @@ h2{
     color:var(--couleur-marine);
 }
 
-.btn{
+.btn, .btnSupp p{
     font-weight:bold;
     font-size:1.6rem;
     color:var(--couleur-fond);

@@ -130,6 +130,10 @@
 
 		</section>
 	</section>
+	<section class="btnSupp selec">
+		<i class="material-icons supp">close</i>
+		<p>Supprimer tous les filtres</p>
+	</section>
 	<section class="back">
 		<i class="material-icons">arrow_back</i>
 	</section>
