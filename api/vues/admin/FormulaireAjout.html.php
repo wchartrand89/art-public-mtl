@@ -3,6 +3,7 @@
 
 $info2= $data2;
 $info3= $data3;
+$info4= $data4;
 
 //var_dump($info);
   

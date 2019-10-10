@@ -9,7 +9,7 @@
 				<section class="recherche">
 					<form action="">
 						<div class=bar_image>
-							<input id="bar_recherche" type="text" name="recherche" placeholder="Recherche un artiste">
+							<input id="bar_recherche" type="text" name="recherche" placeholder="Recherche un nom">
 							<img id="img_recherche" src="../../img/icons/search_40px.svg" alt="search">
 						</div>	
                        <p><?php if(isset($_GET['update']) && $_GET['update']=="error") echo "Une erreur est survenue, veuillez vérifiez vos champs."; ?></p>					
@@ -36,9 +36,9 @@
 					?>
 
 						<div class="info_oeuvre">
-							<p class="valeur_info_oeuvre"><?php echo $Nom; ?></p>
+							<p class="valeur_info_oeuvre filtrer"><?php echo $Nom; ?></p>
 							<p class="valeur_info_oeuvre"><?php echo $Prenom; ?></p>
-							<p class="valeur_info_oeuvre"><?php echo $NomCollectif; ?></p>
+							<p class="valeur_info_oeuvre filtrer"><?php echo $NomCollectif; ?></p>
 							<span class="valeur_info_oeuvre">
 								<a href="/art-public-mtl/api/admin/artiste/<?php echo $id_artiste ?>/modifier"><img id='crayon' src="../../img/icons/crayon.svg" alt="Modifier"></a>
 								<a data-href="/art-public-mtl/api/admin/artiste/<?php echo $id_artiste ?>/supprimer" class="modalPopup" onclick="handle(this);"><img id='poubelle' src="../../img/icons/poubelle.svg" alt="Supprimer"></a>
