@@ -9,13 +9,15 @@ window.addEventListener("load", function(){
     flecheBack.addEventListener("click", function(){
         // secFiltres.setAttribute("id", "hidden");
         secFiltres.classList.replace("selec", "cache");
-        iFiltre.setAttribute("id", "visible");
+        iFiltre.classList.replace("cache", "selec");
+        // iFiltre.setAttribute("id", "visible");
     });
 
     iFiltre.addEventListener("click", function(){
         //secFiltres.setAttribute("id", "visible");
         secFiltres.classList.replace("cache", "selec");
-        iFiltre.setAttribute("id", "hidden");
+        iFiltre.classList.replace("selec", "cache");
+        // iFiltre.setAttribute("id", "hidden");
     });
 
     /* Enlever les options de filtre au clic sur l'icone croix*/
@@ -23,7 +25,8 @@ window.addEventListener("load", function(){
     retour.addEventListener("click", function(){
         //secFiltres.setAttribute("id", "hidden");
         secFiltres.classList.replace("selec", "cache");
-        iFiltre.setAttribute("id", "visible");
+        iFiltre.classList.replace("cache", "selec");
+        // iFiltre.setAttribute("id", "visible");
 
     });
     /* Au clic sur une des section de filtre, affichage des options*/

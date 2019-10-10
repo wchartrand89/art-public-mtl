@@ -112,6 +112,19 @@ body{
     transform:translateY(0%);
 }
 
+.filtre.cache{
+    /* transform:ScaleY(0); */
+    transform-origin: 50% 0%;
+    transition: transform .15s;
+    transform:translateY(100%);
+}
+.filtre.selec{
+    /* transform: ScaleY(1); */
+    transform-origin: 50% 0%;
+    transition: transform 235ms;
+    transform:translateY(0%);
+}
+
 /*------------------ Retour filtre  -------------------*/
 .back{
     display: flex;

@@ -200,7 +200,7 @@
 					</section>
 				
 			</section>
-			<article class="filtre">
+			<article class="filtre selec">
 				<i class="material-icons">filter_list</i>
 			</article>
 			
