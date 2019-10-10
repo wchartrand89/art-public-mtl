@@ -47,6 +47,7 @@
 			echo '<link rel="stylesheet" href="../../css/oeuvres.css" type="text/css" media="screen">';
 			echo '<script src="../../js/onglets.js"></script>';
 			echo '<script src="../../js/imgOeuvre.js"></script>';
+			echo '<script src="../../js/carteOeuvre.js"></script>';
 			jsBase("oeuvre");
 		} 
 	
