@@ -15,7 +15,7 @@ $info3= $data3;
 			</aside>
             <div id="formAdmin">
                 <span id="retour">
-                    <a id="a_image" href=""><img src="../../../img/icons/retour_fleche.svg" alt=""></a>
+                    <a id="a_image" href="javascript:history.back()"><img src="../../../img/icons/retour_fleche.svg" alt=""></a>
                     <p>Retour</p>
                 </span>
                 <p id="text_form_admin">AJOUT D'UNE OEUVRE</p>
