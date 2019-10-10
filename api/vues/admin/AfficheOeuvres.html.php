@@ -9,7 +9,7 @@
 				<section class="recherche">
 					<form action="">
 						<div class=bar_image>
-							<input id="bar_recherche" type="text" name="recherche" value="Recherche une oeuvre">
+							<input id="bar_recherche" type="text" name="recherche" value="" placeholder="Recherche une oeuvre">
 							<img id="img_recherche" src="../../img/icons/search_40px.svg" alt="search">
 						</div>	
                        <p><?php if(isset($_GET['update']) && $_GET['update']=="error") echo "Une erreur est survenue, veuillez vérifiez vos champs."; ?></p>					
@@ -36,7 +36,7 @@
 					?>
 
 						<div class="info_oeuvre">
-							<p class="valeur_info_oeuvre"><?php echo $Titre ?></p>
+							<p class="valeur_info_oeuvre filtrer"><?php echo $Titre ?></p>
 							<p class="valeur_info_oeuvre"><?php foreach($Artistes as $value=> $test){
                     if($test["Nom"]!=""){
                             echo $test["Nom"];
