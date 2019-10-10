@@ -17,6 +17,7 @@
 		    <script src="../../js/modal.js"></script>
 		    
 			<?php 
+            
 			if($page=="modifier")
 			{
 				
@@ -42,6 +43,7 @@
 				echo'<link rel="stylesheet" href="../../css/headerAdmin.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/adminmain.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/var.css" type="text/css" media="screen">';
+				echo'<link rel="stylesheet" href="../../css/modal.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/flex.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/text.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/footerAdmin.css" type="text/css" media="screen">';

@@ -10,8 +10,8 @@ $info3= $data3;
                 
 ?>  
             <aside id="menu_aside">
-				<a id="menu_oeuvre" href=""><img src="../../../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
-				<a id="menu_artistes" href=""><img src="../../../../img/icons/paletteBlanch.svg" alt="icon image"><p class="text_menu">Artistes</p></a>
+				<a id="menu_oeuvre" href="/art-public-mtl/api/admin/oeuvre"><img src="../../../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
+				<a id="menu_artistes" href="/art-public-mtl/api/admin/artiste"><img src="../../../../img/icons/paletteBlanch.svg" alt="icon image"><p class="text_menu">Artistes</p></a>
 				<a id="menu_utilisateurs" href=""><img src="../../../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Utilisateurs</p></a>
 			</aside>
             <div id="formAdmin">
@@ -22,12 +22,12 @@ $info3= $data3;
                 <p id="text_form_admin">MODIFICATION DE L'OEUVRE</p>
                 <form id='inputs_form' action="/art-public-mtl/api/admin/oeuvre/modification/" method="post">	
                     
-                    <!-- <div>
+                     <div>
                         <input type="hidden" name="ID" value="<?php echo $info["id_oeuvre"]; ?>" readonly/>
                     </div>                
                     <div>
                         <input type="hidden" name="id_artiste" value="<?php echo $info["id_artiste"]; ?>" readonly/>
-                    </div> -->
+                    </div> 
                     <div class="div_form">
                         <label for="titre">Titre</label>
                         <input class="box" type="text" name="titre" value="<?php echo $info["titre"];  ?>" id="Titre">
@@ -83,9 +83,17 @@ $info3= $data3;
                         <input class="box" type="text" name="nomCollection" value="<?php echo $info["nomCollection"];  ?>" id="NomCollection">
                     </div> 
                     <div class="div_form">
+                        <label for="titre">NomCollectionAng</label>
+                        <input class="box" type="text" name="nomCollectionAng" value="<?php echo $info["nomCollectionAng"];  ?>" id="NomCollectionAng">
+                    </div>   
+                    <div class="div_form">
                         <label for="titre">Technique</label>
                         <input class="box" type="text" name="technique" value="<?php echo $info["technique"];  ?>" id="Technique">
                     </div>
+                    <div class="div_form">
+                        <label for="titre">TechniqueAng</label>
+                        <input class="box" type="text" name="techniqueAng" value="<?php echo $info["techniqueAng"];  ?>" id="TechniqueAng">
+                    </div>       
                     <div class="div_form">
                         <label for="titre">Dimensions</label>
                         <input class="box" type="text" name="dimensions" value="<?php echo $info["dimensions"];  ?>" id="Dimensions">
@@ -103,27 +111,10 @@ $info3= $data3;
                         <input class="box" type="text" name="adresseCivique" value="<?php echo $info["adresseCivique"];  ?>" id="AdresseCivique">
                     </div> 
                     <div class="div_form">
-                        <label for="titre">Latitude</label>
-                        <input class="box" type="text" name="coordonneeLatitude" value="<?php echo $info["coordonneeLatitude"];  ?>" id="CoordonneeLatitude">
-                    </div> 
-                    <div class="div_form">
-                        <label for="titre">Longitude</label>
-                        <input class="box" type="text" name="coordonneeLongitude" value="<?php echo $info["coordonneeLongitude"];  ?>" id="CoordonneeLongitude">
-                    </div>
-                    <div class="div_form">
                         <label for="titre">dateCreation</label>
                         <input class="box" type="text" name="dateCreation" value="<?php echo $info["dateCreation"];  ?>" id="dateCreation" >
-                    </div>
-                                
-                    <!-- <div>
-                        <label for="titre">NomCollectionAng</label>
-                        <input type="text" name="nomCollectionAng" value="<?php echo $info["nomCollectionAng"];  ?>" id="NomCollectionAng">
-                    </div>                 -->
-                                    
-                    <!-- <div>
-                        <label for="titre">TechniqueAng</label>
-                        <input type="text" name="techniqueAng" value="<?php echo $info["techniqueAng"];  ?>" id="TechniqueAng">
-                    </div>                            -->
+                    </div>                                  
+                     
                       
                     <?php
                     if(isset($info["nom"]) && $info["nom"]!=""){
@@ -154,15 +145,15 @@ $info3= $data3;
                 ?>
 
 
-                    <!-- <h1>NOM COLLECTIF</h1>
-                    <div>
+                     <h1>NOM COLLECTIF</h1>
+                    <div class="div_form">
                         <label for="titre">Nom du collectif</label>
-                        <input type="text" name="nomCollectif" value="<?php echo $info["nomCollectif"];  ?>" id="nom" >
+                        <input class="box" type="text" name="nomCollectif" value="<?php echo $info["nomCollectif"];  ?>" id="nom" >
                     </div>
                     <div id=btns_form>
-                        
-                    <input type="button" id="annuler" value="Annuler">
-                    </div>		 -->
+                        <input type="button" id="annuler" value="Annuler">
+                        <input type="submit" id="envoyer" value="Modifier">  
+                    </div>		 
             </form>
             
            <?php

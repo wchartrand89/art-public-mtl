@@ -23,7 +23,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	// 		/oeuvre/ - Liste des oeuvres
 	// 		/oeuvre/{id}/ - Une oeuvre
 	// 		/oeuvre/?q=nom,arrond,etc&valeur=chaineDeRecherche
-    //      /oeuvre/modifier/id
+    //      /oeuvre/id/modifier/
     //      /oeuvre/supprimer/id
 	
 	public function getAction(Requete $requete)
@@ -96,7 +96,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
             header("Location: /art-public-mtl/api/admin/oeuvre?update=ok");
             exit();
         }
-			else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "oeuvre")
+			else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "oeuvre" )
 			{
 				//echo "test";
 				//var_dump($_POST);
@@ -160,12 +160,12 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                        && $res4=$this->modifierCat($arrayModif) 
                        && $res5=$this->modifierSousCat($arrayModif)
                         ){
-    //                    var_dump($res);
-    //                    var_dump($res2);
-    //                    var_dump($res3);
-    //                    var_dump($res4);
-    //                    var_dump($res5);
-    //                    die();
+//                        var_dump($res);
+//                        var_dump($res2);
+//                        var_dump($res3);
+//                        var_dump($res4);
+//                        var_dump($res5);
+//                        die();
                           //rediriger vers la page des oeuvres si le resultat est correct
                           header("Location: /art-public-mtl/api/admin/oeuvre?update=ok");
                         }
@@ -182,29 +182,34 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                 //l'action est ajouterOeuvre
                 else if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="ajouterOeuvre")
                 {
+                    
                     // envoyer la data a la function qui envoie sur le modele Oeuvre.class pour avoir les infos de l'oeuvre
                     $arrayModif=$_POST;
                     if($res=$this->getXmlCoordsFromAdress($arrayModif)) 
                     {
-                        if($res2=$this->ajoutOeuvre( $arrayModif, $res) 
-                        && $res3=$this->ajoutMateriaux($arrayModif) 
-    //                   && $res4=$this->ajoutCat($arrayModif) 
-    //                   && $res5=$this->ajoutSousCat($arrayModif)
+                        if($res2=$this->ajoutOeuvre($arrayModif, $res)
+                        && $res3=$this->ajoutArtiste($arrayModif)
+                        && $res3bis=$this->ajoutLienArtisteOeuvre($arrayModif)
+                        && $res4=$this->ajoutMateriaux($arrayModif) 
+                        && $res5=$this->ajoutCat($arrayModif) 
+                        && $res6=$this->ajoutSousCat($arrayModif)
                       ){
-    //                    var_dump($res);
-    //                    var_dump($res2);
-    //                    var_dump($res3);
-    //                    var_dump($res4);
-    //                    var_dump($res5);
-    //                    die();
+//                        var_dump($res);
+//                        var_dump($res2);
+//                       // var_dump($res3);
+//                        var_dump($res4);
+//                        var_dump($res5);
+//                        die();
                         //rediriger vers la page des oeuvres si le resultat est correct
                         header("Location: /art-public-mtl/api/admin/oeuvre?update=ok");
-                }
+                        }
 
-                }else{
+                    }
+                    else
+                    {
                     header("Location:/art-public-mtl/api/admin/oeuvre?update=error");
                     die;
-                }
+                    }
       
             }  
         }        
@@ -327,12 +332,40 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	}
     
     // @author fred
+    private function ajoutArtiste($array){
+        $oArtiste = new Artiste();
+        $oArtiste = $oArtiste->ajoutArtiste($array);
+		return $oArtiste;
+    }
+    
+        // @author fred
+    private function ajoutLienArtisteOeuvre($array){
+        $oArtiste = new Artiste();
+        $oArtiste = $oArtiste->ajoutLienArtisteOeuvre($array);
+		return $oArtiste;
+    }
+    
+    // @author fred
     protected function ajoutMateriaux($array)
 	{
 		$oOeuvre = new Oeuvre();
 		$aOeuvre = $oOeuvre->ajoutMateriaux($array);
-        var_dump($aOeuvre);
-        die();
+		return $aOeuvre;
+	}
+    
+    // @author fred
+    protected function ajoutCat($array) 
+	{
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->ajoutCat($array);
+		return $aOeuvre;
+	}
+    
+    // @author fred
+    protected function ajoutSousCat($array) 
+	{
+		$oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->ajoutSousCat($array);
 		return $aOeuvre;
 	}
     

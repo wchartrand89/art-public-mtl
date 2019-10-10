@@ -536,7 +536,105 @@ class Oeuvre extends Modele {
 
     }
     
-    // AJOUT MAT, SOUS CAT, CAT, ARTISTE.
+    
+    
+        // @author Fred
+    public function ajoutMateriaux($array){
+        
+        
+        
+        // separe les matériaux ajoutés
+        $materiaux=explode (", ", $this->filtre($array["materiaux"]));
+        //compte le nombre de matériaux
+        $n=count($materiaux);
+        if($n==0){
+            return true;
+        }
+        //boucle dans le tableau de materiaux
+        for ($i = 0; $i < $n; $i++) {
+            //on associe a value un mat du tableau
+             $value = $materiaux[$i];
+            //verifie si le tableau existe deja
+            $request = "SELECT * FROM materiaux WHERE Nom='$value'";
+            $result = $this->_db->query($request);
+            $rows=$result->num_rows;
+            $exist=$result->fetch_assoc();
+            //s'il existe alors ne pas l'ajouté
+            if ($rows>0) {
+                // faire le lien entre le mat existant et l'oeuvre créée
+                $id_mat=$exist["id_mat"];
+                //requete d'ajout dans la table mat oeuvre
+                $request = "INSERT INTO materiaux_oeuvre(id_materiaux, id_oeuvre) VALUES($id_mat, (SELECT MAX(id_oeuvre) FROM oeuvre))";
+                $result = $this->_db->query($request); 
+            //sinon ajouté le matériaux dans la table matériaux.
+            }else{
+                $request = "INSERT INTO materiaux(Nom) VALUES('$value')";
+               
+                // si le matériau a bien été ajouté, on add les liens dans la table intermédiaire. (+ recup dernier ID crée dans la table matériaux.)
+                if( $result = $this->_db->query($request)){
+                     $request = "INSERT INTO materiaux_oeuvre(id_materiaux, id_oeuvre) VALUES((SELECT MAX(id_mat) FROM materiaux), (SELECT MAX(id_oeuvre) FROM oeuvre))";
+                    $result = $this->_db->query($request);
+                }
+            }
+        }
+        return true;
+    }
+    
+   // @author Fred
+    public function ajoutCat($array){
+        
+            // recup categorie del'oeuvre ajoutée
+            $categorie = $this->filtre($array["categorie"]);
+
+            //verifie si le tableau existe deja
+            $request = "SELECT * FROM categorie WHERE Nom='$categorie'";
+            $result = $this->_db->query($request);
+            $rows=$result->num_rows;
+            $exist=$result->fetch_assoc();
+        
+            //s'il existe alors update
+            if ($rows>0) {
+                //verifie si le lien existe entre l'oeuvre et la categorie
+                $id_cat=$exist["id_categorie"];
+                $request = "INSERT INTO categorie_oeuvre(id_oeuvre, id_categorie)
+                VALUES((SELECT MAX(id_oeuvre) FROM oeuvre), '$id_cat')";
+                $result = $this->_db->query($request);
+                }
+            //sinon msg erreur.
+            else{
+                echo "erreur";
+                }
+        return true;
+            
+        }
+    
+       // @author Fred
+    public function ajoutSousCat($array){
+        
+            // recup categorie del'oeuvre ajoutée
+            $sous_categorie = $this->filtre($array["sousCategorie"]);
+
+            //verifie si le tableau existe deja
+            $request = "SELECT * FROM sous_categorie WHERE Nom='$sous_categorie'";
+            $result = $this->_db->query($request);
+            $rows=$result->num_rows;
+            $exist=$result->fetch_assoc();
+        
+            //s'il existe alors update
+            if ($rows>0) {
+                //verifie si le lien existe entre l'oeuvre et la categorie
+                $id_sous_cat=$exist["id_sous_categorie"];
+                $request = "INSERT INTO sous_categorie_oeuvre(id_oeuvre, id_sous_categorie)
+                VALUES((SELECT MAX(id_oeuvre) FROM oeuvre), '$id_sous_cat')";
+                $result = $this->_db->query($request);
+                }
+            //sinon msg erreur.
+            else{
+                echo "erreur";
+                }
+        return true;
+            
+        }
     
     
       // @author Fred 
