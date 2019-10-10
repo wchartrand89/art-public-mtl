@@ -83,16 +83,36 @@ class Artiste extends Modele {
     $ID=$this->filtre($array["ID"]);
     $prenom=@$this->filtre($array["prenom"]);
     $nomCollectif=@$this->filtre($array["nomCollectif"]);
+    $description=@$this->filtre($array["description"]);
+    $siteWeb=@$this->filtre($array["siteWeb"]);
 
         //si les conditions des champs sont bien respectés
          if(isset($id_artiste))
          {
-             // si artiste  rempli
-             if(isset($nom) && is_string($nom) && $nom!="" && isset($prenom) && is_string($prenom) && $prenom!="" && is_numeric($id_artiste))
-             {
-                //requete
+             // si artiste est rempli dans le form modifier artiste sur la page artisteAdmin
+             if(isset($description) && is_string($description) && isset($siteWeb) && is_string($siteWeb) && $siteWeb!="" && $description!=""){
+                    //requete qui update toutes les data de l'artiste
                 $request="UPDATE artiste
-                        SET Nom = '$nom', Prenom ='$prenom' WHERE id_artiste='$id_artiste';";
+                        SET Nom = '$nom', Prenom ='$prenom', NomCollectif = '$nomCollectif', Description='$description', site_web='$siteWeb' WHERE id_artiste='$id_artiste';";
+    
+                        //execute requete
+                        $result = $this->_db->query($request);
+                        //var_dump($result);
+                        if ($result !== FALSE) 
+                        {
+                            return true;              
+                        }
+                        else 
+                        {
+                            return "wrong code";
+                        }
+             }
+             // si artiste  rempli sur le form oeuvre (car on affiche pas la description ni le site )
+             else
+             {
+                //requete qui update uniquement le nom prenom et nomCollectif et pas le site ou description
+                $request="UPDATE artiste
+                        SET Nom = '$nom', Prenom ='$prenom', NomCollectif = '$nomCollectif' WHERE id_artiste='$id_artiste';";
     
                         //execute requete
                         $result = $this->_db->query($request);
@@ -107,25 +127,6 @@ class Artiste extends Modele {
                         }
             }
             
-             // si nom Collectif rempli
-             if( is_string($nomCollectif)  && is_numeric($id_artiste) &&  $nomCollectif!="")
-             {
-                //requete
-                $request="UPDATE artiste
-                        SET NomCollectif = '$nomCollectif' WHERE id_artiste='$id_artiste';";
-    
-                        //execute requete
-                        $result = $this->_db->query($request);
-                        //var_dump($result);
-                        if ($result !== FALSE) 
-                        {
-                            return true;              
-                        }
-                        else 
-                        {
-                            return "wrong code";
-                        }
-             }
          }
         //si conditions non respectés refresh la page et msg erreur
         else
@@ -137,6 +138,9 @@ class Artiste extends Modele {
 
     }
     
+    
+    
+    // --------------------------------------------AJOUT---------------------------------------------------
     //author fred
      public function ajoutArtiste($array){
 
@@ -158,66 +162,22 @@ class Artiste extends Modele {
         return true;
     }
          
-             // si artiste  rempli
-//             if(isset($nom) && is_string($nom) && $nom!="" && isset($prenom) && is_string($prenom) && $prenom!="" && $nomCollectif=="")
-//             {
-                //requete
-                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif, Description, site_web)
-                        VALUES('$nom','$prenom','$nomCollectif', '$description','$siteWeb');";
-    
-                        //execute requete
-                        $result = $this->_db->query($request);
-                        //var_dump($result);
-                        if ($result !== FALSE) 
-                        {
-                            return true;              
-                        }
-                        else 
-                        {
-                            return "wrong code";
-                        }
-//            }
-            
-//             // si nom Collectif rempli
-//             else if( is_string($nomCollectif)  &&  $nomCollectif!="" && $nom=="" && $prenom=="")
-//             {
-//                //requete
-//                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif)
-//                        VALUES('','','$nomCollectif');";
-//    
-//                        //execute requete
-//                        $result = $this->_db->query($request);
-//                        //var_dump($result);
-//                        if ($result !== FALSE) 
-//                        {
-//                            return true;              
-//                        }
-//                        else 
-//                        {
-//                            return "wrong code";
-//                        }
-//             }
-//            //si les deux sont remplis
-//            else if (is_string($nomCollectif)  &&  $nomCollectif!="" && isset($nom) && is_string($nom) && $nom!="" && isset($prenom) && is_string($prenom) && $prenom!=""){
-//                //requete
-//                $request="INSERT INTO artiste(Nom, Prenom, NomCollectif)
-//                        VALUES('$nom','$prenom','$nomCollectif');";
-//    
-//                        //execute requete
-//                        $result = $this->_db->query($request);
-//                        //var_dump($result);
-//                        if ($result !== FALSE) 
-//                        {
-//                            return true;              
-//                        }
-//                        else 
-//                        {
-//                            return "wrong code";
-//                        }
-//            }
-         
-        
 
+            //requete
+            $request="INSERT INTO artiste(Nom, Prenom, NomCollectif, Description, site_web)
+                    VALUES('$nom','$prenom','$nomCollectif', '$description','$siteWeb');";
+
+            //execute requete
+            $result = $this->_db->query($request);
+            //var_dump($result);
+            if ($result !== FALSE) 
+            {
+                return true;              
+            }
+            else 
+            {
+                return "wrong code";
+            }
     }
     
     
@@ -270,6 +230,33 @@ class Artiste extends Modele {
     }
     
     
+    // -------------------------------------SUPPRIMER ARTISTE-----------------------------
+    //@author fred
+        public function supprimerArtiste($id)
+        {
+            $id=$this->filtre($id);
+            
+            $request="DELETE FROM artiste WHERE id_artiste='$id'";
+            $result = $this->_db->query($request);
+            
+            if ($result !== FALSE) 
+            {
+                return true;              
+            } 
+        }
+    
+        public function supprimerLienArtisteOeuvre($id)
+        {
+            $id=$this->filtre($id);
+            
+            $request="DELETE FROM artiste_oeuvre WHERE id_artiste='$id'";
+            $result = $this->_db->query($request);
+            
+            if ($result !== FALSE) 
+            {
+                return true;              
+            } 
+        }
     
       // @author fred
 	   function filtre($variable)
