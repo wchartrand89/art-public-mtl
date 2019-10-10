@@ -50,13 +50,14 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         // @author fred
             else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "ajout")
 			{
+                $page=$requete->url_elements[1];
                 //va chercher toutes les catégories et sous catégories
                 $res2 = $this->getCategorie();
 				$res3 = $this->getSousCategorie();
                 
                 //affiche la vue Admin de form d'ajout
 				$oVue = new AdminVue();
-                $oVue->afficheEntete("");
+                $oVue->afficheEntete($page);
 				$oVue->afficheFormulaireAjout($res2, $res3);
                 $oVue->affichePied();
 			}
