@@ -34,7 +34,32 @@ class OeuvreAdminControlleur extends OeuvreControlleur
             error_reporting(E_ALL ^ E_NOTICE);
 			$res = array();
 			//var_dump($requete->url_elements);
-        
+
+
+            /*
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            sert a récupérer des données pour localisation des oeuvres sur une carte 
+            ---ne pas effacer svp
+            (william)
+            */
+//                        $oOeuvre = new Oeuvre();
+//                        $res = $oOeuvre->getLocalisations2();
+//                        echo $res;
+//                        die;
+
+            /*
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            ***********************************************
+            */
+
+
+
+
             
 			if(isset($requete->url_elements[0]) && is_numeric($requete->url_elements[0]))	// Normalement l'id de l'oeuvre 
 			{

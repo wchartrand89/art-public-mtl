@@ -12,7 +12,7 @@ window.addEventListener("load", function(){
     fleches.forEach(function(fleche){
         fleche.addEventListener("click", function(){
                 //changer le contenu des lettres en fonction de la fleche sur laquelle l'utilisateur a cliqué
-                lettres.forEach(function(lettre){
+                lettres.forEach(function(lettre){                    
                     let change = false;
                     for(i=0; i<27; i++){
                         if(lettre.innerHTML===listeLettres[i] && change == false){
@@ -43,6 +43,18 @@ window.addEventListener("load", function(){
                     flechePrev.href="#"+document.querySelector(".focus").innerHTML;
                 }
         });
+    });
+    
+    
+    //au clic sur une lettre, rediriger l'url
+    lettres.forEach(function(lettre)
+    {        
+        lettre.addEventListener("click", function(){
+//        console.log(lettre.innerHTML);
+        window.location.replace("#"+lettre.innerHTML);
+//        change=true;
+        });
+        
     });
 
 

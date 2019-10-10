@@ -13,9 +13,7 @@
  /*
  * TODO : Commenter selon les standards du département.
  *
- */
-
- 
+ */ 
  
 class OeuvreControlleur extends Controlleur 
 {
@@ -38,9 +36,13 @@ class OeuvreControlleur extends Controlleur
 			$page ="oeuvre";
             
         } 
+        else if	(isset($requete->url_elements[1]) && $requete->url_elements[1]=='carte')// Liste des oeuvres
+        {
+//        	$res = $this->getCarteOeuvres();	
+        }
         else 	// Liste des oeuvres
         {
-        	$res = $this->getListeOeuvre();
+			$res = $this->getListeOeuvre();
 			$types= $this->getListeType();
 			$arrondissements= $this->getListeArrondissement();
 			$dates= $this->getListeDate();
@@ -51,14 +53,10 @@ class OeuvreControlleur extends Controlleur
 			echo json_encode($res);	
 		}
 		else
-		{
-				
-			
+		{			
 			$oVue = new Vue();
 			//$oeuvreVue = new OeuvreVue();
-			$oVue->afficheEntete($page);
-
-			
+			$oVue->afficheEntete($page);			
 			if(isset($requete->url_elements[1]) && is_numeric($requete->url_elements[1]))
 			{
 				$oVue->afficheOeuvre($res);
@@ -66,16 +64,10 @@ class OeuvreControlleur extends Controlleur
 			else
 			{
 				$oVue->afficheOeuvres($res, $types, $arrondissements, $dates);
-			}
-			
-			$oVue->affichePied();
-			
-		}
-			
-		
-		
-	}
-	
+			}			
+			$oVue->affichePied();			
+		}		
+	}	
 	
     protected function getOeuvreByID($id_oeuvre)
 	{
@@ -83,8 +75,7 @@ class OeuvreControlleur extends Controlleur
 		$aOeuvre = $oOeuvre->getOeuvreByID($id_oeuvre);
 		
 		return $aOeuvre;
-	}
-	
+	}	
 		
 	protected function getOeuvre($id_oeuvre)
 	{
@@ -128,9 +119,6 @@ class OeuvreControlleur extends Controlleur
 		$aDate = $oDate->getListe();
 
 		return $aDate;
-	}
-	
-	
-	
+	}	
 }
 ?>

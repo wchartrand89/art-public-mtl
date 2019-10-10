@@ -1,4 +1,13 @@
 
+
+	<?php
+//	var_dump($aData);
+//	die;
+	?>
+
+
+
+
 		 
 		 	<aside id="menu_aside">
 				<a id="menu_oeuvre" href="/art-public-mtl/api/admin/oeuvre"><img src="../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
@@ -9,7 +18,7 @@
 				<section class="recherche">
 					<form action="">
 						<div class=bar_image>
-							<input id="bar_recherche" type="text" name="recherche" value="Recherche une oeuvre">
+							<input id="bar_recherche" type="text" name="recherche" placeholder="Rechercher une oeuvre">
 							<img id="img_recherche" src="../../img/icons/search_40px.svg" alt="search">
 						</div>	
                        <p><?php if(isset($_GET['update']) && $_GET['update']=="error") echo "Une erreur est survenue, veuillez vérifiez vos champs."; ?></p>					
