@@ -25,7 +25,9 @@ class Filtre extends Modele {
     Retourner tableau des oeuvres
     */
     public function getOeuvres($f=""){
-        $aOeuvres= ["oeuvre1", "oeuvre2"];
+
+        $oOeuvre = new Oeuvre();
+		$aOeuvre = $oOeuvre->getListeFiltre();
         return $aOeuvres;
     }
     

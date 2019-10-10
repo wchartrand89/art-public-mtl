@@ -32,9 +32,12 @@ class FiltreControlleur extends Controlleur
     {
 		//echo (JSON_encode($requete));
 		if(!empty($requete->parametres)){
-            //renvoyer le tableau des oeuvres filtrées
-			//$oFiltre = new Filtre();
-			//$aFiltre = $oFiltre->getOeuvres($requete);	
+            $filtre =("type" =>[1,2,3],
+       	 "arrondissement" =>["Ville-Marie"]);
+		//Traitement de $filtre pour créer la chaine à ajouter à la requete	
+		
+
+		
 			echo JSON_encode($requete->parametres);
 		}        
 		//echo "allo"; 
