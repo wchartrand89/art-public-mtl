@@ -148,9 +148,10 @@
             <section class="oeuvres flex wrap">
 						<?php
 						foreach ($aData as $cle => $oeuvre) {
+							//var_dump($aData);
 							extract($oeuvre);
 							?>
-							<section class="oeuvre conteneur_oeuvre_courante">
+							<section class="oeuvre conteneur_oeuvre_courante" data-id="<?php echo $id_oeuvre ?>">
 								
 			                    <header class="image dummy image_oeuvre_courante">
 								<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">

@@ -102,8 +102,8 @@ class Oeuvre extends Modele {
                     LEFT JOIN ". self::TABLE_LIAISON_OEUVRE_SOUSCATEGORIE ." SC ON O.id_oeuvre=SC.id_oeuvre
                     LEFT JOIN ". self::TABLE_SOUSCATEGORIE ." S ON SC.id_sous_categorie=S.id_sous_categorie 
                    LEFT JOIN ". self::TABLE_A_VISITER ." Vi ON O.id_oeuvre=Vi.id_oeuvre
-                   LEFT JOIN ". self::FAVORIS ." F ON O.id_oeuvre=F.id_oeuvre
-                   LEFT JOIN ". self::TABLE_VOTE ." Vo ON O.id_oeuvre=Vo.id_oeuvre".$filtre."
+                   LEFT JOIN ". self::TABLE_FAVORIS ." F ON O.id_oeuvre=F.id_oeuvre
+                   LEFT JOIN ". self::TABLE_VOTE ." Vo ON O.id_oeuvre=Vo.id_oeuvre ".$filtre."
                     order by O.id_oeuvre ASC
 				";
 
