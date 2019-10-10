@@ -201,7 +201,7 @@
                   },
                 disableDefaultUI: true,
                 zoomControl: true,
-//                draggable : false
+                draggable : true
             }
             var icon1 = {
                 url: '../../../img/icons/mapmarker.png',
@@ -224,6 +224,7 @@
             content: contentString
             });
             setMarkers(map);
+            
         }
         
     //data oeuvres

@@ -45,10 +45,10 @@ class OeuvreAdminControlleur extends OeuvreControlleur
             ---ne pas effacer svp
             (william)
             */
-                        $oOeuvre = new Oeuvre();
-                        $res = $oOeuvre->getLocalisations2();
-                        echo $res;
-                        die;
+//                        $oOeuvre = new Oeuvre();
+//                        $res = $oOeuvre->getLocalisations2();
+//                        echo $res;
+//                        die;
 
             /*
             ***********************************************

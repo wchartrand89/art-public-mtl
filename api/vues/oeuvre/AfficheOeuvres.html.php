@@ -1,7 +1,8 @@
 <script>
         var map;
         function initMap() 
-        {     
+        {
+            var myMapOptions = { clickableIcons: false }
             var styledMapType = new google.maps.StyledMapType(
                 [
                   {
@@ -179,33 +180,113 @@
                   },
                 disableDefaultUI: true,
                 zoomControl: true,
-//                draggable : false
+                draggable : true
+
             }
-            var icon1 = {
-                url: '../../../img/icons/mapmarker.png',
-                size: new google.maps.Size(28, 40),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(0, 0),
-            }
-            var map = new google.maps.Map(document.getElementById('map'), options);
-//            var marker = new google.maps.Marker({
-//                position : {lat: 45.553873, lng: -73.7041081},
-//                map : map,
-//                icon : icon
-//            })  
+            
+            var map = new google.maps.Map(document.getElementById('map'), options);  
             
         map.mapTypes.set('styled_map', styledMapType);
-        map.setMapTypeId('styled_map')
+        map.setMapTypeId('styled_map');
             
             var contentString = 'string1';
             var infowindow = new google.maps.InfoWindow({
             content: contentString
             });
             setMarkers(map);
+            
+            
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
+
+//                marker.setPosition(pos);
+//                infowindow.setContent('Location found.');
+                console.log('pos');
+//                infowindow.open(map);
+                map.setCenter(pos);
+              }, function() {
+                handleLocationError(true, infowindow, map.getCenter());
+              });
+            } else {
+              // Browser doesn't support Geolocation
+              handleLocationError(false, infowindow, map.getCenter());
+            }
+                        
+            function addYourLocationButton() 
+            {
+                var myposition = {
+                url: "../img/icons/myposition.png", // url
+                scaledSize: new google.maps.Size(50, 50), // size
+                };
+                var positionDefault = {lat:55.553873, lng:-73.7041081};
+                var marker2 = new google.maps.Marker({
+                    map: map,
+            		animation: google.maps.Animation.DROP,
+                    icon: myposition,
+                    position: positionDefault
+                });
+                console.log('addLOC');
+                var controlDiv = document.createElement('div');
+
+                var firstChild = document.createElement('button');
+                firstChild.style.backgroundColor = '#fff';
+                firstChild.style.border = 'none';
+                firstChild.style.outline = 'none';
+                firstChild.style.width = '28px';
+                firstChild.style.height = '28px';
+                firstChild.style.borderRadius = '2px';
+                firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
+                firstChild.style.cursor = 'pointer';
+                firstChild.style.marginRight = '10px';
+                firstChild.style.padding = '0px';
+                firstChild.title = 'Your Location';
+                controlDiv.appendChild(firstChild);
+
+                var secondChild = document.createElement('div');
+                secondChild.style.margin = '5px';
+                secondChild.style.width = '18px';
+                secondChild.style.height = '18px';
+                secondChild.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-1x.png)';
+                secondChild.style.backgroundSize = '180px 18px';
+                secondChild.style.backgroundPosition = '0px 0px';
+                secondChild.style.backgroundRepeat = 'no-repeat';
+                secondChild.id = 'you_location_img';
+                firstChild.appendChild(secondChild);
+
+                firstChild.addEventListener('click', function() {
+                    var imgX = '0';
+                    var animationInterval = setInterval(function(){
+                        if(imgX == '-18') imgX = '0';
+                        else imgX = '-18';
+                        $('#you_location_img').css('background-position', imgX+'px 0px');
+                    }, 500);
+                    if(navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                            marker2.setPosition(latlng);
+                            map.setCenter(latlng);
+                            clearInterval(animationInterval);
+                            $('#you_location_img').css('background-position', '-144px 0px');
+                        });
+                    }
+                    else{
+                        clearInterval(animationInterval);
+                        $('#you_location_img').css('background-position', '0px 0px');
+                    }
+                });
+
+                controlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
+            }
+	    addYourLocationButton();
         }
         
-    //data oeuvres
-        
+    //data oeuvres        
         
     var oeuvres = [
         ["Source", 45.4664050, -73.6316480, "Coutu", 2010, 1],
@@ -471,42 +552,43 @@
         ["Spatio-mobile #1", 45.4303170, -73.6663150, 1966, 262]
     ];
 
-    function setMarkers(map) {
-//        console.log('marqueurs allez');
-        // Adds markers to the map.
-
-        // Marker sizes are expressed as a Size of X,Y where the origin of the image
-        // (0,0) is located in the top left of the image.
-
-        // Origins, anchor positions and coordinates of the marker increase in the X
-        // direction to the right and in the Y direction down.
+    function setMarkers(map) 
+    {
+        //marqueur pour chaque oeuvre
         var icon = {
             url: "../img/icons/mapmarker.png", // url
              scaledSize: new google.maps.Size(28, 40), // size
         };
-        // Shapes define the clickable region of the icon. The type defines an HTML
-        // <area> element 'poly' which traces out a polygon as a series of X,Y points.
-        // The final coordinate closes the poly by connecting to the first coordinate.
-        var shape = {
-        coords: [1, 1, 1, 28, 20, 28, 20, 1],
-        type: 'poly'
-        };
-        for (var i = 0; i < oeuvres.length; i++) {
-            var oeuvre = oeuvres[i];
-            var style = ''
-            var content = '<div><p style="color:#103C61; font-size:30px; font-family: Open Sans; font-style: normal; font-weight: bold; font-size: 18px; line-height: 25px; display: flex; align-items: center; text-transform: uppercase;">'+oeuvre[0]+'</p>'+'<p style="color:#103C61;">'+oeuvre[3]+', '+oeuvre[4]+'</p>'+'<a href="../../oeuvre/'+oeuvre[5]+'" style="color:#DF8E32; text-decoration:none;">'+"Plus d'informations >"+'</a></div>';
-            var infowindow = new google.maps.InfoWindow();
 
-//            console.log(oeuvre[0]);
+        console.log("l");
+        
+        //pour chaque oeuvre dans le tableau
+        for (var i = 0; i < oeuvres.length; i++) 
+        {
+            var oeuvre = oeuvres[i];
+
+            
+/************
+*************
+            
+TODO : enlever inline CSS
+            
+*************
+*************
+*/
+            //contenu de la bulle d'information
+            var content = '<div><p style="color:#103C61; font-size:30px; font-family: Open Sans; font-style: normal; font-weight: bold; font-size: 18px; line-height: 25px; display: flex; align-items: center; text-transform: uppercase;">'+oeuvre[0]+'</p>'+'<p style="color:#103C61;">'+oeuvre[3]+', '+oeuvre[4]+'</p>'+'<a href="oeuvre/'+oeuvre[5]+'" style="color:#DF8E32; text-decoration:none;">'+"Plus d'informations >"+'</a></div>';
+            var infowindow = new google.maps.InfoWindow();
+            
+            //paramètres des marqueurs
             var marker = new google.maps.Marker({
                 position: {lat: oeuvre[1], lng: oeuvre[2]},
                 map: map,
                 icon: icon,
-                shape: shape,
                 title: oeuvre[0]
-//                zIndex: oeuvre[3]
-//                content: oeuvre[0]
             });  
+            
+            //ouvrir la bulle d'information de l'oeuvre
             google.maps.event.addListener(marker, 'click', function(content)
             {
                 return function()
@@ -515,16 +597,17 @@
                     infowindow.open(map, this);
                 }
             }(content));
-            // Bounds for North America
-               var allowedBounds = new google.maps.LatLngBounds(
-                 new google.maps.LatLng(45.4079982, -73.9446209), 
-                 new google.maps.LatLng(45.6876557, -73.5051969));
+            
+            // Limites de la carte
+            var allowedBounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(45.4079982, -73.9446209), 
+                new google.maps.LatLng(45.6876557, -73.5051969));
+                // Après avoir drag (glissé) le curseur
+                google.maps.event.addListener(map, 'dragend', function()
+                {
+                    if (allowedBounds.contains(map.getCenter())) return;
 
-               // Listen for the dragend event
-               google.maps.event.addListener(map, 'dragend', function() {
-                 if (allowedBounds.contains(map.getCenter())) return;
-
-                 // Out of bounds - Move the map back within the bounds
+                 // Rediriger la carte vers la dernière limite connue
 
                  var c = map.getCenter(),
                      x = c.lng(),
@@ -542,13 +625,28 @@
                  map.setCenter(new google.maps.LatLng(y, x));
                });
         }
-    }   
-        
-        
+    }
+    
+//    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+//        infoWindow.setPosition(pos);
+//        infoWindow.setContent(browserHasGeolocation ?
+//                              'Error: The Geolocation service failed.' :
+//                              'Error: Your browser doesn\'t support geolocation.');
+//        infoWindow.open(map);
+//    }
         
     </script>
+
+    <!-- 
+
+    GOOGLE API KEY (TODO : SECURISER)
+
+    -->
+<!--
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
-    async defer></script>
+    async defer>
+    </script>
+-->
 
     <div id="map" class="carte" style="height:500px;"></div>      
 <article class="filtres hidden">
