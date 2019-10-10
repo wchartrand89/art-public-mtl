@@ -210,7 +210,7 @@ class Oeuvre extends Modele {
         public function getCategorie(){
             
   		$res = Array();
-		$query ="SELECT nom FROM categorie";;
+		$query ="SELECT nom FROM categorie";
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($categorie = $mrResultat->fetch_assoc())
@@ -229,7 +229,7 @@ class Oeuvre extends Modele {
         public function getSousCategorie(){
             
   		$res = Array();
-		$query ="SELECT nom FROM sous_categorie";;
+		$query ="SELECT nom FROM sous_categorie";
 		if($mrResultat = $this->_db->query($query))
 		{
 			while($souscat = $mrResultat->fetch_assoc())
@@ -244,7 +244,25 @@ class Oeuvre extends Modele {
 		return $res;   
         }
     
-        
+        // @author Fred
+        public function getArrondissement()
+        {
+            
+       	$res = Array();
+		$query ="SELECT DISTINCT Arrondissement FROM oeuvre";
+		if($mrResultat = $this->_db->query($query))
+		{
+			while($arron = $mrResultat->fetch_assoc())
+			{
+				foreach($arron as $cle=> $valeur)
+				{
+					$arron[$cle] =(utf8_decode($valeur));
+				}
+				$res[] = $arron;
+			}
+		}
+		return $res;   
+        }
 
 
 	
@@ -703,7 +721,7 @@ class Oeuvre extends Modele {
     
     
     // author Fred 
-    // filtre qui empeche les injections sql/ XSS + utf8 encode.
+    // filtre qui empeche les injections sql/ XSS
     function filtre($variable)
     {
         $varFiltre = $this->_db->real_escape_string($variable);
