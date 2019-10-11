@@ -1,12 +1,6 @@
-<section class="carte">
-			<div class="text">
-				<h1>Vivez Montréal</h1>
-				<p>À travers sa grande collection d'art public</p>
-			</div>
-			<a class= "btn btnAccueil" href="/art-public-mtl/api/oeuvre">Voir la carte</a>
-		</section>
+		
 		<section class="nvlOeuvres">
-			<h2>Nouvelles oeuvres</h2>
+			<!-- <h2>Nouvelles oeuvres</h2> -->
 			<!--SLIDER -->
 			<!-- ref : https://www.w3schools.com/howto/howto_js_slideshow.asp -->
 
@@ -19,20 +13,20 @@
 			<div class="slider">
 				<div class="slide fade">
 					<a href="">
-						<div class="img"></div>
+						<div class="img"><img class="photo" src="../img/oeuvres/1127_1.jpg" alt=""></div>
 						<div class="nom">Nom de l'oeuvre</div>
 					</a>
 					
 				</div>
 				<div class="slide fade">
 					<a href="">
-						<div class="img"></div>
+						<div class="img"><img class="photo" src="../img/oeuvres/1099_1_B.jpg" alt=""></div>
 						<div class="nom">Nom de l'oeuvre</div>
 					</a>
 				</div>
 				<div class="slide fade">
 					<a href="">
-						<div class="img"></div>
+						<div class="img"><img class="photo" src="../img/oeuvres/1119_1.jpg" alt=""></div>
 						<div class="nom">Nom de l'oeuvre</div>
 					</a>
 				</div>
@@ -50,4 +44,11 @@
 				<span class="point" data-slide="3"></span>
 			</div>
 
+		</section>
+		<section class="carte">
+			<div class="text">
+				<h1>Vivez Montréal</h1>
+				<p>À travers sa grande collection d'art public</p>
+			</div>
+			<a class= "btn btnAccueil" href="/art-public-mtl/api/oeuvre">Voir la carte</a>
 		</section>

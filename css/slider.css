@@ -32,16 +32,24 @@
     }
 
   .slide a img, .slide>a{
-      width:100%;
+      width:100%; 
+      
       /* max-height:270px; */
   }
-  .slide a .img{
-    background-position: 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-width:100%;
-    background-color: var(--couleur-fond);
-  }
+
+    /* .img > img{
+      max-width:100%;
+      height:auto;
+    } */
+    .slide a .img{
+      background-position: 50%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      min-width:100%;
+      background-color: var(--couleur-fond);
+    }
+
+
   /* .slider .slide:nth-of-type(1) a .img{
     background-image: url(../img/oeuvres/962_1.jpg);
   }
@@ -155,6 +163,9 @@
   .slide a .img {
     height: 764px;
 }
+  .photo{
+    height: 764px;
+  }
 
    
 
