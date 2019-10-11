@@ -1,4 +1,4 @@
-<section class="types">
+    <section class="types">
 		<h2>Type d'oeuvre</h2>
 		<section>
 		<!-- Faire L'affichage des types d'oeuvre dynamiquement -->

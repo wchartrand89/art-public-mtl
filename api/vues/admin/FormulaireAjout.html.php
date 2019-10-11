@@ -16,7 +16,8 @@ $info4= $data4;
 			</aside>
             <div id="formAdmin">
                 <span id="retour">
-                    <a id="a_image" href="/art-public-mtl/api/admin/oeuvre"><img src="../../../img/icons/retour_fleche.svg" alt=""></a>
+                    <a id="a_image" href="javascript:history.back()"><img src="../../../img/icons/retour_fleche.svg" alt=""></a>
+
                     <p>Retour</p>
                 </span>
                 <p id="text_form_admin">AJOUT D'UNE OEUVRE</p>
@@ -25,7 +26,7 @@ $info4= $data4;
                      <div>
                         <input type="hidden" name="ID" value="" readonly/>
                     </div>                
-                    <div>
+                    <div class="hidden">
                         <input type="hidden" name="id_artiste" value="" readonly/>
                     </div> 
                     <div class="div_form">

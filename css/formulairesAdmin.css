@@ -64,7 +64,8 @@
 #inputs_form{
     display:flex;
     flex-direction: column;
-    padding-top: 20px;        
+    padding-top: 20px; 
+
 }
 
 #inputs_form > div{
@@ -74,6 +75,13 @@
     align-items:baseline;
     justify-content: space-between;
     height:30px;    
+}
+
+#inputs_form > div:nth-child(1){
+    height:10px;
+}
+#inputs_form > div:nth-child(2){
+    height:10px;
 }
 
 .div_form > label{
@@ -119,12 +127,16 @@
     border-color:var(--couleur-orange);    
 }
 
+/* FORMULAIRE AJOUT*/
 #ajouter{
     background-color:var(--couleur-orange);
     border-color:var(--couleur-orange);    
 }
 
+.hidden{
+   width:100px; 
 
+}
 
 
 
