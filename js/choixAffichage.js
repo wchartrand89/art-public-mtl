@@ -9,7 +9,7 @@ window.addEventListener("load", function()
     choixListe.addEventListener("click", function()
     {
         map.classList.add("hidden"); 
-        map.style.height="0px";
+//        map.style.height="0px";
         contenu.classList.remove("hidden");
         choixListe.classList.add("focus");
         choixCarte.classList.remove("focus");
@@ -19,7 +19,7 @@ window.addEventListener("load", function()
     choixCarte.addEventListener("click", function()
     {
         contenu.classList.add("hidden");
-        map.style.height="500px";
+//        map.style.height="500px";
         map.classList.remove("hidden");
         choixCarte.classList.add("focus");
         choixListe.classList.remove("focus");
@@ -29,7 +29,7 @@ window.addEventListener("load", function()
     choixImage.addEventListener("click", function()
     {
         map.classList.add("hidden"); 
-        map.style.height="0px";
+//        map.style.height="0px";
         contenu.classList.remove("hidden");
         choixImage.classList.add("focus");
         choixCarte.classList.remove("focus");

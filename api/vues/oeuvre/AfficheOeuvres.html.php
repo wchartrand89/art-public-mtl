@@ -77,7 +77,7 @@
 		<i class="material-icons">arrow_back</i>
 	</section>
 </article>
-    <div id="map" class="carte" style="height:500px;"></div>  
+    <div id="map" class="carte"></div>  
 		 <section class="contenu hidden listeOeuvres">
 			<!-- <section class="rechercher"></section> -->
             <section class="oeuvres flex wrap">
