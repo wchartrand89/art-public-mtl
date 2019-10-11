@@ -119,6 +119,15 @@ class ArtisteAdminControlleur extends ArtisteControlleur
 	
 	public function postAction(Requete $requete)
 	{
+        if($_GET['action']=='deconnexion')
+        {
+            
+            // si action deconnexion alors detruire la session et rediriger
+            //session_start();
+            session_destroy(); //détruit la session
+            header("location:/art-public-mtl/api/admin"); //retourne à l'accueil admin (vue de connexion)
+            exit();
+        }
         // si on recoit quelque chose
         if(!empty($_POST))
         {
