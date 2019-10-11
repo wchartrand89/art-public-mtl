@@ -46,17 +46,83 @@ window.addEventListener("load", function(){
     });
     
     
-    //au clic sur une lettre, rediriger l'url
-    lettres.forEach(function(lettre)
-    {        
-        lettre.addEventListener("click", function(){
-//        console.log(lettre.innerHTML);
-        window.location.replace("#"+lettre.innerHTML);
-//        change=true;
+    //au clic sur une lettre, rediriger l'url et changer l'affichage des lettres
+    lettres.forEach(function(lettreClick)
+    {    
+        lettreClick.addEventListener("click", function(element)
+        {
+            function nextChar(c) 
+            {
+                if(c=='Z')
+                {
+                    return 'A';
+                }
+                else
+                {
+                    return String.fromCharCode(c.charCodeAt(0) + 1);
+                }
+            }
+            function prevChar(c) 
+            {
+                if(c=='A')
+                {
+                    return 'Z';
+                }
+                else
+                {
+                    return String.fromCharCode(c.charCodeAt(0) - 1);
+                }
+            }
+            function nextChar2(c) 
+            {
+                if(c=='Z'){
+                    return 'B';
+                }
+                else if(c=='Y')
+                {
+                    return 'A';
+                }
+                else
+                {
+                    return String.fromCharCode(c.charCodeAt(0) + 2);
+                }
+            }
+            function prevChar2(c) 
+            {
+                if(c=='A'){
+                    return 'Y';
+                }
+                else if(c=='B')
+                {
+                    return 'Z';
+                }
+                else
+                {
+                    return String.fromCharCode(c.charCodeAt(0) - 2);
+                }
+            }
+            function sameChar(c) 
+            {
+                return String.fromCharCode(c.charCodeAt(0));
+            }
+            
+            var pos1 = prevChar2(lettreClick.innerHTML);
+            var pos2 = prevChar(lettreClick.innerHTML);
+            var pos3 = sameChar(lettreClick.innerHTML);
+            var pos4 = nextChar(lettreClick.innerHTML);
+            var pos5 = nextChar2(lettreClick.innerHTML);
+                    
+            lettres[0].innerHTML = pos1;
+            lettres[1].innerHTML = pos2;
+            lettreChoisie.innerHTML = pos3;
+            lettres[3].innerHTML = pos4;
+            lettres[4].innerHTML = pos5;
+                    
+            window.location.replace("#"+pos3);
+
         });
         
     });
-
 
 });
 

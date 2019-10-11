@@ -403,3 +403,43 @@ border-radius: 25px;
     margin-left: 5px;
     margin-top: 5px;
 }
+
+#map
+{
+    display: block;
+    height: 441px;
+}
+
+#map.hidden{
+    display: none;
+}
+
+@media screen and (min-width: 600px) and (min-height:801px) {
+    #map
+    {
+        display: block;
+        height: 800px;
+    }
+
+    #map.hidden{
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: 600px) and (max-height:799px) {
+    #map
+    {
+        display: block;
+        height: 500px;
+
+    }
+    #map.hidden{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+
+}
