@@ -56,16 +56,27 @@ img{
     bottom: 12%;
 }
 
+#divInter_deconn{
+    display:flex;
+    flex-direction: row;
+    position: absolute;
+    align-items: center;
+    right:200px;
+    width:300px;
+    top:40px;
+}
+
+
 .Inter_Deconn:hover{
     text-transform: uppercase;
 }
 
-.appbar > .Inter{
+#divInter_deconn > .Inter{
     position: absolute;
-    left: 73.75%;
-    right: 20.9%;
-    top: 40%;
-    bottom: 26.67%;
+    /* left: 73.75%;
+    right: 20.9%; */
+    /* top: 40%; */
+    /* bottom: 26.67%; */
     font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
@@ -74,18 +85,19 @@ img{
     color: var(--couleur-marine);
 }
 
-.appbar > .Deconn{
-    position: absolute;
-    left: 83.89%;
-    top: 40%;
-    bottom: 28.67%;
+div > .Deconn{
+    /* position: absolute; */
+    /* left: 83.89%; */
+    /* top: 40%; */
+    /* bottom: 28.67%; */
     font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
     text-decoration: none;
     color: var(--couleur-marine);
-    
+    border-width: 0px;
+    background-color: var(--couleur-fond);    
 }
 
 .Inter:hover{
@@ -262,9 +274,7 @@ form{
     font-weight: 600;
 }
 
-.nomsChamps > p:nth-child(3){
-    
-}
+
 
 
 /* CONTENU OEUVREs */
@@ -483,3 +493,4 @@ span > p{
 
     
 
+/*  */

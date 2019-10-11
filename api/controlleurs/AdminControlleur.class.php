@@ -20,6 +20,7 @@ class AdminControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
+        
 		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')
         {	
 		  $res = array();
@@ -32,16 +33,20 @@ class AdminControlleur extends Controlleur
 		}
 		else if ($requete->url_elements[0] == '')
 		{
+            
             if(!isset($_SESSION["login"])){
                 // Accueil Admin (connexion)
     //			echo 'ACCUEIL ADMIN';
+                
                 $oVue = new AdminVue();
                 $oVue->afficheEnteteConnexion();
                 $oVue->afficheConnexion();	
                 $oVue->affichePied(); 
 
             }else{
+                
                 header("location:/art-public-mtl/api/admin/menu");
+                
             }
 
 		}
@@ -49,6 +54,7 @@ class AdminControlleur extends Controlleur
 		{
 			/* Instanciation du controlleur */
             $nomControlleur = ucfirst($requete->url_elements[0]) . 'AdminControlleur';
+            
             if (class_exists($nomControlleur)) 
             {
                 $oControlleur = new $nomControlleur();
@@ -67,7 +73,8 @@ class AdminControlleur extends Controlleur
     {        
         if(!empty($_POST))
         {
-			// var_dump($requete);
+
+			//var_dump($requete);
 			// echo '<br>'. $_GET['action'] . '<br>';
 			// var_dump($_POST);
 			// die;

@@ -24,7 +24,7 @@ $info3= $data3;
                      <div>
                         <input type="hidden" name="ID" value="" readonly/>
                     </div>                
-                    <div>
+                    <div class="hidden">
                         <input type="hidden" name="id_artiste" value="" readonly/>
                     </div> 
                     <div class="div_form">

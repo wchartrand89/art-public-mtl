@@ -144,8 +144,18 @@ class OeuvreAdminControlleur extends OeuvreControlleur
 	public function postAction(Requete $requete)
 	{
         // si on recoit quelque chose
+        if($_GET['action']=='deconnexion')
+        {
+            echo "hehe";
+            // si action deconnexion alors detruire la session et rediriger
+            //session_start();
+            session_destroy(); //détruit la session
+            header("location:/art-public-mtl/api/admin"); //retourne à l'accueil admin (vue de connexion)
+            exit();
+        }
         if(!empty($_POST))
         {
+            
             // @author fred
             // et que l'action est modification
             if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="modification")

@@ -60,8 +60,13 @@
 			<header class="appbar">	
 				
 				<a class="logo" href="/art-public-mtl/api/"><img src="<?php if($page=="modifier"){echo"../../";}else if($page=="ajout"){echo"../";}?>../../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
-				<a class = "Inter" href="#">En</a>
-				<a class = "Deconn" href="#">Déconnexion</a>
-								
+				<div id="divInter_deconn">
+					<a class = "Inter" href="#">En</a>
+					<form id='deconnexion' action="?action=deconnexion" method="post">	
+						<div>
+							<input class = "Deconn" type="submit" value="Déconnexion">
+						</div>		
+					</form>
+				</div>				
 			</header>
 			<main>
