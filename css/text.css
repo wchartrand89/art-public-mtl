@@ -8,6 +8,9 @@ p{
     font-size:1.4rem;
 }
 
+.icone{
+    font-size:4.8rem;
+}
 
 h2{
     font-family: 'Open Sans', sans-serif;
@@ -24,7 +27,7 @@ h2{
     color:var(--couleur-marine);
 }
 
-.btn{
+.btn, .btnSupp p{
     font-weight:bold;
     font-size:1.6rem;
     color:var(--couleur-fond);

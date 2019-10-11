@@ -56,6 +56,11 @@ body{
     background-color: var(--couleur-marine);
     color:var(--couleur-fond);
     margin-bottom: var(--padding-base);
+    position:absolute;
+    top:0;
+    width:100%;
+    /* height:100%; */
+    z-index:1;
 }
 .filtres h2{
     margin-bottom: var(--padding-base);
@@ -64,7 +69,7 @@ body{
     margin-bottom: var(--padding-base);
     padding: var(--padding-base);
 }
-.filtres>section:not(.back) {
+.filtres>section:not(.back):not(.btnSupp) {
     display:flex;
     /* flex-wrap: wrap; */
     flex-direction: column;
@@ -92,6 +97,64 @@ body{
     font-size:3.6rem;
 }
 
+/* BOUTON SUPPRIMER FILTRES*/
+.btnSupp{
+    background-color: var(--couleur-fond);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnSupp i{
+    padding: 0 var(--padding-base);
+    color:var(--couleur-bleu);
+}
+.btnSupp p{
+    color:var(--couleur-marine);
+}
+
+/* ANIMATIONS FILTRE*/
+
+.filtres.cache{
+    /* transform:ScaleY(0); */
+    transform-origin: 50% 0%;
+    transition: transform .15s;
+    transform:translateY(-100%);
+}
+.filtres.selec{
+    /* transform: ScaleY(1); */
+    transform-origin: 50% 0%;
+    transition: transform 235ms;
+    transform:translateY(0%);
+}
+
+.filtre.cache{
+    /* transform:ScaleY(0); */
+    transform-origin: 50% 0%;
+    transition: transform .15s;
+    transform:translateY(100%);
+}
+.filtre.selec{
+    /* transform: ScaleY(1); */
+    transform-origin: 50% 0%;
+    transition: transform 235ms;
+    transform:translateY(0%);
+}
+
+.btnSupp.cache{
+    transform-origin: 50% 0%;
+    transition: transform .15s, opacity .15s;
+    transform:translateY(10%);
+    opacity:0;
+
+}
+.btnSupp.selec{
+
+    transform-origin: 50% 0%;
+    transition: transform 235ms, opacity 235ms;
+    transform:translateY(0%);
+    opacity:1;
+}
+
 /*------------------ Retour filtre  -------------------*/
 .back{
     display: flex;
@@ -101,12 +164,21 @@ body{
 }
 .back i{
 position:absolute;
-top:0;
+/* top:0; */
 font-size: 3.6rem;
 background-color: var(--couleur-marine);
 border: solid white 3px;
 padding:5px;
 border-radius: 25px;
+}
+
+.retour{
+    background-color: var(--couleur-fond);
+    display:flex;
+    align-items: flex-end;
+}
+.retour i{
+    color: var(--couleur-marine);
 }
 
 /*------------------ Liste des oeuvres -------------------*/

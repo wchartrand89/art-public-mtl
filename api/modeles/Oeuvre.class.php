@@ -19,6 +19,11 @@ class Oeuvre extends Modele {
 	const TABLE_LIAISON_OEUVRE_CATEGORIE = "categorie_oeuvre";
 	const TABLE_CATEGORIE = "categorie";
 	const TABLE_IMAGE = "ref_image";
+	const TABLE_LIAISON_OEUVRE_SOUSCATEGORIE = "sous_categorie_oeuvre";
+	const TABLE_SOUSCATEGORIE = "sous_categorie";
+	const TABLE_FAVORIS = "favoris";
+	const TABLE_A_VISITER = "a_visiter";
+	const TABLE_VOTE = "vote";
 	
     
     
@@ -85,6 +90,34 @@ class Oeuvre extends Modele {
 				
 				  
 			}
+		}
+		return $res;
+    }
+
+    public function getListeFiltre($filtre) 
+	{
+    
+		$res = Array();
+		$query = "	SELECT O.id_oeuvre FROM oeuvre O 
+                    LEFT JOIN ". self::TABLE_LIAISON_OEUVRE_SOUSCATEGORIE ." SC ON O.id_oeuvre=SC.id_oeuvre
+                    LEFT JOIN ". self::TABLE_SOUSCATEGORIE ." S ON SC.id_sous_categorie=S.id_sous_categorie 
+                   LEFT JOIN ". self::TABLE_A_VISITER ." Vi ON O.id_oeuvre=Vi.id_oeuvre
+                   LEFT JOIN ". self::TABLE_FAVORIS ." F ON O.id_oeuvre=F.id_oeuvre
+                   LEFT JOIN ". self::TABLE_VOTE ." Vo ON O.id_oeuvre=Vo.id_oeuvre ".$filtre."
+                    order by O.id_oeuvre ASC
+				";
+
+		if($mrResultat = $this->_db->query($query))
+		{
+			while($oeuvre = $mrResultat->fetch_assoc())
+			{
+				foreach($oeuvre as $cle=> $valeur)
+				{
+					$oeuvre[$cle] = (utf8_decode($valeur));
+				}
+				$res[] = $oeuvre;
+			}
+			
 		}
 		return $res;
 	}

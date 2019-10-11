@@ -11,6 +11,7 @@
  * 
  */
 class Authentification extends Modele{
+
 	public  function verification($lo, $mdp){
        //requete de verication ici  
         

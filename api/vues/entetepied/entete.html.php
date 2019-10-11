@@ -40,6 +40,8 @@
 			echo '<link rel="stylesheet" href="../css/oeuvres.css" type="text/css" media="screen">';
 			jsBase("oeuvres");
 			echo '<script src="../js/imgOeuvre.js"></script>';
+			echo '<script src="../js/filtres.js"></script>';
+			echo '<script src = "../js/choixAffichage.js"></script>';
 		} 
 		else if ($page== "oeuvre"){
 			cssBase("oeuvre");

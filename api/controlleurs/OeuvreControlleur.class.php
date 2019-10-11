@@ -119,6 +119,15 @@ class OeuvreControlleur extends Controlleur
 		$aDate = $oDate->getListe();
 
 		return $aDate;
-	}	
+	}
+	
+	
+	
+	public function postAction(Requete $requete)
+    {
+		if(!empty($_POST)){
+			echo "POST";
+		}         
+	}
 }
 ?>
