@@ -6,7 +6,6 @@ window.addEventListener("load", function(){
     let secFiltres=document.querySelector(".filtres");
     let flecheBack=document.querySelector(".back");
     let btnSupp= document.querySelector(".btnSupp");
-    console.log(flecheBack.firstChild);
 
     flecheBack.addEventListener("click", function(){
         // secFiltres.setAttribute("id", "hidden");

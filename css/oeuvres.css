@@ -187,6 +187,27 @@ border-radius: 25px;
     color: var(--couleur-marine);
 }
 
+/* ------------------ADAPTATIF FILTRES------------------*/
+
+
+/* BREAK DESKTOP UP */
+@media screen and (min-width: 1200px) {
+    .filtres{
+        left:0;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .filtres>section{
+        width:100%;
+    }
+    .filtres>section:not(.back):not(.retour) {
+        max-width:50%;
+    }
+
+
+
+
 /*------------------ Liste des oeuvres -------------------*/
 .listeOeuvres{
     min-height:calc(100vh - 160px);
