@@ -4,7 +4,7 @@
 <section class="retour txtLien">
     
         <a href="/art-public-mtl/api/artiste" class="flecheLien">&#10094;</a>
-        <a href="/art-public-mtl/api/artiste">Retour</a>
+        <a href="javascript:history.back()">Retour</a>
    
 </section>
 <section class="titre">
@@ -23,7 +23,7 @@ foreach ($aData['oeuvres'] as $cle => $oeuvre) {
 <?php
     echo "<a href='/art-public-mtl/api/oeuvre/".$id_oeuvre."'>";
 ?>
-    <div class="img"<?php if($NoImage !== ""){ echo 'data-img="'.$NoImage.'"';}?>></div>
+    <div class="img" data-img="<?php if(isset($NoImage) && !empty($NoImage)){ echo $NoImage;}else{ echo "default";}?>"></div>
 </a>
 <section class="infos">
                 <p class="titreDetail artiste"><?php echo $Titre; ?></p>

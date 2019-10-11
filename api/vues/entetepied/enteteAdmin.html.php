@@ -15,6 +15,7 @@
 		    <script src="./js/define.js"></script>
 		    <script src="./js/admin.js"></script>
 		    <script src="../../js/modal.js"></script>
+		    <script src="../../js/filtreAdmin.js"></script>
 		    
 			<?php 
             

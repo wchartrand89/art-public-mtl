@@ -1,93 +1,4 @@
-    <!-- 
-
-    GOOGLE API KEY (TODO : SECURISER)
-
-    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
-    async defer>
-    </script>
-
-<section class="contenu uneOeuvre flex flex-col">
-	<section class="retour"><a href="javascript:history.back()"> < Retour  </a></section>
-	<section class="oeuvre conteneur_partager">
-		<?php
-		extract($aData);
-        
-//        echo "<pre>";
-//        print_r($aData);
-//        echo "</pre>";
-//        die;
-        
-        
-		?>
-		<h1 class="uneOeuvre_titre"><?php echo $titre?></h1>
-		<p><?php echo $description; ?></p>
-		<header class="image dummy">
-			<div class="img" data-img="<?php if(isset($NoImage) && !empty($NoImage)){ echo $NoImage;}else{ echo "default";}?>"></div>
-			<!-- <img src="/art-public-mtl/img/placeholder_640_480.jpg" /> -->
-		</header>
-
-			<div class="systeme_onglets">
-				<div class="onglets">
-					<span class="onglet_0 onglet" id="onglet_details" onclick="javascript:change_onglet('details');">D&eacute;tails</span>
-					<span class="onglet_0 onglet" id="onglet_artiste" onclick="javascript:change_onglet('artiste');">Artiste</span>
-					<span class="onglet_0 onglet" id="onglet_carte" onclick="javascript:change_onglet('carte');">Carte</span>
-				</div>
-			<div class="contenu_onglets">
-				<div class="contenu_onglet" id="contenu_onglet_details">
-					<h1></h1>
-					<table>
-						<tr>
-							<td>Catégorie</td>
-							<td><?php if(isset($categorie)){echo $categorie;}else{echo "inconnu";} ?></td>
-						</tr>
-						<tr>
-						<tr>
-							<td>Matériaux</td>
-							<td><?php if(isset($materiaux)){echo $materiaux;}else{echo "inconnu";} ?></td>
-						</tr>
-						<tr>
-							<td>Techniques</td>
-							<td><?php if(isset($technique)){echo $technique;}else{echo "inconnu";} ?></td>
-						</tr>
-						<tr>
-							<td>Date de création</td>
-							<td><?php if(isset($dateCreation)){echo $dateCreation;}else{echo "inconnu";} ?></td>
-						</tr>
-					</table>
-					
-				</div>
-				<div class="contenu_onglet" id="contenu_onglet_artiste">
-					<h1></h1>
-					<section class="texte">
-						<p class=""><?php if(isset($description)){echo $description;}else{echo "description non disponible.";} ?></p>
-							<p class="auteur"><a href="/art-public-mtl/api/artiste/<?php echo $id_artiste ?>"><?php 
-									if(isset($nom) && $nom!=""){
-								echo $nom .", ". $prenom;
-							
-							}
-							else
-							{
-								echo $nomCollectif;
-							
-							}
-								
-								
-										?></a></p>
-					</section>
-					<a href="/art-public-mtl/api/artiste/<?php echo $id_artiste ?>" >Plus d'information ></a>
-				</div>
-				<!-- <p class="arrondissement"><?php echo $Arrondissement?></p> -->
-		
-					
-				
-				
-				<div class="contenu_onglet" id="contenu_onglet_carte">
-					<h1></h1>
-
-                    
-<script>
-        var map;
+var map;
         function initMap() 
         {
             var myMapOptions = { clickableIcons: false }
@@ -290,8 +201,6 @@
             url: "../../img/icons/mapmarker.png", // url
              scaledSize: new google.maps.Size(28, 40), // size
         };
-
-    
             
             //paramètres des marqueurs
             var marker = new google.maps.Marker({
@@ -329,20 +238,6 @@
                });
         
     }
-    </script>
+    
 
-
-
-    <div id="map" class="carte" style="height:500px; width:100%;"></div>    
-					
-				</div>
-			</div>
-		</div>
-				
-		<div class="conteneur_btn_partager"><a href="#" class="btn"><i class="material-icons">share</i>Partager</a></div>
-
-                
-                
-    </section>
-
-</section>
+        
