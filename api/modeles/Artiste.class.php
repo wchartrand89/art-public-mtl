@@ -56,6 +56,8 @@ class Artiste extends Modele {
 	}
     
     // @author fred
+    // via le FORM MODIFIER 
+    //créer un artiste si l'id artiste n'existe pas
     public function creerArtisteOeuvre($array)
     {
         $nom=$this->filtre($array["nom"]);
@@ -74,6 +76,8 @@ class Artiste extends Modele {
     }
     
       // @author fred
+    // via le FORM MODIFIER OU AJOUT
+    // modifier artiste si l'ID artiste existe
      public function modifierArtiste($array)
      {
     
@@ -142,6 +146,8 @@ class Artiste extends Modele {
     
     // --------------------------------------------AJOUT---------------------------------------------------
     //author fred
+    // via le FORM AJOUT
+    // AJOUT UN ARTISTE S'IL N'EXISTE PAS
      public function ajoutArtiste($array){
 
     
@@ -181,12 +187,16 @@ class Artiste extends Modele {
     }
     
     
+    
+// @author fred
+    // Via le FORM AJOUTER OEUVRE
+    // si l'artiste existe alors linker sinon recuperer le dernier ID créée pour linker
     public function ajoutLienArtisteOeuvre($array){
         
             //filtre tous les elements du tableau
-    $nom=@$this->filtre($array["nom"]);
-    $prenom=@$this->filtre($array["prenom"]);
-    $nomCollectif=@$this->filtre($array["nomCollectif"]);
+            $nom=@$this->filtre($array["nom"]);
+            $prenom=@$this->filtre($array["prenom"]);
+            $nomCollectif=@$this->filtre($array["nomCollectif"]);
         
             $request = "SELECT * FROM artiste WHERE Nom='$nom' AND Prenom='$prenom' AND NomCollectif='$nomCollectif'";
             $result = $this->_db->query($request);
@@ -195,10 +205,10 @@ class Artiste extends Modele {
             //s'il existe alors faire le lien entre artiste existant et oeuvre ajoutée
         if ($rows>0) 
         {
-            $id_artiste=$exist["id_artiste"];
+             $id_artiste=$exist["id_artiste"];
 
              $request = "INSERT INTO artiste_oeuvre(id_artiste, id_oeuvre) VALUES('$id_artiste', (SELECT MAX(id_oeuvre) FROM oeuvre))";
-            $result = $this->_db->query($request);
+             $result = $this->_db->query($request);
     
                  if ($result !== FALSE) 
                     {
@@ -232,6 +242,7 @@ class Artiste extends Modele {
     
     // -------------------------------------SUPPRIMER ARTISTE-----------------------------
     //@author fred
+    // supprime l'artiste dans la table artiste
         public function supprimerArtiste($id)
         {
             $id=$this->filtre($id);
@@ -244,7 +255,8 @@ class Artiste extends Modele {
                 return true;              
             } 
         }
-    
+    //@author fred
+    // supprimer le lien artiste oeuvre
         public function supprimerLienArtisteOeuvre($id)
         {
             $id=$this->filtre($id);
@@ -259,6 +271,7 @@ class Artiste extends Modele {
         }
     
       // @author fred
+      // filtre les strings pour empecher les injections SQL + XSS attack
 	   function filtre($variable)
     {
         $varFiltre = $this->_db->real_escape_string($variable);

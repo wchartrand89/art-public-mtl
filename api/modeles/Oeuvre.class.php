@@ -330,6 +330,7 @@ class Oeuvre extends Modele {
 	
 	// ---------------------------------------------SUPPRIMER OEUVRE---------------------------------------
 	   // @author Fred
+    // supprime l'oeuvre dans la table oeuvre
         public function SupprimerOeuvreByID($id)
         {
             $id=$this->filtre($id);
@@ -345,6 +346,7 @@ class Oeuvre extends Modele {
     
     
     // @author Fred
+     // supprime le lien artiste oeuvre
         public function SupprimerLienArtisteOeuvre($id){
             
             $id=$this->filtre($id);
@@ -359,6 +361,7 @@ class Oeuvre extends Modele {
         }
     
     // @author Fred
+    // supprime le lien materiaux oeuvre
     public function SupprimerLienMateriauxOeuvre($id){
             
             $id=$this->filtre($id);
@@ -373,6 +376,7 @@ class Oeuvre extends Modele {
         }
     
     // @author Fred
+    // supprime le lien catégorie oeuvre
     public function SupprimerLienCategorieOeuvre($id){
             
             $id=$this->filtre($id);
@@ -387,6 +391,7 @@ class Oeuvre extends Modele {
         }
     
     // @author Fred
+    // supprime le lien sous catégorie et oeuvre
     public function SupprimerLienSousCategorieOeuvre($id){
             
             $id=$this->filtre($id);
@@ -401,6 +406,7 @@ class Oeuvre extends Modele {
         }
     
         // @author Fred
+    // supprime le lien parcours et oeuvre (supprime l'oeuvre du parcours)
     public function SupprimerLienParcousOeuvre($id){
             
             $id=$this->filtre($id);
@@ -421,6 +427,7 @@ class Oeuvre extends Modele {
     
     // ---------------------------------------------MODIFIER OEUVRE-----------------------------------------------
     // @author Fred
+    // Modifie l'oeuvre dans la table oeuvre
     public function modifierOeuvre($array, $array2){
     
     //filtre tous les elements du tableau
@@ -470,6 +477,7 @@ class Oeuvre extends Modele {
     
     
     // @author Fred
+    // ajoute un matériaux s'il n'existe pas, puis link mat a l'oeuvre, sinon link l'existant a l'oeuvre
     public function modifierMateriaux($array){
         
        
@@ -526,6 +534,7 @@ class Oeuvre extends Modele {
     
         
     // @author Fred
+    // modifie la catégorie de l'oeuvre
     public function modifierCat($array){
     // recup ID oeuvre modifié
         $ID = $this->filtre($array["ID"]);
@@ -555,6 +564,7 @@ class Oeuvre extends Modele {
         }
     
         // @author Fred
+    // modifie la sous catégorie de l'oeuvre
     public function modifierSousCat($array){
     // recup ID oeuvre modifié
         $ID = $this->filtre($array["ID"]);
@@ -583,6 +593,7 @@ class Oeuvre extends Modele {
     
       // ---------------------------------------------AJOUTER OEUVRE-----------------------------------------------
     // @author Fred
+    // ajoute une oeuvre dans le form AJOUT
     public function ajoutOeuvre($array, $array2){
     
         //filtre tous les elements du tableau
@@ -632,6 +643,7 @@ class Oeuvre extends Modele {
     
     
         // @author Fred
+    // ajoute les materiaux pour la derniere oeuvre créée
     public function ajoutMateriaux($array){
         
         
@@ -674,6 +686,7 @@ class Oeuvre extends Modele {
     }
     
    // @author Fred
+    // ajoute la cat + lien dans le form Ajout Oeuvre
     public function ajoutCat($array){
         
             // recup categorie del'oeuvre ajoutée
@@ -702,6 +715,7 @@ class Oeuvre extends Modele {
         }
     
        // @author Fred
+    // ajoute la sous cat + lien dans le form Ajout Oeuvre
     public function ajoutSousCat($array){
         
             // recup categorie del'oeuvre ajoutée

@@ -120,7 +120,7 @@ $info4= $data4;
                         <input class="box" type="text"  name="batiment" value="<?php echo $info["batiment"];  ?>" id="Batiment">
                     </div> 
                     <div class="div_form">
-                        <label for="titre">AdresseCivique</label>
+                        <label for="titre">Adresse de l'oeuvre</label>
                         <input class="box" type="text" name="adresseCivique" value="<?php echo $info["adresseCivique"];  ?>" id="AdresseCivique">
                     </div> 
                     <div class="div_form">
@@ -136,11 +136,11 @@ $info4= $data4;
                     ?>   
                     
                     <div class="div_form">
-                        <label for="titre">Nom artiste</label>
+                        <label for="titre">Nom de l'artiste</label>
                         <input class="box" type="text" name="nom" value="<?php echo $info["nom"];  ?>" id="nom" >
                     </div>
                     <div class="div_form">
-                        <label for="titre">Prénom artiste</label>
+                        <label for="titre">Prénom de l'artiste</label>
                         <input class="box" type="text" name="prenom" value="<?php echo $info["prenom"];  ?>" id="prenom" >
                     </div>
 
@@ -154,7 +154,7 @@ $info4= $data4;
                 ?>
 
 
-                     <h1>NOM COLLECTIF</h1>
+
                     <div class="div_form">
                         <label for="titre">Nom du collectif</label>
                         <input class="box" type="text" name="nomCollectif" value="<?php echo $info["nomCollectif"];  ?>" id="nom" >
@@ -167,7 +167,7 @@ $info4= $data4;
       
           
           ?>
-                                  <div id=btns_form>
+                    <div id=btns_form>
                         <input type="button" id="annuler" value="Annuler">
                         <input type="submit" id="envoyer" value="Modifier">  
                     </div>		 
