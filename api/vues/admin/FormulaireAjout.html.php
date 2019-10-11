@@ -84,7 +84,7 @@ $info4= $data4;
                         <input class="box" type="text" name="nomCollection" value="" id="NomCollection">
                     </div> 
                     <div class="div_form">
-                        <label for="titre">NomCollectionAng</label>
+                        <label for="titre">Collection (ENG)</label>
                         <input class="box" type="text" name="nomCollectionAng" value="" id="NomCollectionAng">
                     </div>   
                     <div class="div_form">
@@ -92,7 +92,7 @@ $info4= $data4;
                         <input class="box" type="text" name="technique" value="" id="Technique">
                     </div>
                     <div class="div_form">
-                        <label for="titre">TechniqueAng</label>
+                        <label for="titre">Technique (ENG)</label>
                         <input class="box" type="text" name="techniqueAng" value="" id="TechniqueAng">
                     </div>       
                     <div class="div_form">
@@ -124,22 +124,22 @@ $info4= $data4;
                         <input class="box" type="text"  name="batiment" value="" id="Batiment">
                     </div> 
                     <div class="div_form">
-                        <label for="titre">AdresseCivique</label>
+                        <label for="titre">Adresse de l'oeuvre</label>
                         <input class="box" type="text" name="adresseCivique" value="" id="AdresseCivique">
                     </div> 
                     <div class="div_form">
-                        <label for="titre">dateCreation</label>
+                        <label for="titre">Date de création</label>
                         <input class="box" type="text" name="dateCreation" value="" id="dateCreation" >
                     </div>                                  
                      
                       
                     
                     <div class="div_form">
-                        <label for="titre">Nom artiste</label>
+                        <label for="titre">Nom de l'artiste</label>
                         <input class="box" type="text" name="nom" value="" id="nom" >
                     </div>
                     <div class="div_form">
-                        <label for="titre">Prénom artiste</label>
+                        <label for="titre">Prénom de l'artiste</label>
                         <input class="box" type="text" name="prenom" value="" id="prenom" >
                     </div>
 

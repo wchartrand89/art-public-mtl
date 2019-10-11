@@ -189,20 +189,17 @@ class OeuvreAdminControlleur extends OeuvreControlleur
             {
                 // envoyer la data a la function qui envoie sur le modele Oeuvre.class pour avoir les infos de l'oeuvre
                 $arrayModif=$_POST;
+                //si on envoie bien l'adresse alors
                  if($res=$this->getXmlCoordsFromAdress($arrayModif)) 
                     {
+                     //modifier oeuvre artiste mat cat et sous cat de l'Oeuvre
                      if($res=$this->modifierOeuvre($arrayModif, $res) 
                        && $res2=$this->modifierArtiste($arrayModif) 
                        && $res3=$this->modifierMateriaux($arrayModif) 
                        && $res4=$this->modifierCat($arrayModif) 
                        && $res5=$this->modifierSousCat($arrayModif)
                         ){
-//                        var_dump($res);
-//                        var_dump($res2);
-//                        var_dump($res3);
-//                        var_dump($res4);
-//                        var_dump($res5);
-//                        die();
+
                           //rediriger vers la page des oeuvres si le resultat est correct
                           header("Location: /art-public-mtl/api/admin/oeuvre?update=ok");
                         }
@@ -222,8 +219,10 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                     
                     // envoyer la data a la function qui envoie sur le modele Oeuvre.class pour avoir les infos de l'oeuvre
                     $arrayModif=$_POST;
+                     //si on envoie bien l'adresse alors
                     if($res=$this->getXmlCoordsFromAdress($arrayModif)) 
                     {
+                         //ajout oeuvre artiste mat cat et sous cat de l'Oeuvre
                         if($res2=$this->ajoutOeuvre($arrayModif, $res)
                         && $res3=$this->ajoutArtiste($arrayModif)
                         && $res3bis=$this->ajoutLienArtisteOeuvre($arrayModif)
@@ -231,12 +230,7 @@ class OeuvreAdminControlleur extends OeuvreControlleur
                         && $res5=$this->ajoutCat($arrayModif) 
                         && $res6=$this->ajoutSousCat($arrayModif)
                       ){
-//                        var_dump($res);
-//                        var_dump($res2);
-//                       // var_dump($res3);
-//                        var_dump($res4);
-//                        var_dump($res5);
-//                        die();
+
                         //rediriger vers la page des oeuvres si le resultat est correct
                         header("Location: /art-public-mtl/api/admin/oeuvre?update=ok");
                         }
