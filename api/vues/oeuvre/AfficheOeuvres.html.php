@@ -25,7 +25,7 @@
 
 	<!-- Faire L'affichage des dates dynamiquement -->
 	<!-- Aller chercher dans la BD les dates la plus récente et la plus vieille-->
-	<section class="date">
+	<section class="date" id="hidden">
 		<h2>Dates</h2>
 		<section>
 		<?php
@@ -46,7 +46,7 @@
 		</section>
 	</section>
 	<!-- Faire L'affichage des arrondissements dynamiquement -->
-	<section class="arrond">
+	<section class="arrond"  id="hidden">
 		<h2>Arrondissement</h2>
 		<section>
 
@@ -71,14 +71,19 @@
 	</section>
     <section class="btnSupp selec">
 		<i class="material-icons supp">close</i>
-		<p>Supprimer tous les filtres</p>
+		<p>Réinitialiser</p>
 	</section>
 	<section class="back">
 		<i class="material-icons">arrow_back</i>
 	</section>
 </article>
-    <div id="map" class="carte" style="height:500px;"></div>  
-		 <section class="contenu hidden listeOeuvres">
+
+
+    <!-- <div id="map" class="carte" style="height:500px;"></div>   -->
+
+
+
+		 <section class="contenu listeOeuvres">
 			<!-- <section class="rechercher"></section> -->
             <section class="oeuvres flex wrap">
 						<?php
@@ -91,13 +96,17 @@
                             array_push($data2, $oeuvre);
 							extract($oeuvre);
 							?>
-							<section class="oeuvre conteneur_oeuvre_courante">
+							<section class="oeuvre conteneur_oeuvre_courante" data-id="<?php echo $id_oeuvre ?>">
 								
 			                    <header class="image dummy image_oeuvre_courante">
 								<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">
 								<h2 class="titre-oeuvre"><?php echo $Titre?></h2>
 								</a>	
-									<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>"><div class="img" data-img="<?php if(isset($NoImage) && !empty($NoImage)){ echo $NoImage;}else{ echo "default";}?>"></div>
+                  <a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">
+                  <!-- <div class="img" data-img="
+                  <?php //if(isset($NoImage) && !empty($NoImage)){ echo $NoImage;}else{ echo "default";}?>
+                  "> -->
+                </div>
 									<!-- <img src="/art-public-mtl/img/placeholder_640_480.jpg" /> -->
 								</a>
 			                    </header>

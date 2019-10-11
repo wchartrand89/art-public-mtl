@@ -41,10 +41,12 @@ window.addEventListener("load", function(){
         btnSupp.classList.replace("selec", "cache");
     });
 
+    //Objet qui contiendra les filtres sélectionnés par l'utilisateur
+    let oFiltres={};
+
     //créer un objet pour le filtre TYPE
     let aTypes=[];
     let filtresType=document.querySelectorAll(".type");
-    //console.log(filtresType);
     filtresType.forEach(function(type){
         type.addEventListener("click", function(){
             let checkbox=type.firstElementChild;
@@ -61,12 +63,70 @@ window.addEventListener("load", function(){
             }else{
                 // suppOption(false);
             }
-            ajax(aTypes);
+            console.log(aTypes);
+            //convertir le tableau des types en objet
+            let oTypes= convertObjet(aTypes);
+            console.log(oTypes);
+            // créer un tableau contenant les différents filtres
 
-            
+            ajax(oTypes);
+
+            /* oFiltres : objet à envoyer à la fonction ajax du type : 
+            {   "type" : {"0" : "0", "2" : "10"},
+                "arrondissement" : {"0" : "0", "2" : "10"},
+                "date" : {"0" : "0", "2" : "10"},
+                etc.
+            }
+            */
         });
-        
     });
+
+
+    /*Fonction à qui on donne un tableau, une chaine de caractère et un objet qui :
+    vérifie si l'objet contient déja un objet appelé comme la chaine de caractère, et en fonction :
+    y met le tableau, remplace les données ou le supprime de l'objet.
+    @param {array} array : tableau contenant les id des éléments choisis par l'utilisateurs
+    @param {string} filtre : string ayant pour valeur "type", "arrondissement", ou "date"
+    @param {object} objet : objet
+    */
+    function creationTabFiltres(filtre, array, objet){
+        switch(filtre){
+            case "type" : 
+                break;
+            case "arrondissement":
+                break;
+            case "date":
+                break;
+        }
+    }
+
+
+   /*Fonction à qui on donne un tableau et qui le convertit en objet
+    @param {array} array 
+    @return {object} objet 
+    */
+    function convertObjet(array){
+        let objet= Object.assign({}, array);
+        return objet;
+    }
+
+    
+    /*
+    Fonction a qui l'on donne un objet et qui renvoi true si il l'est ou false si il ne l'est pas.
+    @param {object} objet : objet à vérifier
+    @return {bool} : true si l'objet est vide, false si il ne l'est pas
+
+    SOURCE : https://coderwall.com/p/_g3x9q/how-to-check-if-javascript-object-is-empty
+    */
+    function isEmpty(obj) {
+        for(var prop in obj) {
+            if(obj.hasOwnProperty(prop))
+                return false;
+        }
+
+        return true;
+    }
+
     /*Fonction qui fait apparaître un bouton
     @param {bool} bool : true si il y a des options de tri choisies, false si il n'y en a aucunes
     */
@@ -90,14 +150,22 @@ window.addEventListener("load", function(){
         xhr.onreadystatechange=function(){
             if(this.readyState == 4 && this.status == 200){
                 let aOeuvresfiltre= JSON.parse(xhr.responseText);
-                for(i=0; i<aOeuvresfiltre.length; i++){
-                    
-                }
+                let oeuvres= document.querySelectorAll(".oeuvre");
+                console.log(aOeuvresfiltre);
+               // console.log(oeuvres);
+               /* for(i=0; i<aOeuvresfiltre.length; i++){
+                    for(j=0; j<oeuvres.length; i++){
+                        if(oeuvres[j].dataset.id == aOeuvresfiltre[i]){
+                            console.log("trouvÉ");
+                        };
+                    }
+                }*/
             }
             
         };
         xhr.setRequestHeader("Content-Type", "application/json");
         /*envoyer un objet json donnant les filtres choisis*/
+        console.log(data);
         let test =JSON.stringify(data);
         console.log(test);
         xhr.send(test);
