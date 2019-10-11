@@ -32,23 +32,10 @@ class FiltreControlleur extends Controlleur
     {
 		//echo (JSON_encode($requete));
 		if(!empty($requete->parametres)){
-
-		
-
-
-		// foreach($filtre as $key=> $condition){
-		// 	$res .= $key." IN(";
-		// 	foreach($condition as $id){
-		// 		$res.=$id.",";
-		// 	}
-		// 	$res.=")";
-		// }
 			$oOeuvre = new Oeuvre();
-			$aOeuvre = $oOeuvre->getListeFiltre();
-
+			$aOeuvre = $oOeuvre->getListeFiltre($requete->parametres);
 			echo JSON_encode($aOeuvre);
 		}        
-		//echo "allo"; 
 	}
 }
 ?>

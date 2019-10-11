@@ -94,7 +94,7 @@ class Oeuvre extends Modele {
 		return $res;
     }
 
-    public function getListeFiltre($type = array(3,10)) 
+    public function getListeFiltre($type = array()) 
 	{
 		$res = Array();
 		$query = "SELECT O.id_oeuvre as id FROM oeuvre O 

@@ -170,7 +170,7 @@ body{
 }
 .back i{
 position:absolute;
-/* top:0; */
+top:20px;
 font-size: 3.6rem;
 background-color: var(--couleur-marine);
 border: solid white 3px;
@@ -188,7 +188,9 @@ border-radius: 25px;
 }
 
 /*------------------ Liste des oeuvres -------------------*/
-
+.listeOeuvres{
+    min-height:calc(100vh - 160px);
+}
 .conteneur_oeuvre_courante {
     display:flex;
     flex-direction: column;

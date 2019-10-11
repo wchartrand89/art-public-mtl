@@ -69,11 +69,11 @@
 
 		</section>
 	</section>
-    <section class="btnSupp selec">
+    <section class="btnSupp cache">
 		<i class="material-icons supp">close</i>
 		<p>Réinitialiser</p>
 	</section>
-	<section class="back">
+	<section class="back selec">
 		<i class="material-icons">arrow_back</i>
 	</section>
 </article>

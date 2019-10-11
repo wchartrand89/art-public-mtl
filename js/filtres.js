@@ -6,12 +6,13 @@ window.addEventListener("load", function(){
     let secFiltres=document.querySelector(".filtres");
     let flecheBack=document.querySelector(".back");
     let btnSupp= document.querySelector(".btnSupp");
-
+    console.log(flecheBack.firstChild);
 
     flecheBack.addEventListener("click", function(){
         // secFiltres.setAttribute("id", "hidden");
         secFiltres.classList.replace("selec", "cache");
         iFiltre.classList.replace("cache", "selec");
+        flecheBack.firstElementChild.classList.add("hidden");
         // iFiltre.setAttribute("id", "visible");
     });
     
@@ -20,6 +21,7 @@ window.addEventListener("load", function(){
         //secFiltres.setAttribute("id", "visible");
         secFiltres.classList.replace("cache", "selec");
         iFiltre.classList.replace("selec", "cache");
+        flecheBack.firstElementChild.classList.remove("hidden");
         // iFiltre.setAttribute("id", "hidden");
     });
 
@@ -29,6 +31,8 @@ window.addEventListener("load", function(){
         //secFiltres.setAttribute("id", "hidden");
         secFiltres.classList.replace("selec", "cache");
         iFiltre.classList.replace("cache", "selec");
+        flecheBack.firstElementChild.classList.add("hidden");
+
         // iFiltre.setAttribute("id", "visible");
 
     });
@@ -58,17 +62,12 @@ window.addEventListener("load", function(){
                 remove(aTypes, check);
                 checkbox.innerHTML="check_box_outline_blank";
             };
-            if(aTypes.length > 0){
-                // suppOption(true);
-            }else{
-                // suppOption(false);
-            }
-            console.log(aTypes);
             //convertir le tableau des types en objet
             let oTypes= convertObjet(aTypes);
-            console.log(oTypes);
             // créer un tableau contenant les différents filtres
-
+            if(aTypes.length>0){
+                btnSupp.classList.replace("cache", "selec");
+            }
             ajax(oTypes);
 
             /* oFiltres : objet à envoyer à la fonction ajax du type : 
@@ -149,25 +148,36 @@ window.addEventListener("load", function(){
         xhr.open('POST', "./filtre");
         xhr.onreadystatechange=function(){
             if(this.readyState == 4 && this.status == 200){
-                let aOeuvresfiltre= JSON.parse(xhr.responseText);
                 let oeuvres= document.querySelectorAll(".oeuvre");
-                console.log(aOeuvresfiltre);
-               // console.log(oeuvres);
-               /* for(i=0; i<aOeuvresfiltre.length; i++){
-                    for(j=0; j<oeuvres.length; i++){
-                        if(oeuvres[j].dataset.id == aOeuvresfiltre[i]){
-                            console.log("trouvÉ");
-                        };
+                oeuvres.forEach(function(oeuvre){
+                    if(!isEmpty(xhr.responseText)){
+                        let aOeuvresFiltre= JSON.parse(xhr.responseText);
+                        let trouve = false;
+                        aOeuvresFiltre.forEach(function(id){
+                            if(oeuvre.dataset.id == id.id){
+                                trouve=true;
+                            }
+                        });
+                        if(!trouve){
+                            oeuvre.setAttribute("id", "hidden");
+                        }else{
+                            oeuvre.removeAttribute("id");
+                        }
+                    }else{
+                        oeuvre.removeAttribute("id");
                     }
-                }*/
+                   
+                });
+                    
+                
+               
+                
             }
             
         };
         xhr.setRequestHeader("Content-Type", "application/json");
         /*envoyer un objet json donnant les filtres choisis*/
-        console.log(data);
         let test =JSON.stringify(data);
-        console.log(test);
         xhr.send(test);
     }
     
