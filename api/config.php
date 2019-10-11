@@ -30,8 +30,7 @@
 		{
 			
 			if(file_exists($dossier.$class.'.class.php'))
-			{
-					
+			{					
 				require_once($dossier.$class.'.class.php');
 				//echo "trouvé : ";
 				//var_dump($dossier.$class.'.class.php');

@@ -13,11 +13,11 @@
                 <form id='inputs_form' action="/art-public-mtl/api/admin/artiste/ajouterArtiste" method="post">	
 
                     <div class="div_form">
-                        <label for="titre">Nom</label>
+                        <label for="titre">Nom de l'artiste</label>
                         <input class="box" type="text" name="nom" value="" id="nom">
                     </div>
                     <div class="div_form">
-                        <label for="titre">Prenom</label>
+                        <label for="titre">Prenom de l'artiste</label>
                         <input class="box" type="text" name="prenom" value="" id="prenom">
                     </div>
                     <div class="div_form">

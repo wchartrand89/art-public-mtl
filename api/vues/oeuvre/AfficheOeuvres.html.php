@@ -13,9 +13,9 @@
     -->
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
     async defer>
-    </script>
+    </script> -->
 
 
     <section class="recherche">
@@ -146,13 +146,8 @@
 		<i class="material-icons hidden">arrow_back</i>
 	</section>
 </article>
-
-
-    <div id="map" class="carte" style="height:500px;"></div>  
-
-
-
-		 <section class="contenu listeOeuvres">
+    <div id="map" class="carte"></div>  
+		 <section class="contenu hidden listeOeuvres">
 			<!-- <section class="rechercher"></section> -->
             <section class="oeuvres flex wrap">
 						<?php

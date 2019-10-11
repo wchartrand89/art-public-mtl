@@ -32,11 +32,12 @@ $info= $data;
                     ?>   
                     
                     <div class="div_form">
-                        <label for="titre">Nom artiste</label>
+                        <label for="titre">Nom de l'artiste</label>
                         <input class="box" type="text" name="nom" value="<?php echo $info["Nom"];  ?>" id="nom" >
                     </div>
+                    <br>
                     <div class="div_form">
-                        <label for="titre">Prénom artiste</label>
+                        <label for="titre">Prénom de l'artiste</label>
                         <input class="box" type="text" name="prenom" value="<?php echo $info["Prenom"];  ?>" id="prenom" >
                     </div>	
             
