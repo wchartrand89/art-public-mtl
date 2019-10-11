@@ -5,7 +5,10 @@ window.addEventListener("load", function()
     let choixImage = document.querySelector(".vueImage");
     let map = document.querySelector("#map");
     let contenu = document.querySelector(".contenu");
+    let filtre=document.querySelector(".filtre");
+    filtre.setAttribute("id", "hidden");
     
+    filtre.classList.replace("selec","cache");
     choixListe.addEventListener("click", function()
     {
         map.classList.add("hidden"); 
@@ -14,6 +17,8 @@ window.addEventListener("load", function()
         choixListe.classList.add("focus");
         choixCarte.classList.remove("focus");
         choixImage.classList.remove("focus");
+        filtre.classList.replace("cache","selec");
+        filtre.removeAttribute("id", "hidden");
     });
     
     choixCarte.addEventListener("click", function()
@@ -24,6 +29,9 @@ window.addEventListener("load", function()
         choixCarte.classList.add("focus");
         choixListe.classList.remove("focus");
         choixImage.classList.remove("focus");
+        filtre.classList.replace("selec","cache");
+        filtre.setAttribute("id", "hidden");
+
     });
     
     choixImage.addEventListener("click", function()
@@ -34,6 +42,8 @@ window.addEventListener("load", function()
         choixImage.classList.add("focus");
         choixCarte.classList.remove("focus");
         choixListe.classList.remove("focus");
+        filtre.classList.replace("cache","selec");
+        filtre.removeAttribute("id", "hidden");
     });      
     
     

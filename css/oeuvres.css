@@ -442,7 +442,7 @@ border-radius: 25px;
 #map
 {
     display: block;
-    height: 441px;
+    height: calc(100vh - 160px);
 }
 
 #map.hidden{
