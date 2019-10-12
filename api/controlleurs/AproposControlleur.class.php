@@ -27,7 +27,7 @@ class AProposControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$oVue = new Vue();
-        $oVue->afficheEntete("");	
+        $oVue->afficheEntete("apropos");	
         $oVue->afficheAPropos();
         $oVue->affichePied();
 	}

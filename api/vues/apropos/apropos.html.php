@@ -1,10 +1,10 @@
 
 <section class="contenu-apropos">
-    <h1>À propos</h1>
+    <h3>À propos</h3>
 
     <div class="systeme_onglets">
         <div class="onglets">
-            <span class="onglet_0 onglet" id="onglet_details" onclick="javascript:change_onglet('details');">P&eacute;sentation</span>
+            <span class="onglet_0 onglet" id="onglet_details" onclick="javascript:change_onglet('details');">Pr&eacute;sentation</span>
             <span class="onglet_0 onglet" id="onglet_artiste" onclick="javascript:change_onglet('artiste');">FAQ</span>
         </div>
         <div class="contenu_onglets">
@@ -21,10 +21,22 @@
                 </section>
             </div>
             <div class="contenu_onglet" id="contenu_onglet_artiste">
-                <h1></h1>
-                <section class="texte">
-                    
-                </section>
+                <h2>Accordion</h2>
+
+                <button class="accordion">Question 1</button>
+                <div class="panel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <button class="accordion">Question 2</button>
+                <div class="panel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+
+                <button class="accordion">Question 3</button>
+                <div class="panel">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
             </div>	
 		</div>
 	</div>
