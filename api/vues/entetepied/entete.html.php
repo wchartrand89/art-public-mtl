@@ -52,26 +52,49 @@
 			echo '<script src="../../js/carteOeuvre.js"></script>';
 			jsBase("oeuvre");
 		} 
+		else if ($page== "apropos"){
+			cssBase("apropos");
+			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+			echo '<script src="../js/onglets.js"></script>';
+			echo '<script src="../js/accordeon.js"></script>';
+			jsBase("apropos");
+		} 
+		else if ($page== "contact"){
+			cssBase("contact");
+			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+			echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">';
+			echo '<script src="../js/onglets.js"></script>';
+			jsBase("contact");
+		} 
+		
 	
 		function cssBase($page){
+			$chemin = "";
+			if($page == "artiste" || $page == "oeuvre") {
+				$chemin = "../";
+			}
 			?>
 			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/reset.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/var.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/header.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/footer.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/text.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/component.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/flex.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../css/main.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php echo $chemin;?>../css/reset.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php echo $chemin;?>../css/var.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php echo $chemin;?>../css/header.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php echo $chemin;?>../css/footer.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php echo $chemin;?>../css/text.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php echo $chemin;?>../css/component.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php echo $chemin;?>../css/flex.css" type="text/css" media="screen">
+			<link rel="stylesheet" href="<?php echo $chemin;?>../css/main.css" type="text/css" media="screen">
 
 			
 			<?php
 		}
 		function jsBase($page){
+			$chemin = "";
+			if($page == "artiste" || $page == "oeuvre") {
+				$chemin = "../";
+			}
 			?>
-				<script src="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../js/main.js"></script>
-				<script src="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../js/menu.js"></script>
+				<script src="<?php echo $chemin;?>../js/main.js"></script>
+				<script src="<?php echo $chemin;?>../js/menu.js"></script>
 			<?php
 		}
 	?>
@@ -102,12 +125,12 @@
 			<path d="M21.71 11.29l-9-9c-.39-.39-1.02-.39-1.41 0l-9 9c-.39.39-.39 1.02 0 1.41l9 9c.39.39 1.02.39 1.41 0l9-9c.39-.38.39-1.01 0-1.41zM14 14.5V12h-4v3H8v-4c0-.55.45-1 1-1h5V7.5l3.5 3.5-3.5 3.5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 				<p>Parcours</p>
 			</a>
-			<a class="lien" href="#">
+			<a class="lien" href="/art-public-mtl/api/apropos">
 			<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/>
 			<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
 				<p>À propos</p>
 			</a>
-			<a class="lien" href="#">
+			<a class="lien" href="/art-public-mtl/api/contact">
 			<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 				<p>Contact</p>
 			</a>

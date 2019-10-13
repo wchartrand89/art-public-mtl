@@ -27,7 +27,7 @@ class ContactControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$oVue = new Vue();
-        $oVue->afficheEntete("");	
+        $oVue->afficheEntete("contact");	
         $oVue->afficheContact();
         $oVue->affichePied();
 	}
