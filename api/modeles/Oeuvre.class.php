@@ -94,31 +94,34 @@ class Oeuvre extends Modele {
 		return $res;
     }
 
-    public function getListeFiltre($filtre) 
+    public function getListeFiltre($type = array()) 
 	{
-    
 		$res = Array();
-		$query = "	SELECT O.id_oeuvre FROM oeuvre O 
+		$query = "SELECT O.id_oeuvre as id FROM oeuvre O 
                     LEFT JOIN ". self::TABLE_LIAISON_OEUVRE_SOUSCATEGORIE ." SC ON O.id_oeuvre=SC.id_oeuvre
                     LEFT JOIN ". self::TABLE_SOUSCATEGORIE ." S ON SC.id_sous_categorie=S.id_sous_categorie 
                    LEFT JOIN ". self::TABLE_A_VISITER ." Vi ON O.id_oeuvre=Vi.id_oeuvre
                    LEFT JOIN ". self::TABLE_FAVORIS ." F ON O.id_oeuvre=F.id_oeuvre
-                   LEFT JOIN ". self::TABLE_VOTE ." Vo ON O.id_oeuvre=Vo.id_oeuvre ".$filtre."
-                    order by O.id_oeuvre ASC
-				";
+                   LEFT JOIN ". self::TABLE_VOTE ." Vo ON O.id_oeuvre=Vo.id_oeuvre ";
+        if(isset($type)){
+            $listeId="";
+            $query.= "WHERE SC.id_sous_categorie IN (";
+            foreach($type as $id){
+                $listeId.= $id.",";
+            }
+            $listeId=substr($listeId, 0, -1);
+            $query.=$listeId.")";
+        }
 
-		if($mrResultat = $this->_db->query($query))
-		{
-			while($oeuvre = $mrResultat->fetch_assoc())
-			{
-				foreach($oeuvre as $cle=> $valeur)
-				{
-					$oeuvre[$cle] = (utf8_decode($valeur));
-				}
-				$res[] = $oeuvre;
-			}
-			
-		}
+            if($mrResultat = $this->_db->query($query))
+            {
+                while($categorie = $mrResultat->fetch_assoc())
+                {
+                    $res[] = $categorie;
+                }
+                
+            }
+             //var_dump($query);
 		return $res;
 	}
 	

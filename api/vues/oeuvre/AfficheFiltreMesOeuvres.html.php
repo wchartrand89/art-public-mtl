@@ -11,9 +11,11 @@
 **************************************************************************
 **************************************************************************
     -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
+
+
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
     async defer>
-    </script>
+    </script> -->
 
 
 	<section class="recherche">
@@ -45,7 +47,7 @@
 	// vérifier que l'utilisateur est connecté pour afficher le filtre "mes oeuvres" au prochain sprint
 	
 	?>
-	<section class="mesOeuvres">
+	<section class="mesOeuvres" id="hidden">
 		<h2>Mes oeuvres</h2>
 		<section>
 			<div class= "critere">
