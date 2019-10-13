@@ -26,23 +26,24 @@
                 </section>
             </div>
             <div class="contenu_onglet" id="contenu_onglet_artiste">
-                <form action="/action_page.php">
+                <form action="mailto:contact@artpublicmontreal.ca">
                     <fieldset>
-                        <legend>Contactez-nous</legend>
+                        <h3>Contactez-nous</h3>
                         Nom:<br>
-                        <input type="text" name="firstname" value="Mickey">
+                        <input type="text" name="firstname" value="">
                         <br>
                         Pr&eacute;nom:<br>
-                        <input type="text" name="lastname" value="Mouse">
+                        <input type="text" name="lastname" value="">
                         <br>
                         Courriel:<br>
-                        <input type="text" name="lastname" value="Mouse">
+                        <input type="text" name="lastname" value="">
                         <br>
-                        <select name="cars">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="fiat">Fiat</option>
-                            <option value="audi">Audi</option>
+                        Sujet :
+                        <select name="sujet">
+                            <option value="volvo">Proposition d'oeuvre</option>
+                            <option value="saab">Demande de compte</option>
+                            <option value="fiat">Signaler des domages d'une oeuvre</option>
+                            <option value="audi">Autre</option>
                         </select>
                         <br>
                         <p>Commentaire :</p>
