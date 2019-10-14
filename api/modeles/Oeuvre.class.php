@@ -201,8 +201,8 @@ class Oeuvre extends Modele {
         O.Dimensions as dimensions,
         O.TechniqueAng as techniqueAng,
         i.NoImage,
-        O.Technique as technique FROM Oeuvre O 
-        LEFT JOIN artiste_Oeuvre AO ON O.id_oeuvre = AO.id_oeuvre 
+        O.Technique as technique FROM " . self::TABLE_OEUVRE . " O 
+        LEFT JOIN " . self::TABLE_LIAISON_ARTISTE_OEUVRE . " AO ON O.id_oeuvre = AO.id_oeuvre 
         LEFT JOIN artiste A ON A.id_artiste = AO.id_artiste
         LEFT JOIN materiaux_oeuvre MO ON O.id_oeuvre = MO.id_oeuvre 
         LEFT JOIN materiaux M ON M.id_mat = MO.id_materiaux
