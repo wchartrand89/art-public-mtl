@@ -66,6 +66,13 @@
 			echo '<script src="../js/onglets.js"></script>';
 			jsBase("contact");
 		} 
+        else if ($page== "compte"){
+			cssBase("compte");
+			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+			echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">';
+//			echo '<script src="../js/onglets.js"></script>';
+			jsBase("compte");
+		} 
 		
 	
 		function cssBase($page){
@@ -134,7 +141,7 @@
 			<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 				<p>Contact</p>
 			</a>
-			<a class="lien" href="#">
+			<a class="lien" href="/art-public-mtl/api/compte">
 			<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>						
 				<p>Compte</p>
 			</a>
@@ -145,7 +152,7 @@
 			<a class="langue hidden" href="#">EN</a>
 			<a class="menuCubes" href="#"><img src="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../img/icons/menu.svg" alt="Icone d'ouverture du menu"></a>
 			<a class="fermerMenu hidden" href="#"><img src="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../img/icons/close.svg" alt="Icone de fermeture du menu"></a>
-			<a class="compte" href="#">
+			<a class="compte" href="/art-public-mtl/api/compte">
 			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>						
 			</a>
 		</div>

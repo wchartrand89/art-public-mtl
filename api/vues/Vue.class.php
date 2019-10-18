@@ -126,6 +126,18 @@ class Vue {
 		require("contact/contact.html.php");
 		
 	}
+    
+    
+    /**
+	 * Affiche la page de connexion User
+	 * @access public
+	 * @return void
+	 */
+	public function afficheConnexion() {
+		
+		require("accueil/connexion.html.php");
+		
+	}
 
 }
 ?>

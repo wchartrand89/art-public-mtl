@@ -65,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
 ira chercher le bon controlleur selon l'url (admin/menu, admin/oeuvre, etc.)
 
 //*/
-//    echo "test";
+ //   echo "test";
 //   	var_dump($_SERVER);
 
 
