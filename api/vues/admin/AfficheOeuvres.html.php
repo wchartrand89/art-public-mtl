@@ -76,7 +76,7 @@
 					
 			</section>
                        
-                       <!-- The Modal -->
+ <!-- The Modal -->
 <div id="myModal" class="modal">
   <div class="modal-content">
     <div class="confirm-buttons">

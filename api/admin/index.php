@@ -12,7 +12,6 @@
 
 //Ouvrir la session
 session_start();
-
 $_SESSION['id'] = '';
 ini_set('display_errors', 1);
 error_reporting(~0);

@@ -46,14 +46,14 @@ class Authentification extends Modele{
         $lo=$this->filtre($lo);
         $mdp=$this->filtre($mdp);
         
-        $requete= "SELECT login FROM user WHERE login='$lo' and role='usager' and password='$mdp'";
+        $requete= "SELECT * FROM user WHERE login='$lo' and role='usager' and password='$mdp'";
         $result =$this->_db->query($requete);
 
         while ($resultat = $result->fetch_assoc()) 
         {
             $tableau[] = $resultat;
         }
-
+        return $tableau;
 //        var_dump($resultat);
 
      // print_r($resultat[0]['nbre']); die;
