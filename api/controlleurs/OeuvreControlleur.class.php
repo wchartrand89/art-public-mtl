@@ -24,6 +24,9 @@ class OeuvreControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
+//        var_dump($_SESSION['id']);
+        var_dump($_SESSION['user']);
+        
         $types=array();
 		$res = array();
 		$page ="oeuvres";

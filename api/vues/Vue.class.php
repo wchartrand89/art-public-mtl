@@ -134,10 +134,20 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheConnexion() {
-		
 		require("accueil/connexion.html.php");
 		
 	}
 
+    
+        /**
+	 * Affiche la page de monCompte User
+	 * @access public
+	 * @return void
+	 */
+	public function afficheMonCompte() {
+		
+		require("accueil/monCompte.html.php");
+		
+	}
 }
 ?>

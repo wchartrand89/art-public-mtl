@@ -173,7 +173,6 @@ class OeuvreAdminControlleur extends OeuvreControlleur
         // si on recoit quelque chose
         if($_GET['action']=='deconnexion')
         {
-            echo "hehe";
             // si action deconnexion alors detruire la session et rediriger
             //session_start();
             session_destroy(); //détruit la session

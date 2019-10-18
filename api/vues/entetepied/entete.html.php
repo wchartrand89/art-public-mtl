@@ -70,7 +70,8 @@
 			cssBase("compte");
 			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
 			echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">';
-//			echo '<script src="../js/onglets.js"></script>';
+			echo '<link rel="stylesheet" href="../css/modalModify.css">';
+			echo '<script src="../js/modifyPW.js"></script>';
 			jsBase("compte");
 		} 
 		
