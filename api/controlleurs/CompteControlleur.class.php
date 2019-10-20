@@ -26,10 +26,10 @@ class CompteControlleur extends Controlleur
         // si la session est set et est correct alors afficher l'edition des infos du compte.
         if(isset($_SESSION["user"]) && $_SESSION['user']=='ok')
         {
-            
+            $mail = $this->getAdresseMail($_SESSION["username"]);
             $oVue = new Vue();
             $oVue->afficheEntete("compte");	
-            $oVue->afficheMonCompte($_SESSION["username"], $_SESSION["pw"]);
+            $oVue->afficheMonCompte($mail);
             $oVue->affichePied();
         }
         // sinon afficher la connexion
@@ -81,7 +81,40 @@ class CompteControlleur extends Controlleur
             }
            
           
+            if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="modifierPW")
+            { 
+                $retour = $this->modificationPW($_POST['oldPW'], $_POST['newPW']);
+                if($retour==true)
+                {
+                    header("location:/art-public-mtl/api/compte");
+                }
+                else //connexion non reconnue
+                {     
+                    header("location:/art-public-mtl/api/compte"); //redirige vers l'accueil (login)
+                    exit();
+                }
+            }
         }
-    }
+            
+        }
+    
+        private function getAdresseMail($user)
+        {
+        $oUser = new User();
+		$aUser = $oUser->getAdresseMail($user);
+		return $aUser;
+        }
+    
+        private function modificationPW($oldPw, $newPW)
+        {
+        $oUser = new User();
+		$aUser = $oUser->modificationPW($oldPw, $newPW);
+		return $aUser;
+        }
 }
+    
+    
+
+    
+
 ?>
