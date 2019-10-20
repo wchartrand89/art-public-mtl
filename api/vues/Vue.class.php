@@ -144,7 +144,7 @@ class Vue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheMonCompte() {
+	public function afficheMonCompte($mail) {
 		
 		require("accueil/monCompte.html.php");
 		

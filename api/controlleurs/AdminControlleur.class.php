@@ -74,34 +74,33 @@ class AdminControlleur extends Controlleur
         if(!empty($_POST))
         {
 
-			//var_dump($requete);
-			// echo '<br>'. $_GET['action'] . '<br>';
-			// var_dump($_POST);
-			// die;
-        
-            
-            // Si login correct alors set une variable session
-  		    $authentification = new Authentification();
-            $retour = $authentification->verification($_POST['login'], $_POST['mdp']);
-			if($retour == true) //login et mdp sont corrects
-			{
-                
-                //connecter la personne
-                $_SESSION['login'] = $_POST['login'];
-                
-                //redirection vers le menu admin
-                header("location:/art-public-mtl/api/admin/oeuvre");
-			}
-			else //connexion non reconnue
-			{
-                
+                // Si login correct alors set une variable session
+                $authentification = new Authentification();
+                $retour = $authentification->verification($_POST['login']);
 
-//                session_destroy(); //détruire la session
+                if($retour)
+                {
+                    foreach($retour as $hashed_password)
+                    {
+                        if(password_verify($_POST["mdp"],$hashed_password)){
+                            //connecter la personne + set la variable session pour la personne qui s'est connecté
+                            $_SESSION['login'] = $_POST['login'];
+
+                            //redirection vers le menu oeuvre
+                            header("location:/art-public-mtl/api/admin/oeuvre");
+                        }
+                    }
+                }
+                else //connexion non reconnue
+                {     
+                    //                session_destroy(); //détruire la session
                 header("location:/art-public-mtl/api/admin"); //redirige vers l'accueil (login)
                 exit();
+                }
             }
+            
           
         }
     }
-}
+
 ?>

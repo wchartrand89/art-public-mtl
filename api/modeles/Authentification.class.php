@@ -12,51 +12,29 @@
  */
 class Authentification extends Modele{
 
-	public  function verification($lo, $mdp){
-       //requete de verication ici  
-        
-        
-        
-        
+	public  function verification($lo){
+        //requete de verication ici  
         $lo=$this->filtre($lo);
-        $mdp=$this->filtre($mdp);
         
-        $requete= "SELECT login FROM user WHERE login='$lo' and role='admin' and password='$mdp'";
+        $requete= "SELECT password FROM user WHERE login='$lo' and role='admin'";
         $result =$this->_db->query($requete);
-
-        while ($resultat = $result->fetch_assoc()) 
-        {
-            $tableau[] = $resultat;
-        }
-
-//        var_dump($resultat);
-
-     // print_r($resultat[0]['nbre']); die;
+        $res = $result->fetch_assoc();
+        return $res;
 
         if( $tableau[0]>0)   return true;
         return false;
 	}
+
+
     
-    public  function verificationUser($lo, $mdp){
+    public  function verificationUser($lo){
        //requete de verication ici  
-        
-        
-        
-        
         $lo=$this->filtre($lo);
-        $mdp=$this->filtre($mdp);
         
-        $requete= "SELECT * FROM user WHERE login='$lo' and role='usager' and password='$mdp'";
+        $requete= "SELECT password FROM user WHERE login='$lo' and role='usager'";
         $result =$this->_db->query($requete);
-
-        while ($resultat = $result->fetch_assoc()) 
-        {
-            $tableau[] = $resultat;
-        }
-        return $tableau;
-//        var_dump($resultat);
-
-     // print_r($resultat[0]['nbre']); die;
+        $res = $result->fetch_assoc();
+        return $res;
 
         if( $tableau[0]>0)   return true;
         return false;

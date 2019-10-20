@@ -22,15 +22,17 @@ class CompteControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
-        
+        //author Fred
+        // si la session est set et est correct alors afficher l'edition des infos du compte.
         if(isset($_SESSION["user"]) && $_SESSION['user']=='ok')
         {
-            
+            $mail = $this->getAdresseMail($_SESSION["username"]);
             $oVue = new Vue();
             $oVue->afficheEntete("compte");	
-            $oVue->afficheMonCompte($_SESSION["username"], $_SESSION["pw"]);
+            $oVue->afficheMonCompte($mail);
             $oVue->affichePied();
         }
+        // sinon afficher la connexion
         else
         {
             $oVue = new Vue();
@@ -50,33 +52,69 @@ class CompteControlleur extends Controlleur
         {
             // si l'action envoyée est connexion
             if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="connexion")
-               { 
+            { 
 
                  // Si login correct alors set une variable session
                     $authentification = new Authentification();
-                    $retour = $authentification->verificationUser($_POST['login'], $_POST['mdp']);
-                    if($retour == true) //login et mdp sont corrects
-                    {
-                        
-                        //connecter la personne + set la variable session pour la personne qui s'est connecté
-                        $_SESSION["user"]='ok';
-                        $_SESSION["pw"]=$_POST['mdp'];
-                        $_SESSION["username"]=$_POST['login'];
+                    $retour = $authentification->verificationUser($_POST['login']);
 
-                        //redirection vers le menu oeuvre
-                        header("location:/art-public-mtl/api/oeuvre");
-                    }
-                    else //connexion non reconnue
+                if($retour)
+                {
+                    foreach($retour as $hashed_password)
                     {
+                        if(password_verify($_POST["mdp"],$hashed_password)){
+                            //connecter la personne + set la variable session pour la personne qui s'est connecté
+                            $_SESSION["user"]='ok';
+                            $_SESSION["pw"]=$_POST['mdp'];
+                            $_SESSION["username"]=$_POST['login'];
 
-                        
-                        header("location:/art-public-mtl/api/compte"); //redirige vers l'accueil (login)
-                        exit();
+                            //redirection vers le menu oeuvre
+                            header("location:/art-public-mtl/api/oeuvre");
+                        }
                     }
                 }
+                else //connexion non reconnue
+                {     
+                    header("location:/art-public-mtl/api/compte"); //redirige vers l'accueil (login)
+                    exit();
+                }
+            }
            
           
+            if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="modifierPW")
+            { 
+                $retour = $this->modificationPW($_POST['oldPW'], $_POST['newPW']);
+                if($retour==true)
+                {
+                    header("location:/art-public-mtl/api/compte");
+                }
+                else //connexion non reconnue
+                {     
+                    header("location:/art-public-mtl/api/compte"); //redirige vers l'accueil (login)
+                    exit();
+                }
+            }
         }
-    }
+            
+        }
+    
+        private function getAdresseMail($user)
+        {
+        $oUser = new User();
+		$aUser = $oUser->getAdresseMail($user);
+		return $aUser;
+        }
+    
+        private function modificationPW($oldPw, $newPW)
+        {
+        $oUser = new User();
+		$aUser = $oUser->modificationPW($oldPw, $newPW);
+		return $aUser;
+        }
 }
+    
+    
+
+    
+
 ?>

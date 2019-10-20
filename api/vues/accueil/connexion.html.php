@@ -1,6 +1,6 @@
 
 
-<h2>Utilisateurs</h2><br>
+<h2>Connexion</h2><br>
             <form id='connection' action="/art-public-mtl/api/compte/connexion" method="post">	
                 <div>
                     <label for="name"><p class="pConnexion">Nom d'utilisateur</p></label>
