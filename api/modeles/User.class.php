@@ -20,10 +20,10 @@ class User extends Modele {
 	 * @access public
 	 * @return Array
 	 */
-	public function getAdresseMail($user) 
+	public function getInfosUser($user) 
 	{
 		$res = Array();
-		$query = "select courriel from ". self::TABLE_TYPE. " WHERE login='$user'";
+		$query = "select * from ". self::TABLE_TYPE. " WHERE login='$user'";
         $result =$this->_db->query($query);
         $res = $result->fetch_assoc();
         return $res;
@@ -31,11 +31,15 @@ class User extends Modele {
 	
     public function modificationPW($oldPw, $newPW)
     {
-        $_SESSION["pw"]=$newPW;
-        $oldPw=password_hash($oldPw, PASSWORD_DEFAULT);
+        
         $newPW=password_hash($newPW, PASSWORD_DEFAULT);
         $user=$_SESSION['username'];
         
+        if($newPW==$oldPW){
+            return 'Votre ancien et nouveau mot de passe sont identiques.';
+        }
+        
+    
         $request="UPDATE user
         SET password ='$newPW'
         WHERE login='$user'";
