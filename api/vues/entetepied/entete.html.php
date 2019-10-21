@@ -74,11 +74,19 @@
 			echo '<script src="../js/validationForm.js"></script>';
 			jsBase("compte");
 		} 
+        else if ($page== "inscription"){
+			cssBase("inscription");
+			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+			echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">';
+			echo '<link rel="stylesheet" href="../css/inscription.css">';
+			echo '<script src="../../js/validationFormIns.js"></script>';
+			jsBase("inscription");
+		} 
 		
 	
 		function cssBase($page){
 			$chemin = "";
-			if($page == "artiste" || $page == "oeuvre") {
+			if($page == "artiste" || $page == "oeuvre" || $page == "inscription") {
 				$chemin = "../";
 			}
 			?>
@@ -115,7 +123,7 @@
 <body>
 	<header class="appbar">
 
-		<a class="logo" href="/art-public-mtl/api/"><img src="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
+		<a class="logo" href="/art-public-mtl/api/"><img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription"){echo "../";}?>../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
 		
 		<nav class="menu">
 			
@@ -149,10 +157,10 @@
 		</nav>	
 		<div class="icons">
 			
-			<a class="search" href="#"><img src="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../img/icons/search_40px.svg" alt="Icone de recherche"></a>
+			<a class="search" href="#"><img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription"){echo "../";}?>../img/icons/search_40px.svg" alt="Icone de recherche"></a>
 			<a class="langue hidden" href="#">EN</a>
-			<a class="menuCubes" href="#"><img src="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../img/icons/menu.svg" alt="Icone d'ouverture du menu"></a>
-			<a class="fermerMenu hidden" href="#"><img src="<?php if($page == "artiste" || $page == "oeuvre"){echo "../";}?>../img/icons/close.svg" alt="Icone de fermeture du menu"></a>
+			<a class="menuCubes" href="#"><img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription"){echo "../";}?>../img/icons/menu.svg" alt="Icone d'ouverture du menu"></a>
+			<a class="fermerMenu hidden" href="#"><img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription"){echo "../";}?>../img/icons/close.svg" alt="Icone de fermeture du menu"></a>
 			<a class="compte" href="/art-public-mtl/api/compte">
 			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>						
 			</a>

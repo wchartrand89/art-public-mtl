@@ -22,14 +22,23 @@ class CompteControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
+
+        
         //author Fred
         // si la session est set et est correct alors afficher l'edition des infos du compte.
         if(isset($_SESSION["user"]) && $_SESSION['user']=='ok')
         {
-            $mail = $this->getAdresseMail($_SESSION["username"]);
+            $mail = $this->getInfosUser($_SESSION["username"]);
             $oVue = new Vue();
             $oVue->afficheEntete("compte");	
             $oVue->afficheMonCompte($mail);
+            $oVue->affichePied();
+        }
+        
+        else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "inscription"){
+            $oVue = new Vue();
+            $oVue->afficheEntete("inscription");	
+            $oVue->afficheInscription();
             $oVue->affichePied();
         }
         // sinon afficher la connexion
@@ -65,7 +74,6 @@ class CompteControlleur extends Controlleur
                         if(password_verify($_POST["mdp"],$hashed_password)){
                             //connecter la personne + set la variable session pour la personne qui s'est connecté
                             $_SESSION["user"]='ok';
-                            $_SESSION["pw"]=$_POST['mdp'];
                             $_SESSION["username"]=$_POST['login'];
 
                             //redirection vers le menu oeuvre
@@ -86,11 +94,11 @@ class CompteControlleur extends Controlleur
                 $retour = $this->modificationPW($_POST['oldPW'], $_POST['newPW']);
                 if($retour==true)
                 {
-                    header("location:/art-public-mtl/api/compte");
+                    header("location:/art-public-mtl/api/compte?update=ok");
                 }
                 else //connexion non reconnue
                 {     
-                    header("location:/art-public-mtl/api/compte"); //redirige vers l'accueil (login)
+                    header("location:/art-public-mtl/api/compte?update=erreur"); //redirige vers l'accueil (login)
                     exit();
                 }
             }
@@ -98,10 +106,10 @@ class CompteControlleur extends Controlleur
             
         }
     
-        private function getAdresseMail($user)
+        private function getInfosUser($user)
         {
         $oUser = new User();
-		$aUser = $oUser->getAdresseMail($user);
+		$aUser = $oUser->getInfosUser($user);
 		return $aUser;
         }
     
