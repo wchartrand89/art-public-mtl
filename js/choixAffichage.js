@@ -5,6 +5,7 @@ window.addEventListener("load", function()
     let choixImage = document.querySelector(".vueImage");
     let map = document.querySelector("#map");
     let contenu = document.querySelector(".contenu");
+    let listeTexte=document.querySelector(".listeLettre");
     let filtre=document.querySelector(".filtre");
     filtre.setAttribute("id", "hidden");
     
@@ -13,12 +14,14 @@ window.addEventListener("load", function()
     {
         map.classList.add("hidden"); 
 //        map.style.height="0px";
-        contenu.classList.remove("hidden");
+        contenu.classList.add("hidden");
         choixListe.classList.add("focus");
         choixCarte.classList.remove("focus");
         choixImage.classList.remove("focus");
         filtre.classList.replace("cache","selec");
         filtre.removeAttribute("id", "hidden");
+        listeTexte.removeAttribute("id", "hidden");
+        //listeTexte.classListe.remove("hidden");
     });
     
     choixCarte.addEventListener("click", function()
@@ -31,6 +34,7 @@ window.addEventListener("load", function()
         choixImage.classList.remove("focus");
         filtre.classList.replace("selec","cache");
         filtre.setAttribute("id", "hidden");
+        listeTexte.setAttribute("id", "hidden");
 
     });
     
@@ -44,6 +48,7 @@ window.addEventListener("load", function()
         choixListe.classList.remove("focus");
         filtre.classList.replace("cache","selec");
         filtre.removeAttribute("id", "hidden");
+        listeTexte.setAttribute("id", "hidden");
     });      
     
     

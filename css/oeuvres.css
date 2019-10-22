@@ -5,6 +5,9 @@
     justify-content: space-around;
     align-items: center;
     color: var(--couleur-marine);
+    position:sticky;
+    top : 100px;
+    background-color: white;
 }
 .recherche svg{
     width: 40px;

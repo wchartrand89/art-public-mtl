@@ -13,9 +13,9 @@
     -->
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
     async defer>
-    </script>
+    </script> -->
 
 
     <section class="recherche">
@@ -146,8 +146,106 @@
 		<i class="material-icons hidden">arrow_back</i>
 	</section>
 </article>
-    <div id="map" class="carte"></div>  
-		 <section class="contenu hidden listeOeuvres">
+<div id="map" class="carte"></div> 
+<section class="listeLettre" id="hidden">
+	<aside class="choix">
+		<p class="lettre">Y</p>
+		<p class="lettre">Z</p>
+		<div class="lettreChoisie">
+			<a class="fleches next" href="#B">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+				</a>
+			<p class="lettre focus">A</p>
+			<a class="fleches prev" href="#Z">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg></a>
+		</div>
+		<p class="lettre">B</p>
+		<p class="lettre">C</p>
+	</aside>
+<?php
+
+/*Tableau pour création des ancres dans les sections des lettres*/ 
+$listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
+1=>Array("lettre"=>"B","ok"=>false),
+2=>Array("lettre"=>"C","ok"=>false),
+3=>Array("lettre"=>"D","ok"=>false),
+4=>Array("lettre"=>"E","ok"=>false),
+5=>Array("lettre"=>"F","ok"=>false),
+6=>Array("lettre"=>"G","ok"=>false),
+7=>Array("lettre"=>"H","ok"=>false),
+8=>Array("lettre"=>"I","ok"=>false),
+9=>Array("lettre"=>"J","ok"=>false),
+10=>Array("lettre"=>"K","ok"=>false),
+11=>Array("lettre"=>"L","ok"=>false),
+12=>Array("lettre"=>"M","ok"=>false),
+13=>Array("lettre"=>"N","ok"=>false),
+14=>Array("lettre"=>"O","ok"=>false),
+15=>Array("lettre"=>"P","ok"=>false),
+16=>Array("lettre"=>"Q","ok"=>false),
+17=>Array("lettre"=>"R","ok"=>false),
+18=>Array("lettre"=>"S","ok"=>false),
+19=>Array("lettre"=>"T","ok"=>false),
+20=>Array("lettre"=>"U","ok"=>false),
+21=>Array("lettre"=>"V","ok"=>false),
+22=>Array("lettre"=>"W","ok"=>false),
+23=>Array("lettre"=>"X","ok"=>false),
+24=>Array("lettre"=>"Y","ok"=>false),
+25=>Array("lettre"=>"Z","ok"=>false),);
+?>
+     
+		<section class="listeOeuvresText">
+		<?php
+		//print_r($aData);
+			foreach ($aData as $cle => $oeuvre) {
+				extract($oeuvre);				
+			?>
+			<section>
+				<a class="lienOeuvre lienArtisteA" href="oeuvre/<?php echo $id_oeuvre; ?>"><?php  echo $Titre;?></a>
+					<?php 
+					$i=0;
+					foreach($listeLettres as $cle => $lettre){
+						if(!isset($test[$i])){
+							$test[$i]=false;
+						}
+						if ($Titre[0] == $lettre["lettre"] && $lettre["ok"] == false && $test[$i] !== true){
+							echo '<div id="'.$lettre["lettre"].'"></div>';
+							$test[$i]=true;
+						}
+						$i++;
+				
+					}
+
+
+					$j=count($Artistes);
+					//echo(count($Artistes));
+					foreach($Artistes as $artiste){
+						$j=$j-1;
+						extract($artiste);
+						?>
+						<a class="lienArtiste" href="artiste/<?php echo $id_artiste; ?>">
+						<?php 
+						if(isset($Nom) && $Nom!=""){
+							echo $Nom ." ". $Prenom;
+						}
+						else
+						{
+							echo $NomCollectif;
+						}
+						if($j>0){
+							echo ", ";
+						}
+						?></a>
+					<?php			
+					}
+					?>
+							</section>
+			<?php
+			}
+			?>
+			
+		</section>
+	</section>
+		<section class="contenu hidden listeOeuvres">
 			<!-- <section class="rechercher"></section> -->
             <section class="oeuvres flex wrap">
 						<?php
