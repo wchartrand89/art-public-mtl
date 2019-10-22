@@ -26,7 +26,6 @@
         <form action="/art-public-mtl/api/compte/modifierPW" id="form" method="post">
             <div class='cacher teste'>
                 <div>
-                    <label for="">Mon mot de passe :</label>
                     <input type="hidden" value='<?php echo $password; ?>' name='oldPW' id='oldPW'>
                 </div>
                 <div>
@@ -52,4 +51,10 @@
         <p>Adresse mail : <?php echo $courriel; ?></p>
       </div>
     </div>
+            <form id='deconnexion' action="/art-public-mtl/api/compte/deconnexion" method="post">	
+                <div>
+                    <input type="submit" id="envoyer" value="Déconnexion">
+                </div>		
+            </form>
+
 </section>

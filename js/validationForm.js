@@ -29,13 +29,13 @@ window.addEventListener("load", function(){
             else
             {
                 document.getElementById("msgErreurRegex").innerHTML="Votre mot de passe doit contenir au moins 8 caractères, une majusucule, une minuscule et un chiffre.";
-//                event.preventDefault();
+                event.preventDefault();
             }
         }
         else
         {
             document.getElementById("msgErreurConfirm").innerHTML="Vous devez confirmer votre mot de passe.";
-//            event.preventDefault();
+            event.preventDefault();
         }
     })
     
