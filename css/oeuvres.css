@@ -10,15 +10,16 @@
     background-color: white;
 }
 .recherche svg{
-    width: 40px;
-    height:40px;
-    fill: var(--couleur-marine);
+    /* width: 40px; */
+    /* height:40px; */
+    color: var(--couleur-marine);
 }
 
 .recherche .focus{
-width:60px;
-height:60px;
-fill:var(--couleur-orange);
+/* width:60px; */
+/* height:60px; */
+font-size:6.4rem;
+color:var(--couleur-orange);
 }
 
 .vueChoisie{

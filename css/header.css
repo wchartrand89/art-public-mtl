@@ -76,10 +76,11 @@
         color : var(--couleur-fond);
         margin-top:calc(var(--padding-base) / 2);
     }
-    .appbar .menu .lien svg{
-        fill: var(--couleur-fond);
-        width:100px;
-        height:100px;
+    .appbar .menu .lien i{
+        color: var(--couleur-fond);
+        font-size:9.6rem;
+        /* width:100px;
+        height:100px; */
     }
   
 
@@ -143,8 +144,6 @@
         background-color: var(--couleur-bleu2-menu);
     } */
 
-
-
     .appbar .hidden{
         display:none;
     }
@@ -155,9 +154,10 @@
     .appbar .icons .langue{
         display:block;
     }
-    .appbar .menu .lien svg{
-        width:150px;
-        height:150px;
+    .appbar .menu .lien i{
+        font-size: 13rem;
+        /* width:150px;
+        height:150px; */
     }
     /*Adapter taille logo*/
     .appbar .logo img{
@@ -205,7 +205,7 @@
     .appbar .menu .lien p{
         color : black;
     }
-    .appbar .menu .lien svg{
+    .appbar .menu .lien i{
         display:none;
     }
    
@@ -223,6 +223,7 @@
         min-width:50%;
         justify-content: center;
     }
+ 
     .appbar .menu .lien{
         min-width:18%;
         max-width:20%;
