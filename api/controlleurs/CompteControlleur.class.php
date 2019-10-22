@@ -87,7 +87,31 @@ class CompteControlleur extends Controlleur
                     exit();
                 }
             }
-           
+            
+            if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="inscriptionForm")
+            { 
+                $mail = $this->verificationMail($_POST['mail']);
+                $login = $this->verificationLogin($_POST['login']);
+                if($mail==true && $login== true){
+                         header("location:/art-public-mtl/api/compte/inscription?update=loginmail"); //redirige vers l'accueil (login)
+                         exit(); 
+                }
+                elseif ($login== true){
+                    header("location:/art-public-mtl/api/compte/inscription?update=login"); //redirige vers l'accueil (login)
+                    exit(); 
+                }
+                elseif ($mail== true){
+                    header("location:/art-public-mtl/api/compte/inscription?update=mail"); //redirige vers l'accueil (login)
+                    exit(); 
+                }
+                else{
+                $retour = $this->inscriptionUser($_POST['login'], $_POST['mdp'], $_POST['mail']);
+                    if($retour==true)
+                    {
+                        header("location:/art-public-mtl/api/compte");
+                    }
+                }
+            }
           
             if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="modifierPW")
             { 
@@ -102,7 +126,14 @@ class CompteControlleur extends Controlleur
                     exit();
                 }
             }
+            
         }
+            if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="deconnexion")
+            { 
+                session_destroy(); //détruit la session
+               header("location:/art-public-mtl/api/compte"); //retourne à l'accueil admin (vue de connexion)
+                exit();
+            }
             
         }
     
@@ -117,6 +148,27 @@ class CompteControlleur extends Controlleur
         {
         $oUser = new User();
 		$aUser = $oUser->modificationPW($oldPw, $newPW);
+		return $aUser;
+        }
+    
+        private function verificationLogin($login)
+        {
+        $oUser = new User();
+		$aUser = $oUser->verificationLogin($login);
+		return $aUser;
+        }
+            
+        private function verificationMail($mail)
+        {
+        $oUser = new User();
+		$aUser = $oUser->verificationMail($mail);
+		return $aUser;
+        }
+    
+        private function inscriptionUser($login, $pw, $mail)
+        {
+        $oUser = new User();
+		$aUser = $oUser->inscriptionUser($login, $pw, $mail);
 		return $aUser;
         }
 }

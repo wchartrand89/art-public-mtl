@@ -6,25 +6,32 @@ window.addEventListener("load", function(){
     
     
     // FORMULAIRE INSCRIPTION
-    btnEnvoiIns.addEventListener("click", function(){
-        console.log("test");
-        
+    btnEnvoiIns.addEventListener("click", function(event){
+
+        let mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
         let form=document.getElementById("inscription");
         let email = document.getElementById("mail").value;
-        console.log(email);
         let login = document.getElementById("login").value;
-        console.log(login);
         let mdp = document.getElementById("mdp").value;
         let mdpConfirm = document.getElementById("mdpConfirm").value;
-    let Regex = new RegExp("/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/");
-        let match = email.match(Regex);
-        if(match){
-            console.log('teeeeee');
-            }
-        
-        
 
-//        event.preventDefault();
+        if(mdp==mdpConfirm)
+        {
+            if(mdp.match(mediumRegex))
+            {
+              form.submit(); 
+            }
+            else
+            {
+                document.getElementById("msgErreurRegex").innerHTML="Votre mot de passe doit contenir au moins 8 caractères, une majusucule, une minuscule et un chiffre.";
+               event.preventDefault();
+            }
+        }
+        else
+        {
+            document.getElementById("msgErreurConfirm").innerHTML="Vous devez confirmer votre mot de passe.";
+            event.preventDefault();
+        }
     })
 
 });
