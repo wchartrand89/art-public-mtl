@@ -21,18 +21,23 @@ class Arrondissement extends Modele {
 	 * @access public
 	 * @return Array
 	 */
+
 	public function getListe() 
 	{
 		$res = Array();
-		$query = "select DISTINCT". self::TABLE_ARROND." from ". self::TABLE_OEUVRE. " ORDER BY Arrondissement";
+		$query = "select DISTINCT ". self::TABLE_ARROND." from ". self::TABLE_OEUVRE. " ORDER BY ". self::TABLE_ARROND;
 		if($mrResultat = $this->_db->query($query))
 		{
-			while($arrond = $mrResultat->fetch_assoc())
+			while($arron = $mrResultat->fetch_assoc())
 			{
-				$res[] = $arrond;
+				// foreach($arron as $cle=> $valeur)
+				// {
+				// 	$arron[$cle] =(utf8_decode($valeur));
+				// }
+				$res[] = $arron;
 			}
 		}
-		return $res;
+		return $res;   
 	}
 	
 }

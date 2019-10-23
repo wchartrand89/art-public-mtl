@@ -26,7 +26,7 @@
 		<div><i class="vueImage material-icons">photo</i></div>
 	</section>
 
-	<article class='filtres cache'>
+	<article class='filtres'>
 		<section class="retour">
 			<i class="material-icons icone">close</i>
 		</section>
@@ -55,7 +55,7 @@
 	</section>
 
 
-<section class="types">
+<section class="types hidden" id="hidden">
 		<h2>Type d'oeuvre</h2>
 		<section>
 		<!-- Faire L'affichage des types d'oeuvre dynamiquement -->
@@ -82,7 +82,7 @@
 
 	<!-- Faire L'affichage des dates dynamiquement -->
 	<!-- Aller chercher dans la BD les dates la plus récente et la plus vieille-->
-	<section class="date" id="hidden">
+	<section class="date" id ="hidden">
 		<h2>Dates</h2>
 		<section>
 		<?php
@@ -99,17 +99,25 @@
 		sort($aDatesC);
 		echo "<p>".$aDatesC[0]."</p>";
 		echo "<p>".$aDatesC[count($aDatesC)-1]."</p>";
+
 		?>
+		<div class="slidecontainer">
+			<input type="range" min="<?php echo $aDatesC[0]; ?>" max="<?php echo $aDatesC[count($aDatesC)-1]; ?>" value="<?php echo $aDatesC[count($aDatesC)-1]; ?>" range="1" class="slider v2">
+		</div>
+		<div class="slidecontainer">
+  			<input type="range" min="<?php echo $aDatesC[0]; ?>" max="<?php echo $aDatesC[count($aDatesC)-1]; ?>" value="<?php echo $aDatesC[0]; ?>" range="1" class="slider v1">
+		</div>
+		<p class="demo">test</p>
+		<p class="demo2">test</p>
+
 		</section>
 	</section>
 	<!-- Faire L'affichage des arrondissements dynamiquement -->
-	<section class="arrond"  id="hidden">
+	<section class="arrond">
 		<h2>Arrondissement</h2>
 		<section>
-
-		<!-- Faire L'affichage des arrondissements dynamiquement -->
 		<?php
-			//var_dump($aArrond);
+			// var_dump($aArrond);
 			foreach ($aArrond as $cle => $arrond) {
 				?>
 				<div class= "critere">

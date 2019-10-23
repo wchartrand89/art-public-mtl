@@ -4,32 +4,19 @@ window.addEventListener("load", function(){
    
     let iFiltre=document.querySelector(".filtre");
     let secFiltres=document.querySelector(".filtres");
-    let flecheBack=document.querySelector(".back");
     let btnSupp= document.querySelector(".btnSupp");
     let header=document.querySelector(".appbar");
     let choixAffichage=document.querySelector(".recherche");
 
 // TESTS
-    // header.classList.add("hidden");
-    // choixAffichage.setAttribute("id", "hidden");
-
-
-    // flecheBack.addEventListener("click", function(){
-    //     // secFiltres.setAttribute("id", "hidden");
-    //     secFiltres.classList.replace("selec", "cache");
-    //     iFiltre.classList.replace("cache", "selec");
-    //     flecheBack.firstElementChild.classList.add("hidden");
-    //     // iFiltre.setAttribute("id", "visible");
-    //     header.classList.remove("hidden");
-    //     choixAffichage.removeAttribute("id", "hidden");
-    // });
+     header.classList.add("hidden");
+     choixAffichage.setAttribute("id", "hidden");
     
      /* Afficher les options de filtre au clic sur l'icone*/
     iFiltre.addEventListener("click", function(){
         //secFiltres.setAttribute("id", "visible");
         secFiltres.classList.replace("cache", "selec");
         iFiltre.classList.replace("selec", "cache");
-        // flecheBack.firstElementChild.classList.remove("hidden");
         // iFiltre.setAttribute("id", "hidden");
         header.classList.add("hidden");
         choixAffichage.setAttribute("id", "hidden");
@@ -41,7 +28,6 @@ window.addEventListener("load", function(){
         //secFiltres.setAttribute("id", "hidden");
         secFiltres.classList.replace("selec", "cache");
         iFiltre.classList.replace("cache", "selec");
-        // flecheBack.firstElementChild.classList.add("hidden");
         header.classList.remove("hidden");
         choixAffichage.removeAttribute("id", "hidden");
 
