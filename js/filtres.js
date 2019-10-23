@@ -6,6 +6,8 @@ window.addEventListener("load", function(){
     let secFiltres=document.querySelector(".filtres");
     let flecheBack=document.querySelector(".back");
     let btnSupp= document.querySelector(".btnSupp");
+    let header=document.querySelector(".appbar");
+    let choixAffichage=document.querySelector(".recherche");
 
     flecheBack.addEventListener("click", function(){
         // secFiltres.setAttribute("id", "hidden");
@@ -13,6 +15,8 @@ window.addEventListener("load", function(){
         iFiltre.classList.replace("cache", "selec");
         flecheBack.firstElementChild.classList.add("hidden");
         // iFiltre.setAttribute("id", "visible");
+        header.classList.remove("hidden");
+        choixAffichage.classList.remove("hidden");
     });
     
      /* Afficher les options de filtre au clic sur l'icone*/
@@ -22,6 +26,8 @@ window.addEventListener("load", function(){
         iFiltre.classList.replace("selec", "cache");
         flecheBack.firstElementChild.classList.remove("hidden");
         // iFiltre.setAttribute("id", "hidden");
+        header.classList.add("hidden");
+        choixAffichage.classList.add("hidden");
     });
 
     /* Enlever les options de filtre au clic sur l'icone croix*/
@@ -31,6 +37,8 @@ window.addEventListener("load", function(){
         secFiltres.classList.replace("selec", "cache");
         iFiltre.classList.replace("cache", "selec");
         flecheBack.firstElementChild.classList.add("hidden");
+        header.classList.remove("hidden");
+        choixAffichage.classList.remove("hidden");
 
         // iFiltre.setAttribute("id", "visible");
 

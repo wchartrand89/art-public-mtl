@@ -181,6 +181,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 ?>
      
 		<section class="listeOeuvresText" id="liste">
+		<div class="fixPb"></div>
 		<?php
 		//print_r($aData);
 			foreach ($aData as $cle => $oeuvre) {
@@ -233,6 +234,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 		</section>
 	</section>
 		<section class="contenu hidden listeOeuvres" id="photo">
+			<div class="fixPb"></div>
 			<!-- <section class="rechercher"></section> -->
             <section class="oeuvres flex wrap">
 						<?php
