@@ -9,25 +9,30 @@ window.addEventListener("load", function(){
     let header=document.querySelector(".appbar");
     let choixAffichage=document.querySelector(".recherche");
 
-    flecheBack.addEventListener("click", function(){
-        // secFiltres.setAttribute("id", "hidden");
-        secFiltres.classList.replace("selec", "cache");
-        iFiltre.classList.replace("cache", "selec");
-        flecheBack.firstElementChild.classList.add("hidden");
-        // iFiltre.setAttribute("id", "visible");
-        header.classList.remove("hidden");
-        choixAffichage.classList.remove("hidden");
-    });
+// TESTS
+    // header.classList.add("hidden");
+    // choixAffichage.setAttribute("id", "hidden");
+
+
+    // flecheBack.addEventListener("click", function(){
+    //     // secFiltres.setAttribute("id", "hidden");
+    //     secFiltres.classList.replace("selec", "cache");
+    //     iFiltre.classList.replace("cache", "selec");
+    //     flecheBack.firstElementChild.classList.add("hidden");
+    //     // iFiltre.setAttribute("id", "visible");
+    //     header.classList.remove("hidden");
+    //     choixAffichage.removeAttribute("id", "hidden");
+    // });
     
      /* Afficher les options de filtre au clic sur l'icone*/
     iFiltre.addEventListener("click", function(){
         //secFiltres.setAttribute("id", "visible");
         secFiltres.classList.replace("cache", "selec");
         iFiltre.classList.replace("selec", "cache");
-        flecheBack.firstElementChild.classList.remove("hidden");
+        // flecheBack.firstElementChild.classList.remove("hidden");
         // iFiltre.setAttribute("id", "hidden");
         header.classList.add("hidden");
-        choixAffichage.classList.add("hidden");
+        choixAffichage.setAttribute("id", "hidden");
     });
 
     /* Enlever les options de filtre au clic sur l'icone croix*/
@@ -36,9 +41,9 @@ window.addEventListener("load", function(){
         //secFiltres.setAttribute("id", "hidden");
         secFiltres.classList.replace("selec", "cache");
         iFiltre.classList.replace("cache", "selec");
-        flecheBack.firstElementChild.classList.add("hidden");
+        // flecheBack.firstElementChild.classList.add("hidden");
         header.classList.remove("hidden");
-        choixAffichage.classList.remove("hidden");
+        choixAffichage.removeAttribute("id", "hidden");
 
         // iFiltre.setAttribute("id", "visible");
 

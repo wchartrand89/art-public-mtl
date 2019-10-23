@@ -25,10 +25,11 @@
 		</div>
 		<div><i class="vueImage material-icons">photo</i></div>
 	</section>
+
 	<article class='filtres cache'>
-	<section class="retour">
-		<i class="material-icons icone">close</i>
-	</section>
+		<section class="retour">
+			<i class="material-icons icone">close</i>
+		</section>
 	
 	<?php
 	// vérifier que l'utilisateur est connecté pour afficher le filtre "mes oeuvres" au prochain sprint
@@ -129,9 +130,9 @@
 		  <i class="material-icons supp">close</i>
 		  <p>Réinitialiser</p>
   	</section>
-	<section class="back selec">
+	<!-- <section class="back selec">
 		<i class="material-icons hidden">arrow_back</i>
-	</section>
+	</section> -->
 </article>
 <div id="map" class="carte"></div> 
 <section class="listeLettre" id="hidden">
