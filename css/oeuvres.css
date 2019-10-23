@@ -9,10 +9,16 @@
     top : 100px;
     background-color: white;
 }
-.recherche svg{
-    /* width: 40px; */
-    /* height:40px; */
+.recherche i{
     color: var(--couleur-marine);
+}
+
+.recherche div{
+    width:60px;
+    height:60px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .recherche .focus{
