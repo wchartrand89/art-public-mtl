@@ -196,16 +196,12 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 25=>Array("lettre"=>"Z","ok"=>false),);
 ?>
      
-		<section class="listeOeuvresText">
+		<section class="listeOeuvresText" id="liste">
 		<?php
 		//print_r($aData);
 			foreach ($aData as $cle => $oeuvre) {
-				extract($oeuvre);				
-			?>
-			<section>
-				<a class="lienOeuvre lienArtisteA" href="oeuvre/<?php echo $id_oeuvre; ?>"><?php  echo $Titre;?></a>
-					<?php 
-					$i=0;
+				extract($oeuvre);	
+				$i=0;
 					foreach($listeLettres as $cle => $lettre){
 						if(!isset($test[$i])){
 							$test[$i]=false;
@@ -216,9 +212,12 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 						}
 						$i++;
 				
-					}
-
-
+					}			
+			?>
+			<section>
+				<a class="lienOeuvre lienArtisteA" href="oeuvre/<?php echo $id_oeuvre; ?>"><?php  echo $Titre;?></a>
+					<?php 
+					
 					$j=count($Artistes);
 					//echo(count($Artistes));
 					foreach($Artistes as $artiste){
@@ -240,6 +239,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 						?></a>
 					<?php			
 					}
+
 					?>
 							</section>
 			<?php
@@ -248,7 +248,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 			
 		</section>
 	</section>
-		<section class="contenu hidden listeOeuvres">
+		<section class="contenu hidden listeOeuvres" id="photo">
 			<!-- <section class="rechercher"></section> -->
             <section class="oeuvres flex wrap">
 						<?php

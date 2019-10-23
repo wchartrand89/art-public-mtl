@@ -22,6 +22,7 @@ window.addEventListener("load", function()
         filtre.removeAttribute("id", "hidden");
         listeTexte.removeAttribute("id", "hidden");
         //listeTexte.classListe.remove("hidden");
+        window.location.replace("#liste");
     });
     
     choixCarte.addEventListener("click", function()
@@ -35,6 +36,7 @@ window.addEventListener("load", function()
         filtre.classList.replace("selec","cache");
         filtre.setAttribute("id", "hidden");
         listeTexte.setAttribute("id", "hidden");
+        window.location.replace("#map");
 
     });
     
@@ -49,6 +51,7 @@ window.addEventListener("load", function()
         filtre.classList.replace("cache","selec");
         filtre.removeAttribute("id", "hidden");
         listeTexte.setAttribute("id", "hidden");
+        window.location.replace("#photo");
     });      
     
     
