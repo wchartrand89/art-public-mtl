@@ -5,7 +5,6 @@
 .mesInfos{
     height:100%;
     width:100%;
-    
 }
 
 .mesDonnes{
@@ -48,9 +47,8 @@ main{
     justify-content: space-between;
     align-items: center;
     /* position: relative; */
-    
 }
-.connexion{
+.connexion, .inscrip{
     min-height:calc(100vh - (var(--taille-appbar) * 2));
     display: flex;
     flex-direction: column;
@@ -62,11 +60,11 @@ form div{
 form p{
     margin-bottom: calc(var(--padding-base) / 2);
 }
-.connexion h2{
+.connexion h2, .inscrip h2{
     text-align: center;
     margin:var(--padding-base) 0;
 }
-.inscription{
+.inscription, .connex{
     /* position:absolute; */
     /* bottom:0; */
     background-color: var(--couleur-bleu);
@@ -78,14 +76,14 @@ form p{
     align-items: center;
 }
 .lienInscription a{
-display:flex;
+    display:flex;
     justify-content: center;
     align-items: center;
 }
 .lienInscription a, .inscription i, .inscription p{
     color:var(--couleur-marine);
 }
-.inscription i{
+.inscription i, .connex i{
     font-size: 2.4rem;
 }
 
@@ -96,7 +94,7 @@ display:flex;
         max-width:600px;
         justify-content: center;
     }
-    .connexion{
+    .connexion, .inscrip{
         min-height:50vh;
         background-color: var(--couleur-fond);
         width:100%;
@@ -105,7 +103,7 @@ display:flex;
         align-items: center;
         /* padding: calc(var(--padding-base) *3) 0; */
     }
-    .inscription{
+    .inscription, .connex{
         position: static;
     }
 }
@@ -116,10 +114,10 @@ display:flex;
         max-width:1350px;
         flex-direction: row;
     }
-    .connexion{
+    .connexion, .inscrip{
         width:66%;
     }
-    .inscription{
+    .inscription, .connex{
         width:33%;
         min-height:50vh;
     }
