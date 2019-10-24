@@ -14,9 +14,34 @@
 class User extends Modele {	
 	const TABLE_TYPE = "user";
 
+    
+    /**
+	 * Retourne une liste de tous les users.
+	 * @access public
+	 * @return Array
+	 */
+	public function getListeUser() 
+	{
+        $res = Array();		
+		//trier les user par lettre nom famille
+		$query = "select * from ". self::TABLE_TYPE ." ORDER BY login";
+		if($mrResultat = $this->_db->query($query))
+		{
+			while($user = $mrResultat->fetch_assoc())
+			{
+				foreach($user as $cle=> $valeur)
+				{
+					$user[$cle] = utf8_decode(utf8_encode($valeur));
+				}
+				$res[] = $user;
+			}
+		}
+		return $res;
+	}
+    
 		
 	/**
-	 * Retourne la liste des sous catégories
+	 * Retourne les infos d'un user selon son username
 	 * @access public
 	 * @return Array
 	 */
@@ -28,7 +53,32 @@ class User extends Modele {
         $res = $result->fetch_assoc();
         return $res;
 	}
-	
+    
+    
+    /**
+	 * Supprime l'utilisateur selon son id
+	 * @access public
+	 * @return Array
+	 */
+	public function SupprimerUser($id) 
+	{
+
+            $id=$this->filtre($id);
+            
+            $request="DELETE FROM user WHERE id_user='$id'";
+            $result = $this->_db->query($request);
+            
+            if ($result !== FALSE) 
+            {
+                return true;              
+            } 
+    }
+    
+    
+    
+    
+	//author fred, 
+    //modifie le mot de passe tout en verifiant la condition mdp =/= ancien mdp
     public function modificationPW($oldPw, $newPW)
     {
         $newPW=$this->filtre($newPW);

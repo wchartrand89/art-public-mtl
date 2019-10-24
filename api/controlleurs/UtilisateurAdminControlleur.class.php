@@ -17,7 +17,7 @@
 
  
  
-class UtilisateurAdminControlleur 
+class UtilisateurAdminControlleur extends Controlleur
 {	
 	// GET : 
 	// 		/utilisateur/ - Liste des oeuvres
@@ -25,6 +25,7 @@ class UtilisateurAdminControlleur
 	
 	public function getAction(Requete $requete)
 	{
+
         //vérifier que l'admin est connecté
 	if(isset($_SESSION['login']) && $_SESSION['login'] == 'admin')
      {
@@ -41,7 +42,7 @@ class UtilisateurAdminControlleur
                 $res = $this->SupprimerUser($id_user);
 
                 //redirection sur la page une fois supprimé
-                header("Location: /art-public-mtl/api/admin/artiste?update=ok");
+                header("Location: /art-public-mtl/api/admin/utilisateur?update=ok");
                 exit();
             }
 			else 	// Liste des oeuvres
@@ -65,7 +66,7 @@ class UtilisateurAdminControlleur
 					{
 						//var_dump($res);
 						//die;
-						$oVue->afficheUtilisateur($res);
+						$oVue->affiche1Utilisateur($res);
 					}
 					if($requete->url_elements[0]=="utilisateur")
 					{
@@ -103,41 +104,22 @@ class UtilisateurAdminControlleur
 	
 	
 	/**
-	 * Fait l'importation et la mise à jour des oeuvres et des artistes 
+	 * Renvoie un array de tous les users de la DB (sauf admin)
 	 * @access private
-	 * @TODO Ajouter la mise à jour des artistes
 	 */
 
-    // MODIFIER OEUVRE
-	// @author fred
-    private function modifierArtiste($array){
-        
-        $oArtiste = new Artiste();
-        $oArtiste = $oArtiste->modifierArtiste($array);
-		return $oArtiste;
+    
+	// @author fred    
+    private function getListeUser(){
+        $oUser = new User();
+		$aUser = $oUser->getListeUser();
+		return $aUser;
     }
     
-    
-    // AJOUT OEUVRE
-    // @author fred
-    private function ajoutArtiste($array){
-        $oArtiste = new Artiste();
-        $oArtiste = $oArtiste->ajoutArtiste($array);
-		return $oArtiste;
-    }
-    
-    // SUPPRIMER OEUVRE
-    // @author fred
-    private function supprimerArtiste($id){
-        $oArtiste = new Artiste();
-        $oArtiste = $oArtiste->supprimerArtiste($id);
-		return $oArtiste;
-    }
-    
-    private function supprimerLienArtisteOeuvre($id){
-        $oArtiste = new Artiste();
-        $oArtiste = $oArtiste->supprimerLienArtisteOeuvre($id);
-		return $oArtiste;
+    private function SupprimerUser($id){
+        $oUser = new User();
+		$aUser = $oUser->SupprimerUser($id);
+		return $aUser;
     }
     
 }
