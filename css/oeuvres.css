@@ -132,18 +132,30 @@ body{
 
 /* ANIMATIONS FILTRE*/
 
-.filtres.cache{
+/* .filtres.cache{
     transform-origin: 50% 0%;
     transition: transform .15s;
     transform:translateY(100%);
     position:absolute;
+} */
+.filtres.cache{
+    transform-origin: 50% 100%;
+    transition: transform .15s;
+    transform:scaleY(0);
+    /* position:absolute; */
 }
 .filtres.selec{
+    /* transform: ScaleY(1); */
+    transform-origin: 50% 100%;
+    transition: transform 235ms;
+    transform:scaleY(1);
+}
+/* .filtres.selec{
     /* transform: ScaleY(1); */
     transform-origin: 50% 0%;
     transition: transform 235ms;
     transform:translateY(0%);
-}
+} */
 
 .filtre.cache{
     /* transform:ScaleY(0); */

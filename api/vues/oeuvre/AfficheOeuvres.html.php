@@ -13,9 +13,9 @@
     -->
 
 
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
     async defer>
-    </script> -->
+    </script>
 
 
     <section class="recherche">
@@ -26,7 +26,7 @@
 		<div><i class="vueImage material-icons">photo</i></div>
 	</section>
 
-	<article class='filtres'>
+	<article class='filtres cache'>
 		<section class="retour">
 			<i class="material-icons icone">close</i>
 		</section>
@@ -55,7 +55,7 @@
 	</section>
 
 
-<section class="types hidden" id="hidden">
+<section class="types" >
 		<h2>Type d'oeuvre</h2>
 		<section>
 		<!-- Faire L'affichage des types d'oeuvre dynamiquement -->

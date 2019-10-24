@@ -11,34 +11,29 @@
 						<div class=bar_image>
 							<input id="bar_recherche" type="text" name="recherche" placeholder="Recherche un nom">
 							<img id="img_recherche" src="../../img/icons/search_40px.svg" alt="search">
-						</div>	
-                       <p><?php if(isset($_GET['update']) && $_GET['update']=="error") echo "Une erreur est survenue, veuillez vérifiez vos champs."; ?></p>					
-                        <a href="/art-public-mtl/api/admin/artiste/ajout" id="btn_submit" alt="ajout">+ Ajouter un artiste</a>		
+						</div>		
 					</form>
 					
 				</section>
 				<section class="nomsChamps">
-					<P>NOM</P>
-					<P>PRENOM</P>
-					<P>NOM COLLECTIF</P>
+					<P>NOM D'UTILISATEUR</P>
+					<P>ADRESSE</P>
 					<p></p>
 				</section>
 				<section id="liste_oeuvres" class="oeuvres flex flex-col">
 					<?php
 					$compt=0;
-					foreach ($aData as $cle => $artiste) {
-						extract($artiste);  
+					foreach ($aData as $cle => $user) {
+						extract($user);  
 						++$compt;
 											
 					?>
 
 						<div class="info_oeuvre">
-							<p class="valeur_info_oeuvre filtrer"><?php echo $Nom; ?></p>
-							<p class="valeur_info_oeuvre"><?php echo $Prenom; ?></p>
-							<p class="valeur_info_oeuvre filtrer"><?php echo $NomCollectif; ?></p>
+							<p class="valeur_info_oeuvre filtrer"><?php echo $login; ?></p>
+							<p class="valeur_info_oeuvre"><?php echo $courriel; ?></p>
 							<span class="valeur_info_oeuvre">
-								<a href="/art-public-mtl/api/admin/artiste/<?php echo $id_artiste ?>/modifier"><img id='crayon' src="../../img/icons/crayon.svg" alt="Modifier"></a>
-								<a data-href="/art-public-mtl/api/admin/artiste/<?php echo $id_artiste ?>/supprimer" class="modalPopup" onclick="handle(this);"><img id='poubelle' src="../../img/icons/poubelle.svg" alt="Supprimer"></a>
+								<a data-href="/art-public-mtl/api/admin/utilisateur/<?php echo $id_user ?>/supprimer" class="modalPopup" onclick="handle(this);"><img id='poubelle' src="../../img/icons/poubelle.svg" alt="Supprimer"></a>
 							</span>
 
 						</div>
@@ -55,7 +50,7 @@
 <div id="myModal" class="modal">
   <div class="modal-content">
     <div class="confirm-buttons">
-    <p>Etes-vous sur de vouloir supprimer cet artiste ?</p>
+    <p>Etes-vous sur de vouloir supprimer cet utilisateur ?</p>
         <a href="" id="linkSupprimer" class="confirm-ok">Supprimer</a>
         <a class="close confirm-ok">Annuler</a>
     </div>

@@ -9,8 +9,8 @@ window.addEventListener("load", function(){
     let choixAffichage=document.querySelector(".recherche");
 
 // TESTS
-     header.classList.add("hidden");
-     choixAffichage.setAttribute("id", "hidden");
+    // header.classList.add("hidden");
+     //choixAffichage.setAttribute("id", "hidden");
     
      /* Afficher les options de filtre au clic sur l'icone*/
     iFiltre.addEventListener("click", function(){

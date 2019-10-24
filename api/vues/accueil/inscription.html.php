@@ -29,6 +29,15 @@
             <input class="btnConnexion btnLarge" type="button" id="envoyer" value="Connexion">
         </div>
     </form>
+    <p><?php  if(isset($_GET['update']) && $_GET['update']=="login"){
+                echo "Votre nom de compte est déjà utilisé.";  
+              }  
+              else if (isset($_GET['update']) && $_GET['update']=="mail"){
+                echo "Votre adresse mail est déjà utilisée.";  
+              }else if (isset($_GET['update']) && $_GET['update']=="loginmail"){
+                echo "Votre adresse mail et votre nom d'utilisateur sont déjà utilisés.";  
+              } ?></p>
+</main>
 </section>
 <section class="connex">
     <p>Déja un compte ?</p>
@@ -38,4 +47,3 @@
     </div>
 </section>
 
-</main>
