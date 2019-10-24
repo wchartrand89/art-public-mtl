@@ -16,7 +16,7 @@ class Artiste extends Modele {
 	const TABLE_LIAISON_ARTISTE_OEUVRE = "artiste_oeuvre";
 		
 	/**
-	 * Retourne la liste des oeuvres
+	 * Retourne la liste des artistes
 	 * @access public
 	 * @return Array
 	 */
@@ -40,7 +40,7 @@ class Artiste extends Modele {
 	}
 	
 	/**
-	 * Récupère une oeuvre avec son id
+	 * Récupère un artiste avec son id
 	 * @access public
 	 * @param int $id Identifiant de l'oeuvre
 	 * @return Array
