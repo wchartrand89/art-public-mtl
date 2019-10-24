@@ -43,7 +43,6 @@
     <p>Déja un compte ?</p>
     <div class="lienInscription">
         <a href="/art-public-mtl/api/compte/connexion" class="txtLien">Se connecter <i class="material-icons">chevron_right</i></a>
-        <!-- <a href="/art-public-mtl/api/compte/inscription" class="txtLien"> ></a> -->
     </div>
 </section>
 
