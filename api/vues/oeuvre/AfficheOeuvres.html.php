@@ -52,7 +52,7 @@ async defer>
 				?>
 				<div class= "critere type" data-id="<?php
 				echo $type["id_sous_categorie"];
-				?>">
+				?>" data-filtre="type">
 				<i class="material-icons">check_box_outline_blank</i>
 				<p>
 				<?php
@@ -101,7 +101,7 @@ async defer>
 				// var_dump($aArrond);
 				foreach ($aArrond as $cle => $arrond) {
 					?>
-					<div class= "critere">
+					<div class= "critere" data-filtre="arrondissement" data-id="<?php echo $arrond["Arrondissement"]; ?>">
 					<i class="material-icons">check_box_outline_blank</i>
 					<p>
 					<?php
