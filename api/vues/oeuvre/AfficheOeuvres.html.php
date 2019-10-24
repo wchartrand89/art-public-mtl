@@ -13,28 +13,19 @@
     -->
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
-    async defer>
-    </script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
+async defer>
+</script> -->
 
-
-    <section class="recherche">
-		<div><i class="vueListe material-icons">list</i></div>
-		<div>
-			<i class="vueCarte focus material-icons">map</i>
-		</div>
-		<div><i class="vueImage material-icons">photo</i></div>
+<section class="recherche">
+	<div><i class="vueListe material-icons">list</i></div>
+	<div><i class="vueCarte focus material-icons">map</i></div>
+	<div><i class="vueImage material-icons">photo</i></div>
+</section>
+<article class='filtres cache'>
+	<section class="retour">
+		<i class="material-icons icone">close</i>
 	</section>
-
-	<article class='filtres cache'>
-		<section class="retour">
-			<i class="material-icons icone">close</i>
-		</section>
-	
-	<?php
-	// vérifier que l'utilisateur est connecté pour afficher le filtre "mes oeuvres" au prochain sprint
-	
-	?>
 	<section class="mesOeuvres" id="hidden">
 		<h2>Mes oeuvres</h2>
 		<section>
@@ -51,14 +42,10 @@
 				<p>Favorites</p>
 			</div>
 		</section>
-		
 	</section>
-
-
-<section class="types" >
+	<section class="types" >
 		<h2>Type d'oeuvre</h2>
 		<section>
-		<!-- Faire L'affichage des types d'oeuvre dynamiquement -->
 		<?php
 			//var_dump($aTypes);
 			foreach ($aTypes as $cle => $type) {
@@ -78,88 +65,82 @@
 				?>
 		</section>
 	</section>
-
-
-	<!-- Faire L'affichage des dates dynamiquement -->
-	<!-- Aller chercher dans la BD les dates la plus récente et la plus vieille-->
 	<section class="date" id ="hidden">
 		<h2>Dates</h2>
 		<section>
-		<?php
-	
-		$aDatesC=[];
-		foreach($aDates as $cle => $date){
-			if($date["dateCreation"] !== NULL && $date["dateCreation"] !== "NULL"){
-				$dates= explode("/", $date["dateCreation"]);
-				if(count($dates)>1){
-					$aDatesC[] = $dates[2];
+			<?php
+		
+			$aDatesC=[];
+			foreach($aDates as $cle => $date){
+				if($date["dateCreation"] !== NULL && $date["dateCreation"] !== "NULL"){
+					$dates= explode("/", $date["dateCreation"]);
+					if(count($dates)>1){
+						$aDatesC[] = $dates[2];
+					}
 				}
 			}
-		}
-		sort($aDatesC);
-		echo "<p>".$aDatesC[0]."</p>";
-		echo "<p>".$aDatesC[count($aDatesC)-1]."</p>";
+			sort($aDatesC);
+			echo "<p>".$aDatesC[0]."</p>";
+			echo "<p>".$aDatesC[count($aDatesC)-1]."</p>";
 
-		?>
-		<div class="slidecontainer">
-			<input type="range" min="<?php echo $aDatesC[0]; ?>" max="<?php echo $aDatesC[count($aDatesC)-1]; ?>" value="<?php echo $aDatesC[count($aDatesC)-1]; ?>" range="1" class="slider v2">
-		</div>
-		<div class="slidecontainer">
-  			<input type="range" min="<?php echo $aDatesC[0]; ?>" max="<?php echo $aDatesC[count($aDatesC)-1]; ?>" value="<?php echo $aDatesC[0]; ?>" range="1" class="slider v1">
-		</div>
-		<p class="demo">test</p>
-		<p class="demo2">test</p>
-
+			?>
+			<div class="slidecontainer">
+				<input type="range" min="<?php echo $aDatesC[0]; ?>" max="<?php echo $aDatesC[count($aDatesC)-1]; ?>" value="<?php echo $aDatesC[count($aDatesC)-1]; ?>" range="1" class="slider v2">
+			</div>
+			<div class="slidecontainer">
+				<input type="range" min="<?php echo $aDatesC[0]; ?>" max="<?php echo $aDatesC[count($aDatesC)-1]; ?>" value="<?php echo $aDatesC[0]; ?>" range="1" class="slider v1">
+			</div>
+			<p class="demo">test</p>
+			<p class="demo2">test</p>
 		</section>
 	</section>
-	<!-- Faire L'affichage des arrondissements dynamiquement -->
 	<section class="arrond">
 		<h2>Arrondissement</h2>
 		<section>
-		<?php
-			// var_dump($aArrond);
-			foreach ($aArrond as $cle => $arrond) {
-				?>
-				<div class= "critere">
-				<i class="material-icons">check_box_outline_blank</i>
-				<p>
-				<?php
-				echo $arrond["Arrondissement"];
-				?>
-				</p>
-			</div>
 			<?php
-			}
-				?>
-
+				// var_dump($aArrond);
+				foreach ($aArrond as $cle => $arrond) {
+					?>
+					<div class= "critere">
+					<i class="material-icons">check_box_outline_blank</i>
+					<p>
+					<?php
+					echo $arrond["Arrondissement"];
+					?>
+					</p>
+				</div>
+				<?php
+				}
+					?>
 		</section>
 	</section>
-    <section class="btnSupp cache" id="hidden">
-		  <i class="material-icons supp">close</i>
-		  <p>Réinitialiser</p>
-  	</section>
-	<!-- <section class="back selec">
-		<i class="material-icons hidden">arrow_back</i>
-	</section> -->
+	<section class="btnSupp cache" id="hidden">
+		<i class="material-icons supp">close</i>
+		<p>Réinitialiser</p>
+	</section>
 </article>
+
 <div id="map" class="carte"></div> 
+
 <section class="listeLettre" id="hidden">
 	<aside class="choix">
 		<p class="lettre">Y</p>
 		<p class="lettre">Z</p>
 		<div class="lettreChoisie">
 			<a class="fleches next" href="#B">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-				</a>
+				<i class="material-icons">keyboard_arrow_up</i>
+				<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg> -->
+			</a>
 			<p class="lettre focus">A</p>
 			<a class="fleches prev" href="#Z">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg></a>
+				<i class="material-icons">keyboard_arrow_down</i>
+				<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg> -->
+			</a>
 		</div>
 		<p class="lettre">B</p>
 		<p class="lettre">C</p>
 	</aside>
 <?php
-
 /*Tableau pour création des ancres dans les sections des lettres*/ 
 $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 1=>Array("lettre"=>"B","ok"=>false),

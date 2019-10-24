@@ -77,9 +77,8 @@ main .liste a{
     flex-direction: column;
     align-items:center;
 }
-.lettreChoisie a svg{
-    width:36px;
-    height:36px;
+.lettreChoisie a i{
+    font-size: 4rem;
 }
 @media screen and (min-width: 600px){
     main .liste{
@@ -102,9 +101,8 @@ main .liste a{
     .lettreChoisie p{
         font-size: 12rem;
     }
-    .lettreChoisie a svg{
-        width:72px;
-        height:72px;
+    .lettreChoisie a i{
+        font-size: 8rem;
     }
 }
 
@@ -119,8 +117,7 @@ main .liste a{
     .lettreChoisie p{
         font-size: 10rem;
     }
-    .lettreChoisie a svg{
-        width:72px;
-        height:72px;
+    .lettreChoisie a i{
+        font-size: 7rem;
     }
 }
