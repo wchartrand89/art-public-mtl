@@ -35,7 +35,7 @@ class CompteControlleur extends Controlleur
             $oVue->affichePied();
         }
         
-        else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "inscription"){
+        else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "inscription"){
             $oVue = new Vue();
             $oVue->afficheEntete("inscription");	
             $oVue->afficheInscription();

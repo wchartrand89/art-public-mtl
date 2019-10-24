@@ -13,40 +13,19 @@
     -->
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
-    async defer>
-    </script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
+async defer>
+</script> -->
 
-
-    <section class="recherche">
-			<svg class="vueListe" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-			<div class="vueChoisie">
-<!--				<p class="flecheLien">❮</p>-->
-				<svg class="vueCarte focus" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-<!--				<a href="" class="flecheLien">❯</a>-->
-			</div>
-			<svg  class="vueImage" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-		</section>
-
-	<!-- <section class="recherche">
-			<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-			<div class="vueChoisie">
-				<a href="" class="flecheLien">❮</a>
-				<svg class = "focus" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-				<a href="" class="flecheLien">❯</a>
-			</div>
-			<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-	</section>
-	 -->
-	<article class='filtres cache'>
+<section class="recherche">
+	<div><i class="vueListe material-icons">list</i></div>
+	<div><i class="vueCarte focus material-icons">map</i></div>
+	<div><i class="vueImage material-icons">photo</i></div>
+</section>
+<article class='filtres cache'>
 	<section class="retour">
 		<i class="material-icons icone">close</i>
 	</section>
-	
-	<?php
-	// vérifier que l'utilisateur est connecté pour afficher le filtre "mes oeuvres" au prochain sprint
-	
-	?>
 	<section class="mesOeuvres" id="hidden">
 		<h2>Mes oeuvres</h2>
 		<section>
@@ -63,21 +42,17 @@
 				<p>Favorites</p>
 			</div>
 		</section>
-		
 	</section>
-
-
-<section class="types">
+	<section class="types" >
 		<h2>Type d'oeuvre</h2>
 		<section>
-		<!-- Faire L'affichage des types d'oeuvre dynamiquement -->
 		<?php
 			//var_dump($aTypes);
 			foreach ($aTypes as $cle => $type) {
 				?>
 				<div class= "critere type" data-id="<?php
 				echo $type["id_sous_categorie"];
-				?>">
+				?>" data-filtre="type">
 				<i class="material-icons">check_box_outline_blank</i>
 				<p>
 				<?php
@@ -90,64 +65,166 @@
 				?>
 		</section>
 	</section>
-
-
-	<!-- Faire L'affichage des dates dynamiquement -->
-	<!-- Aller chercher dans la BD les dates la plus récente et la plus vieille-->
-	<section class="date" id="hidden">
+	<section class="date" id ="hidden">
 		<h2>Dates</h2>
 		<section>
-		<?php
-	
-		$aDatesC=[];
-		foreach($aDates as $cle => $date){
-			if($date["dateCreation"] !== NULL && $date["dateCreation"] !== "NULL"){
-				$dates= explode("/", $date["dateCreation"]);
-				if(count($dates)>1){
-					$aDatesC[] = $dates[2];
+			<?php
+		
+			$aDatesC=[];
+			foreach($aDates as $cle => $date){
+				if($date["dateCreation"] !== NULL && $date["dateCreation"] !== "NULL"){
+					$dates= explode("/", $date["dateCreation"]);
+					if(count($dates)>1){
+						$aDatesC[] = $dates[2];
+					}
 				}
 			}
-		}
-		sort($aDatesC);
-		echo "<p>".$aDatesC[0]."</p>";
-		echo "<p>".$aDatesC[count($aDatesC)-1]."</p>";
-		?>
+			sort($aDatesC);
+			echo "<p>".$aDatesC[0]."</p>";
+			echo "<p>".$aDatesC[count($aDatesC)-1]."</p>";
+
+			?>
+			<div class="slidecontainer">
+				<input type="range" min="<?php echo $aDatesC[0]; ?>" max="<?php echo $aDatesC[count($aDatesC)-1]; ?>" value="<?php echo $aDatesC[count($aDatesC)-1]; ?>" range="1" class="slider v2">
+			</div>
+			<div class="slidecontainer">
+				<input type="range" min="<?php echo $aDatesC[0]; ?>" max="<?php echo $aDatesC[count($aDatesC)-1]; ?>" value="<?php echo $aDatesC[0]; ?>" range="1" class="slider v1">
+			</div>
+			<p class="demo">test</p>
+			<p class="demo2">test</p>
 		</section>
 	</section>
-	<!-- Faire L'affichage des arrondissements dynamiquement -->
-	<section class="arrond"  id="hidden">
+	<section class="arrond">
 		<h2>Arrondissement</h2>
 		<section>
-
-		<!-- Faire L'affichage des arrondissements dynamiquement -->
-		<?php
-			//var_dump($aArrond);
-			foreach ($aArrond as $cle => $arrond) {
-				?>
-				<div class= "critere">
-				<i class="material-icons">check_box_outline_blank</i>
-				<p>
-				<?php
-				echo $arrond["Arrondissement"];
-				?>
-				</p>
-			</div>
 			<?php
-			}
-				?>
-
+				// var_dump($aArrond);
+				foreach ($aArrond as $cle => $arrond) {
+					?>
+					<div class= "critere" data-filtre="arrondissement" data-id="<?php echo $arrond["Arrondissement"]; ?>">
+					<i class="material-icons">check_box_outline_blank</i>
+					<p>
+					<?php
+					echo $arrond["Arrondissement"];
+					?>
+					</p>
+				</div>
+				<?php
+				}
+					?>
 		</section>
 	</section>
-    <section class="btnSupp cache" id="hidden">
-		  <i class="material-icons supp">close</i>
-		  <p>Réinitialiser</p>
-  	</section>
-	<section class="back selec">
-		<i class="material-icons hidden">arrow_back</i>
+	<section class="btnSupp cache" id="hidden">
+		<i class="material-icons supp">close</i>
+		<p>Réinitialiser</p>
 	</section>
 </article>
-    <div id="map" class="carte"></div>  
-		 <section class="contenu hidden listeOeuvres">
+
+<div id="map" class="carte"></div> 
+
+<section class="listeLettre" id="hidden">
+	<aside class="choix">
+		<p class="lettre">Y</p>
+		<p class="lettre">Z</p>
+		<div class="lettreChoisie">
+			<a class="fleches next" href="#B">
+				<i class="material-icons">keyboard_arrow_up</i>
+				<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg> -->
+			</a>
+			<p class="lettre focus">A</p>
+			<a class="fleches prev" href="#Z">
+				<i class="material-icons">keyboard_arrow_down</i>
+				<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg> -->
+			</a>
+		</div>
+		<p class="lettre">B</p>
+		<p class="lettre">C</p>
+	</aside>
+<?php
+/*Tableau pour création des ancres dans les sections des lettres*/ 
+$listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
+1=>Array("lettre"=>"B","ok"=>false),
+2=>Array("lettre"=>"C","ok"=>false),
+3=>Array("lettre"=>"D","ok"=>false),
+4=>Array("lettre"=>"E","ok"=>false),
+5=>Array("lettre"=>"F","ok"=>false),
+6=>Array("lettre"=>"G","ok"=>false),
+7=>Array("lettre"=>"H","ok"=>false),
+8=>Array("lettre"=>"I","ok"=>false),
+9=>Array("lettre"=>"J","ok"=>false),
+10=>Array("lettre"=>"K","ok"=>false),
+11=>Array("lettre"=>"L","ok"=>false),
+12=>Array("lettre"=>"M","ok"=>false),
+13=>Array("lettre"=>"N","ok"=>false),
+14=>Array("lettre"=>"O","ok"=>false),
+15=>Array("lettre"=>"P","ok"=>false),
+16=>Array("lettre"=>"Q","ok"=>false),
+17=>Array("lettre"=>"R","ok"=>false),
+18=>Array("lettre"=>"S","ok"=>false),
+19=>Array("lettre"=>"T","ok"=>false),
+20=>Array("lettre"=>"U","ok"=>false),
+21=>Array("lettre"=>"V","ok"=>false),
+22=>Array("lettre"=>"W","ok"=>false),
+23=>Array("lettre"=>"X","ok"=>false),
+24=>Array("lettre"=>"Y","ok"=>false),
+25=>Array("lettre"=>"Z","ok"=>false),);
+?>
+     
+		<section class="listeOeuvresText" id="liste">
+		<div class="fixPb"></div>
+		<?php
+		//print_r($aData);
+			foreach ($aData as $cle => $oeuvre) {
+				extract($oeuvre);	
+				$i=0;
+					foreach($listeLettres as $cle => $lettre){
+						if(!isset($test[$i])){
+							$test[$i]=false;
+						}
+						if ($Titre[0] == $lettre["lettre"] && $lettre["ok"] == false && $test[$i] !== true){
+							echo '<div id="'.$lettre["lettre"].'"></div>';
+							$test[$i]=true;
+						}
+						$i++;
+				
+					}			
+			?>
+			<section>
+				<a class="lienOeuvre lienArtisteA" href="oeuvre/<?php echo $id_oeuvre; ?>"><?php  echo $Titre;?></a>
+					<?php 
+					
+					$j=count($Artistes);
+					//echo(count($Artistes));
+					foreach($Artistes as $artiste){
+						$j=$j-1;
+						extract($artiste);
+						?>
+						<a class="lienArtiste" href="artiste/<?php echo $id_artiste; ?>">
+						<?php 
+						if(isset($Nom) && $Nom!=""){
+							echo $Nom ." ". $Prenom;
+						}
+						else
+						{
+							echo $NomCollectif;
+						}
+						if($j>0){
+							echo ", ";
+						}
+						?></a>
+					<?php			
+					}
+
+					?>
+							</section>
+			<?php
+			}
+			?>
+			
+		</section>
+	</section>
+		<section class="contenu hidden listeOeuvres" id="photo">
+			<div class="fixPb"></div>
 			<!-- <section class="rechercher"></section> -->
             <section class="oeuvres flex wrap">
 						<?php

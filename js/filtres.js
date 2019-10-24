@@ -4,36 +4,25 @@ window.addEventListener("load", function(){
    
     let iFiltre=document.querySelector(".filtre");
     let secFiltres=document.querySelector(".filtres");
-    let flecheBack=document.querySelector(".back");
     let btnSupp= document.querySelector(".btnSupp");
-
-    flecheBack.addEventListener("click", function(){
-        // secFiltres.setAttribute("id", "hidden");
-        secFiltres.classList.replace("selec", "cache");
-        iFiltre.classList.replace("cache", "selec");
-        flecheBack.firstElementChild.classList.add("hidden");
-        // iFiltre.setAttribute("id", "visible");
-    });
+    let header=document.querySelector(".appbar");
+    let choixAffichage=document.querySelector(".recherche");
     
      /* Afficher les options de filtre au clic sur l'icone*/
     iFiltre.addEventListener("click", function(){
-        //secFiltres.setAttribute("id", "visible");
         secFiltres.classList.replace("cache", "selec");
         iFiltre.classList.replace("selec", "cache");
-        flecheBack.firstElementChild.classList.remove("hidden");
-        // iFiltre.setAttribute("id", "hidden");
+        header.classList.add("hidden");
+        choixAffichage.setAttribute("id", "hidden");
     });
 
     /* Enlever les options de filtre au clic sur l'icone croix*/
     let retour =document.querySelector(".retour i");
     retour.addEventListener("click", function(){
-        //secFiltres.setAttribute("id", "hidden");
         secFiltres.classList.replace("selec", "cache");
         iFiltre.classList.replace("cache", "selec");
-        flecheBack.firstElementChild.classList.add("hidden");
-
-        // iFiltre.setAttribute("id", "visible");
-
+        header.classList.remove("hidden");
+        choixAffichage.removeAttribute("id", "hidden");
     });
     /* Au clic sur une des section de filtre, affichage des options*/
 
@@ -48,56 +37,97 @@ window.addEventListener("load", function(){
     let oFiltres={};
 
     //créer un objet pour le filtre TYPE
+    //let aTypes=[];
+    //let filtresType=document.querySelectorAll(".type");
+    // filtresType.forEach(function(type){
+    //     type.addEventListener("click", function(){
+    //         let checkbox=type.firstElementChild;
+    //         let check= aCheck(aTypes, type.dataset.id);
+    //         if(check === false){
+    //             aTypes.push(type.dataset.id);
+    //             checkbox.innerHTML="check_box";
+    //         }else{
+    //             remove(aTypes, check);
+    //             checkbox.innerHTML="check_box_outline_blank";
+    //         };
+    //         //convertir le tableau des types en objet
+    //         let oTypes= convertObjet(aTypes);
+    //         // créer un tableau contenant les différents filtres
+    //         if(aTypes.length>0){
+    //             btnSupp.classList.replace("cache", "selec");
+    //         }
+    //         ajax(oTypes);
+
+    //         /* oFiltres : objet à envoyer à la fonction ajax du type : 
+    //         {   "type" : {"0" : "0", "2" : "10"},
+    //             "arrondissement" : {"0" : "0", "2" : "10"},
+    //             "date" : {"0" : "0", "2" : "10"},
+    //             etc.
+    //         }
+    //         */
+    //     });
+    // });
     let aTypes=[];
-    let filtresType=document.querySelectorAll(".type");
-    filtresType.forEach(function(type){
-        type.addEventListener("click", function(){
-            let checkbox=type.firstElementChild;
-            let check= aCheck(aTypes, type.dataset.id);
+    let aArrond=[];
+    let filtres=document.querySelectorAll(".critere");
+    filtres.forEach(function(critere){
+        critere.addEventListener("click", function(){
+            let checkbox=critere.firstElementChild;
+            let check;
+            switch(critere.dataset.filtre){
+                case "type":
+                    check= aCheck(aTypes, critere.dataset.id);
+                    aTypes= replaceTab(aTypes, critere.dataset.id, check);
+                    break;
+                case  "arrondissement":
+                    check= aCheck(aArrond, critere.dataset.id);
+                    aArrond= replaceTab(aArrond, critere.dataset.id, check);
+                    break;
+            }
             if(check === false){
-                aTypes.push(type.dataset.id);
+                //aTypes.push(critere.dataset.id);
                 checkbox.innerHTML="check_box";
             }else{
-                remove(aTypes, check);
+                //remove(aTypes, check);
                 checkbox.innerHTML="check_box_outline_blank";
-            };
+            }
+
+            //afficher ou non le bouton pour suprimer les filtres
+            if(aTypes.length>0 || aArrond.length>0){
+                btnSupp.classList.replace("cache", "selec");
+            }else{
+                btnSupp.classList.replace("selec", "cache");
+            }
+
             //convertir le tableau des types en objet
             let oTypes= convertObjet(aTypes);
+            console.log(oTypes);
+            let oArrond= convertObjet(aArrond);
+            console.log(oArrond);
             // créer un tableau contenant les différents filtres
-            if(aTypes.length>0){
-                btnSupp.classList.replace("cache", "selec");
-            }
-            ajax(oTypes);
 
-            /* oFiltres : objet à envoyer à la fonction ajax du type : 
-            {   "type" : {"0" : "0", "2" : "10"},
-                "arrondissement" : {"0" : "0", "2" : "10"},
-                "date" : {"0" : "0", "2" : "10"},
-                etc.
-            }
-            */
+            let oFiltres={};
+            oFiltres.type=oTypes;
+            oFiltres.arrondissement=oArrond;
+            console.log(oFiltres);
+            oFiltres=JSON.stringify(oFiltres);
+            console.log(oFiltres);
+            ajax(oFiltres);
         });
     });
 
-
-    /*Fonction à qui on donne un tableau, une chaine de caractère et un objet qui :
-    vérifie si l'objet contient déja un objet appelé comme la chaine de caractère, et en fonction :
-    y met le tableau, remplace les données ou le supprime de l'objet.
-    @param {array} array : tableau contenant les id des éléments choisis par l'utilisateurs
-    @param {string} filtre : string ayant pour valeur "type", "arrondissement", ou "date"
-    @param {object} objet : objet
-    */
-    function creationTabFiltres(filtre, array, objet){
-        switch(filtre){
-            case "type" : 
-                break;
-            case "arrondissement":
-                break;
-            case "date":
-                break;
+    /*Fonction à qui on donne un tableau et qui le convertit en objet
+        @param {array} array 
+        @return {object} objet 
+        */
+    function replaceTab(array, contenu, check){
+        if(check === false){
+            array.push(contenu);
+        }else{
+            remove(array, check);
         }
+        return array;
     }
-
 
    /*Fonction à qui on donne un tableau et qui le convertit en objet
     @param {array} array 
@@ -151,6 +181,7 @@ window.addEventListener("load", function(){
                 oeuvres.forEach(function(oeuvre){
                     if(!isEmpty(xhr.responseText)){
                         let aOeuvresFiltre= JSON.parse(xhr.responseText);
+                        console.log(aOeuvresFiltre);
                         let trouve = false;
                         aOeuvresFiltre.forEach(function(id){
                             if(oeuvre.dataset.id == id.id){
@@ -165,18 +196,13 @@ window.addEventListener("load", function(){
                     }else{
                         oeuvre.removeAttribute("id");
                     }
-                   
                 });
-                    
-                
-               
-                
             }
-            
         };
         xhr.setRequestHeader("Content-Type", "application/json");
         /*envoyer un objet json donnant les filtres choisis*/
         let test =JSON.stringify(data);
+        console.log(data);
         xhr.send(test);
     }
     
@@ -190,14 +216,14 @@ window.addEventListener("load", function(){
     function aCheck(array, id){
         let test =false;
         let index =false;
-        if(!isNaN(id)){
+        //if(!isNaN(id)){
             for(i=0; i<array.length; i++){
                 if(array[i]===id){
                     test= true;
                     index= i;
                 }
             }
-        }
+        //}
         return index;
     }
     /*Fonction à laquelle on envoi un tableau et un entier, 

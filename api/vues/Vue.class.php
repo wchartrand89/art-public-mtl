@@ -145,7 +145,6 @@ class Vue {
 	 */
 	public function afficheInscription() {
 		require("accueil/inscription.html.php");
-		
 	}
 
     
