@@ -95,6 +95,18 @@ require("admin/AfficheOeuvres.html.php");
 		
 	}
     
+        /**
+	 * Affiche la liste des artiste
+	 * @access public
+	 * @return void
+	 */
+    public function afficheUser($aData = Array()) {
+		
+        require("admin/AfficheUser.html.php");
+		
+	}
+    
+    
     
         /**
 	 * Affiche la page de connexion admin

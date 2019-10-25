@@ -30,12 +30,13 @@ class FiltreControlleur extends Controlleur
 	
 	public function postAction(Requete $requete)
     {
-		//echo (JSON_encode($requete));
-		if(!empty($requete->parametres)){
-			$oOeuvre = new Oeuvre();
-			$aOeuvre = $oOeuvre->getListeFiltre($requete->parametres);
-			echo JSON_encode($aOeuvre);
-		}        
+		echo (JSON_encode($requete->parametres));
+		//echo "allo";
+		// if(!empty($requete->parametres)){
+		// 	$oOeuvre = new Oeuvre();
+		// 	$aOeuvre = $oOeuvre->getListeFiltre($requete->parametres);
+		// 	echo JSON_encode($aOeuvre);
+		// }        
 	}
 }
 ?>

@@ -1,7 +1,7 @@
 window.addEventListener("load", function(){
     let body=document.querySelector("body");
     let listeLettres = Array("A", "B", "C", "D", "E","F", "G", "H", "I","J","K", "L", "M", "N", "O","P", "Q", "R", "S", "T","U","V","W","X","Y","Z");
-    let lettreChoisie=document.querySelector(".focus");
+    let lettreChoisie=document.querySelector(".focus:not(.material-icons)");
     let lettres =document.querySelectorAll(".lettre");
     let liste=document.querySelector(".liste");
 
@@ -125,9 +125,3 @@ window.addEventListener("load", function(){
     });
 
 });
-
-
-
-
-
-   

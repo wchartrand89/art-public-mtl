@@ -136,6 +136,15 @@ class Vue {
 	public function afficheConnexion() {
 		require("accueil/connexion.html.php");
 		
+	}    
+    
+    /**
+	 * Affiche la page d'inscription User
+	 * @access public
+	 * @return void
+	 */
+	public function afficheInscription() {
+		require("accueil/inscription.html.php");
 	}
 
     

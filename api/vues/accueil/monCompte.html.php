@@ -4,14 +4,20 @@
    <section class='mesInfos'>
     <div class="mesDonnes">
         <div class="infosPersos">
+          <p><?php 
+              if(isset($_GET['update']) && $_GET['update']=="error"){
+                echo "Une erreur est survenue, veuillez vérifiez vos champs.";  
+              }  
+              else if (isset($_GET['update']) && $_GET['update']=="ok"){
+                echo "Votre mot de passe a été modifié.";  
+              } ?></p>
            <h4>INFOS PERSONNELLES</h4>
             <p>Nom d'utilisateur :
                 <?php echo $_SESSION["username"]; ?>
             </p>
             <p>Mot de passe :
                 <?php 
-            $password = str_repeat("*", strlen($_SESSION["pw"])); 
-            echo $password; 
+            echo '*********'; 
             ?>
             </p>
             <a href="#" id='test'>Modifier mon mot de passe</a>
@@ -20,8 +26,7 @@
         <form action="/art-public-mtl/api/compte/modifierPW" id="form" method="post">
             <div class='cacher teste'>
                 <div>
-                    <label for="">Mon mot de passe :</label>
-                    <input type="password" value='<?php echo $_SESSION["pw"]; ?>' name='oldPW' id='oldPW'>
+                    <input type="hidden" value='<?php echo $password; ?>' name='oldPW' id='oldPW'>
                 </div>
                 <div>
                     <label for="">Nouveau mot de passe :</label>
@@ -35,15 +40,21 @@
                 </div>
                 <div id=btns_form>
                     <input type="button" id="annuler" value="Annuler">
-                    <input type="submit" id="modifier" value="Ajouter">
+                    <input type="submit" id="modifier" value="Modifier">
                 </div>
             </div>
         </form>
     </div>
     <div class="mesDonnes">
       <div class="autresInfos">
-          <h4>AUTRES INFOS</h4>
+        <h4>AUTRES INFOS</h4>
         <p>Adresse mail : <?php echo $courriel; ?></p>
       </div>
     </div>
+            <form id='deconnexion' action="/art-public-mtl/api/compte/deconnexion" method="post">	
+                <div>
+                    <input type="submit" id="envoyer" value="Déconnexion">
+                </div>		
+            </form>
+
 </section>

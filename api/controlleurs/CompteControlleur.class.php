@@ -22,14 +22,23 @@ class CompteControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
+
+        
         //author Fred
         // si la session est set et est correct alors afficher l'edition des infos du compte.
         if(isset($_SESSION["user"]) && $_SESSION['user']=='ok')
         {
-            $mail = $this->getAdresseMail($_SESSION["username"]);
+            $mail = $this->getInfosUser($_SESSION["username"]);
             $oVue = new Vue();
             $oVue->afficheEntete("compte");	
             $oVue->afficheMonCompte($mail);
+            $oVue->affichePied();
+        }
+        
+        else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "inscription"){
+            $oVue = new Vue();
+            $oVue->afficheEntete("inscription");	
+            $oVue->afficheInscription();
             $oVue->affichePied();
         }
         // sinon afficher la connexion
@@ -65,7 +74,6 @@ class CompteControlleur extends Controlleur
                         if(password_verify($_POST["mdp"],$hashed_password)){
                             //connecter la personne + set la variable session pour la personne qui s'est connecté
                             $_SESSION["user"]='ok';
-                            $_SESSION["pw"]=$_POST['mdp'];
                             $_SESSION["username"]=$_POST['login'];
 
                             //redirection vers le menu oeuvre
@@ -79,29 +87,60 @@ class CompteControlleur extends Controlleur
                     exit();
                 }
             }
-           
+            
+            if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="inscriptionForm")
+            { 
+                $mail = $this->verificationMail($_POST['mail']);
+                $login = $this->verificationLogin($_POST['login']);
+                if($mail==true && $login== true){
+                         header("location:/art-public-mtl/api/compte/inscription?update=loginmail"); //redirige vers l'accueil (login)
+                         exit(); 
+                }
+                elseif ($login== true){
+                    header("location:/art-public-mtl/api/compte/inscription?update=login"); //redirige vers l'accueil (login)
+                    exit(); 
+                }
+                elseif ($mail== true){
+                    header("location:/art-public-mtl/api/compte/inscription?update=mail"); //redirige vers l'accueil (login)
+                    exit(); 
+                }
+                else{
+                $retour = $this->inscriptionUser($_POST['login'], $_POST['mdp'], $_POST['mail']);
+                    if($retour==true)
+                    {
+                        header("location:/art-public-mtl/api/compte");
+                    }
+                }
+            }
           
             if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="modifierPW")
             { 
                 $retour = $this->modificationPW($_POST['oldPW'], $_POST['newPW']);
                 if($retour==true)
                 {
-                    header("location:/art-public-mtl/api/compte");
+                    header("location:/art-public-mtl/api/compte?update=ok");
                 }
                 else //connexion non reconnue
                 {     
-                    header("location:/art-public-mtl/api/compte"); //redirige vers l'accueil (login)
+                    header("location:/art-public-mtl/api/compte?update=erreur"); //redirige vers l'accueil (login)
                     exit();
                 }
             }
+            
         }
+            if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="deconnexion")
+            { 
+                session_destroy(); //détruit la session
+               header("location:/art-public-mtl/api/compte"); //retourne à l'accueil admin (vue de connexion)
+                exit();
+            }
             
         }
     
-        private function getAdresseMail($user)
+        private function getInfosUser($user)
         {
         $oUser = new User();
-		$aUser = $oUser->getAdresseMail($user);
+		$aUser = $oUser->getInfosUser($user);
 		return $aUser;
         }
     
@@ -109,6 +148,27 @@ class CompteControlleur extends Controlleur
         {
         $oUser = new User();
 		$aUser = $oUser->modificationPW($oldPw, $newPW);
+		return $aUser;
+        }
+    
+        private function verificationLogin($login)
+        {
+        $oUser = new User();
+		$aUser = $oUser->verificationLogin($login);
+		return $aUser;
+        }
+            
+        private function verificationMail($mail)
+        {
+        $oUser = new User();
+		$aUser = $oUser->verificationMail($mail);
+		return $aUser;
+        }
+    
+        private function inscriptionUser($login, $pw, $mail)
+        {
+        $oUser = new User();
+		$aUser = $oUser->inscriptionUser($login, $pw, $mail);
 		return $aUser;
         }
 }

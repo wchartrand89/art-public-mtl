@@ -51,7 +51,7 @@ class Oeuvre extends Modele {
 					"//left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
                     ."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
                     LEFT JOIN ". self::TABLE_IMAGE ." i ON Oeu.id_oeuvre = i.NoInterne
-					order by Oeu.id_oeuvre ASC
+					order by Oeu.Titre ASC
 				";
 
 //		echo $query;
