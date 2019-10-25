@@ -1,0 +1,82 @@
+<textes>
+    
+    <texte xml:id="titre">Art Public Montréal</texte>
+    <texte xml:id="titre2">L'art public à Montréal</texte>
+
+<!-- 
+*****************
+MENU HEADER
+*****************
+-->
+    
+    <texte xml:id="menu_oeuvres">Oeuvres</texte>
+    <texte xml:id="menu_artistes">Artistes</texte>
+    <texte xml:id="menu_parcours">Parcours</texte>
+    <texte xml:id="menu_apropos">À Propos</texte>
+    <texte xml:id="menu_contact">Contact</texte>
+    <texte xml:id="menu_compte">Compte</texte>
+    
+    <texte xml:id="lang">EN</texte>    
+    <texte xml:id="imgAutreLangue">img/icons/EN.png</texte>
+    
+<!-- 
+*****************
+NAVIGATION
+*****************
+-->
+    
+    <texte xml:id="retour">&lt; Retour</texte>
+    <texte xml:id="plus_info">Plus d'informations ></texte>
+    <texte xml:id="partager">Partager</texte>
+    
+<!-- 
+*****************
+ACCUEIL
+*****************
+-->
+    
+    <texte xml:id="vivez1">Vivez Montréal</texte>
+    <texte xml:id="vivez2">À travers sa grande collection d'art public</texte>      
+    <texte xml:id="vivez3">Voir la carte</texte>      
+    
+<!-- 
+*****************
+CONNEXION
+*****************
+-->
+    
+    <texte xml:id="bienvenue">Bienvenue, </texte>
+    <texte xml:id="connexion">Connexion</texte>
+    <texte xml:id="user">Nom d'utilisateur</texte>
+    <texte xml:id="pass">Mot de passe</texte>
+    
+<!-- 
+*****************
+OEUVRES
+*****************
+-->
+    
+    <texte xml:id="bulleinfo">Plus d'informations ></texte>
+    <texte xml:id="details">Détails</texte>
+    <texte xml:id="artiste">Artiste</texte>
+    <texte xml:id="carte">Carte</texte>
+    <texte xml:id="categorie">Catégorie</texte>
+    <texte xml:id="materiaux">Matériaux</texte>
+    <texte xml:id="techniques">Techniques</texte>
+    <texte xml:id="dateCreation">Date de création</texte>
+    
+<!-- 
+*****************
+À VOIR
+*****************
+--> 
+    
+<!-- 
+*****************
+FOOTER
+*****************
+-->
+    
+    <texte xml:id="droits">Tous droits réservés</texte>
+
+</textes>

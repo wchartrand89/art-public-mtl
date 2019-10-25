@@ -1,0 +1,82 @@
+<textes>
+    
+    <texte xml:id="titre">Public Art Montreal</texte>
+    <texte xml:id="titre2">Public art in Montreal</texte>
+
+<!-- 
+*****************
+MENU HEADER
+*****************
+-->
+    
+    <texte xml:id="menu_oeuvres">Works</texte>
+    <texte xml:id="menu_artistes">Artists</texte>
+    <texte xml:id="menu_parcours">Courses</texte>
+    <texte xml:id="menu_apropos">About</texte>
+    <texte xml:id="menu_contact">Contact</texte>
+    <texte xml:id="menu_compte">Account</texte>
+    
+    <texte xml:id="lang">FR</texte>    
+    <texte xml:id="imgAutreLangue">img/icons/FR.png</texte>
+    
+<!-- 
+*****************
+NAVIGATION
+*****************
+-->
+    
+    <texte xml:id="retour">&lt; Return</texte>
+    <texte xml:id="plus_info">More information ></texte>
+    <texte xml:id="partager">Share</texte>
+    
+<!-- 
+*****************
+ACCUEIL
+*****************
+-->
+    
+    <texte xml:id="vivez1">Live Montreal</texte>
+    <texte xml:id="vivez2">Through it's wide public art collection</texte>  
+    <texte xml:id="vivez3">Look at the map</texte>   
+    
+<!-- 
+*****************
+CONNEXION
+*****************
+-->
+    
+    <texte xml:id="bienvenue">Welcome, </texte>
+    <texte xml:id="connexion">Connection</texte>
+    <texte xml:id="user">Username</texte>
+    <texte xml:id="pass">Password</texte>
+    
+<!-- 
+*****************
+OEUVRES
+*****************
+-->
+    
+    <texte xml:id="bulleinfo">More information ></texte>
+    <texte xml:id="details">Details</texte>
+    <texte xml:id="artiste">Artist</texte>
+    <texte xml:id="carte">Map</texte>
+    <texte xml:id="categorie">Category</texte>
+    <texte xml:id="materiaux">Materials</texte>
+    <texte xml:id="techniques">Techniques</texte>
+    <texte xml:id="dateCreation">Date of creation</texte>
+    
+<!-- 
+*****************
+À VOIR
+*****************
+--> 
+    
+<!-- 
+*****************
+FOOTER
+*****************
+-->
+    
+    <texte xml:id="droits">All rights reserved</texte>
+
+</textes>

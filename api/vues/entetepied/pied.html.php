@@ -1,3 +1,17 @@
+    <?php
+        $document = cookie();
+        $text_lang = $document->getElementById("lang")->nodeValue;
+        $text_titre2 = $document->getElementById("titre2")->nodeValue;
+        $text_menu_oeuvres = $document->getElementById("menu_oeuvres")->nodeValue;
+        $text_menu_artistes = $document->getElementById("menu_artistes")->nodeValue;
+        $text_menu_parcours = $document->getElementById("menu_parcours")->nodeValue;
+        $text_menu_apropos = $document->getElementById("menu_apropos")->nodeValue;
+        $text_menu_contact = $document->getElementById("menu_contact")->nodeValue;
+        $text_menu_compte = $document->getElementById("menu_compte")->nodeValue;
+        $text_droits = $document->getElementById("droits")->nodeValue;
+
+    ?>
+
 </main>
 	<footer>
 		<div class="contenu">
@@ -12,32 +26,32 @@
 				</div>
 				<nav class="navbar">
 					<a class="lien" href="#">
-						<p>Oeuvres</p>
+						<p><?php echo $text_menu_oeuvres ?></p>
 					</a>
 					<img class="separateur" src="../img/icons/ligne.svg" alt="">
 					<a class="lien" href="#">					
-						<p>Artistes</p>
+						<p><?php echo $text_menu_artistes ?></p>
 					</a>
 					<img class="separateur" src="../img/icons/ligne.svg" alt="">
 					<a class="lien" href="#">
-						<p>Parcours</p>
+						<p><?php echo $text_menu_parcours ?></p>
 					</a>
 					<img class="separateur" src="../img/icons/ligne.svg" alt="">
 					<a class="lien" href="#">
-						<p>À propos</p>
+						<p><?php echo $text_menu_apropos ?></p>
 					</a>
 					<img class="separateur" src="../img/icons/ligne.svg" alt="">
 					<a class="lien" href="#">
-						<p>Contact</p>
+						<p><?php echo $text_menu_contact ?></p>
 					</a>
 					<img class="separateur" src="../img/icons/ligne.svg" alt="">
 					<a class="lien" href="#">
-						<p>Compte</p>
+						<p><?php echo $text_menu_compte ?></p>
 					</a>
 				</nav>
 				<p>
 					Copyright 2019 - Art Public Montréal<br>
-					Tous droits réservés
+					<?php echo $text_droits ?>
 				</p>
 			</section>
 			
