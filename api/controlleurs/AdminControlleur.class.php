@@ -29,7 +29,8 @@ class AdminControlleur extends Controlleur
 		
 		if(!isset($requete->url_elements[0]))
         {
-			echo 'PAGE ADMIN NON EXISTANTE';
+            echo 'PAGE ADMIN NON EXISTANTE';
+            var_dump($requete);
 		}
 		else if ($requete->url_elements[0] == '')
 		{
