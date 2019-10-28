@@ -13,7 +13,7 @@ body{
     -ms-flex-direction: column;
     flex-direction: column;
     width:100%;
-    height: 1024px; 
+    /* height: 1024px;  */
     background-color: var(--couleur-fond);               
     -webkit-box-align:center;               
     -ms-flex-align:center;               
@@ -27,7 +27,25 @@ img{
 }
 
 /* HEADER */
+
+
+ .appbar {
+    z-index: 2;
+    background-color: var(--couleur-fond);
+    color: #FFFFFF;
+    /* padding-left: var(--marge-gauche); */
+    display: flex;
+    align-items: center;
+}
+.appbar h1
+{
+    
+    font-size: 24px;
+}
+
 .appbar{
+    position:sticky;
+    top:0;
     padding: 0px;
     display:-webkit-box;
     display:-ms-flexbox;
@@ -36,9 +54,9 @@ img{
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
+    justify-content: space-between;
     width: 100%;
-    height:var(--taille-appbar);
-    height:100px;
+    min-height: var(--taille-footer);
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -47,23 +65,24 @@ img{
 }
 
 .logo > img{
-    position: absolute;
+    /* position: absolute; */
     width:130px;
     height:67px;
-    left: 2.5%;
-    right: 83.61%;
-    top: 15.33%;
-    bottom: 12%;
+    margin-left: var(--padding-base);
+    /* left: 2.5%; */
+    /* right: 83.61%; */
+    /* top: 15.33%; */
+    /* bottom: 12%; */
 }
 
 #divInter_deconn{
     display:flex;
     flex-direction: row;
-    position: absolute;
+    /* position: absolute; */
     align-items: center;
-    right:200px;
+    /* right:200px; */
     width:300px;
-    top:40px;
+    /* top:40px; */
 }
 
 
@@ -107,21 +126,6 @@ div > .Deconn{
     text-transform: uppercase;
 }
 
-/* MAIN */
-main{
-    position: absolute;
-    top:100px;
-    display:-webkit-box;
-    display:-ms-flexbox;
-    display:flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    width:100%;
-    background-color: white;
-}
-
 /* MENU ASIDE */
 #menu_aside{
     width:230px;
@@ -134,7 +138,17 @@ main{
     flex-direction: column;        
     background-color: var(--couleur-marine);
     padding-top: 10px;
+    height: calc( 100vh - var(--taille-footer));
+    position:sticky;
+    top : var(--taille-footer);
 }
+
+@media screen and (max-width: 700px) {
+    #menu_aside{
+        display:none;
+    }
+}
+
 #menu_aside > a{
     display:-webkit-box;
     display:-ms-flexbox;
@@ -179,6 +193,9 @@ a > img{
 .recherche{
     width:100%;
     height:71px;
+    background-color: white;
+    position : sticky;
+    top : var(--taille-footer);
 }
 
 form{
@@ -274,9 +291,6 @@ form{
     font-weight: 600;
 }
 
-
-
-
 /* CONTENU OEUVREs */
 
 .contenu_listeOeuvres{
@@ -367,7 +381,7 @@ form{
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center; 
-    width:100%; 
+    max-width:100%; 
     padding-left: 50px;   
 }
 .info_oeuvre:nth-child(odd) {
@@ -395,8 +409,20 @@ form{
 }
 
 
+@media screen and (max-width: 700px) {
+    .info_oeuvre > span{
+        flex-direction: column;
+    }
+}
+
 .valeur_info_oeuvre{
     width:25%;
+    padding-right:var(--padding-base);
+}
+.liensIcones{
+    display: flex;
+    justify-content: flex-end;
+
 }
 
 .valeur_info_oeuvre > a{

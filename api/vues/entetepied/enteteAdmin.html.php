@@ -26,7 +26,7 @@
 				echo'<link rel="stylesheet" href="../../../../css/adminmain.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../../css/formulairesAdmin.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../../css/var.css" type="text/css" media="screen">';
-				echo'<link rel="stylesheet" href="../../../../css/flex.css" type="text/css" media="screen">';
+				// echo'<link rel="stylesheet" href="../../../../css/flex.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../../css/text.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../../css/footer.css" type="text/css" media="screen">';
 
@@ -36,7 +36,7 @@
 				echo'<link rel="stylesheet" href="../../../css/adminmain.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../css/formulairesAdmin.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../css/var.css" type="text/css" media="screen">';
-				echo'<link rel="stylesheet" href="../../../css/flex.css" type="text/css" media="screen">';
+				// echo'<link rel="stylesheet" href="../../../css/flex.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../css/text.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../../css/footer.css" type="text/css" media="screen">';
 			}else{
@@ -45,9 +45,9 @@
 				echo'<link rel="stylesheet" href="../../css/adminmain.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/var.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/modal.css" type="text/css" media="screen">';
-				echo'<link rel="stylesheet" href="../../css/flex.css" type="text/css" media="screen">';
+				// echo'<link rel="stylesheet" href="../../css/flex.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/text.css" type="text/css" media="screen">';
-				echo'<link rel="stylesheet" href="../../css/footerAdmin.css" type="text/css" media="screen">';
+				// echo'<link rel="stylesheet" href="../../css/footerAdmin.css" type="text/css" media="screen">';
 				echo'<link rel="stylesheet" href="../../css/footer.css" type="text/css" media="screen">';
 
 			}
