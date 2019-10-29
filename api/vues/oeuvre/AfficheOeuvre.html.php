@@ -339,7 +339,9 @@
 			</div>
 		</div>
 				
-		<div class="conteneur_btn_partager"><a href="#" class="btn"><i class="material-icons">share</i>Partager</a></div>
+		<div class="conteneur_btn_partager"><a href="https://www.facebook.com/sharer/sharer.php?u=example.org" class="btn" target="_blank">
+  Share on Facebook
+</a><i class="material-icons">share</i>Partager</a></div>
 
                 
                 
