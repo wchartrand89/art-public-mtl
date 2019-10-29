@@ -1,3 +1,8 @@
+    <?php
+        $document = cookie();
+
+    ?>
+
 <script type="text/javascript">
 	let artistes = <?php echo json_encode($aData); ?>;
 </script>

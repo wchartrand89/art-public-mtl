@@ -19,8 +19,6 @@
     
     var oeuvres = [];
     let aOeuvres=<?php echo(json_encode($aData));?>;
-//    console.log(JSON.parse(aOeuvres));
-//    console.log(aOeuvres[0]);
     aOeuvres.forEach(function(element)
     {
         var titre = element["Titre"];

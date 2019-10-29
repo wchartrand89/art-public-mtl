@@ -1,4 +1,11 @@
-    <!-- 
+    <?php
+
+        $document = cookie();
+        $text_lang = $document->getElementById("partager")->nodeValue;
+
+    ?>
+
+<!-- 
 
     GOOGLE API KEY (TODO : SECURISER)
 
@@ -6,6 +13,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
     async defer>
     </script>
+<script>var lienPage =  window.location.href();</script>
 
 <section class="contenu uneOeuvre flex flex-col">
 	<section class="retour"><a href="javascript:history.back()"> < Retour  </a></section>
@@ -338,10 +346,22 @@
 				</div>
 			</div>
 		</div>
+        <?php
+            function curPageURL() {
+             $pageURL = 'http';
+             if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+             $pageURL .= "://";
+             if ($_SERVER["SERVER_PORT"] != "80") {
+              $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+             } else {
+              $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+             }
+             return $pageURL;
+            }
+        ?>
 				
-		<div class="conteneur_btn_partager"><a href="https://www.facebook.com/sharer/sharer.php?u=example.org" class="btn" target="_blank">
-  Share on Facebook
-</a><i class="material-icons">share</i>Partager</a></div>
+		<div class="conteneur_btn_partager"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo curPageURL(); ?>" class="btn" target="_blank"><i class="material-icons">share</i>Partager</a></div>
+
 
                 
                 

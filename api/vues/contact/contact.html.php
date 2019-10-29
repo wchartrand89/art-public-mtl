@@ -1,4 +1,23 @@
-
+<?php
+        $document = cookie();
+        $text_localisation = $document->getElementById("localisation")->nodeValue;
+        $text_adresse1 = $document->getElementById("adresse1")->nodeValue;
+        $text_adresse2 = $document->getElementById("adresse2")->nodeValue;
+        $text_adresse3 = $document->getElementById("adresse3")->nodeValue;
+        $text_adresse4 = $document->getElementById("adresse4")->nodeValue;
+        $text_ecrivez = $document->getElementById("ecrivez_nous")->nodeValue;
+        $text_e_nom = $document->getElementById("e_nom")->nodeValue;
+        $text_e_prenom = $document->getElementById("e_prenom")->nodeValue;
+        $text_e_courriel = $document->getElementById("e_courriel")->nodeValue;
+        $text_e_sujet = $document->getElementById("e_sujet")->nodeValue;
+        $text_e_suj1 = $document->getElementById("e_suj1")->nodeValue;
+        $text_e_suj2 = $document->getElementById("e_suj2")->nodeValue;
+        $text_e_suj3 = $document->getElementById("e_suj3")->nodeValue;
+        $text_e_suj4 = $document->getElementById("e_suj4")->nodeValue;
+        $text_e_commentaire = $document->getElementById("e_commentaire")->nodeValue;
+        $text_e_envoyer = $document->getElementById("e_envoyer")->nodeValue;
+        $text_e_medias = $document->getElementById("medias")->nodeValue;
+?>
 <section class="contenu-contact">
     <h3>Contactez-nous</h3>
 
