@@ -286,7 +286,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 				
 					}			
 			?>
-			<section>
+			<section class="oeuvre">
 				<a class="lienOeuvre lienArtisteA" href="oeuvre/<?php echo $id_oeuvre; ?>"><?php  echo $Titre;?></a>
 					<?php 
 					

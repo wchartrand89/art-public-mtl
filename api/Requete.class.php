@@ -27,8 +27,8 @@ class Requete
         $this->url_elements = explode('/', $_GET['url']);
 		$this->parseIncomingParams();
 		$this->ressource = $this->url_elements[0]; 
-        array_splice($this->url_elements,0, 1);
-//        var_dump ($this);
+        //array_splice($this->url_elements,0, 1);
+        //var_dump ($this);
         return true;
 	}
 	
