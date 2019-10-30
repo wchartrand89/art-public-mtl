@@ -35,38 +35,6 @@ window.addEventListener("load", function(){
 
     //Objet qui contiendra les filtres sélectionnés par l'utilisateur
     let oFiltres={};
-
-    //créer un objet pour le filtre TYPE
-    //let aTypes=[];
-    //let filtresType=document.querySelectorAll(".type");
-    // filtresType.forEach(function(type){
-    //     type.addEventListener("click", function(){
-    //         let checkbox=type.firstElementChild;
-    //         let check= aCheck(aTypes, type.dataset.id);
-    //         if(check === false){
-    //             aTypes.push(type.dataset.id);
-    //             checkbox.innerHTML="check_box";
-    //         }else{
-    //             remove(aTypes, check);
-    //             checkbox.innerHTML="check_box_outline_blank";
-    //         };
-    //         //convertir le tableau des types en objet
-    //         let oTypes= convertObjet(aTypes);
-    //         // créer un tableau contenant les différents filtres
-    //         if(aTypes.length>0){
-    //             btnSupp.classList.replace("cache", "selec");
-    //         }
-    //         ajax(oTypes);
-
-    //         /* oFiltres : objet à envoyer à la fonction ajax du type : 
-    //         {   "type" : {"0" : "0", "2" : "10"},
-    //             "arrondissement" : {"0" : "0", "2" : "10"},
-    //             "date" : {"0" : "0", "2" : "10"},
-    //             etc.
-    //         }
-    //         */
-    //     });
-    // });
     let aTypes=[];
     let aArrond=[];
     let filtres=document.querySelectorAll(".critere");
@@ -100,19 +68,29 @@ window.addEventListener("load", function(){
             }
 
             //convertir le tableau des types en objet
-            let oTypes= convertObjet(aTypes);
-            console.log(oTypes);
-            let oArrond= convertObjet(aArrond);
-            console.log(oArrond);
+            
+            
+            
+            
             // créer un tableau contenant les différents filtres
 
             let oFiltres={};
-            oFiltres.type=oTypes;
-            oFiltres.arrondissement=oArrond;
+            if(aTypes.length>0){
+                let oTypes= convertObjet(aTypes);
+                oFiltres.type=oTypes;
+                console.log(oTypes);
+            }
+            if(aArrond.length>0){
+                let oArrond= convertObjet(aArrond);
+                oFiltres.arrondissement=oArrond;
+                console.log(oArrond);
+            }
             console.log(oFiltres);
-            oFiltres=JSON.stringify(oFiltres);
+            //oFiltres=JSON.stringify(oFiltres);
             console.log(oFiltres);
             ajax(oFiltres);
+            
+            
         });
     });
 
@@ -122,7 +100,7 @@ window.addEventListener("load", function(){
         */
     function replaceTab(array, contenu, check){
         if(check === false){
-            array.push(contenu);
+           array.push(contenu);
         }else{
             remove(array, check);
         }
@@ -201,8 +179,10 @@ window.addEventListener("load", function(){
         };
         xhr.setRequestHeader("Content-Type", "application/json");
         /*envoyer un objet json donnant les filtres choisis*/
+        
         let test =JSON.stringify(data);
         console.log(data);
+        console.log(test);
         xhr.send(test);
     }
     
