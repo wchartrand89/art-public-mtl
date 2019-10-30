@@ -15,7 +15,7 @@
                     <div class="div_form">
                         <label for="titre">Nom de l'artiste</label>
                         <input class="box" type="text" name="nom" value="" id="nom">
-                    </div>
+                    </div><br>
                     <div class="div_form">
                         <label for="titre">Prenom de l'artiste</label>
                         <input class="box" type="text" name="prenom" value="" id="prenom">
@@ -33,7 +33,7 @@
                         <input class="box" type="text" name="siteWeb" value="" id="siteWeb">
                     </div> 
                     <div id=btns_form>
-                        <input type="button" id="annuler" value="Annuler">
+                       <a href="/art-public-mtl/api/admin/artiste" id="annuler">Annuler</a>
                         <input type="submit" id="envoyer" value="Ajouter">                        
                     </div>			 
             </form>
