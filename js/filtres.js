@@ -100,19 +100,29 @@ window.addEventListener("load", function(){
             }
 
             //convertir le tableau des types en objet
-            let oTypes= convertObjet(aTypes);
-            console.log(oTypes);
-            let oArrond= convertObjet(aArrond);
-            console.log(oArrond);
+            
+            
+            
+            
             // créer un tableau contenant les différents filtres
 
             let oFiltres={};
-            oFiltres.type=oTypes;
-            oFiltres.arrondissement=oArrond;
+            if(aTypes.length>0){
+                let oTypes= convertObjet(aTypes);
+                oFiltres.type=oTypes;
+                console.log(oTypes);
+            }
+            if(aArrond.length>0){
+                let oArrond= convertObjet(aArrond);
+                oFiltres.arrondissement=oArrond;
+                console.log(oArrond);
+            }
             console.log(oFiltres);
-            oFiltres=JSON.stringify(oFiltres);
+            //oFiltres=JSON.stringify(oFiltres);
             console.log(oFiltres);
             ajax(oFiltres);
+            
+            
         });
     });
 
@@ -122,7 +132,7 @@ window.addEventListener("load", function(){
         */
     function replaceTab(array, contenu, check){
         if(check === false){
-            array.push(contenu);
+           array.push(contenu);
         }else{
             remove(array, check);
         }
@@ -201,8 +211,10 @@ window.addEventListener("load", function(){
         };
         xhr.setRequestHeader("Content-Type", "application/json");
         /*envoyer un objet json donnant les filtres choisis*/
+        
         let test =JSON.stringify(data);
         console.log(data);
+        console.log(test);
         xhr.send(test);
     }
     

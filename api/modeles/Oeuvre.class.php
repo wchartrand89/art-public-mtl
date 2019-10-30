@@ -94,7 +94,7 @@ class Oeuvre extends Modele {
 		return $res;
     }
 
-    public function getListeFiltre($type = array()) 
+    public function getListeFiltre($filtres) 
 	{
 		$res = Array();
 		$query = "SELECT O.id_oeuvre as id FROM oeuvre O 
@@ -103,14 +103,35 @@ class Oeuvre extends Modele {
                    LEFT JOIN ". self::TABLE_A_VISITER ." Vi ON O.id_oeuvre=Vi.id_oeuvre
                    LEFT JOIN ". self::TABLE_FAVORIS ." F ON O.id_oeuvre=F.id_oeuvre
                    LEFT JOIN ". self::TABLE_VOTE ." Vo ON O.id_oeuvre=Vo.id_oeuvre ";
-        if(isset($type)){
-            $listeId="";
-            $query.= "WHERE SC.id_sous_categorie IN (";
-            foreach($type as $id){
-                $listeId.= $id.",";
+        if(isset($filtres)){
+            if(isset($filtres["type"]) && !empty($filtres["type"])){
+                $listeId="";
+                $query.= "WHERE SC.id_sous_categorie IN (";
+                foreach($filtres["type"] as $type){
+                    //var_dump($type);
+                    $listeId.= $type.",";
+                }
+                $listeId=substr($listeId, 0, -1);
+                $query.=$listeId.")";
             }
-            $listeId=substr($listeId, 0, -1);
-            $query.=$listeId.")";
+            if(isset($filtres["arrondissement"]) && !empty($filtres["arrondissement"])){
+                $listeArrond="";
+                if(!empty($filtres["type"])){
+                    $query.=" AND O.Arrondissement IN (";
+                }else{
+                    $query.="WHERE O.Arrondissement IN (";
+                }
+                
+                foreach($filtres["arrondissement"] as $arrond){
+                    //var_dump($arrond);
+                    $listeArrond.="'".$arrond."',";
+                }
+                $listeArrond=substr($listeArrond, 0, -1);
+                $query.=$listeArrond.")";
+            }
+            
+ 
+           
         }
 
             if($mrResultat = $this->_db->query($query))

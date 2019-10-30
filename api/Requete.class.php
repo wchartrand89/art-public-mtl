@@ -47,9 +47,9 @@ class Requete
             $content_type = $_SERVER['CONTENT_TYPE'];
         }
 		
-		
+		//var_dump($body);
         $body_params = json_decode($body);
-		
+		//var_dump($body_params);
         if($body_params) {
             foreach($body_params as $nom => $valeur) {
 				$parametres[$nom] = $this->aseptiserParametre($valeur);
@@ -63,8 +63,11 @@ class Requete
 	
 	private function aseptiserParametre($valeur)
 	{
-		$valeur = $this->_db->real_escape_string($valeur);
-		$valeur = htmlspecialchars($valeur);
+        if(is_string($valeur)){
+            $valeur = $this->_db->real_escape_string($valeur);
+            $valeur = htmlspecialchars($valeur);
+        }
+        
 		return $valeur;
 	} 	
 }
