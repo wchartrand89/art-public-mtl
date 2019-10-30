@@ -46,7 +46,7 @@ class CompteControlleur extends Controlleur
         else
         {
             $oVue = new Vue();
-            $oVue->afficheEntete("compte");	
+            $oVue->afficheEntete("connexion");	
             $oVue->afficheConnexion();
             $oVue->affichePied();
         }
