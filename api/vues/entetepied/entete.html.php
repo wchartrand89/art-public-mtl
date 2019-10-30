@@ -11,6 +11,7 @@
 
 	
 	<?php
+	echo $page;
 		if ($page== ""){
 			
 			cssBase("");
@@ -90,8 +91,10 @@
 	
 		function cssBase($page){
 			$chemin = "";
-			if($page == "artiste" || $page == "oeuvre" || $page == "inscription"|| $page =="compte" || $page="connexion") {
+			if($page == "artiste" || $page == "oeuvre" || $page == "inscription"|| $page =="compte" || $page=="connexion"){
 				$chemin = "../";
+			}else{
+				$chemin = "";
 			}
 			?>
 			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
