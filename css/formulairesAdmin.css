@@ -168,14 +168,7 @@
 
 #annuler{
     background-color:var(--couleur-marine);
-    border-color:var(--couleur-marine);
-        font-family: Open Sans !important;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px !important;    
-    border-radius: 5px !important;   
-    width: 100px !important;    
-    color: white !important;
+    border-color:var(--couleur-marine);    
 }
 
 #envoyer{

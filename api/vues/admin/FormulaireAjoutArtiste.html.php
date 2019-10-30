@@ -33,7 +33,7 @@
                         <input class="box" type="text" name="siteWeb" value="" id="siteWeb">
                     </div> 
                     <div id=btns_form>
-                       <a href="/art-public-mtl/api/admin/artiste"><input type="button" id="annuler" value="Annuler"></a>
+                       <a href="/art-public-mtl/api/admin/artiste" id="annuler">Annuler</a>
                         <input type="submit" id="envoyer" value="Ajouter">                        
                     </div>			 
             </form>
