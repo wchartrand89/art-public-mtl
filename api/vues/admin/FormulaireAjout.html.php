@@ -152,7 +152,7 @@ $info4= $data4;
                         <input class="box" type="text" name="nomCollectif" value="" id="nom" >
                     </div>
                     <div id=btns_form>
-                        <a href="/art-public-mtl/api/admin/oeuvre"><input type="button" id="annuler" value="Annuler"></a>
+                        <a href="/art-public-mtl/api/admin/oeuvre">Annuler</a>
                         <input type="submit" id="envoyer" value="Ajouter">                        
                     </div>			 
             </form>

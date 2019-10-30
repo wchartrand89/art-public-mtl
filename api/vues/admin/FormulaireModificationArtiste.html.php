@@ -71,7 +71,7 @@ $info= $data;
                         <input class="box" type="text" name="siteWeb" value="<?php echo $info["site_web"];  ?>" id="siteWeb">
                     </div> 
                     <div id=btns_form>
-                        <a href="/art-public-mtl/api/admin/artiste"><input type="button" id="annuler" value="Annuler"></a>
+                        <a href="/art-public-mtl/api/admin/artiste">Annuler</a>
                         <input type="submit" id="envoyer" value="Modifier">  
                     </div>		 
                 </form>  

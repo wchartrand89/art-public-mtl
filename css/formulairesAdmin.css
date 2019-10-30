@@ -141,6 +141,13 @@
     font-size: 12px;
 }
 
+.div_form a label{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+}
+
 #btns_form{
     display:-webkit-box;
     display:-ms-flexbox;
@@ -164,6 +171,20 @@
     border-radius: 5px;   
     width: 100px;    
     color:var(--couleur-fond);
+}
+
+#btns_form a{
+    text-decoration:none;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;    
+    border-radius: 5px;   
+    width: 100px;    
+    color:var(--couleur-fond);
+    background-color:var(--couleur-marine);
+    border-color:var(--couleur-marine);   
+    text-align: center;
 }
 
 #annuler{
