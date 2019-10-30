@@ -21,7 +21,10 @@
 ?>
 <section class="contenu-contact">
     <h3>Contactez-nous</h3>
-
+    <?php if($message!=null) {
+        echo($message);
+    }
+    ?>
     <div class="systeme_onglets">
         <div class="onglets">
             <span class="onglet_0 onglet" id="onglet_details" onclick="javascript:change_onglet('details');">Localisation</span>
@@ -46,24 +49,24 @@
                 </section>
             </div>
             <div class="contenu_onglet" id="contenu_onglet_artiste">
-                <form action="mailto:contact@artpublicmontreal.ca">
+                <form action="/art-public-mtl/api/contact" method="post">
                     <fieldset>
                         <h3>Contactez-nous</h3>
                         Nom:<br>
-                        <input type="text" name="firstname" value="">
+                        <input type="text" name="nom" value="">
                         <br>
                         Pr&eacute;nom:<br>
-                        <input type="text" name="lastname" value="">
+                        <input type="text" name="prenom" value="">
                         <br>
                         Courriel:<br>
-                        <input type="text" name="lastname" value="">
+                        <input type="text" name="courriel" value="">
                         <br>
                         Sujet :
                         <select name="sujet">
-                            <option value="volvo">Proposition d'oeuvre</option>
-                            <option value="saab">Demande de compte</option>
-                            <option value="fiat">Signaler des domages d'une oeuvre</option>
-                            <option value="audi">Autre</option>
+                            <option value="Proposition">Proposition d'oeuvre</option>
+                            <option value="Demande">Demande de compte</option>
+                            <option value="Signaler">Signaler des domages d'une oeuvre</option>
+                            <option value="Autre">Autre</option>
                         </select>
                         <br>
                         <p>Commentaire :</p>

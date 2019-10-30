@@ -94,6 +94,15 @@ require("admin/AfficheOeuvres.html.php");
         require("admin/AfficheArtistes.html.php");
 		
 	}
+
+	/**
+	 * Affiche la liste des contacts
+	 * @access public
+	 * @return void
+	 */
+	public function afficheContacts($aData) {
+		require("admin/AfficheContacts.html.php");
+	}
     
         /**
 	 * Affiche la liste des artiste

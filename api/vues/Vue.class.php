@@ -121,12 +121,9 @@ class Vue {
 	 * @access public
 	 * @return void
 	 */
-	public function afficheContact() {
-		
+	public function afficheContact($message) {
 		require("contact/contact.html.php");
-		
 	}
-    
     
     /**
 	 * Affiche la page de connexion User

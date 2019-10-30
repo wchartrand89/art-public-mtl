@@ -3,6 +3,8 @@
 				<a id="menu_oeuvre" href="/art-public-mtl/api/admin/oeuvre"><img src="../../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
 				<a id="menu_artistes" href="/art-public-mtl/api/admin/artiste"><img src="../../../img/icons/paletteBlanch.svg" alt="icon image"><p class="text_menu">Artistes</p></a>
 				<a id="menu_utilisateurs" href="/art-public-mtl/api/admin/utilisateur"><img src="../../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Utilisateurs</p></a>
+                <a id="menu_contact" href="/art-public-mtl/api/admin/contact"><img src="../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Commentaires</p></a>
+                
 			</aside>
             <div id="formAdmin">
                 <span id="retour">
@@ -15,7 +17,7 @@
                     <div class="div_form">
                         <label for="titre">Nom de l'artiste</label>
                         <input class="box" type="text" name="nom" value="" id="nom">
-                    </div>
+                    </div><br>
                     <div class="div_form">
                         <label for="titre">Prenom de l'artiste</label>
                         <input class="box" type="text" name="prenom" value="" id="prenom">
@@ -33,7 +35,7 @@
                         <input class="box" type="text" name="siteWeb" value="" id="siteWeb">
                     </div> 
                     <div id=btns_form>
-                        <input type="button" id="annuler" value="Annuler">
+                       <a href="/art-public-mtl/api/admin/artiste" id="annuler">Annuler</a>
                         <input type="submit" id="envoyer" value="Ajouter">                        
                     </div>			 
             </form>

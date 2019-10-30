@@ -12,6 +12,8 @@ $info= $data;
 				<a id="menu_oeuvre" href="/art-public-mtl/api/admin/oeuvre"><img src="../../../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
 				<a id="menu_artistes" href="/art-public-mtl/api/admin/artiste"><img src="../../../../img/icons/paletteBlanch.svg" alt="icon image"><p class="text_menu">Artistes</p></a>
 				<a id="menu_utilisateurs" href="/art-public-mtl/api/admin/utilisateur"><img src="../../../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Utilisateurs</p></a>
+                <a id="menu_contact" href="/art-public-mtl/api/admin/contact"><img src="../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Commentaires</p></a>
+                
 			</aside>
             <div id="formAdmin">
                 <span id="retour">
@@ -49,7 +51,7 @@ $info= $data;
                 if(isset($info["NomCollectif"]) && $info["NomCollectif"]!="" ){
                 ?>
 
-
+                    <br>
                     <div class="div_form">
                         <label for="titre">Nom du collectif</label>
                         <input class="box" type="text" name="nomCollectif" value="<?php echo $info["NomCollectif"];  ?>" id="nomCollectif" >
@@ -71,7 +73,7 @@ $info= $data;
                         <input class="box" type="text" name="siteWeb" value="<?php echo $info["site_web"];  ?>" id="siteWeb">
                     </div> 
                     <div id=btns_form>
-                        <input type="button" id="annuler" value="Annuler">
+                        <a href="/art-public-mtl/api/admin/artiste">Annuler</a>
                         <input type="submit" id="envoyer" value="Modifier">  
                     </div>		 
                 </form>  

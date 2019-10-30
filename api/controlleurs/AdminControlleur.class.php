@@ -21,10 +21,7 @@ class AdminControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
         
-		if(isset($requete->url_elements[0]) && $requete->url_elements[0]=='menu')
-        {	
-		  $res = array();
-        }
+
 		//var_dump($requete->url_elements);
 		
 		if(!isset($requete->url_elements[0]))
@@ -46,7 +43,7 @@ class AdminControlleur extends Controlleur
 
             }else{
                 
-                header("location:/art-public-mtl/api/admin/menu");
+                header("location:/art-public-mtl/api/admin/oeuvre");
                 
             }
 
