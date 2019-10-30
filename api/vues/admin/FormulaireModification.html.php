@@ -72,7 +72,9 @@ $info4= $data4;
                         </select>
                     </div> 
                     <div class="div_form">
-                        <label for="titre">Matériaux</label>
+                       <a titre = "Pour modifier des matériaux, utilisez la syntaxe suivante : Matériau1, Matériau2">
+                        <label for="titre" id="mat">Matériaux</label>
+                        </a>
                         <input class="box" type="text" name="materiaux" value="<?php echo $info["materiaux"];  ?>" id="Matériaux" >
                     </div>               
                     <div class="div_form">
@@ -168,7 +170,7 @@ $info4= $data4;
           
           ?>
                     <div id=btns_form>
-                        <input type="button" id="annuler" value="Annuler">
+                        <a href="/art-public-mtl/api/admin/oeuvre">Annuler</a>
                         <input type="submit" id="envoyer" value="Modifier">  
                     </div>		 
             </form> 
