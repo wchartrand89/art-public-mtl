@@ -120,8 +120,6 @@ async defer>
 	</section>
 </article>
 
-<div id="map" class="carte"></div> 
-
 <section class="listeLettre" id="hidden">
 	<aside class="choix">
 		<p class="lettre">Y</p>
@@ -140,6 +138,7 @@ async defer>
 		<p class="lettre">B</p>
 		<p class="lettre">C</p>
 	</aside>
+</section>
 <?php
 /*Tableau pour création des ancres dans les sections des lettres*/ 
 $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
@@ -170,65 +169,17 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 25=>Array("lettre"=>"Z","ok"=>false),);
 ?>
      
-		<section class="listeOeuvresText" id="liste">
-		<div class="fixPb"></div>
-		<?php
-		//print_r($aData);
-			foreach ($aData as $cle => $oeuvre) {
-				extract($oeuvre);	
-				$i=0;
-					foreach($listeLettres as $cle => $lettre){
-						if(!isset($test[$i])){
-							$test[$i]=false;
-						}
-						if ($Titre[0] == $lettre["lettre"] && $lettre["ok"] == false && $test[$i] !== true){
-							echo '<div id="'.$lettre["lettre"].'"></div>';
-							$test[$i]=true;
-						}
-						$i++;
-				
-					}			
-			?>
-			<section class="oeuvre">
-				<a class="lienOeuvre lienArtisteA" href="oeuvre/<?php echo $id_oeuvre; ?>"><?php  echo $Titre;?></a>
-					<?php 
-					
-					$j=count($Artistes);
-					//echo(count($Artistes));
-					foreach($Artistes as $artiste){
-						$j=$j-1;
-						extract($artiste);
-						?>
-						<a class="lienArtiste" href="artiste/<?php echo $id_artiste; ?>">
-						<?php 
-						if(isset($Nom) && $Nom!=""){
-							echo $Nom ." ". $Prenom;
-						}
-						else
-						{
-							echo $NomCollectif;
-						}
-						if($j>0){
-							echo ", ";
-						}
-						?></a>
-					<?php			
-					}
+	 <!-- CARTE -->
+	<div id="map" class="carte"></div> 
 
-					?>
-							</section>
-			<?php
-			}
-			?>
-			
-		</section>
-	</section>
-		<section class="contenu hidden listeOeuvres" id="photo">
-			<div class="fixPb"></div>
-			<!-- <section class="rechercher"></section> -->
-            <section class="oeuvres flex wrap">
+
+<!-- LISTE PHOTO ET TEXTE TEST -->
+
+	<section class="contenu hidden listeOeuvres" id="photo">
+		<div class="fixPb"></div>
+	
+		<section class="oeuvres flex wrap">
 						<?php
-        
 //echo '<pre>';
 //print_r($aData);
 //echo '</pre>';
@@ -236,8 +187,50 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 						foreach ($aData as $cle => $oeuvre) {
                             array_push($data2, $oeuvre);
 							extract($oeuvre);
+							$i=0;
+							foreach($listeLettres as $cle => $lettre){
+								if(!isset($test[$i])){
+									$test[$i]=false;
+								}
+								if ($Titre[0] == $lettre["lettre"] && $lettre["ok"] == false && $test[$i] !== true){
+									echo '<div id="'.$lettre["lettre"].'"></div>';
+									$test[$i]=true;
+								}
+								$i++;
+						
+							}
 							?>
+							
 							<section class="oeuvre conteneur_oeuvre_courante" data-id="<?php echo $id_oeuvre ?>">
+								<section class="oeuvreTxt">
+									<a class="lienOeuvre lienArtisteA" href="oeuvre/<?php echo $id_oeuvre; ?>"><?php  echo $Titre;?></a>
+									<?php 
+						
+										$j=count($Artistes);
+									//echo(count($Artistes));
+									foreach($Artistes as $artiste){
+										$j=$j-1;
+										extract($artiste);
+										?>
+										<a class="lienArtiste" href="artiste/<?php echo $id_artiste; ?>">
+										<?php 
+										if(isset($Nom) && $Nom!=""){
+											echo $Nom ." ". $Prenom;
+										}
+										else
+										{
+											echo $NomCollectif;
+										}
+										if($j>0){
+											echo ", ";
+										}
+										?></a>
+									<?php			
+									}
+									?>
+								</section>
+
+
 								
 			                    <header class="image dummy image_oeuvre_courante">
 								<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">
@@ -294,7 +287,6 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 						}
 						?>
 					</section>
-				
 			</section>
 			<article class="filtre selec">
 				<i class="material-icons">filter_list</i>
