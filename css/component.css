@@ -32,6 +32,11 @@
     border:2px solid var(--couleur-marine);
 }
 
+input{
+    color: var(--couleur-marine);
+    padding-left:var(--padding-base);
+}
+
 /* BREAK TABLET PORTRAIT UP */
 @media screen and (min-width: 600px) {
     .btn{

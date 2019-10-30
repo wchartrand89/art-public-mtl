@@ -23,7 +23,7 @@
 			<link rel="stylesheet" href="../../css/var.css" type="text/css" media="screen">
 
 			<link rel="stylesheet" href="../../img/icons/logoAP.png" type="text/css" media="screen">
-			<link rel="stylesheet" href="../../css/headerAdminConnexion.css" type="text/css" media="screen">
+			<!-- <link rel="stylesheet" href="../../css/headerAdminConnexion.css" type="text/css" media="screen"> -->
 			<link rel="stylesheet" href="../../css/mainAdminConnexion.css" type="text/css" media="screen">
 
 		</head>

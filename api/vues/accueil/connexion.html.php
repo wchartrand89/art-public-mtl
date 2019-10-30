@@ -30,13 +30,13 @@
 </section>
 
 <section class="inscription">
+    <div>
         <p>Pas encore de compte ?</p>
         <div class="lienInscription">
-            <a href="/art-public-mtl/api/compte/inscription" class="txtLien">S'inscrire <i class="material-icons">
-chevron_right
-</i></a>
-            <!-- <a href="/art-public-mtl/api/compte/inscription" class="txtLien"> ></a> -->
+            <a href="/art-public-mtl/api/compte/inscription" class="txtLien">S'inscrire <i class="material-icons">chevron_right</i></a>
         </div>
+    </div>
+        
         
     </section>
 </main>
