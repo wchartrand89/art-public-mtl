@@ -62,7 +62,7 @@
                        
                     } ?></p>
 							<p class="valeur_info_oeuvre"><?php echo $Arrondissement ?></p>
-							<span class="valeur_info_oeuvre">
+							<span class="valeur_info_oeuvre liensIcones">
 								<a href="/art-public-mtl/api/admin/oeuvre/<?php echo $id_oeuvre ?>/modifier"><img id='crayon' src="../../img/icons/crayon.svg" alt="Modifier"></a>
 								<a data-href="/art-public-mtl/api/admin/oeuvre/<?php echo $id_oeuvre ?>/supprimer" class="modalPopup" onclick="handle(this);"><img id='poubelle' src="../../img/icons/poubelle.svg" alt="Supprimer"></a>
 							</span>

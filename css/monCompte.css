@@ -75,6 +75,15 @@ form p{
     justify-content: center;
     align-items: center;
 }
+.lienInscription{
+    display:flex;
+    justify-content: flex-start;
+}
+.lienInscription a{
+    display: flex;
+    align-items: center;
+}
+
 .lienInscription a{
     display:flex;
     justify-content: center;
