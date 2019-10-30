@@ -35,38 +35,6 @@ window.addEventListener("load", function(){
 
     //Objet qui contiendra les filtres sélectionnés par l'utilisateur
     let oFiltres={};
-
-    //créer un objet pour le filtre TYPE
-    //let aTypes=[];
-    //let filtresType=document.querySelectorAll(".type");
-    // filtresType.forEach(function(type){
-    //     type.addEventListener("click", function(){
-    //         let checkbox=type.firstElementChild;
-    //         let check= aCheck(aTypes, type.dataset.id);
-    //         if(check === false){
-    //             aTypes.push(type.dataset.id);
-    //             checkbox.innerHTML="check_box";
-    //         }else{
-    //             remove(aTypes, check);
-    //             checkbox.innerHTML="check_box_outline_blank";
-    //         };
-    //         //convertir le tableau des types en objet
-    //         let oTypes= convertObjet(aTypes);
-    //         // créer un tableau contenant les différents filtres
-    //         if(aTypes.length>0){
-    //             btnSupp.classList.replace("cache", "selec");
-    //         }
-    //         ajax(oTypes);
-
-    //         /* oFiltres : objet à envoyer à la fonction ajax du type : 
-    //         {   "type" : {"0" : "0", "2" : "10"},
-    //             "arrondissement" : {"0" : "0", "2" : "10"},
-    //             "date" : {"0" : "0", "2" : "10"},
-    //             etc.
-    //         }
-    //         */
-    //     });
-    // });
     let aTypes=[];
     let aArrond=[];
     let filtres=document.querySelectorAll(".critere");

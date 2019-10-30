@@ -20,12 +20,26 @@
 class FavorisControlleur extends Controlleur 
 {
 	// GET : 
-
-	
 	public function getAction(Requete $requete)
 	{
-		echo "get favoris";
-        
+        //echo JSON_encode($requete->url_elements);
+        if(!empty($requete->url_elements)){
+            $oFavoris = new Favoris();
+            $oUser = new User();
+            $idOeuvre= (int)$requete->url_elements[1];
+            //echo $idOeuvre;
+            $infosUser= $oUser->getInfosUser($_SESSION["username"]);
+            $idUser= $infosUser["id_user"];
+            //vérifier si le favoris est déja dans la base de données
+            $verif = $oFavoris->getOeuvreFav($idUser, $idOeuvre);
+            //echo count($verif);
+            if(count($verif)== 0){
+                $aFavoris = $oFavoris->creerFavori($idUser,$idOeuvre);
+            }else{
+                $aFavoris = $oFavoris->supprimerFavori($idUser,$idOeuvre);
+            }
+            
+        } 
 	}
 	
 	public function postAction(Requete $requete)

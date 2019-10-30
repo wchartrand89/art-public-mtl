@@ -25,17 +25,9 @@ class Oeuvre extends Modele {
 	const TABLE_A_VISITER = "a_visiter";
 	const TABLE_VOTE = "vote";
 	
-    
-    
-    
-    
-    
-    
-    
-    
+
     //----------------------------------------------------GET----------------------------------------------------------//
-    
-    
+
 	/**
 	 * Retourne la liste des oeuvres
 	 * @access public
@@ -46,13 +38,14 @@ class Oeuvre extends Modele {
 	{
         
 		$res = Array();
-		$query = "	SELECT * FROM ". self::TABLE_OEUVRE ." Oeu 
+		$query = "	SELECT Oeu.*, ART.*, F.id_user as favoris FROM ". self::TABLE_OEUVRE ." Oeu 
 					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
 					"//left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
                     ."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
                     LEFT JOIN ". self::TABLE_IMAGE ." i ON Oeu.id_oeuvre = i.NoInterne
+                    LEFT JOIN ". self::TABLE_FAVORIS ." F ON Oeu.id_oeuvre = F.id_oeuvre
 					order by Oeu.Titre ASC
-				";
+                ";
 
 //		echo $query;
 		//SELECT * FROM `apm__oeuvre` Oeu inner join apm__oeuvre_artiste O_A ON Oeu.id = O_A.id_oeuvre
@@ -97,7 +90,7 @@ class Oeuvre extends Modele {
     public function getListeFiltre($filtres) 
 	{
 		$res = Array();
-		$query = "SELECT O.id_oeuvre as id FROM oeuvre O 
+		$query = "SELECT O.id_oeuvre as id FROM ". self::TABLE_OEUVRE ." O 
                     LEFT JOIN ". self::TABLE_LIAISON_OEUVRE_SOUSCATEGORIE ." SC ON O.id_oeuvre=SC.id_oeuvre
                     LEFT JOIN ". self::TABLE_SOUSCATEGORIE ." S ON SC.id_sous_categorie=S.id_sous_categorie 
                    LEFT JOIN ". self::TABLE_A_VISITER ." Vi ON O.id_oeuvre=Vi.id_oeuvre

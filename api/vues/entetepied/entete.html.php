@@ -45,6 +45,7 @@
 			echo '<script src = "../js/choixAffichage.js"></script>';
 			echo '<script src="../js/liste.js"></script>';
 			echo '<script src="../js/sliderDate.js"></script>';
+			echo '<script src="../js/favoris.js"></script>';
 			
 		} 
 		else if ($page== "oeuvre"){
