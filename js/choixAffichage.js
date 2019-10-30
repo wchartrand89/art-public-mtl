@@ -6,40 +6,22 @@ window.addEventListener("load", function()
     let map = document.querySelector("#map");
     let contenu = document.querySelector(".contenu");
     let listeTexte=document.querySelector(".listeLettre");
-    let oeuvresTexte=document.querySelectorAll(".oeuvreTxt");
-    let oeuvresPhoto1=document.querySelectorAll(".image_oeuvre_courante");
-    let oeuvresPhoto2=document.querySelectorAll(".texte_pied_image");
     let filtre=document.querySelector(".filtre");
     filtre.setAttribute("id", "hidden");
     
     filtre.classList.replace("selec","cache");
-
-    oeuvresTexte.forEach(function(texte){
-        texte.classList.add("hidden");
-    });
-   
     choixListe.addEventListener("click", function()
     {
         map.classList.add("hidden"); 
 //        map.style.height="0px";
-        contenu.classList.remove("hidden");
+        contenu.classList.add("hidden");
         choixListe.classList.add("focus");
         choixCarte.classList.remove("focus");
         choixImage.classList.remove("focus");
         filtre.classList.replace("cache","selec");
         filtre.removeAttribute("id", "hidden");
         listeTexte.removeAttribute("id", "hidden");
-        oeuvresTexte.forEach(function(texte){
-            texte.classList.remove("hidden");
-        });
-        oeuvresPhoto1.forEach(function(photo){
-            photo.setAttribute("id", "hidden");
-        });
-        oeuvresPhoto2.forEach(function(photo){
-            photo.setAttribute("id", "hidden");
-        });
-
-
+        //listeTexte.classListe.remove("hidden");
         // window.location.replace("#liste");
     });
     
@@ -69,22 +51,9 @@ window.addEventListener("load", function()
         filtre.classList.replace("cache","selec");
         filtre.removeAttribute("id", "hidden");
         listeTexte.setAttribute("id", "hidden");
-        oeuvresTexte.forEach(function(texte){
-            texte.classList.add("hidden");
-        });
-        oeuvresPhoto1.forEach(function(photo){
-            photo.classList.removeAttribute("id", "hidden");
-        });
-        oeuvresPhoto2.forEach(function(photo){
-            photo.classList.removeAttribute("id", "hidden");
-        });
         // window.location.replace("#photo");
     });      
 
 });
 
 
-
-
-
-   
