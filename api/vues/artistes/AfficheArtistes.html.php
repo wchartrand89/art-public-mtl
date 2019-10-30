@@ -1,6 +1,6 @@
+    	<?php error_reporting(E_ALL ^ E_WARNING);  ?>
     <?php
         $document = cookie();
-
     ?>
 
 <script type="text/javascript">

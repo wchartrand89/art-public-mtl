@@ -1,5 +1,6 @@
 		
-	<?php
+	<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+    <?php
         $document = cookie();
         $text1 = $document->getElementById("vivez1")->nodeValue;
         $text2 = $document->getElementById("vivez2")->nodeValue;

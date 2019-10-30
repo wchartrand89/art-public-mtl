@@ -1,4 +1,5 @@
-<?php
+	<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+    <?php 
         $document = cookie();
         $text_localisation = $document->getElementById("localisation")->nodeValue;
         $text_adresse1 = $document->getElementById("adresse1")->nodeValue;

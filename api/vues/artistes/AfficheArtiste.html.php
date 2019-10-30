@@ -1,3 +1,4 @@
+    	<?php error_reporting(E_ALL ^ E_WARNING);  ?>
     <?php
         $document = cookie();
         $text_retour = $document->getElementById("retour")->nodeValue;
