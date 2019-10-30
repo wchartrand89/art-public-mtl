@@ -20,28 +20,28 @@
         $text_e_medias = $document->getElementById("medias")->nodeValue;
 ?>
 <section class="contenu-contact">
-    <h3>Contactez-nous</h3>
+    <h3>Contact</h3>
     <?php if($message!=null) {
         echo($message);
     }
     ?>
     <div class="systeme_onglets">
         <div class="onglets">
-            <span class="onglet_0 onglet" id="onglet_details" onclick="javascript:change_onglet('details');">Localisation</span>
-            <span class="onglet_0 onglet" id="onglet_artiste" onclick="javascript:change_onglet('artiste');">&Eacute;crivez-nous</span>
-            <span class="onglet_0 onglet" id="onglet_carte" onclick="javascript:change_onglet('carte');">M&eacute;dias</span>
+            <span class="onglet_0 onglet" id="onglet_details" onclick="javascript:change_onglet('details');"><?php echo $text_localisation; ?></span>
+            <span class="onglet_0 onglet" id="onglet_artiste" onclick="javascript:change_onglet('artiste');"><?php echo $text_ecrivez; ?></span>
+            <span class="onglet_0 onglet" id="onglet_carte" onclick="javascript:change_onglet('carte');"><?php echo $text_e_medias; ?></span>
         </div>
         <div class="contenu_onglets">
             <div class="contenu_onglet" id="contenu_onglet_details">
                 <section class="texte">
                     <p>
-                    <strong>Campus principal</strong>
+                    <strong><?php echo $text_adresse1; ?></strong>
                     <br>
-                    3800, rue Sherbrooke Est
+                    <?php echo $text_adresse2; ?>
                     <br>
-                    Montr&eacute;al (Qu&eacute;bec) H1X 2A2
+                    <?php echo $text_adresse3; ?>
                     <br>
-                    T&eacute;l.: 514 254-7131
+                    <?php echo $text_adresse4; ?>
                     </p>
                     <div class="carte_contact">
                     <iframe src="https://www.google.com/maps/d/embed?mid=1nrpE60oVxUEQEUOvHFRT5c-33P5zf6Ix" width="640" height="480"></iframe>
@@ -51,29 +51,29 @@
             <div class="contenu_onglet" id="contenu_onglet_artiste">
                 <form action="/art-public-mtl/api/contact" method="post">
                     <fieldset>
-                        <h3>Contactez-nous</h3>
-                        Nom:<br>
+                        <h3><?php echo $text_ecrivez; ?></h3>
+                        <?php echo $text_e_nom; ?><br>
                         <input type="text" name="nom" value="">
                         <br>
-                        Pr&eacute;nom:<br>
+                        <?php echo $text_e_prenom; ?><br>
                         <input type="text" name="prenom" value="">
                         <br>
-                        Courriel:<br>
+                        <?php echo $text_e_courriel; ?><br>
                         <input type="text" name="courriel" value="">
                         <br>
-                        Sujet :
+                        <?php echo $text_e_sujet; ?>
                         <select name="sujet">
-                            <option value="Proposition">Proposition d'oeuvre</option>
-                            <option value="Demande">Demande de compte</option>
-                            <option value="Signaler">Signaler des domages d'une oeuvre</option>
-                            <option value="Autre">Autre</option>
+                            <option value="Proposition"><?php echo $text_e_suj1; ?></option>
+                            <option value="Demande"><?php echo $text_e_suj2; ?></option>
+                            <option value="Signaler"><?php echo $text_e_suj3; ?></option>
+                            <option value="Autre"><?php echo $text_e_suj4; ?></option>
                         </select>
                         <br>
-                        <p>Commentaire :</p>
+                        <p><?php echo $text_e_commentaire; ?></p>
                         <br>
                         <textarea name="message" rows="10" cols="30"></textarea>
                         <br><br>
-                        <input type="submit" value="Envoyer">
+                        <input type="submit" value="<?php echo $text_e_envoyer; ?>">
                     </fieldset>
                 </form>
             </div>

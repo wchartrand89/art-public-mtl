@@ -38,7 +38,7 @@ ACCUEIL
     
     <texte xml:id="vivez1">Live Montreal</texte>
     <texte xml:id="vivez2">Through it's wide public art collection</texte>  
-    <texte xml:id="vivez3">Look at the map</texte>   
+    <texte xml:id="vivez3">See the map</texte>   
     
 <!-- 
 *****************
@@ -108,12 +108,12 @@ CONTACT
     <texte xml:id="adresse2">3800, Sherbrooke Street East</texte>
     <texte xml:id="adresse3">Montreal (Quebec) H1X 2A2</texte>
     <texte xml:id="adresse4">Tel.: 514-254-7131</texte>
-    <texte xml:id="ecrivez_nous">MAIL-US</texte>
+    <texte xml:id="ecrivez_nous">CONTACT US</texte>
     <texte xml:id="e_nom">Name:</texte>
     <texte xml:id="e_prenom">Surname:</texte>
     <texte xml:id="e_courriel">Email:</texte>
     <texte xml:id="e_sujet">Subject:</texte>
-    <texte xml:id="e_suj1">Suggest an artwork</texte>
+    <texte xml:id="e_suj1">Submit an artwork</texte>
     <texte xml:id="e_suj2">Account management</texte>
     <texte xml:id="e_suj3">Signal a degraded artwork</texte>
     <texte xml:id="e_suj4">Other</texte>

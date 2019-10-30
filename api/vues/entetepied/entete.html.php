@@ -24,6 +24,7 @@
 
 	
 	<?php
+    echo "page = ".$page."!";
 		if ($page== ""){
 			
 			cssBase("");
@@ -103,7 +104,7 @@
 	
 		function cssBase($page){
 			$chemin = "";
-			if($page == "artiste" || $page == "oeuvre" || $page == "inscription"|| $page =="compte" || $page="connexion") {
+			if($page == "artiste" || $page == "oeuvre" || $page == "inscription"|| $page =="compte" || $page=="connexion") {
 				$chemin = "../";
 			}
 			?>
@@ -115,9 +116,7 @@
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/text.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/component.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/flex.css" type="text/css" media="screen">
-			<link rel="stylesheet" href="<?php echo $chemin;?>../css/main.css" type="text/css" media="screen">
-
-			
+			<link rel="stylesheet" href="<?php echo $chemin;?>../css/main.css" type="text/css" media="screen">			
 			<?php
 		}
 		function jsBase($page){
