@@ -26,6 +26,7 @@ class CompteControlleur extends Controlleur
         
         //author Fred
         // si la session est set et est correct alors afficher l'edition des infos du compte.
+        //echo $requete->url_elements[1];
         if(isset($_SESSION["user"]) && $_SESSION['user']=='ok')
         {
             $mail = $this->getInfosUser($_SESSION["username"]);
@@ -35,7 +36,7 @@ class CompteControlleur extends Controlleur
             $oVue->affichePied();
         }
         
-        else if(isset($requete->url_elements[0]) && $requete->url_elements[0] == "inscription"){
+        else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "inscription"){
             $oVue = new Vue();
             $oVue->afficheEntete("inscription");	
             $oVue->afficheInscription();
