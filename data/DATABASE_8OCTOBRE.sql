@@ -2245,8 +2245,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `login`, `password`, `role`, `courriel`) VALUES
-(1, 'admin', 'admin', 'admin', 'testAdmin@gmail.com'),
-(2, 'userLambda', 'userLambda', 'usager', 'testUserLambda@gmail.com');
+(1, 'admin', '$2y$10$Tzf5BrvTL3EnbZW.5H8zGODHT/ZAXVtPiepqyQnGsBbSk2p.Gmbiy', 'admin', 'testAdmin@gmail.com'),
+(2, 'userLambda', '$2y$10$jSjNOu0gg0hAMVnXgH.bYu8jdNxRWP7ETVOz3rJMXP2ObUcQHPQNG', 'usager', 'testUserLambda@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -2395,3 +2395,17 @@ ALTER TABLE `sous_categorie`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+CREATE TABLE contact (
+  `id_contact` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `courriel` varchar(50) NOT NULL,
+  `sujet` varchar(50) NOT NULL,
+  `commentaire` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `contact`
+  MODIFY `id_contact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15,
+  ADD PRIMARY KEY (`id_contact`);
