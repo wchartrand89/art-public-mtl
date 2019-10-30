@@ -1,16 +1,5 @@
+
 <?php error_reporting(E_ALL ^ E_WARNING); ?>
-	    <!-- 
-**************************************************************************
-**************************************************************************
-**************************************************************************
-    TODO: 
-    - SÉCURISER GOOGLE API KEY (lignes 13-15)
-    - HIDE/SHOW CARTE/LISTE
-    - BULLES D'INFO (ELEVER INLINE CSS)
-**************************************************************************
-**************************************************************************
-**************************************************************************
-    -->
 <script>
     
     var map;
@@ -110,6 +99,7 @@ TODO : enlever inline CSS
     </script>
 <script src = "../js/initMapOeuvres.js"></script>
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
+
 async defer>
 </script> 
 <section class="recherche">
@@ -177,7 +167,6 @@ async defer>
 			sort($aDatesC);
 			echo "<p>".$aDatesC[0]."</p>";
 			echo "<p>".$aDatesC[count($aDatesC)-1]."</p>";
-
 			?>
 			<div class="slidecontainer">
 				<input type="range" min="<?php echo $aDatesC[0]; ?>" max="<?php echo $aDatesC[count($aDatesC)-1]; ?>" value="<?php echo $aDatesC[count($aDatesC)-1]; ?>" range="1" class="slider v2">
@@ -270,7 +259,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 		<?php
 		//print_r($aData);
 			foreach ($aData as $cle => $oeuvre) {
-				extract($oeuvre);	
+				extract($oeuvre);
 				$i=0;
 					foreach($listeLettres as $cle => $lettre){
 						if(!isset($test[$i])){
@@ -284,7 +273,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 				
 					}			
 			?>
-			<section class="oeuvre">
+			<section class="oeuvre" data-id="<?php echo $id_oeuvre ?>">
 				<a class="lienOeuvre lienArtisteA" href="oeuvre/<?php echo $id_oeuvre; ?>"><?php  echo $Titre;?></a>
 					<?php 
 					
@@ -310,8 +299,17 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 					<?php			
 					}
 
+					if(isset($_SESSION["user"]) && $_SESSION['user']=='ok'){
 					?>
-							</section>
+						<section class="compteTexte">
+							<i class="material-icons aVisiter" data-id="<?php echo $id_oeuvre ?>">star_border</i>
+							<i class="material-icons favori" data-fav="<?php echo $favoris ?>"  data-id="<?php echo $id_oeuvre ?>">favorite_border</i>
+						</section>
+					<?php
+					}
+					?>
+				
+			</section>
 			<?php
 			}
 			?>
@@ -333,7 +331,14 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 							extract($oeuvre);
 							?>
 							<section class="oeuvre conteneur_oeuvre_courante" data-id="<?php echo $id_oeuvre ?>">
-								
+							<?php
+							if(isset($_SESSION["user"]) && $_SESSION['user']=='ok'){
+							?>
+							<section class="comptePhoto">
+								<i class="material-icons aVisiter" data-id="<?php echo $id_oeuvre ?>">star_border</i>
+								<i class="material-icons favori" data-id="<?php echo $id_oeuvre ?>" data-fav="<?php echo $favoris ?>" >favorite_border</i>
+							</section>
+							<?php } ?>
 			                    <header class="image dummy image_oeuvre_courante">
 								<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">
 								<h2 class="titre-oeuvre"><?php echo $Titre?></h2>
@@ -394,8 +399,3 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 			<article class="filtre selec">
 				<i class="material-icons">filter_list</i>
 			</article>
-
-
-
-
-			

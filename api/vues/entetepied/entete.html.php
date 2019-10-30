@@ -24,7 +24,7 @@
 
 	
 	<?php
-    echo "page = ".$page."!";
+//    echo "page = ".$page."!";
 		if ($page== ""){
 			
 			cssBase("");
@@ -38,8 +38,6 @@
 			echo '<link rel="stylesheet" href="../css/artistes.css" type="text/css" media="screen">';
 			jsBase("artistes");
 			echo '<script src="../js/liste.js"></script>';
-
-
 		} 
 		else if ($page== "artiste"){
 			cssBase("artiste");
@@ -61,6 +59,7 @@
 			echo '<script src = "../js/choixAffichage.js"></script>';
 			echo '<script src="../js/liste.js"></script>';
 			echo '<script src="../js/sliderDate.js"></script>';
+			echo '<script src="../js/favoris.js"></script>';
 			
 		} 
 		else if ($page== "oeuvre"){
@@ -86,25 +85,36 @@
 			echo '<script src="../js/onglets.js"></script>';
 			jsBase("contact");
 		} 
-        else if ($page== "compte" || $page== "inscription" || $page == "connexion"){
+        else if ($page== "compte"){
 			cssBase("compte");
 			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
 			echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">';
-			echo '<link rel="stylesheet" href="../../css/monCompte.css">';
-			if($page == "compte"){
-				echo '<script src="../../js/validationForm.js"></script>';
-				jsBase("compte");
-			}else if($page== "inscription" || $page =="connexion"){
-				jsBase("connexion");
-			}
-			
+			echo '<link rel="stylesheet" href="../css/monCompte.css">';
+			echo '<script src="../js/validationForm.js"></script>';
+			jsBase("compte");
 		} 
-
+        else if ($page== "connexionCompte"){
+			cssBase("compte");
+			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+			echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">';
+			echo '<link rel="stylesheet" href="../css/monCompte.css">';
+			//echo '<script src="../js/validationForm.js"></script>';
+			jsBase("compte");
+		} 
+        else if ($page== "inscription" || $page =="connexion"){
+			cssBase("inscription");
+			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+			echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">';
+			// echo '<link rel="stylesheet" href="../css/inscription.css">';
+			echo '<link rel="stylesheet" href="../../css/monCompte.css">';
+			//echo '<script src="../../js/validationFormIns.js"></script>';
+			jsBase("inscription");
+		} 
 		
 	
 		function cssBase($page){
 			$chemin = "";
-			if($page == "artiste" || $page == "oeuvre" || $page == "inscription"|| $page =="compte" || $page=="connexion") {
+			if($page == "artiste" || $page == "oeuvre" || $page == "inscription"|| $page == "compte" || $page == "connexion" ) {
 				$chemin = "../";
 			}
 			?>
@@ -121,7 +131,7 @@
 		}
 		function jsBase($page){
 			$chemin = "";
-			if($page == "artiste" || $page == "oeuvre" || $page =="connexion") {
+			if($page == "artiste" || $page == "oeuvre" || $page== "inscription" || $page =="connexion") {
 				$chemin = "../";
 			}
 			?>
@@ -135,7 +145,7 @@
 <body>
 	<header class="appbar">
 
-		<a class="logo" href="/art-public-mtl/api/"><img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription" || $page == "compte" || $page == "connexion"){echo "../";}?>../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
+		<a class="logo" href="/art-public-mtl/api/"><img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription" || $page =="connexion"){echo "../";}?>../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
 		
 		<nav class="menu">
 			
@@ -170,7 +180,7 @@
 			</a>
 			<a class="langue hidden" href="?lang=<?php echo $text_lang;?>"><?php echo $text_lang; ?></a>
 			<a class="menuCubes" href="#">
-				<img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription" || $page == "compte" || $page == "connexion"){echo "../";}?>../img/icons/menu.svg" alt="Icone d'ouverture du menu">
+				<img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription"){echo "../";}?>../img/icons/menu.svg" alt="Icone d'ouverture du menu">
 				</a>
 			<a class="fermerMenu hidden" href="#">
 				<i class="material-icons">close</i></a>

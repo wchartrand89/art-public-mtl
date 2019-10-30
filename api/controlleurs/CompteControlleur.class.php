@@ -35,18 +35,23 @@ class CompteControlleur extends Controlleur
             $oVue->afficheMonCompte($mail);
             $oVue->affichePied();
         }
-        
         else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "inscription"){
             $oVue = new Vue();
             $oVue->afficheEntete("inscription");	
             $oVue->afficheInscription();
             $oVue->affichePied();
         }
+        else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "connexion"){
+            $oVue = new Vue();
+            $oVue->afficheEntete("connexion");	
+            $oVue->afficheConnexion();
+            $oVue->affichePied();
+        }
         // sinon afficher la connexion
         else
         {
             $oVue = new Vue();
-            $oVue->afficheEntete("connexion");	
+            $oVue->afficheEntete("connexionCompte");	
             $oVue->afficheConnexion();
             $oVue->affichePied();
         }

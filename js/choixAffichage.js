@@ -8,7 +8,7 @@ window.addEventListener("load", function()
     let listeTexte=document.querySelector(".listeLettre");
     let filtre=document.querySelector(".filtre");
     filtre.setAttribute("id", "hidden");
-    
+
     filtre.classList.replace("selec","cache");
     choixListe.addEventListener("click", function()
     {
@@ -57,7 +57,3 @@ window.addEventListener("load", function()
 });
 
 
-
-
-
-   
