@@ -43,7 +43,6 @@ class Vue {
 	 * @return void
 	 */
 	public function afficheAccueil() {
-		
 		require("accueil/accueil.html.php");
 		
 	}
