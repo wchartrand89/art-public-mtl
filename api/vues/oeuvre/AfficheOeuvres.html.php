@@ -198,8 +198,18 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 						?></a>
 					<?php			
 					}
+
+					if(isset($_SESSION["user"]) && $_SESSION['user']=='ok'){
 					?>
-							</section>
+						<section class="compteTexte">
+							<i class="material-icons aVisiter">star_border</i>
+							<i class="material-icons favori">favorite_border</i>
+						</section>
+					<?php
+					}
+					?>
+				
+			</section>
 			<?php
 			}
 			?>
@@ -221,7 +231,14 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 							extract($oeuvre);
 							?>
 							<section class="oeuvre conteneur_oeuvre_courante" data-id="<?php echo $id_oeuvre ?>">
-								
+							<?php
+							if(isset($_SESSION["user"]) && $_SESSION['user']=='ok'){
+							?>
+							<section class="comptePhoto">
+								<i class="material-icons aVisiter">star_border</i>
+								<i class="material-icons favori">favorite_border</i>
+							</section>
+							<?php } ?>
 			                    <header class="image dummy image_oeuvre_courante">
 								<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">
 								<h2 class="titre-oeuvre"><?php echo $Titre?></h2>
