@@ -48,7 +48,7 @@ body{
     position:sticky;
     bottom:0;
     width:100%;
-    background-color: rgba(245,245,245,0.8);   
+    background-color: rgba(245,245,245,0.8);
     height: 70px;
     display: flex;
     justify-content: center;
@@ -283,7 +283,7 @@ footer{
     background-repeat: no-repeat;
     min-width:100%;
     background-color: var(--couleur-fond);
-    background-image: url(../../img/oeuvres/962_1.jpg); 
+    background-image: url(../../img/oeuvres/962_1.jpg);
 }
 
  /* BREAK TABLET PORTRAIT UP */
@@ -307,7 +307,7 @@ footer{
     .listeOeuvres{
         min-height:calc(100vh - 460px);
     }
-    
+
   }
 
 .texte_pied_image {
@@ -326,6 +326,7 @@ footer{
 .date_creation {
     color: var(--couleur-marine);
     font-size: 18px;
+    font-weight: bold;
 }
 
 .auteur_liste_oeuvre {
@@ -339,7 +340,9 @@ footer{
     align-items:center;
 }
 
-
+.ouvrir-oeuvre {
+  padding-bottom: 10px;
+}
 
 /*------------------ Affichage d'une oeuvre -------------------*/
 
@@ -390,7 +393,7 @@ footer{
 .uneOeuvre > .oeuvre > .image > img
 {
     width: 100%;
-    
+
     position: relative;
 }
 
@@ -400,7 +403,7 @@ footer{
     background: url("../img/placeholder_640_480.jpg") no-repeat center;
     background-size: cover;
 }
-  
+
 .uneOeuvre > .oeuvre .image > .titre
 {
     position: absolute;
@@ -449,7 +452,7 @@ footer{
 
 .uneOeuvre p {
     font-family: Open Sans;
-    padding: 25px 20px;
+    padding: 15px 20px 25px 20px;
     font-size: 16px;
     line-height: 20px;
     text-align: left;
@@ -457,11 +460,32 @@ footer{
     color: var(--couleur-marine);
 }
 
+.uneOeuvre p.auteur {
+    padding: 15px 20px 5px 20px;
+    font-weight: bold;
+}
+
 .conteneur_partager {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+}
+
+.oeuvre .contenu_onglet {
+  min-height: 230px;
+}
+
+#contenu_onglet_artiste > a {
+  font-weight: bold;
+  color: var(--couleur-orange);
+  font-size: 14px;
+}
+
+@media screen and (min-width: 600px) {
+  .conteneur_partager .img {
+    height: 540px;
+  }
 }
 
 .conteneur_btn_partager {

@@ -27,10 +27,12 @@ class ContactControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$message = null;
-		if($_GET["update"] == "succes") {
-			$message = "Votre commentaire a été bien sauvegardé";
-		} elseif($_GET["update"] == "error") {
-			$message = "Votre commentaire n'a pas été sauvegardé";
+		if(isset($_GET["update"])) {
+			if($_GET["update"] == "succes") {
+				$message = "Votre commentaire a été bien sauvegardé";
+			} elseif($_GET["update"] == "error") {
+				$message = "Votre commentaire n'a pas été sauvegardé";
+			}
 		}
 		$oVue = new Vue();
         $oVue->afficheEntete("contact");	
