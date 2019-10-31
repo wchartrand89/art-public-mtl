@@ -44,7 +44,7 @@
 body{
     position:relative;
 }
-.filtre{
+.filtre, .favCarte{
     position:sticky;
     bottom:0;
     width:100%;
@@ -54,12 +54,17 @@ body{
     justify-content: center;
     align-items: center;
 }
-.filtre i{
+.filtre i, .favCarte i{
     font-size:3.6rem;
+    padding: 5px;
+}
+.filtre i{
     background-color: var(--couleur-marine);
     color:white;
     border-radius:25px;
-    padding: 5px;
+}
+.favCarte i{
+    color:var(--couleur-marine);
 }
 
 

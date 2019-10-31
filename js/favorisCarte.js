@@ -1,8 +1,11 @@
 /*gérer affichage des favoris etc.*/ 
 
 window.addEventListener("load", function(){
-    let iconesFavoris =document.querySelectorAll(".favori");
-    //console.log(iconesFavoris);
+    let carte=document.querySelector("#map");
+    let fenetreOeuvre=document.querySelector(".gm-style-iw");
+    this.console.log(fenetreOeuvre);
+    let iconesFavoris =document.querySelectorAll(".carteFavori");
+    console.log(iconesFavoris);
     iconesFavoris.forEach(function(favori){
         //console.log(favori.dataset.fav);
         if(favori.dataset.fav !=""){

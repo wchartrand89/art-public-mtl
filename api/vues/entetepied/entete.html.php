@@ -46,6 +46,8 @@
 			echo '<script src="../js/liste.js"></script>';
 			echo '<script src="../js/sliderDate.js"></script>';
 			echo '<script src="../js/favoris.js"></script>';
+			echo '<script src="../js/aVisiter.js"></script>';
+			echo '    <script src = "../js/favorisCarte.js"></script>';
 			
 		} 
 		else if ($page== "oeuvre"){
@@ -113,8 +115,6 @@
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/component.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/flex.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/main.css" type="text/css" media="screen">
-
-			
 			<?php
 		}
 		function jsBase($page){
