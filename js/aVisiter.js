@@ -1,21 +1,21 @@
-/*gérer affichage des favoris etc.*/ 
+/*gérer affichage des oeuvres a visiter etc.*/ 
 
 window.addEventListener("load", function(){
-    let iconesFavoris =document.querySelectorAll(".favori");
-    console.log(iconesFavoris);
-    iconesFavoris.forEach(function(favori){
-        console.log(favori.dataset.fav);
-        if(favori.dataset.fav !=""){
-            favori.innerHTML = "favorite";
+    let iconesAVisiter =document.querySelectorAll(".aVisiter");
+    console.log(iconesAVisiter);
+    iconesAVisiter.forEach(function(aVisiter){
+        console.log(aVisiter.dataset.fav);
+        if(aVisiter.dataset.fav !=""){
+            aVisiter.innerHTML = "star";
         }
-        favori.addEventListener("click", function(evt){
+        aVisiter.addEventListener("click", function(evt){
             let icone =evt.target;
-            if(icone.innerHTML == "favorite_border"){
-                icone.innerHTML = "favorite";
+            if(icone.innerHTML == "star_border"){
+                icone.innerHTML = "star";
                 //console.log(icone.dataset.id);
                 //console.log(id);
-            }else if(icone.innerHTML == "favorite"){
-                icone.innerHTML = "favorite_border";
+            }else if(icone.innerHTML == "star"){
+                icone.innerHTML = "star_border";
             }
             let id=icone.dataset.id;
             ajax(id);
@@ -29,7 +29,7 @@ window.addEventListener("load", function(){
     */
     function ajax(data){
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', "./favoris/"+data);
+        xhr.open('GET', "./aVisiter/"+data);
         xhr.onreadystatechange=function(){
             if(this.readyState == 4 && this.status == 200){
                
