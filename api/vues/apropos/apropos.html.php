@@ -1,6 +1,5 @@
 
 <section class="contenu-apropos">
-    <h3>À propos</h3>
 
     <div class="systeme_onglets">
         <div class="onglets">
@@ -28,7 +27,7 @@
                 <div class="panel">
                     <p>Pour Art public Montréal, le terme art public désigne l’ensemble des œuvres d’art situées dans des lieux d’accès public, extérieurs ou intérieurs. Les œuvres d’art public sont pérennes et installées dans des aires publiques communes. Elles se présentent de façon plus ou moins discrète, en affirmant leurs caractéristiques formelles, conceptuelles ou temporelles. Les oeuvres peuvent être liées à leur site ou non, s’adapter à leur environnement en étant en harmonie ou en contraste avec celui-ci, selon l’intention de l’artiste. </p>
                     <br>
-                    <strong>Les lieux de l’art public</strong> 
+                    <strong>Les lieux de l’art public</strong>
                     <br>
                     <p>On les retrouve dans des lieux transitoires ou de rencontre, telles les places publiques et les parcs, les stations de métro, les lieux culturels, les établissements d’enseignement, les édifices gouvernementaux, les sièges sociaux et succursales d’entreprises, les établissements du réseau de la santé, de même que les équipements sportifs et communautaires.</p>
                     <br>
@@ -64,7 +63,7 @@
                     <br>
                     <p>N’hésitez pas à nous signaler toute omission, ou tout renseignement ne vous semblant pas conforme et nous corrigerons la situation.</p>
                 </div>
-            </div>	
+            </div>
 		</div>
 	</div>
 </section>
