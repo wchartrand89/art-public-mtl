@@ -70,16 +70,48 @@ class Favoris extends Modele {
         }
 		return $res;
     }
-    /* Get Oeuvres favorites 
+	
+    
+    public function creerAVisiter($idUser, $idOeuvre)
+    {
+        //requete
+        //echo $idOeuvre;
+        //echo $idUser;
+        $request="INSERT INTO ". self::TABLE_A_VISITER ." (id_oeuvre, id_user) VALUES (".$idOeuvre.", ".$idUser.")";
+        //execute requete
+        $result = $this->_db->query($request);
+        if ($result !== FALSE) 
+        {
+            return true;              
+        }
+        else 
+        {
+            return "erreur";
+        }
+    }
+    public function supprimerAVisiter($idUser, $idOeuvre)
+    {
+        //requete
+        //echo $idOeuvre;
+        //echo $idUser;
+        $request="DELETE FROM ". self::TABLE_A_VISITER ." WHERE id_oeuvre=".$idOeuvre." AND id_user=".$idUser;
+        //execute requete
+        $result = $this->_db->query($request);
+        if ($result !== FALSE) 
+        {
+            return true;              
+        }
+
+    }
+
+        /* Get Oeuvre favorite 
     Retourner tableau des oeuvres favorites du user connecté
     */
-    public function getOeuvresFav($loginUser) 
+    public function getOeuvreAVisiter($idUser, $idOeuvre) 
 	{
 		$res = Array();
-        $query = "	SELECT Oeu.id_oeuvre FROM ". self::TABLE_OEUVRE ." Oeu 
-                     LEFT JOIN ". self::TABLE_FAVORIS ." F ON Oeu.id_oeuvre=F.id_oeuvre
-                     LEFT JOIN ". self::TABLE_USER ." U ON U.id_user=F.id_user
-                     WHERE U.login =".$loginUser;
+        $query = "	SELECT * FROM ". self::TABLE_A_VISITER  ."
+                     WHERE id_user =".$idUser." AND id_oeuvre = ".$idOeuvre;
 
         if($mrResultat = $this->_db->query($query))
         {
@@ -90,6 +122,7 @@ class Favoris extends Modele {
         }
 		return $res;
     }
+    
 
 }	
 
