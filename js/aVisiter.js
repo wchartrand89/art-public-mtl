@@ -2,7 +2,7 @@
 
 window.addEventListener("load", function(){
     let iconesAVisiter =document.querySelectorAll(".aVisiter");
-    console.log(iconesAVisiter);
+    //console.log(iconesAVisiter);
     iconesAVisiter.forEach(function(aVisiter){
        // console.log(aVisiter.dataset.vis);
         if(aVisiter.dataset.vis !=""){
@@ -21,6 +21,8 @@ window.addEventListener("load", function(){
             ajax(id);
         });
     });
+
+
 
 
 

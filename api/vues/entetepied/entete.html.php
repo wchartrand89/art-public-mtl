@@ -47,6 +47,7 @@
 			echo '<script src="../js/sliderDate.js"></script>';
 			echo '<script src="../js/favoris.js"></script>';
 			echo '<script src="../js/aVisiter.js"></script>';
+			echo '    <script src = "../js/favorisCarte.js"></script>';
 			
 		} 
 		else if ($page== "oeuvre"){
