@@ -32,7 +32,12 @@ window.addEventListener("load", function(){
         xhr.open('GET', "./favoris/"+data);
         xhr.onreadystatechange=function(){
             if(this.readyState == 4 && this.status == 200){
-               
+                //mettre à jour l'autre liste
+                let iconesFavoris =document.querySelectorAll(".favori");
+                // iconesFavoris.forEach(function(favori){
+                //     if(favori.dataset.id == data)
+                // });
+
             }
         };    
         //récupérer l'id de l'oeuvre sur laquelle on a cliqué    

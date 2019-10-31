@@ -1,7 +1,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
 async defer>
 </script>
-
 <section class="recherche">
 	<div><i class="vueListe material-icons">list</i></div>
 	<div><i class="vueCarte focus material-icons">map</i></div>
@@ -299,10 +298,6 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 			<article class="filtre selec">
 				<i class="material-icons">filter_list</i>
 			</article>
-			<article class="favCarte selec">
-				<i class="material-icons">star_border</i>
-				<i class="material-icons">favorite_border</i>
-			</article>
 
 
 <script>
@@ -342,7 +337,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
         //marqueur pour chaque oeuvre
         var icon = {
             url: "../img/icons/mapmarker.png", // url
-             scaledSize: new google.maps.Size(28, 40), // size
+			scaledSize: new google.maps.Size(28, 40), // size
         };
 //        console.log("l");
         
@@ -369,7 +364,7 @@ TODO : enlever inline CSS
 			if(oeuvre[8] !== undefined){
 				aVis="favorite";
 			}
-			var content = '<div> <section class="compte"><i class="material-icons aVisiter" data-vis="'+oeuvre[7]+'" data-id="'+oeuvre[6]+'">'+aVis+'</i><i class="material-icons carteFavori" data-fav="'+oeuvre[8]+'"  data-id="'+oeuvre[6]+'">'+fav+'</i></section><p style="color:#103C61; font-size:30px; font-family: Open Sans; font-style: normal; font-weight: bold; font-size: 18px; line-height: 25px; display: flex; align-items: center; text-transform: uppercase;">'+oeuvre[0]+'</p>'+'<p style="color:#103C61;">'+oeuvre[3]+', '+oeuvre[4]+'</p>'+'<a href="oeuvre/'+oeuvre[5]+'" style="color:#DF8E32; text-decoration:none;">'+"Plus d'informations >"+'</a></div>';
+			var content = '<div><p style="color:#103C61; font-size:30px; font-family: Open Sans; font-style: normal; font-weight: bold; font-size: 18px; line-height: 25px; display: flex; align-items: center; text-transform: uppercase;">'+oeuvre[0]+'</p>'+'<p style="color:#103C61;">'+oeuvre[3]+', '+oeuvre[4]+'</p>'+'<a href="oeuvre/'+oeuvre[5]+'" style="color:#DF8E32; text-decoration:none;">'+"Plus d'informations >"+'</a></div>';
             var infowindow = new google.maps.InfoWindow();
             
             //paramètres des marqueurs
@@ -378,9 +373,8 @@ TODO : enlever inline CSS
                 map: map,
                 icon: icon,
 				title: oeuvre[0],
-				fav:oeuvre[8],
-				vis:oeuvre[7]
-            });  
+			}); 
+			
             
             //ouvrir la bulle d'information de l'oeuvre
             google.maps.event.addListener(marker, 'click', function(content)
