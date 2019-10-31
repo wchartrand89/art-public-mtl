@@ -22,7 +22,6 @@ class CompteControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
-
         
         //author Fred
         // si la session est set et est correct alors afficher l'edition des infos du compte.
@@ -35,18 +34,23 @@ class CompteControlleur extends Controlleur
             $oVue->afficheMonCompte($mail);
             $oVue->affichePied();
         }
-        
         else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "inscription"){
             $oVue = new Vue();
             $oVue->afficheEntete("inscription");	
             $oVue->afficheInscription();
             $oVue->affichePied();
         }
+        else if(isset($requete->url_elements[1]) && $requete->url_elements[1] == "connexion"){
+            $oVue = new Vue();
+            $oVue->afficheEntete("connexion");	
+            $oVue->afficheConnexion();
+            $oVue->affichePied();
+        }
         // sinon afficher la connexion
         else
         {
             $oVue = new Vue();
-            $oVue->afficheEntete("connexion");	
+            $oVue->afficheEntete("connexionCompte");	
             $oVue->afficheConnexion();
             $oVue->affichePied();
         }
@@ -62,11 +66,9 @@ class CompteControlleur extends Controlleur
             // si l'action envoyée est connexion
             if(isset($requete->url_elements[1]) && $requete->url_elements[1]=="connexion")
             { 
-
                  // Si login correct alors set une variable session
                     $authentification = new Authentification();
                     $retour = $authentification->verificationUser($_POST['login']);
-
                 if($retour)
                 {
                     foreach($retour as $hashed_password)
@@ -75,7 +77,6 @@ class CompteControlleur extends Controlleur
                             //connecter la personne + set la variable session pour la personne qui s'est connecté
                             $_SESSION["user"]='ok';
                             $_SESSION["username"]=$_POST['login'];
-
                             //redirection vers le menu oeuvre
                             header("location:/art-public-mtl/api/oeuvre");
                         }
@@ -174,7 +175,5 @@ class CompteControlleur extends Controlleur
 }
     
     
-
     
-
 ?>
