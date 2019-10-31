@@ -62,10 +62,10 @@
 				
 				<a class="logo" href=""><img src="<?php if($page=="modifier"){echo"../../";}else if($page=="ajout"){echo"../";}?>../../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>				
 				<div id="divInter_deconn">
-					<a class = "Inter" href="#">En</a>
+					<a class = "Inter" href="#">EN</a>
 					<form id='deconnexion' action="?action=deconnexion" method="post">	
 						<div>
-							<input class = "Deconn" type="submit" value="Déconnexion">
+							<input class = "Deconn" type="submit" value="DÉCONNEXION">
 						</div>		
 					</form>
 				</div>				

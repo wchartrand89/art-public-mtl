@@ -8,8 +8,8 @@
 			</aside>
             <div id="formAdmin">
                 <span id="retour">
-                    <a id="a_image" href="javascript:history.back()"><img src="../../../img/icons/retour_fleche.svg" alt=""></a>
-                    <p>Retour</p>
+                    <a id="a_image" href="javascript:history.back()"><img src="../../../img/icons/retour_fleche.svg" alt=""> <p>Retour</p></a>
+                   
                 </span>
                 <p id="text_form_admin">AJOUT D'UN ARTISTE</p>
                 <form id='inputs_form' action="/art-public-mtl/api/admin/artiste/ajouterArtiste" method="post">	

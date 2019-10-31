@@ -41,7 +41,7 @@
 	<meta name="viewport" content="width=device-width">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Pacifico&display=swap" rel="stylesheet">
 
-	
+	history
 	<?php
 		if ($page== ""){
 			
@@ -134,7 +134,8 @@
 			echo '<link rel="stylesheet" href="../../css/monCompte.css">';
 			//echo '<script src="../../js/validationFormIns.js"></script>';
 			jsBase("inscription");
-		} 
+		}
+		
 		
 	
 		function cssBase($page){
