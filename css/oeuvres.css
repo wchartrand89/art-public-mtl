@@ -15,6 +15,7 @@
     font-size:3.6rem;
     color: var(--couleur-marine);
     transition: all 100ms ease;
+
 }
 
 .recherche div{
@@ -23,6 +24,7 @@
     display:flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .recherche .focus{
@@ -44,7 +46,7 @@
 body{
     position:relative;
 }
-.filtre, .favCarte{
+.filtre{
     position:sticky;
     bottom:0;
     width:100%;
@@ -54,7 +56,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-.filtre i, .favCarte i{
+.filtre i{
     font-size:3.6rem;
     padding: 5px;
 }
@@ -62,9 +64,6 @@ body{
     background-color: var(--couleur-marine);
     color:white;
     border-radius:25px;
-}
-.favCarte i{
-    color:var(--couleur-marine);
 }
 
 
@@ -293,9 +292,9 @@ footer{
 
  /* BREAK TABLET PORTRAIT UP */
  @media screen and (min-width: 600px) {
-    /* .img {
-        height: 540px;
-    } */
+    .recherche div{
+        width:30%;
+    }
 }
 
 /* BREAK TABLET LANDSCAPE UP */
