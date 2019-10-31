@@ -83,11 +83,11 @@
 }
 
 #a_image:hover{
-   width:109px;
-   height:40px;
+    transform:ScaleY(1.1);
+    transform-origin: 50% 50%;
+    transition: transform .15s;
    
 }
-
 
 #inputs_form{
     display:-webkit-box;
@@ -119,6 +119,13 @@
     height:30px;    
 }
 
+#mat{
+    text-transform: initial;
+    font-style: normal;
+    font-weight: 400px;
+    font-size: 14px;
+}
+
 #inputs_form > div:nth-child(1){
     height:10px;
 }
@@ -128,9 +135,10 @@
 
 .div_form > label{
     font-family: Open Sans;
-    font-style: normal;
+    font-style:normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 15px;
+    text-transform: initial;
 }
 
 .div_form > .box{

@@ -116,12 +116,6 @@
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/component.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/flex.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/main.css" type="text/css" media="screen">
-<<<<<<< HEAD
-			<!-- <link rel="stylesheet" href="<?php echo $chemin;?>../css/parcours.css" type="text/css" media="screen"> -->
-
-			
-=======
->>>>>>> 898e05afd1f6c663fb0bf769fea940826629e188
 			<?php
 		}
 		function jsBase($page){

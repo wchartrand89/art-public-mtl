@@ -34,8 +34,7 @@ class AdminControlleur extends Controlleur
             
             if(!isset($_SESSION["login"])){
                 // Accueil Admin (connexion)
-    //			echo 'ACCUEIL ADMIN';
-                
+    //			echo 'ACCUEIL ADMIN';                
                 $oVue = new AdminVue();
                 $oVue->afficheEnteteConnexion();
                 $oVue->afficheConnexion();	

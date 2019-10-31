@@ -13,14 +13,12 @@ $info4= $data4;
 				<a id="menu_oeuvre" href="/art-public-mtl/api/admin/oeuvre"><img src="../../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
 				<a id="menu_artistes" href="/art-public-mtl/api/admin/artiste"><img src="../../../img/icons/paletteBlanch.svg" alt="icon image"><p class="text_menu">Artistes</p></a>
 				<a id="menu_utilisateurs" href="/art-public-mtl/api/admin/utilisateur"><img src="../../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Utilisateurs</p></a>
-                <a id="menu_contact" href="/art-public-mtl/api/admin/contact"><img src="../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Commentaires</p></a>
+                <a id="menu_contact" href="/art-public-mtl/api/admin/contact"><img src="../../../img/icons/comment.png" alt="icon image"><p class="text_menu">Commentaires</p></a>
                 
 			</aside>
             <div id="formAdmin">
                 <span id="retour">
-                    <a id="a_image" href="javascript:history.back()"><img src="../../../img/icons/retour_fleche.svg" alt=""></a>
-
-                    <p>Retour</p>
+                    <a id="a_image" href="javascript:history.back()"><img src="../../../img/icons/retour_fleche.svg" alt=""> <p>Retour</p></a>                   
                 </span>
                 <p id="text_form_admin">AJOUT D'UNE OEUVRE</p>
                 <form id='inputs_form' action="/art-public-mtl/api/admin/oeuvre/ajouterOeuvre" method="post">	
