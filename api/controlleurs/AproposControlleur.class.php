@@ -27,6 +27,7 @@ class AProposControlleur extends Controlleur
 	public function getAction(Requete $requete)
 	{
 		$oVue = new Vue();
+        $document = cookie();
         $oVue->afficheEntete("apropos");	
         $oVue->afficheAPropos();
         $oVue->affichePied();

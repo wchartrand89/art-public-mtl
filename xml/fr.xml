@@ -1,0 +1,131 @@
+﻿<textes>
+    
+    <texte xml:id="titre">Art Public Montréal</texte>
+    <texte xml:id="titre2">L'art public à Montréal</texte>
+
+<!-- 
+*****************
+MENU HEADER
+*****************
+-->
+    
+    <texte xml:id="menu_oeuvres">Oeuvres</texte>
+    <texte xml:id="menu_artistes">Artistes</texte>
+    <texte xml:id="menu_parcours">Parcours</texte>
+    <texte xml:id="menu_carte">Carte</texte>
+    <texte xml:id="menu_apropos">À Propos</texte>
+    <texte xml:id="menu_contact">Contact</texte>
+    <texte xml:id="menu_compte">Compte</texte>
+    
+    <texte xml:id="lang">EN</texte>    
+    <texte xml:id="imgAutreLangue">img/icons/EN.png</texte>
+    
+<!-- 
+*****************
+NAVIGATION
+*****************
+-->
+    
+    <texte xml:id="retour">Retour</texte>
+    <texte xml:id="plus_info">Plus d'informations</texte>
+    <texte xml:id="partager">Partager</texte>
+    <texte xml:id="siteweb">Site Web</texte>
+    
+<!-- 
+*****************
+ACCUEIL
+*****************
+-->
+    
+    <texte xml:id="vivez1">Vivez Montréal</texte>
+    <texte xml:id="vivez2">À travers sa grande collection d'art public</texte>      
+    <texte xml:id="vivez3">Voir la carte</texte>      
+    
+<!-- 
+*****************
+CONNEXION
+*****************
+-->
+    
+    <texte xml:id="bienvenue">Bienvenue, </texte>
+    <texte xml:id="connexion">Connexion</texte>
+    <texte xml:id="user">Nom d'utilisateur</texte>
+    <texte xml:id="pass">Mot de passe</texte>
+    
+<!-- 
+*****************
+OEUVRES
+*****************
+-->
+    
+    <texte xml:id="bulleinfo">Plus d'informations ></texte>
+    <texte xml:id="details">Détails</texte>
+    <texte xml:id="artiste">Artiste</texte>
+    <texte xml:id="carte">Carte</texte>
+    <texte xml:id="categorie">Catégorie</texte>
+    <texte xml:id="materiaux">Matériaux</texte>
+    <texte xml:id="techniques">Techniques</texte>
+    <texte xml:id="dateCreation">Date de création</texte>
+    
+<!-- 
+*****************
+A PROPOS
+*****************
+--> 
+    
+    <texte xml:id="presentation">PRÉSENTATION</texte>
+    <texte xml:id="faq">F.A.Q.</texte>
+    <texte xml:id="pres_contenu_p1">Art public Montréal est une initiative de la Ville de Montréal visant à rassembler, au sein d’un partenariat unique, les propriétaires d’œuvres d’art public présentes sur le territoire montréalais et les acteurs du rayonnement de la métropole. En collaboration avec Tourisme Montréal, son objectif est d’accroître la notoriété de Montréal à titre de destination internationale d’art public.Par la mise en commun de ressources et d’expertise en matière de recherche, de collectionnement et de mise en valeur, les partenaires contribueront à la réalisation et au développement d’outils de diffusion de la grande collection montréalaise d’art public. Ce regroupement comprendra ultimement plus de 1000 œuvres d’art public accessibles, réalisées par près de 500 artistes professionnels, tant québécois qu’internationaux, dispersées aux quatre coins de l’île. Ce site web, premier outil de mise en valeur développé par les partenaires, propose une variété d’opportunités de parcours et de découvertes par la diversité des œuvres représentées.</texte>
+    <texte xml:id="pres_contenu_p2">Pour plus de renseignements, nous contacter au : info@artpublicmontreal.ca. Ce projet est rendu possible grâce à l’Entente sur le développement culturel de Montréal entre le ministère de la Culture et des Communications et la Ville de Montréal.</texte>
+    <texte xml:id="faq_q1">QU’EST-CE QUE L’ART PUBLIC?</texte>
+    <texte xml:id="faq_q1_p1">Pour Art public Montréal, le terme art public désigne l’ensemble des œuvres d’art situées dans des lieux d’accès public, extérieurs ou intérieurs. Les œuvres d’art public sont pérennes et installées dans des aires publiques communes. Elles se présentent de façon plus ou moins discrète, en affirmant leurs caractéristiques formelles, conceptuelles ou temporelles. Les oeuvres peuvent être liées à leur site ou non, s’adapter à leur environnement en étant en harmonie ou en contraste avec celui-ci, selon l’intention de l’artiste. </texte>
+    <texte xml:id="faq_q1_p2">Les lieux de l’art public</texte>
+    <texte xml:id="faq_q1_p3">On les retrouve dans des lieux transitoires ou de rencontre, telles les places publiques et les parcs, les stations de métro, les lieux culturels, les établissements d’enseignement, les édifices gouvernementaux, les sièges sociaux et succursales d’entreprises, les établissements du réseau de la santé, de même que les équipements sportifs et communautaires.</texte>
+    <texte xml:id="faq_q1_p4">Types d’œuvres</texte>
+    <texte xml:id="faq_q1_p5">Les œuvres sont issues de disciplines artistiques diverses (beaux-arts, arts décoratifs et design), font appel à divers matériaux et adoptent d’innombrables formes: sculptures, installations, peintures, photographies, verrières, mosaïques, œuvres technologiques, et bien plus.</texte>
+    <texte xml:id="faq_q1_p6">L’art mural</texte>
+    <texte xml:id="faq_q1_p7">Art public Montréal reconnaît le potentiel artistique et culturel des œuvres d’art mural qui enrichissent le paysage urbain et facilitent l’accès à l’art dans les quartiers montréalais. Ces murales, réalisées sur des murs et des infrastructures publiques ou privées, sont produites par des artistes professionnels, des muralistes ou collectifs d’artistes reconnus. Certaines sont considérées comme des destinations incontournables pour qui veut découvrir l’art public à Montréal.</texte>
+    <texte xml:id="faq_q1_p8">En 2016, la Ville de Montréal se dote d’un Programme d’art mural visant à embellir l’espace public montréalais par la réalisation de murales extérieures visibles, créatives et liées à leur environnement. Le programme comprend trois volets répondant chacun à des objectifs et des critères d’appréciation distincts. L’un de ces volets est soutenu par l’Entente sur le développement culturel de Montréal.</texte>
+    <texte xml:id="faq_q1_p9">Pour en savoir plus : http://ville.montreal.qc.ca/culture/soutien-lart-mural</texte>
+    <texte xml:id="faq_q2">POLITIQUE D’INTÉGRATION</texte>
+    <texte xml:id="faq_q2_p1">La Politique d’intégration des arts à l’architecture et à l’environnement des bâtiments et des sites gouvernementaux et publics est une mesure qu’adopte le gouvernement du Québec dès 1961 et qui stipule qu’environ 1% du budget total de la construction d’un édifice ou d’un site public doit être consacré à l’intégration d’une œuvre d’art. Ce sont quelque 3500 œuvres issues de cette Politique qui forment aujourd’hui un riche patrimoine culturel dans toutes les régions du Québec.</texte>
+    <texte xml:id="faq_q2_p2">Ces œuvres font rayonner le travail des artistes professionnels du Québec et favorisent ainsi la démocratisation de l’art public. À Montréal, près du tiers des œuvres d’art public sont issues de la Politique d’intégration des arts à l’architecture permettant d’enrichir la grande collection montréalaise et son espace collectif.</texte>
+    <texte xml:id="faq_q2_p3">Pour plus de renseignements au sujet de la Politique d’intégration des arts à l’architecture et à l’environnement des bâtiments et des sites gouvernementaux et publics, consulter : http://www.mcc.gouv.qc.ca</texte>
+    <texte xml:id="faq_q3">CONDITIONS D’UTILISATION</texte>
+    <texte xml:id="faq_q3_p1">Les images diffusées sur ce site internet font l’objet de droits sur la propriété intellectuelle. Afin de respecter ces droits, toute reproduction, représentation, mise en ligne ou réutilisation du contenu est interdite sans l’autorisation écrite des titulaires des droits d’auteur. Une demande de reproduction peut être adressée à l’artiste ou à son ayant droit, en contactant l’institution propriétaire de l’œuvre.</texte>
+    <texte xml:id="faq_q3_p2">Droits d’auteur et reproduction d’images</texte>
+    <texte xml:id="faq_q3_p3">Art public Montréal garantit avoir effectué les demandes nécessaires à l’obtention des droits de reproduction pour les œuvres qui sont diffusées sur le site.</texte>
+    <texte xml:id="faq_q3_p4">N’hésitez pas à nous signaler toute omission, ou tout renseignement ne vous semblant pas conforme et nous corrigerons la situation.</texte>
+
+<!-- 
+*****************
+CONTACT
+*****************
+-->
+    <texte xml:id="localisation">LOCALISATION</texte>
+    <texte xml:id="adresse1">Campus principal</texte>
+    <texte xml:id="adresse2">3800, rue Sherbrooke Est</texte>
+    <texte xml:id="adresse3">Montréal (Québec) H1X 2A2</texte>
+    <texte xml:id="adresse4">Tél.: 514-254-7131</texte>
+    <texte xml:id="ecrivez_nous">ÉCRIVEZ-NOUS</texte>
+    <texte xml:id="e_nom">Nom:</texte>
+    <texte xml:id="e_prenom">Prénom:</texte>
+    <texte xml:id="e_courriel">Courriel:</texte>
+    <texte xml:id="e_sujet">Sujet:</texte>
+    <texte xml:id="e_suj1">Proposition d'oeuvre</texte>
+    <texte xml:id="e_suj2">Demande de compte</texte>
+    <texte xml:id="e_suj3">Signaler des dommages sur une oeuvre</texte>
+    <texte xml:id="e_suj4">Autre</texte>
+    <texte xml:id="e_commentaire">Commentaire:</texte>
+    <texte xml:id="e_envoyer">Envoyer</texte>
+    <texte xml:id="medias">MÉDIAS</texte>
+    
+<!-- 
+*****************
+FOOTER
+*****************
+-->
+    
+    <texte xml:id="droits">Tous droits réservés</texte>
+
+</textes>

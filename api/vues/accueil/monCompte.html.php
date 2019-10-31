@@ -1,6 +1,5 @@
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
 <?php extract($mail); ?>
-   
-
    <section class='mesInfos'>
     <div class="mesDonnes">
         <div class="infosPersos">

@@ -1,5 +1,13 @@
 		
-		<section class="nvlOeuvres">
+	<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+    <?php
+        $document = cookie();
+        $text1 = $document->getElementById("vivez1")->nodeValue;
+        $text2 = $document->getElementById("vivez2")->nodeValue;
+        $text3 = $document->getElementById("vivez3")->nodeValue;
+    ?>	
+
+    <section class="nvlOeuvres">
 			<!-- <h2>Nouvelles oeuvres</h2> -->
 			<!--SLIDER -->
 			<!-- ref : https://www.w3schools.com/howto/howto_js_slideshow.asp -->
@@ -47,8 +55,10 @@
 		</section>
 		<section class="carte">
 			<div class="text">
-				<h1>Vivez Montréal</h1>
-				<p>À travers sa grande collection d'art public</p>
+<!--				<h1>Vivez Montréal</h1>-->
+				<h1><?php echo $text1 ?></h1>
+<!--				<p>À travers sa grande collection d'art public</p>-->
+				<p><?php echo $text2 ?></p>
 			</div>
-			<a class= "btn btnAccueil" href="/art-public-mtl/api/oeuvre">Voir la carte</a>
+			<a class= "btn btnAccueil" href="/art-public-mtl/api/oeuvre"><?php echo $text3 ?></a>
 		</section>

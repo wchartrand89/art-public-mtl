@@ -1,0 +1,133 @@
+﻿<textes>
+    
+    <texte xml:id="titre">Public Art Montreal</texte>
+    <texte xml:id="titre2">Public art in Montreal</texte>
+
+<!-- 
+*****************
+MENU HEADER
+*****************
+-->
+    
+    <texte xml:id="menu_oeuvres">Works</texte>
+    <texte xml:id="menu_artistes">Artists</texte>
+    <texte xml:id="menu_parcours">Courses</texte>
+    <texte xml:id="menu_carte">Map</texte>
+    <texte xml:id="menu_apropos">About</texte>
+    <texte xml:id="menu_contact">Contact</texte>
+    <texte xml:id="menu_compte">Account</texte>
+    
+    <texte xml:id="lang">FR</texte>    
+    <texte xml:id="imgAutreLangue">img/icons/FR.png</texte>
+    
+<!-- 
+*****************
+NAVIGATION
+*****************
+-->
+    
+    <texte xml:id="retour">Return</texte>
+    <texte xml:id="plus_info">More information</texte>
+    <texte xml:id="partager">Share</texte>
+    <texte xml:id="siteweb">Website</texte>
+    
+<!-- 
+*****************
+ACCUEIL
+*****************
+-->
+    
+    <texte xml:id="vivez1">Live Montreal</texte>
+    <texte xml:id="vivez2">Through it's wide public art collection</texte>  
+    <texte xml:id="vivez3">See the map</texte>   
+    
+<!-- 
+*****************
+CONNEXION
+*****************
+-->
+    
+    <texte xml:id="bienvenue">Welcome, </texte>
+    <texte xml:id="connexion">Connection</texte>
+    <texte xml:id="user">Username</texte>
+    <texte xml:id="pass">Password</texte>
+    
+<!-- 
+*****************
+OEUVRES
+*****************
+-->
+    
+    <texte xml:id="bulleinfo">More information ></texte>
+    <texte xml:id="details">Details</texte>
+    <texte xml:id="artiste">Artist</texte>
+    <texte xml:id="carte">Map</texte>
+    <texte xml:id="categorie">Category</texte>
+    <texte xml:id="materiaux">Materials</texte>
+    <texte xml:id="techniques">Techniques</texte>
+    <texte xml:id="dateCreation">Date of creation</texte>
+    
+<!-- 
+*****************
+A PROPOS
+*****************
+--> 
+    
+    <texte xml:id="presentation">INTRODUCTION</texte>
+    <texte xml:id="faq">F.A.Q.</texte>
+    <texte xml:id="pres_contenu_p1">Public Art Montreal is an initiative of the City of Montreal aimed at bringing together, in a unique partnership, the owners of public art works on the Montreal territory and the actors of the city's radiance. In collaboration with Tourisme Montréal, its goal is to increase Montréal's reputation as an international destination for public art. By pooling resources and expertise in research, collection and presentation, the partners will contribute to the creation and development of dissemination tools for Montreal's large collection of public art. This grouping will ultimately include more than 1,000 accessible public artworks, created by nearly 500 professional artists, both from Quebec and internationally, scattered throughout the island. This website, the first development tool developed by the partners, offers a variety of opportunities to discover and discover the diversity of works represented.</texte>
+    <texte xml:id="pres_contenu_p2">For more information, contact us at: info@artpublicmontreal.ca. This project is made possible through the Agreement on the Cultural Development of Montreal between the Ministry of Culture and Communications and the City of Montreal.</texte>
+    <texte xml:id="faq_q1">WHAT IS PUBLIC ART?</texte>
+    <texte xml:id="faq_q1_p1">For Public Art Montreal, the term public art refers to all works of art located in places of public access, exterior or interior. Public art works are perennial and installed in common public areas. They appear in a more or less discrete way, by affirming their formal, conceptual or temporal characteristics. The works can be linked to their site or not, adapt to their environment by being in harmony or in contrast with it, according to the intention of the artist.</texte>
+    <texte xml:id="faq_q1_p2">The places of public art</texte>
+    <texte xml:id="faq_q1_p3">They are found in transitional or meeting places, such as public squares and parks, subway stations, cultural venues, educational institutions, government buildings, corporate headquarters and branches, health network, as well as sports and community facilities.</texte>
+    <texte xml:id="faq_q1_p4">Types of works</texte>
+    <texte xml:id="faq_q1_p5">The works come from various artistic disciplines (fine arts, decorative arts and design), use various materials and adopt countless forms: sculptures, installations, paintings, photographs, canopies, mosaics, technological works, and much more.</texte>
+    <texte xml:id="faq_q1_p6">Mural art</texte>
+    <texte xml:id="faq_q1_p7">Public Art Montreal recognizes the artistic and cultural potential of wall art that enriches the urban landscape and facilitates access to art in Montreal neighborhoods. These murals, made on walls and public or private infrastructures, are produced by professional artists, muralists or collectives of recognized artists. Some are considered as essential destinations for those who want to discover public art in Montreal.</texte>
+    <texte xml:id="faq_q1_p8">In 2016, the City of Montreal has a Wall Art Program designed to beautify Montreal's public space by creating visible, creative outdoor murals that are linked to their environment. The program has three components, each with distinct objectives and criteria. One of these components is supported by the Montreal Cultural Development Agreement.</texte>
+    <texte xml:id="faq_q1_p9">For more information: http://ville.montreal.qc.ca/culture/soutien-lart-mural</texte>
+    <texte xml:id="faq_q2">INTEGRATION POLICY</texte>
+    <texte xml:id="faq_q2_p1"> The policy of integrating the arts into architecture and the environment of public and public buildings and sites is a measure adopted by the Government of Quebec since 1961 and which stipulates that approximately 1% of the total budget of the construction of a building or public site must be devoted to the integration of a work of art. Some 3,500 works from this Policy now form a rich cultural heritage in all regions of Quebec.</texte>
+    <texte xml:id="faq_q2_p2">These works showcase the work of professional artists in Quebec and thus promote the democratization of public art. In Montreal, nearly one-third of public art works come from the Policy of Integration of the Arts into Architecture, which enriches the great collection of Montreal and its collective space.</texte>
+    <texte xml:id="faq_q2_p3">For more information on the Policy for the Integration of the Arts into Architecture and the Environment of Buildings and Government and Public Sites, please visit: http://www.mcc.gouv.qc.ca</texte>
+    <texte xml:id="faq_q3">TERMS OF USE</texte>
+    <texte xml:id="faq_q3_p1">The images on this website are the subject of intellectual property rights. In order to respect these rights, any reproduction, representation, uploading or re-use of the content is prohibited without the written permission of the copyright holders. A request for reproduction may be addressed to the artist or his / her legal representative, by contacting the institution that owns the work.
+ 
+</texte>
+    <texte xml:id="faq_q3_p2">Copyright and image reproduction</texte>
+    <texte xml:id="faq_q3_p3">Art public Montreal guarantees that it has made the necessary applications to obtain the reproduction rights for the works that are broadcast on the site.</texte>
+    <texte xml:id="faq_q3_p4">Do not hesitate to inform us of any omission, or any information that does not seem to be in conformity and we will correct the situation.</texte>
+
+<!-- 
+*****************
+CONTACT
+*****************
+-->
+    <texte xml:id="localisation">LOCALISATION</texte>
+    <texte xml:id="adresse1">Main Campus</texte>
+    <texte xml:id="adresse2">3800, Sherbrooke Street East</texte>
+    <texte xml:id="adresse3">Montreal (Quebec) H1X 2A2</texte>
+    <texte xml:id="adresse4">Tel.: 514-254-7131</texte>
+    <texte xml:id="ecrivez_nous">CONTACT US</texte>
+    <texte xml:id="e_nom">Name:</texte>
+    <texte xml:id="e_prenom">Surname:</texte>
+    <texte xml:id="e_courriel">Email:</texte>
+    <texte xml:id="e_sujet">Subject:</texte>
+    <texte xml:id="e_suj1">Submit an artwork</texte>
+    <texte xml:id="e_suj2">Account management</texte>
+    <texte xml:id="e_suj3">Signal a degraded artwork</texte>
+    <texte xml:id="e_suj4">Other</texte>
+    <texte xml:id="e_commentaire">Comment:</texte>
+    <texte xml:id="e_envoyer">Send</texte>
+    <texte xml:id="medias">MEDIAS</texte> 
+    
+<!-- 
+*****************
+FOOTER
+*****************
+-->
+    
+    <texte xml:id="droits">All rights reserved</texte>
+
+</textes>

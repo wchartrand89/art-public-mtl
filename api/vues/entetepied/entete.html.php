@@ -1,8 +1,40 @@
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr">    
+<?php
+    $document = cookie();
+
+    $text_lang = $document->getElementById("lang")->nodeValue;
+    $text_titre2 = $document->getElementById("titre2")->nodeValue;
+    $text_menu_oeuvres = $document->getElementById("menu_oeuvres")->nodeValue;
+    $text_menu_artistes = $document->getElementById("menu_artistes")->nodeValue;
+    $text_menu_parcours = $document->getElementById("menu_parcours")->nodeValue;
+    $text_menu_apropos = $document->getElementById("menu_apropos")->nodeValue;
+    $text_menu_carte = $document->getElementById("menu_carte")->nodeValue;
+    $text_menu_contact = $document->getElementById("menu_contact")->nodeValue;
+    $text_menu_compte = $document->getElementById("menu_compte")->nodeValue;
+
+    $text_localisation = $document->getElementById("localisation")->nodeValue;
+    $text_adresse1 = $document->getElementById("adresse1")->nodeValue;
+    $text_adresse2 = $document->getElementById("adresse2")->nodeValue;
+    $text_adresse3 = $document->getElementById("adresse3")->nodeValue;
+    $text_adresse4 = $document->getElementById("adresse4")->nodeValue;
+    $text_ecrivez = $document->getElementById("ecrivez_nous")->nodeValue;
+    $text_e_nom = $document->getElementById("e_nom")->nodeValue;
+    $text_e_prenom = $document->getElementById("e_prenom")->nodeValue;
+    $text_e_courriel = $document->getElementById("e_courriel")->nodeValue;
+    $text_e_sujet = $document->getElementById("e_sujet")->nodeValue;
+    $text_e_suj1 = $document->getElementById("e_suj1")->nodeValue;
+    $text_e_suj2 = $document->getElementById("e_suj2")->nodeValue;
+    $text_e_suj3 = $document->getElementById("e_suj3")->nodeValue;
+    $text_e_suj4 = $document->getElementById("e_suj4")->nodeValue;
+    $text_e_commentaire = $document->getElementById("e_commentaire")->nodeValue;
+    $text_e_envoyer = $document->getElementById("e_envoyer")->nodeValue;
+    $text_e_medias = $document->getElementById("medias")->nodeValue;
+?>
 
 <head>
-	<title>L'art public à Montréal</title>
+	<title><?php echo $text_titre2 ?></title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="description" content="">
@@ -47,8 +79,13 @@
 			echo '<script src="../js/sliderDate.js"></script>';
 			echo '<script src="../js/favoris.js"></script>';
 			echo '<script src="../js/aVisiter.js"></script>';
-			echo '    <script src = "../js/favorisCarte.js"></script>';
 			
+		} 
+		else if ($page== "carte"){
+			cssBase("oeuvres");
+			echo '<link rel="stylesheet" href="../css/carte.css" type="text/css" media="screen">';
+			echo '<link rel="stylesheet" href="../css/carteOeuvres.css" type="text/css" media="screen">';
+			jsBase("oeuvres");
 		} 
 		else if ($page== "oeuvre"){
 			cssBase("oeuvre");
@@ -103,7 +140,7 @@
 	
 		function cssBase($page){
 			$chemin = "";
-			if($page == "artiste" || $page == "oeuvre" || $page == "inscription" || $page =="connexion") {
+			if($page == "artiste" || $page == "oeuvre" || $page == "inscription" || $page == "connexion") {
 				$chemin = "../";
 			}
 			?>
@@ -130,10 +167,6 @@
 		}
 	?>
 
-
-	<!--<script src="../../js/plugins.js"></script>-->
-
-
 </head>
 <body>
 	<header class="appbar">
@@ -144,54 +177,41 @@
 			
 			<a class="lien" href="/art-public-mtl/api/oeuvre">
 			<i class="material-icons">photo</i>
-			<!-- <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/>
-			<path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg> -->
-				<p>Oeuvres</p>
+				<p><?php echo $text_menu_oeuvres; ?></p>
+			</a>
+			<a class="lien" href="/art-public-mtl/api/carte">
+			<i class="material-icons">map</i>
+				<p><?php echo $text_menu_carte; ?></p>
 			</a>
 			<a class="lien" href="/art-public-mtl/api/artiste">
 			<i class="material-icons">palette</i>
-			<!-- <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M0 0h24v24H0z" fill="none"/></svg> -->
-				<p>Artistes</p>
-			</a>
-			<a class="lien" href="/art-public-mtl/api/parcours">
-			<i class="material-icons">directions</i>
-			<!-- <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"> -->
-			<!-- <path d="M21.71 11.29l-9-9c-.39-.39-1.02-.39-1.41 0l-9 9c-.39.39-.39 1.02 0 1.41l9 9c.39.39 1.02.39 1.41 0l9-9c.39-.38.39-1.01 0-1.41zM14 14.5V12h-4v3H8v-4c0-.55.45-1 1-1h5V7.5l3.5 3.5-3.5 3.5z"/><path d="M0 0h24v24H0z" fill="none"/></svg> -->
-				<p>Parcours</p>
+                <p><?php echo $text_menu_artistes; ?></p>
 			</a>
 			<a class="lien" href="/art-public-mtl/api/apropos">
 			<i class="material-icons">info</i>
-			<!-- <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/> -->
-			<!-- <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg> -->
-				<p>À propos</p>
+				<p><?php echo $text_menu_apropos; ?></p>
 			</a>
 			<a class="lien" href="/art-public-mtl/api/contact">
 			<i class="material-icons">mail</i>
-			<!-- <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg> -->
-				<p>Contact</p>
+				<p><?php echo $text_menu_contact; ?></p>
 			</a>
 			<a class="lien" href="/art-public-mtl/api/compte">
 			<i class="material-icons">person</i>
-			<!-- <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>						 -->
-				<p>Compte</p>
+				<p><?php echo $text_menu_compte; ?></p>
 			</a>
 		</nav>	
 		<div class="icons">
-			
 			<a class="search" href="#">
 				<i class="material-icons">search</i>
-				<!-- <img src="<?php //if($page == "artiste" || $page == "oeuvre" || $page == "inscription"){echo "../";}?>../img/icons/search_40px.svg" alt="Icone de recherche"> -->
 			</a>
-			<a class="langue hidden" href="#">EN</a>
+			<a class="langue hidden" href="?lang=<?php echo $text_lang;?>"><?php echo $text_lang; ?></a>
 			<a class="menuCubes" href="#">
 				<img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription"){echo "../";}?>../img/icons/menu.svg" alt="Icone d'ouverture du menu">
 				</a>
 			<a class="fermerMenu hidden" href="#">
-				<!-- <img src="<?php //if($page == "artiste" || $page == "oeuvre" || $page == "inscription"){echo "../";}?>../img/icons/close.svg" alt="Icone de fermeture du menu"> -->
 				<i class="material-icons">close</i></a>
 			<a class="compte" href="/art-public-mtl/api/compte">
 			<i class="material-icons">person</i>
-			<!-- <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>						 -->
 			</a>
 		</div>
 	</header>

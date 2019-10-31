@@ -30,7 +30,7 @@ class ContactControlleur extends Controlleur
 		if(isset($_GET["update"])) {
 			if($_GET["update"] == "succes") {
 				$message = "Votre commentaire a été bien sauvegardé";
-			} elseif($_GET["update"] == "error") {
+			} else if($_GET["update"] == "error") {
 				$message = "Votre commentaire n'a pas été sauvegardé";
 			}
 		}

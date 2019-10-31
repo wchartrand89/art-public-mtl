@@ -1,13 +1,17 @@
-    <!--
 
-    GOOGLE API KEY (TODO : SECURISER)
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+<?php
 
-    -->
+    $document = cookie();
+    $text_lang = $document->getElementById("lang")->nodeValue;
+
+?>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
     async defer>
     </script>
+    <script>var lienPage =  window.location.href();</script>
 
-<section class="contenu uneOeuvre flex flex-col">
+    <section class="contenu uneOeuvre flex flex-col">
 	<section class="retour"><a href="javascript:history.back()"> < Retour  </a></section>
 	<section class="oeuvre conteneur_partager">
 		<?php
@@ -331,15 +335,13 @@
     }
     </script>
 
-
-
     <div id="map" class="carte" style="height:230px; width:100%;"></div>
 
-				</div>
-			</div>
-		</div>
+    </div>
+    </div>
+        </div>
+    <div class="conteneur_btn_partager"><a href="#" class="btn"><i class="material-icons">share</i>Partager</a></div>
 
-		<div class="conteneur_btn_partager"><a href="#" class="btn"><i class="material-icons">share</i>Partager</a></div>
 
 
 
