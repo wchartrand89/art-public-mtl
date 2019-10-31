@@ -1,33 +1,28 @@
-    	<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+
+    <?php error_reporting(E_ALL ^ E_WARNING);  ?>
     <?php
 
         $document = cookie();
         $text_lang = $document->getElementById("partager")->nodeValue;
 
     ?>
-
-<!-- 
-
-    GOOGLE API KEY (TODO : SECURISER)
-
-    -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
     async defer>
     </script>
-<script>var lienPage =  window.location.href();</script>
+    <script>var lienPage =  window.location.href();</script>
 
-<section class="contenu uneOeuvre flex flex-col">
+    <section class="contenu uneOeuvre flex flex-col">
 	<section class="retour"><a href="javascript:history.back()"> < Retour  </a></section>
 	<section class="oeuvre conteneur_partager">
 		<?php
 		extract($aData);
-        
+
 //        echo "<pre>";
 //        print_r($aData);
 //        echo "</pre>";
 //        die;
-        
-        
+
+
 		?>
 		<h1 class="uneOeuvre_titre"><?php echo $titre?></h1>
 		<p><?php echo $description; ?></p>
@@ -64,40 +59,40 @@
 							<td><?php if(isset($dateCreation)){echo $dateCreation;}else{echo "inconnu";} ?></td>
 						</tr>
 					</table>
-					
+
 				</div>
 				<div class="contenu_onglet" id="contenu_onglet_artiste">
 					<h1></h1>
 					<section class="texte">
+            <p class="auteur"><a href="/art-public-mtl/api/artiste/<?php echo $id_artiste ?>"><?php
+                if(isset($nom) && $nom!=""){
+              echo $prenom ." ". $nom;
+
+            }
+            else
+            {
+              echo $nomCollectif;
+
+            }
+
+
+                  ?></a></p>
 						<p class=""><?php if(isset($description)){echo $description;}else{echo "description non disponible.";} ?></p>
-							<p class="auteur"><a href="/art-public-mtl/api/artiste/<?php echo $id_artiste ?>"><?php 
-									if(isset($nom) && $nom!=""){
-								echo $nom .", ". $prenom;
-							
-							}
-							else
-							{
-								echo $nomCollectif;
-							
-							}
-								
-								
-										?></a></p>
 					</section>
 					<a href="/art-public-mtl/api/artiste/<?php echo $id_artiste ?>" >Plus d'information ></a>
 				</div>
 				<!-- <p class="arrondissement"><?php echo $Arrondissement?></p> -->
-		
-					
-				
-				
+
+
+
+
 				<div class="contenu_onglet" id="contenu_onglet_carte">
 					<h1></h1>
 
-                    
+
 <script>
         var map;
-        function initMap() 
+        function initMap()
         {
             var myMapOptions = { clickableIcons: false }
             var styledMapType = new google.maps.StyledMapType(
@@ -262,8 +257,8 @@
                   }
                 ],
                 {name: 'Styled Map'});
-            
-            
+
+
             //options default la carte Google
             var oeuvre = ["<?php echo $description; ?>", <?php echo $coordonneeLatitude; ?>, <?php echo $coordonneeLongitude; ?>, "<?php echo $nom; ?>"];
             var options = {
@@ -280,17 +275,17 @@
                 draggable : true
 
             }
-            
-            var map = new google.maps.Map(document.getElementById('map'), options);              
+
+            var map = new google.maps.Map(document.getElementById('map'), options);
             map.mapTypes.set('styled_map', styledMapType);
             map.setMapTypeId('styled_map');
-            setMarkers(map); 
+            setMarkers(map);
         }
-        
-    //data oeuvres        
-        
 
-    function setMarkers(map) 
+    //data oeuvres
+
+
+    function setMarkers(map)
     {
         var oeuvre = ["<?php echo $titre; ?>", <?php echo $coordonneeLatitude; ?>, <?php echo $coordonneeLongitude; ?>, "<?php echo $nom; ?>"];
 
@@ -300,19 +295,19 @@
              scaledSize: new google.maps.Size(28, 40), // size
         };
 
-    
-            
+
+
             //paramètres des marqueurs
             var marker = new google.maps.Marker({
                 position: {lat: oeuvre[1], lng: oeuvre[2]},
                 map: map,
                 icon: icon,
                 title: oeuvre[0]
-            });  
-            
+            });
+
             // Limites de la carte
             var allowedBounds = new google.maps.LatLngBounds(
-                new google.maps.LatLng(45.4079982, -73.9446209), 
+                new google.maps.LatLng(45.4079982, -73.9446209),
                 new google.maps.LatLng(45.6876557, -73.5051969));
                 // Après avoir drag (glissé) le curseur
                 google.maps.event.addListener(map, 'dragend', function()
@@ -336,36 +331,20 @@
 
                  map.setCenter(new google.maps.LatLng(y, x));
                });
-        
+
     }
     </script>
 
+    <div id="map" class="carte" style="height:230px; width:100%;"></div>
+
+    </div>
+    </div>
+        </div>
+    <div class="conteneur_btn_partager"><a href="#" class="btn"><i class="material-icons">share</i>Partager</a></div>
 
 
-    <div id="map" class="carte" style="height:500px; width:100%;"></div>    
-					
-				</div>
-			</div>
-		</div>
-        <?php
-            function curPageURL() {
-             $pageURL = 'http';
-             if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
-             $pageURL .= "://";
-             if ($_SERVER["SERVER_PORT"] != "80") {
-              $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-             } else {
-              $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-             }
-             return $pageURL;
-            }
-        ?>
-				
-		<div class="conteneur_btn_partager"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo curPageURL(); ?>" class="btn" target="_blank"><i class="material-icons">share</i>Partager</a></div>
 
 
-                
-                
     </section>
 
 </section>

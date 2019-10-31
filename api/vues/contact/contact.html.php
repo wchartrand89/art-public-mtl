@@ -20,7 +20,6 @@
         $text_e_medias = $document->getElementById("medias")->nodeValue;
 ?>
 <section class="contenu-contact">
-    <h3>Contact</h3>
     <?php if($message!=null) {
         echo($message);
     }
@@ -82,7 +81,7 @@
                     <div><i class="fa fa-linkedin" style="font-size:48px;color:dimgray"></i>Linkedin</div>
                     <div><i class="fa fa-pinterest-p" style="font-size:48px;color:dimgray"></i>Pinterest</div>
                 </section>
-            </div>	
+            </div>
 		</div>
 	</div>
 </section>

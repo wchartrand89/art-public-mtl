@@ -1,11 +1,10 @@
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
+async defer>
+</script>
 <?php error_reporting(E_ALL ^ E_WARNING); ?>
-<script>
-    
-    var map;
-        
-    //data oeuvres  
-    
+<script>    
+    var map;        
+    //data oeuvres      
     var oeuvres = [];
     console.log(oeuvres);
     let aOeuvres=<?php echo(json_encode($aData));?>;
@@ -24,33 +23,20 @@
         }
         var id = element["id_oeuvre"];
         var oeuvre = [];
-//        oeuvre.push(titre+", "+lat+", "+lng+", "+nom+", "+date+", "+id);
         oeuvre.push(titre,parseFloat(lat),parseFloat(lng),nom,date,parseFloat(id));
         oeuvres.push(oeuvre);
     })
-//    console.log(oeuvres);
     function setMarkers(map) 
     {
         //marqueur pour chaque oeuvre
         var icon = {
             url: "../img/icons/mapmarker.png", // url
              scaledSize: new google.maps.Size(28, 40), // size
-        };
-//        console.log("l");
-        
+        };        
         //pour chaque oeuvre dans le tableau
         for (var i = 0; i < oeuvres.length; i++) 
         {
-            var oeuvre = oeuvres[i];
-            
-/************
-*************
-            
-TODO : enlever inline CSS
-            
-*************
-*************
-*/
+            var oeuvre = oeuvres[i];           
             //contenu de la bulle d'information
             var content = '<div><p style="color:#103C61; font-size:30px; font-family: Open Sans; font-style: normal; font-weight: bold; font-size: 18px; line-height: 25px; display: flex; align-items: center; text-transform: uppercase;">'+oeuvre[0]+'</p>'+'<p style="color:#103C61;">'+oeuvre[3]+', '+oeuvre[4]+'</p>'+'<a href="oeuvre/'+oeuvre[5]+'" style="color:#DF8E32; text-decoration:none;">'+"Plus d'informations >"+'</a></div>';
             var infowindow = new google.maps.InfoWindow();
@@ -72,7 +58,6 @@ TODO : enlever inline CSS
                     infowindow.open(map, this);
                 }
             }(content));
-            
             // Limites de la carte
             var allowedBounds = new google.maps.LatLngBounds(
                 new google.maps.LatLng(45.4079982, -73.9446209), 
@@ -302,8 +287,8 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 
 					if(isset($_SESSION["user"]) && $_SESSION['user']=='ok'){
 					?>
-						<section class="compteTexte">
-							<i class="material-icons aVisiter" data-id="<?php echo $id_oeuvre ?>">star_border</i>
+						<section class="compte">
+							<i class="material-icons aVisiter" data-vis="<?php echo $aVisiter ?>" data-id="<?php echo $id_oeuvre ?>">star_border</i>
 							<i class="material-icons favori" data-fav="<?php echo $favoris ?>"  data-id="<?php echo $id_oeuvre ?>">favorite_border</i>
 						</section>
 					<?php
@@ -335,8 +320,8 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 							<?php
 							if(isset($_SESSION["user"]) && $_SESSION['user']=='ok'){
 							?>
-							<section class="comptePhoto">
-								<i class="material-icons aVisiter" data-id="<?php echo $id_oeuvre ?>">star_border</i>
+							<section class="compte">
+								<i class="material-icons aVisiter" data-vis="<?php echo $aVisiter ?>" data-id="<?php echo $id_oeuvre ?>">star_border</i>
 								<i class="material-icons favori" data-id="<?php echo $id_oeuvre ?>" data-fav="<?php echo $favoris ?>" >favorite_border</i>
 							</section>
 							<?php } ?>
@@ -400,3 +385,9 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 			<article class="filtre selec">
 				<i class="material-icons">filter_list</i>
 			</article>
+			<article class="favCarte selec">
+				<i class="material-icons">star_border</i>
+				<i class="material-icons">favorite_border</i>
+			</article>
+
+

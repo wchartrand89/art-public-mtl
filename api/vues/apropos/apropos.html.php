@@ -1,7 +1,7 @@
 <?php error_reporting(E_ALL ^ E_WARNING);  ?>
 
-    <?php
 
+    <?php
         $document = cookie();
         $text_presentation = $document->getElementById("presentation")->nodeValue;
         $text_pres_contenu_p1 = $document->getElementById("pres_contenu_p1")->nodeValue;
@@ -89,7 +89,7 @@
                     <br>
                     <p><?php echo $text_faq_q3_p4; ?></p>
                 </div>
-            </div>	
+            </div>
 		</div>
 	</div>
 </section>
