@@ -158,5 +158,6 @@ class Vue {
 		require("accueil/monCompte.html.php");
 		
 	}
+	
 }
 ?>
