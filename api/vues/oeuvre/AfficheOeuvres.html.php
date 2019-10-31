@@ -202,7 +202,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 					if(isset($_SESSION["user"]) && $_SESSION['user']=='ok'){
 					?>
 						<section class="compteTexte">
-							<i class="material-icons aVisiter" data-id="<?php echo $id_oeuvre ?>">star_border</i>
+							<i class="material-icons aVisiter" data-vis="<?php echo $aVisiter ?>" data-id="<?php echo $id_oeuvre ?>">star_border</i>
 							<i class="material-icons favori" data-fav="<?php echo $favoris ?>"  data-id="<?php echo $id_oeuvre ?>">favorite_border</i>
 						</section>
 					<?php
@@ -235,7 +235,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 							if(isset($_SESSION["user"]) && $_SESSION['user']=='ok'){
 							?>
 							<section class="comptePhoto">
-								<i class="material-icons aVisiter" data-id="<?php echo $id_oeuvre ?>">star_border</i>
+								<i class="material-icons aVisiter" data-vis="<?php echo $aVisiter ?>" data-id="<?php echo $id_oeuvre ?>">star_border</i>
 								<i class="material-icons favori" data-id="<?php echo $id_oeuvre ?>" data-fav="<?php echo $favoris ?>" >favorite_border</i>
 							</section>
 							<?php } ?>

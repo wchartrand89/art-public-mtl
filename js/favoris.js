@@ -1,4 +1,4 @@
-/*gérer affichage des filtre etc.*/ 
+/*gérer affichage des favoris etc.*/ 
 
 window.addEventListener("load", function(){
     let iconesFavoris =document.querySelectorAll(".favori");
@@ -18,21 +18,37 @@ window.addEventListener("load", function(){
                 icone.innerHTML = "favorite_border";
             }
             let id=icone.dataset.id;
-            ajax(id);
+            ajaxFav(id);
         });
     });
 
 
 
-    /*Fonction ajax à laquelle on envoi un tableau et qui le passe en paramètre au POST du ajax
+    /*Fonction ajax à laquelle on envoi un tableau et qui le passe en paramètre au GET du ajax
     @param {array} data : un tableau près à être convertit en JSON
     */
-    function ajax(data){
+    function ajaxFav(data){
         let xhr = new XMLHttpRequest();
         xhr.open('GET', "./favoris/"+data);
         xhr.onreadystatechange=function(){
             if(this.readyState == 4 && this.status == 200){
-               //mettre en couleur les oeuvres déja mises en favoris
+               
+            }
+        };    
+        //récupérer l'id de l'oeuvre sur laquelle on a cliqué    
+        //envoyer l'id et le username
+        xhr.send();
+    }
+
+    /*Fonction ajax à laquelle on envoi un tableau et qui le passe en paramètre au GET du ajax
+    @param {array} data : un tableau près à être convertit en JSON
+    */
+    function ajaxVis(data){
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', "./favoris/"+data);
+        xhr.onreadystatechange=function(){
+            if(this.readyState == 4 && this.status == 200){
+               
             }
         };    
         //récupérer l'id de l'oeuvre sur laquelle on a cliqué    
