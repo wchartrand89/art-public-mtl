@@ -11,7 +11,7 @@
 					<form action="">
 						<div class=bar_image>
 							<input id="bar_recherche" type="text" name="recherche" placeholder="Recherche un nom">
-							<img id="img_recherche" src="../../img/icons/search_40px.svg" alt="search">
+							<img id="img_recherche" src="../../img/icons/../../img/icons/search_40px_1.png" alt="search">
 						</div>	
                        <p><?php if(isset($_GET['update']) && $_GET['update']=="error") echo "Une erreur est survenue, veuillez vérifiez vos champs."; ?></p>					
                         <a href="/art-public-mtl/api/admin/artiste/ajout" id="btn_submit" alt="ajout"><img src="../../img/icons/plus.png" alt=""><p>Ajouter un artiste</p></a>		
