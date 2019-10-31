@@ -1,24 +1,8 @@
-
-	    <!-- 
-**************************************************************************
-**************************************************************************
-**************************************************************************
-    TODO: 
-    - SÉCURISER GOOGLE API KEY (lignes 13-15)
-    - HIDE/SHOW CARTE/LISTE
-    - BULLES D'INFO (ELEVER INLINE CSS)
-**************************************************************************
-**************************************************************************
-**************************************************************************
-    -->
-
-
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
-    async defer>
-    </script> -->
-
-
-	<section class="recherche">
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+<?php
+    $document = cookie();
+?>
+<section class="recherche">
 		<div><i class="vueListe material-icons">list</i></div>
 		<div>
 			<i class="vueCarte focus material-icons">map</i>

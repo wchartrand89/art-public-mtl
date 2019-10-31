@@ -1,3 +1,7 @@
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+<?php
+    $document = cookie();
+?>
 <?php
 /**
  * Class Vue

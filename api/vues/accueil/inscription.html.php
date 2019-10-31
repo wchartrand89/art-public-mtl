@@ -1,4 +1,8 @@
-    <section class="inscrip">
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+<?php
+    $document = cookie();
+?>
+<section class="inscrip">
         <h2>Inscription</h2>
         <form id='inscription' action="" method="post">
             <div>

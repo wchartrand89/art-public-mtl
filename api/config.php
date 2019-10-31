@@ -41,6 +41,46 @@
 	  
 	}
 	
+    function cookie(){
+        if(isset($_GET["lang"]))                                 //DÉTECTION DU PARAM GET LANG
+        {                                                        //SI SET ON CRÉÉ LE COOKIE
+            $lang = $_GET["lang"];
+            setcookie('lang', $lang, time() + (365*24*60*60)); 
+
+        }
+        else                                                     //SI PAS DE PARAM GET
+        {
+            if(isset($_COOKIE["lang"]))                          //TEST LE COOKIE
+            {
+                $lang = $_COOKIE["lang"];                        //SI SET ON SET LA LANGUE
+            }
+            else                                                 //AFFICHAGE PAR DÉFAULT EN FR
+            {
+                $lang = "FR"; 
+                setcookie('lang', $lang, time() + (365*24*60*60)); 
+
+            }
+        }
+
+        if($lang=="FR")                                          //UPLOAD DU DOC XML EN FRANCAIS
+        {
+            $document = new DOMDocument();
+            $document->validateOnParse = true;
+            $document->load("../xml/FR.xml");
+        }
+        else if($lang=="EN")                                     //UPLAUD DU DOC XML EN ANGLAIS
+        {
+            $document = new DOMDocument();
+            $document->validateOnParse = true;
+            $document->load("../xml/EN.xml");
+        }else{
+            $document = new DOMDocument();
+            $document->validateOnParse = true;
+            $document->load("../xml/FR.xml");
+        }    
+        return $document;
+    }
+
 	spl_autoload_register('mon_autoloader');
 	
 ?>

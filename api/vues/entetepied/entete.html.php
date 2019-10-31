@@ -1,8 +1,40 @@
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr">    
+<?php
+    $document = cookie();
+
+    $text_lang = $document->getElementById("lang")->nodeValue;
+    $text_titre2 = $document->getElementById("titre2")->nodeValue;
+    $text_menu_oeuvres = $document->getElementById("menu_oeuvres")->nodeValue;
+    $text_menu_artistes = $document->getElementById("menu_artistes")->nodeValue;
+    $text_menu_parcours = $document->getElementById("menu_parcours")->nodeValue;
+    $text_menu_apropos = $document->getElementById("menu_apropos")->nodeValue;
+    $text_menu_carte = $document->getElementById("menu_carte")->nodeValue;
+    $text_menu_contact = $document->getElementById("menu_contact")->nodeValue;
+    $text_menu_compte = $document->getElementById("menu_compte")->nodeValue;
+
+    $text_localisation = $document->getElementById("localisation")->nodeValue;
+    $text_adresse1 = $document->getElementById("adresse1")->nodeValue;
+    $text_adresse2 = $document->getElementById("adresse2")->nodeValue;
+    $text_adresse3 = $document->getElementById("adresse3")->nodeValue;
+    $text_adresse4 = $document->getElementById("adresse4")->nodeValue;
+    $text_ecrivez = $document->getElementById("ecrivez_nous")->nodeValue;
+    $text_e_nom = $document->getElementById("e_nom")->nodeValue;
+    $text_e_prenom = $document->getElementById("e_prenom")->nodeValue;
+    $text_e_courriel = $document->getElementById("e_courriel")->nodeValue;
+    $text_e_sujet = $document->getElementById("e_sujet")->nodeValue;
+    $text_e_suj1 = $document->getElementById("e_suj1")->nodeValue;
+    $text_e_suj2 = $document->getElementById("e_suj2")->nodeValue;
+    $text_e_suj3 = $document->getElementById("e_suj3")->nodeValue;
+    $text_e_suj4 = $document->getElementById("e_suj4")->nodeValue;
+    $text_e_commentaire = $document->getElementById("e_commentaire")->nodeValue;
+    $text_e_envoyer = $document->getElementById("e_envoyer")->nodeValue;
+    $text_e_medias = $document->getElementById("medias")->nodeValue;
+?>
 
 <head>
-	<title>L'art public à Montréal</title>
+	<title><?php echo $text_titre2 ?></title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="description" content="">
@@ -52,6 +84,7 @@
 		else if ($page== "carte"){
 			cssBase("oeuvres");
 			echo '<link rel="stylesheet" href="../css/carte.css" type="text/css" media="screen">';
+			echo '<link rel="stylesheet" href="../css/carteOeuvres.css" type="text/css" media="screen">';
 			jsBase("oeuvres");
 		} 
 		else if ($page== "oeuvre"){
@@ -106,7 +139,7 @@
 	
 		function cssBase($page){
 			$chemin = "";
-			if($page == "artiste" || $page == "oeuvre" || $page == "inscription" || $page =="connexion") {
+			if($page == "artiste" || $page == "oeuvre" || $page == "inscription" || $page == "connexion") {
 				$chemin = "../";
 			}
 			?>
@@ -133,10 +166,6 @@
 		}
 	?>
 
-
-	<!--<script src="../../js/plugins.js"></script>-->
-
-
 </head>
 <body>
 	<header class="appbar">
@@ -147,34 +176,34 @@
 			
 			<a class="lien" href="/art-public-mtl/api/oeuvre">
 			<i class="material-icons">photo</i>
-				<p>Oeuvres</p>
+				<p><?php echo $text_menu_oeuvres; ?></p>
 			</a>
 			<a class="lien" href="/art-public-mtl/api/carte">
 			<i class="material-icons">map</i>
-				<p>Carte</p>
+				<p><?php echo $text_menu_carte; ?></p>
 			</a>
 			<a class="lien" href="/art-public-mtl/api/artiste">
 			<i class="material-icons">palette</i>
-				<p>Artistes</p>
+                <p><?php echo $text_menu_artistes; ?></p>
 			</a>
 			<a class="lien" href="/art-public-mtl/api/apropos">
 			<i class="material-icons">info</i>
-				<p>À propos</p>
+				<p><?php echo $text_menu_apropos; ?></p>
 			</a>
 			<a class="lien" href="/art-public-mtl/api/contact">
 			<i class="material-icons">mail</i>
-				<p>Contact</p>
+				<p><?php echo $text_menu_contact; ?></p>
 			</a>
 			<a class="lien" href="/art-public-mtl/api/compte">
 			<i class="material-icons">person</i>
-				<p>Compte</p>
+				<p><?php echo $text_menu_compte; ?></p>
 			</a>
 		</nav>	
 		<div class="icons">
 			<a class="search" href="#">
 				<i class="material-icons">search</i>
 			</a>
-			<a class="langue hidden" href="#">EN</a>
+			<a class="langue hidden" href="?lang=<?php echo $text_lang;?>"><?php echo $text_lang; ?></a>
 			<a class="menuCubes" href="#">
 				<img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription"){echo "../";}?>../img/icons/menu.svg" alt="Icone d'ouverture du menu">
 				</a>
