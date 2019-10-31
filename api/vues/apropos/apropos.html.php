@@ -1,32 +1,30 @@
 <?php error_reporting(E_ALL ^ E_WARNING);  ?>
-
-
-    <?php
-        $document = cookie();
-        $text_presentation = $document->getElementById("presentation")->nodeValue;
-        $text_pres_contenu_p1 = $document->getElementById("pres_contenu_p1")->nodeValue;
-        $text_pres_contenu_p2 = $document->getElementById("pres_contenu_p2")->nodeValue;
-        $text_faq = $document->getElementById("faq")->nodeValue;
-        $text_faq_q1 = $document->getElementById("faq_q1")->nodeValue;
-        $text_faq_q1_p1 = $document->getElementById("faq_q1_p1")->nodeValue;
-        $text_faq_q1_p2 = $document->getElementById("faq_q1_p2")->nodeValue;
-        $text_faq_q1_p3 = $document->getElementById("faq_q1_p3")->nodeValue;
-        $text_faq_q1_p4 = $document->getElementById("faq_q1_p4")->nodeValue;
-        $text_faq_q1_p5 = $document->getElementById("faq_q1_p5")->nodeValue;
-        $text_faq_q1_p6 = $document->getElementById("faq_q1_p6")->nodeValue;
-        $text_faq_q1_p7 = $document->getElementById("faq_q1_p7")->nodeValue;
-        $text_faq_q1_p8 = $document->getElementById("faq_q1_p8")->nodeValue;
-        $text_faq_q1_p9 = $document->getElementById("faq_q1_p9")->nodeValue;
-        $text_faq_q2 = $document->getElementById("faq_q2")->nodeValue;
-        $text_faq_q2_p1 = $document->getElementById("faq_q2_p1")->nodeValue;
-        $text_faq_q2_p1 = $document->getElementById("faq_q2_p1")->nodeValue;
-        $text_faq_q2_p1 = $document->getElementById("faq_q2_p1")->nodeValue;
-        $text_faq_q3 = $document->getElementById("faq_q3")->nodeValue;
-        $text_faq_q3_p1 = $document->getElementById("faq_q3_p1")->nodeValue;
-        $text_faq_q3_p2 = $document->getElementById("faq_q3_p2")->nodeValue;
-        $text_faq_q3_p3 = $document->getElementById("faq_q3_p3")->nodeValue;
-        $text_faq_q3_p4 = $document->getElementById("faq_q3_p4")->nodeValue;
-        $text_apropos = $document->getElementById("menu_apropos")->nodeValue;
+<?php
+    $document = cookie();
+    $text_presentation = $document->getElementById("presentation")->nodeValue;
+    $text_pres_contenu_p1 = $document->getElementById("pres_contenu_p1")->nodeValue;
+    $text_pres_contenu_p2 = $document->getElementById("pres_contenu_p2")->nodeValue;
+    $text_faq = $document->getElementById("faq")->nodeValue;
+    $text_faq_q1 = $document->getElementById("faq_q1")->nodeValue;
+    $text_faq_q1_p1 = $document->getElementById("faq_q1_p1")->nodeValue;
+    $text_faq_q1_p2 = $document->getElementById("faq_q1_p2")->nodeValue;
+    $text_faq_q1_p3 = $document->getElementById("faq_q1_p3")->nodeValue;
+    $text_faq_q1_p4 = $document->getElementById("faq_q1_p4")->nodeValue;
+    $text_faq_q1_p5 = $document->getElementById("faq_q1_p5")->nodeValue;
+    $text_faq_q1_p6 = $document->getElementById("faq_q1_p6")->nodeValue;
+    $text_faq_q1_p7 = $document->getElementById("faq_q1_p7")->nodeValue;
+    $text_faq_q1_p8 = $document->getElementById("faq_q1_p8")->nodeValue;
+    $text_faq_q1_p9 = $document->getElementById("faq_q1_p9")->nodeValue;
+    $text_faq_q2 = $document->getElementById("faq_q2")->nodeValue;
+    $text_faq_q2_p1 = $document->getElementById("faq_q2_p1")->nodeValue;
+    $text_faq_q2_p1 = $document->getElementById("faq_q2_p1")->nodeValue;
+    $text_faq_q2_p1 = $document->getElementById("faq_q2_p1")->nodeValue;
+    $text_faq_q3 = $document->getElementById("faq_q3")->nodeValue;
+    $text_faq_q3_p1 = $document->getElementById("faq_q3_p1")->nodeValue;
+    $text_faq_q3_p2 = $document->getElementById("faq_q3_p2")->nodeValue;
+    $text_faq_q3_p3 = $document->getElementById("faq_q3_p3")->nodeValue;
+    $text_faq_q3_p4 = $document->getElementById("faq_q3_p4")->nodeValue;
+    $text_apropos = $document->getElementById("menu_apropos")->nodeValue;
 ?>
 <section class="contenu-apropos">
     <h3><?php echo $text_apropos; ?></h3>

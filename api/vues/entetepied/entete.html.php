@@ -1,18 +1,37 @@
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
 <!DOCTYPE html>
-<html lang="fr">
-    
-    <?php
-        $document = cookie();
-        $text_lang = $document->getElementById("lang")->nodeValue;
-        $text_titre2 = $document->getElementById("titre2")->nodeValue;
-        $text_menu_oeuvres = $document->getElementById("menu_oeuvres")->nodeValue;
-        $text_menu_artistes = $document->getElementById("menu_artistes")->nodeValue;
-        $text_menu_parcours = $document->getElementById("menu_parcours")->nodeValue;
-        $text_menu_apropos = $document->getElementById("menu_apropos")->nodeValue;
-        $text_menu_contact = $document->getElementById("menu_contact")->nodeValue;
-        $text_menu_compte = $document->getElementById("menu_compte")->nodeValue;
+<html lang="fr">    
+<?php
+    $document = cookie();
 
-    ?>
+    $text_lang = $document->getElementById("lang")->nodeValue;
+    $text_titre2 = $document->getElementById("titre2")->nodeValue;
+    $text_menu_oeuvres = $document->getElementById("menu_oeuvres")->nodeValue;
+    $text_menu_artistes = $document->getElementById("menu_artistes")->nodeValue;
+    $text_menu_parcours = $document->getElementById("menu_parcours")->nodeValue;
+    $text_menu_apropos = $document->getElementById("menu_apropos")->nodeValue;
+    $text_menu_carte = $document->getElementById("menu_carte")->nodeValue;
+    $text_menu_contact = $document->getElementById("menu_contact")->nodeValue;
+    $text_menu_compte = $document->getElementById("menu_compte")->nodeValue;
+
+    $text_localisation = $document->getElementById("localisation")->nodeValue;
+    $text_adresse1 = $document->getElementById("adresse1")->nodeValue;
+    $text_adresse2 = $document->getElementById("adresse2")->nodeValue;
+    $text_adresse3 = $document->getElementById("adresse3")->nodeValue;
+    $text_adresse4 = $document->getElementById("adresse4")->nodeValue;
+    $text_ecrivez = $document->getElementById("ecrivez_nous")->nodeValue;
+    $text_e_nom = $document->getElementById("e_nom")->nodeValue;
+    $text_e_prenom = $document->getElementById("e_prenom")->nodeValue;
+    $text_e_courriel = $document->getElementById("e_courriel")->nodeValue;
+    $text_e_sujet = $document->getElementById("e_sujet")->nodeValue;
+    $text_e_suj1 = $document->getElementById("e_suj1")->nodeValue;
+    $text_e_suj2 = $document->getElementById("e_suj2")->nodeValue;
+    $text_e_suj3 = $document->getElementById("e_suj3")->nodeValue;
+    $text_e_suj4 = $document->getElementById("e_suj4")->nodeValue;
+    $text_e_commentaire = $document->getElementById("e_commentaire")->nodeValue;
+    $text_e_envoyer = $document->getElementById("e_envoyer")->nodeValue;
+    $text_e_medias = $document->getElementById("medias")->nodeValue;
+?>
 
 <head>
 	<title><?php echo $text_titre2 ?></title>
@@ -24,7 +43,6 @@
 
 	
 	<?php
-//    echo "page = ".$page."!";
 		if ($page== ""){
 			
 			cssBase("");
@@ -61,8 +79,13 @@
 			echo '<script src="../js/sliderDate.js"></script>';
 			echo '<script src="../js/favoris.js"></script>';
 			echo '<script src="../js/aVisiter.js"></script>';
-			echo '    <script src = "../js/favorisCarte.js"></script>';
 			
+		} 
+		else if ($page== "carte"){
+			cssBase("oeuvres");
+			echo '<link rel="stylesheet" href="../css/carte.css" type="text/css" media="screen">';
+			echo '<link rel="stylesheet" href="../css/carteOeuvres.css" type="text/css" media="screen">';
+			jsBase("oeuvres");
 		} 
 		else if ($page== "oeuvre"){
 			cssBase("oeuvre");
@@ -116,7 +139,7 @@
 	
 		function cssBase($page){
 			$chemin = "";
-			if($page == "artiste" || $page == "oeuvre" || $page == "inscription"|| $page == "compte" || $page == "connexion" ) {
+			if($page == "artiste" || $page == "oeuvre" || $page == "inscription" || $page == "connexion") {
 				$chemin = "../";
 			}
 			?>
@@ -155,13 +178,13 @@
 			<i class="material-icons">photo</i>
 				<p><?php echo $text_menu_oeuvres; ?></p>
 			</a>
+			<a class="lien" href="/art-public-mtl/api/carte">
+			<i class="material-icons">map</i>
+				<p><?php echo $text_menu_carte; ?></p>
+			</a>
 			<a class="lien" href="/art-public-mtl/api/artiste">
 			<i class="material-icons">palette</i>
-				<p><?php echo $text_menu_artistes; ?></p>
-			</a>
-			<a class="lien" href="#">
-			<i class="material-icons">directions</i>
-				<p><?php echo $text_menu_parcours; ?></p>
+                <p><?php echo $text_menu_artistes; ?></p>
 			</a>
 			<a class="lien" href="/art-public-mtl/api/apropos">
 			<i class="material-icons">info</i>
@@ -173,7 +196,7 @@
 			</a>
 			<a class="lien" href="/art-public-mtl/api/compte">
 			<i class="material-icons">person</i>
-				<p>4</p>
+				<p><?php echo $text_menu_compte; ?></p>
 			</a>
 		</nav>	
 		<div class="icons">

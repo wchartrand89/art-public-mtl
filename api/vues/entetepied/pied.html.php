@@ -1,17 +1,16 @@
-    <?php
-        $document = cookie();
-        $text_lang = $document->getElementById("lang")->nodeValue;
-        $text_titre2 = $document->getElementById("titre2")->nodeValue;
-        $text_menu_oeuvres = $document->getElementById("menu_oeuvres")->nodeValue;
-        $text_menu_artistes = $document->getElementById("menu_artistes")->nodeValue;
-        $text_menu_parcours = $document->getElementById("menu_parcours")->nodeValue;
-        $text_menu_apropos = $document->getElementById("menu_apropos")->nodeValue;
-        $text_menu_contact = $document->getElementById("menu_contact")->nodeValue;
-        $text_menu_compte = $document->getElementById("menu_compte")->nodeValue;
-        $text_droits = $document->getElementById("droits")->nodeValue;
-
-    ?>
-
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+<?php
+    $document = cookie();
+    $text_lang = $document->getElementById("lang")->nodeValue;
+    $text_titre2 = $document->getElementById("titre2")->nodeValue;
+    $text_menu_oeuvres = $document->getElementById("menu_oeuvres")->nodeValue;
+    $text_menu_artistes = $document->getElementById("menu_artistes")->nodeValue;
+    $text_menu_parcours = $document->getElementById("menu_parcours")->nodeValue;
+    $text_menu_apropos = $document->getElementById("menu_apropos")->nodeValue;
+    $text_menu_contact = $document->getElementById("menu_contact")->nodeValue;
+    $text_menu_compte = $document->getElementById("menu_compte")->nodeValue;
+    $text_droits = $document->getElementById("droits")->nodeValue;
+?>
 </main>
 	<footer>
 		<div class="contenu">

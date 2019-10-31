@@ -1,3 +1,7 @@
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+<?php
+    $document = cookie();
+?>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
 async defer>
 </script>
@@ -84,14 +88,9 @@ async defer>
     }        
     </script>
 <script src = "../js/initMapOeuvres.js"></script>
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
-
-async defer>
-</script> 
 <section class="recherche">
 	<div><i class="vueListe material-icons">list</i></div>
-	<div><i class="vueCarte focus material-icons">map</i></div>
-	<div><i class="vueImage material-icons">photo</i></div>
+	<div><i class="vueImage focus material-icons">photo</i></div>
 </section>
 <article class='filtres cache'>
 	<section class="retour">
@@ -189,8 +188,6 @@ async defer>
 		<p>Réinitialiser</p>
 	</section>
 </article>
-
-<div id="map" class="carte"></div> 
 
 <section class="listeLettre" id="hidden">
 	<aside class="choix">
@@ -302,7 +299,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 			
 		</section>
 	</section>
-		<section class="contenu hidden listeOeuvres" id="photo">
+		<section class="contenu listeOeuvres" id="photo">
 			<div class="fixPb"></div>
 			<!-- <section class="rechercher"></section> -->
             <section class="oeuvres flex wrap">
@@ -379,15 +376,13 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 							 */
 						}
 						?>
-					</section>
-				
+					</section>				
 			</section>
 			<article class="filtre selec">
 				<i class="material-icons">filter_list</i>
 			</article>
+
 			<article class="favCarte selec">
 				<i class="material-icons">star_border</i>
 				<i class="material-icons">favorite_border</i>
 			</article>
-
-

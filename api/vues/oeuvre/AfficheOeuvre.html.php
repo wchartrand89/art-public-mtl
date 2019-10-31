@@ -1,11 +1,11 @@
 
-    <?php error_reporting(E_ALL ^ E_WARNING);  ?>
-    <?php
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+<?php
 
-        $document = cookie();
-        $text_lang = $document->getElementById("partager")->nodeValue;
+    $document = cookie();
+    $text_lang = $document->getElementById("lang")->nodeValue;
 
-    ?>
+?>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
     async defer>
     </script>

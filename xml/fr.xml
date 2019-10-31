@@ -12,6 +12,7 @@ MENU HEADER
     <texte xml:id="menu_oeuvres">Oeuvres</texte>
     <texte xml:id="menu_artistes">Artistes</texte>
     <texte xml:id="menu_parcours">Parcours</texte>
+    <texte xml:id="menu_carte">Carte</texte>
     <texte xml:id="menu_apropos">À Propos</texte>
     <texte xml:id="menu_contact">Contact</texte>
     <texte xml:id="menu_compte">Compte</texte>

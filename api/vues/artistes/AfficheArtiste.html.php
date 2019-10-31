@@ -1,11 +1,11 @@
-    	<?php error_reporting(E_ALL ^ E_WARNING);  ?>
-    <?php
-        $document = cookie();
-        $text_retour = $document->getElementById("retour")->nodeValue;
-        $text_plus_info = $document->getElementById("plus_info")->nodeValue;
-        $text_partager = $document->getElementById("partager")->nodeValue;
-        $text_siteweb = $document->getElementById("siteweb")->nodeValue;
-    ?>
+<?php error_reporting(E_ALL ^ E_WARNING);  ?>
+<?php
+    $document = cookie();
+    $text_retour = $document->getElementById("retour")->nodeValue;
+    $text_plus_info = $document->getElementById("plus_info")->nodeValue;
+    $text_partager = $document->getElementById("partager")->nodeValue;
+    $text_siteweb = $document->getElementById("siteweb")->nodeValue;
+?>
 <section class="retour txtLien">
     
         <a href="/art-public-mtl/api/artiste" class="flecheLien">&#10094;</a>

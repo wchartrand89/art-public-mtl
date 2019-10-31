@@ -53,13 +53,11 @@
             if(isset($_COOKIE["lang"]))                          //TEST LE COOKIE
             {
                 $lang = $_COOKIE["lang"];                        //SI SET ON SET LA LANGUE
-                            setcookie('lang', $lang, time() + (365*24*60*60)); 
-
             }
             else                                                 //AFFICHAGE PAR DÉFAULT EN FR
             {
                 $lang = "FR"; 
-                            setcookie('lang', $lang, time() + (365*24*60*60)); 
+                setcookie('lang', $lang, time() + (365*24*60*60)); 
 
             }
         }
@@ -75,11 +73,12 @@
             $document = new DOMDocument();
             $document->validateOnParse = true;
             $document->load("../xml/EN.xml");
-        }
-        
+        }else{
+            $document = new DOMDocument();
+            $document->validateOnParse = true;
+            $document->load("../xml/FR.xml");
+        }    
         return $document;
-
-
     }
 
 	spl_autoload_register('mon_autoloader');
