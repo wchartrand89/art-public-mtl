@@ -4,8 +4,8 @@ window.addEventListener("load", function(){
     let iconesAVisiter =document.querySelectorAll(".aVisiter");
     console.log(iconesAVisiter);
     iconesAVisiter.forEach(function(aVisiter){
-        console.log(aVisiter.dataset.fav);
-        if(aVisiter.dataset.fav !=""){
+       // console.log(aVisiter.dataset.vis);
+        if(aVisiter.dataset.vis !=""){
             aVisiter.innerHTML = "star";
         }
         aVisiter.addEventListener("click", function(evt){

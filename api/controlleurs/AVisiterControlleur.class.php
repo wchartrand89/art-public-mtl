@@ -31,12 +31,12 @@ class AVisiterControlleur extends Controlleur
             $infosUser= $oUser->getInfosUser($_SESSION["username"]);
             $idUser= $infosUser["id_user"];
             //vérifier si le AVisiter est déja dans la base de données
-            $verif = $oAVisiter->getOeuvreFav($idUser, $idOeuvre);
+            $verif = $oAVisiter->getOeuvreAVisiter($idUser, $idOeuvre);
             //echo count($verif);
             if(count($verif)== 0){
-                $aAVisiter = $oAVisiter->creerFavori($idUser,$idOeuvre);
+                $aAVisiter = $oAVisiter->creerAVisiter($idUser,$idOeuvre);
             }else{
-                $aAVisiter = $oAVisiter->supprimerFavori($idUser,$idOeuvre);
+                $aAVisiter = $oAVisiter->supprimerAVisiter($idUser,$idOeuvre);
             }
             
         } 
