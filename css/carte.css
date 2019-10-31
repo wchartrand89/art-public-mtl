@@ -1,0 +1,21 @@
+#map{
+    height: calc(100vh - var(--taille-footer));
+}
+
+@media screen and (min-width: 600px) {
+  .conteneur_partager .img {
+    height: 540px;
+  }
+}
+
+.conteneur_btn_partager {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.lien-pager
+{
+    margin-left: 5px;
+    margin-top: 5px;
+}
