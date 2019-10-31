@@ -1,4 +1,5 @@
 <?php error_reporting(E_ALL ^ E_WARNING);  ?>
+
     <?php
 
         $document = cookie();
@@ -25,9 +26,10 @@
         $text_faq_q3_p2 = $document->getElementById("faq_q3_p2")->nodeValue;
         $text_faq_q3_p3 = $document->getElementById("faq_q3_p3")->nodeValue;
         $text_faq_q3_p4 = $document->getElementById("faq_q3_p4")->nodeValue;
+        $text_apropos = $document->getElementById("menu_apropos")->nodeValue;
 ?>
 <section class="contenu-apropos">
-    <h3>À propos</h3>
+    <h3><?php echo $text_apropos; ?></h3>
     <div class="systeme_onglets">
         <div class="onglets">
             <span class="onglet_0 onglet" id="onglet_details" onclick="javascript:change_onglet('details');"><?php echo $text_presentation; ?></span>

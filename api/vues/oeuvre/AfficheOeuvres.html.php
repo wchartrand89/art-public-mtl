@@ -7,6 +7,7 @@
     //data oeuvres  
     
     var oeuvres = [];
+    console.log(oeuvres);
     let aOeuvres=<?php echo(json_encode($aData));?>;
     aOeuvres.forEach(function(element)
     {
