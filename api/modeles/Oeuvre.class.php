@@ -38,12 +38,13 @@ class Oeuvre extends Modele {
 	{
         
 		$res = Array();
-		$query = "	SELECT Oeu.*, ART.*, F.id_user as favoris FROM ". self::TABLE_OEUVRE ." Oeu 
+		$query = "	SELECT Oeu.*, ART.*, F.id_user as favoris, V.id_user as aVisiter FROM ". self::TABLE_OEUVRE ." Oeu 
 					inner join ". self::TABLE_LIAISON_ARTISTE_OEUVRE ." O_A ON Oeu.id_oeuvre = O_A.id_oeuvre
 					"//left join ". self::TABLE_OEUVRE_DONNEES_EXTERNES ." OD_EXT ON Oeu.id = OD_EXT.id_oeuvre
                     ."inner join ". Artiste::TABLE_ARTISTE ." ART ON ART.id_artiste = O_A.id_artiste
                     LEFT JOIN ". self::TABLE_IMAGE ." i ON Oeu.id_oeuvre = i.NoInterne
                     LEFT JOIN ". self::TABLE_FAVORIS ." F ON Oeu.id_oeuvre = F.id_oeuvre
+                    LEFT JOIN ". self::TABLE_A_VISITER ." V ON Oeu.id_oeuvre = V.id_oeuvre
 					order by Oeu.Titre ASC
                 ";
 
