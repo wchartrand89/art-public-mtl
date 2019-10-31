@@ -1,21 +1,6 @@
-
-	    <!-- 
-**************************************************************************
-**************************************************************************
-**************************************************************************
-    TODO: 
-    - SÉCURISER GOOGLE API KEY (lignes 13-15)
-    - HIDE/SHOW CARTE/LISTE
-    - BULLES D'INFO (ELEVER INLINE CSS)
-**************************************************************************
-**************************************************************************
-**************************************************************************
-    -->
-
-
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
 async defer>
-</script> -->
+</script>
 
 <section class="recherche">
 	<div><i class="vueListe material-icons">list</i></div>
@@ -82,7 +67,6 @@ async defer>
 			sort($aDatesC);
 			echo "<p>".$aDatesC[0]."</p>";
 			echo "<p>".$aDatesC[count($aDatesC)-1]."</p>";
-
 			?>
 			<div class="slidecontainer">
 				<input type="range" min="<?php echo $aDatesC[0]; ?>" max="<?php echo $aDatesC[count($aDatesC)-1]; ?>" value="<?php echo $aDatesC[count($aDatesC)-1]; ?>" range="1" class="slider v2">
@@ -175,7 +159,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 		<?php
 		//print_r($aData);
 			foreach ($aData as $cle => $oeuvre) {
-				extract($oeuvre);	
+				extract($oeuvre);
 				$i=0;
 					foreach($listeLettres as $cle => $lettre){
 						if(!isset($test[$i])){
@@ -189,7 +173,7 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 				
 					}			
 			?>
-			<section class="oeuvre">
+			<section class="oeuvre" data-id="<?php echo $id_oeuvre ?>">
 				<a class="lienOeuvre lienArtisteA" href="oeuvre/<?php echo $id_oeuvre; ?>"><?php  echo $Titre;?></a>
 					<?php 
 					
@@ -215,8 +199,17 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 					<?php			
 					}
 
+					if(isset($_SESSION["user"]) && $_SESSION['user']=='ok'){
 					?>
-							</section>
+						<section class="compte">
+							<i class="material-icons aVisiter" data-vis="<?php echo $aVisiter ?>" data-id="<?php echo $id_oeuvre ?>">star_border</i>
+							<i class="material-icons favori" data-fav="<?php echo $favoris ?>"  data-id="<?php echo $id_oeuvre ?>">favorite_border</i>
+						</section>
+					<?php
+					}
+					?>
+				
+			</section>
 			<?php
 			}
 			?>
@@ -238,7 +231,14 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 							extract($oeuvre);
 							?>
 							<section class="oeuvre conteneur_oeuvre_courante" data-id="<?php echo $id_oeuvre ?>">
-								
+							<?php
+							if(isset($_SESSION["user"]) && $_SESSION['user']=='ok'){
+							?>
+							<section class="compte">
+								<i class="material-icons aVisiter" data-vis="<?php echo $aVisiter ?>" data-id="<?php echo $id_oeuvre ?>">star_border</i>
+								<i class="material-icons favori" data-id="<?php echo $id_oeuvre ?>" data-fav="<?php echo $favoris ?>" >favorite_border</i>
+							</section>
+							<?php } ?>
 			                    <header class="image dummy image_oeuvre_courante">
 								<a class="ouvrir-oeuvre" href="oeuvre/<?php echo $id_oeuvre ?>" data-link="/artPublic/api/oeuvre/<?php echo $id_oeuvre ?>/" data-id="<?php echo $id_oeuvre ?>">
 								<h2 class="titre-oeuvre"><?php echo $Titre?></h2>
@@ -299,6 +299,10 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
 			<article class="filtre selec">
 				<i class="material-icons">filter_list</i>
 			</article>
+			<article class="favCarte selec">
+				<i class="material-icons">star_border</i>
+				<i class="material-icons">favorite_border</i>
+			</article>
 
 
 <script>
@@ -319,6 +323,8 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
         var artiste = element["Artistes"];
         var nom = artiste[0]["Nom"];
         var date = element["dateCreation"];
+        var favori = element["favori"];
+        var aVisiter = element["aVisiter"];
         if(date=="NULL" || typeof date != "string"){
             date="";
         }else{
@@ -327,10 +333,10 @@ $listeLettres = array(0=>array("lettre"=>"A","ok"=>false),
         var id = element["id_oeuvre"];
         var oeuvre = [];
 //        oeuvre.push(titre+", "+lat+", "+lng+", "+nom+", "+date+", "+id);
-        oeuvre.push(titre,parseFloat(lat),parseFloat(lng),nom,date,parseFloat(id));
+        oeuvre.push(titre,parseFloat(lat),parseFloat(lng),nom,date,parseFloat(id),favori,aVisiter);
         oeuvres.push(oeuvre);
     })
-//    console.log(oeuvres);
+    //console.log(oeuvres);
     function setMarkers(map) 
     {
         //marqueur pour chaque oeuvre
@@ -353,8 +359,17 @@ TODO : enlever inline CSS
 *************
 *************
 */
-            //contenu de la bulle d'information
-            var content = '<div><p style="color:#103C61; font-size:30px; font-family: Open Sans; font-style: normal; font-weight: bold; font-size: 18px; line-height: 25px; display: flex; align-items: center; text-transform: uppercase;">'+oeuvre[0]+'</p>'+'<p style="color:#103C61;">'+oeuvre[3]+', '+oeuvre[4]+'</p>'+'<a href="oeuvre/'+oeuvre[5]+'" style="color:#DF8E32; text-decoration:none;">'+"Plus d'informations >"+'</a></div>';
+			
+			//contenu de la bulle d'information
+			let aVis="star_border";
+			if(oeuvre[7] !== null){
+				aVis="star";
+			}
+			let fav="favorite_border";
+			if(oeuvre[8] !== undefined){
+				aVis="favorite";
+			}
+			var content = '<div> <section class="compte"><i class="material-icons aVisiter" data-vis="'+oeuvre[7]+'" data-id="'+oeuvre[6]+'">'+aVis+'</i><i class="material-icons carteFavori" data-fav="'+oeuvre[8]+'"  data-id="'+oeuvre[6]+'">'+fav+'</i></section><p style="color:#103C61; font-size:30px; font-family: Open Sans; font-style: normal; font-weight: bold; font-size: 18px; line-height: 25px; display: flex; align-items: center; text-transform: uppercase;">'+oeuvre[0]+'</p>'+'<p style="color:#103C61;">'+oeuvre[3]+', '+oeuvre[4]+'</p>'+'<a href="oeuvre/'+oeuvre[5]+'" style="color:#DF8E32; text-decoration:none;">'+"Plus d'informations >"+'</a></div>';
             var infowindow = new google.maps.InfoWindow();
             
             //paramètres des marqueurs
@@ -362,7 +377,9 @@ TODO : enlever inline CSS
                 position: {lat: oeuvre[1], lng: oeuvre[2]},
                 map: map,
                 icon: icon,
-                title: oeuvre[0]
+				title: oeuvre[0],
+				fav:oeuvre[8],
+				vis:oeuvre[7]
             });  
             
             //ouvrir la bulle d'information de l'oeuvre
@@ -401,4 +418,3 @@ TODO : enlever inline CSS
     }        
     </script>
     <script src = "../js/initMapOeuvres.js"></script>
-			

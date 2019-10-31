@@ -13,6 +13,7 @@
 				<a id="menu_oeuvre" href="/art-public-mtl/api/admin/oeuvre"><img src="../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
 				<a id="menu_artistes" href="/art-public-mtl/api/admin/artiste"><img src="../../img/icons/paletteBlanch.svg" alt="icon image"><p class="text_menu">Artistes</p></a>
 				<a id="menu_utilisateurs" href="/art-public-mtl/api/admin/utilisateur"><img src="../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Utilisateurs</p></a>
+				<a id="menu_contact" href="/art-public-mtl/api/admin/contact"><img src="../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Commentaires</p></a>
 			</aside>
 			<section class="contenu_listeOeuvres">
 				<section class="recherche">
@@ -61,7 +62,7 @@
                        
                     } ?></p>
 							<p class="valeur_info_oeuvre"><?php echo $Arrondissement ?></p>
-							<span class="valeur_info_oeuvre">
+							<span class="valeur_info_oeuvre liensIcones">
 								<a href="/art-public-mtl/api/admin/oeuvre/<?php echo $id_oeuvre ?>/modifier"><img id='crayon' src="../../img/icons/crayon.svg" alt="Modifier"></a>
 								<a data-href="/art-public-mtl/api/admin/oeuvre/<?php echo $id_oeuvre ?>/supprimer" class="modalPopup" onclick="handle(this);"><img id='poubelle' src="../../img/icons/poubelle.svg" alt="Supprimer"></a>
 							</span>

@@ -24,8 +24,6 @@
 			echo '<link rel="stylesheet" href="../css/artistes.css" type="text/css" media="screen">';
 			jsBase("artistes");
 			echo '<script src="../js/liste.js"></script>';
-
-
 		} 
 		else if ($page== "artiste"){
 			cssBase("artiste");
@@ -47,6 +45,9 @@
 			echo '<script src = "../js/choixAffichage.js"></script>';
 			echo '<script src="../js/liste.js"></script>';
 			echo '<script src="../js/sliderDate.js"></script>';
+			echo '<script src="../js/favoris.js"></script>';
+			echo '<script src="../js/aVisiter.js"></script>';
+			echo '    <script src = "../js/favorisCarte.js"></script>';
 			
 		} 
 		else if ($page== "oeuvre"){
@@ -80,13 +81,21 @@
 			echo '<script src="../js/validationForm.js"></script>';
 			jsBase("compte");
 		} 
-        else if ($page== "inscription"){
+        else if ($page== "connexionCompte"){
+			cssBase("compte");
+			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
+			echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">';
+			echo '<link rel="stylesheet" href="../css/monCompte.css">';
+			//echo '<script src="../js/validationForm.js"></script>';
+			jsBase("compte");
+		} 
+        else if ($page== "inscription" || $page =="connexion"){
 			cssBase("inscription");
 			echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
 			echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">';
 			// echo '<link rel="stylesheet" href="../css/inscription.css">';
 			echo '<link rel="stylesheet" href="../../css/monCompte.css">';
-			echo '<script src="../../js/validationFormIns.js"></script>';
+			//echo '<script src="../../js/validationFormIns.js"></script>';
 			jsBase("inscription");
 		}
 		
@@ -94,7 +103,7 @@
 	
 		function cssBase($page){
 			$chemin = "";
-			if($page == "artiste" || $page == "oeuvre" || $page == "inscription") {
+			if($page == "artiste" || $page == "oeuvre" || $page == "inscription" || $page =="connexion") {
 				$chemin = "../";
 			}
 			?>
@@ -107,14 +116,17 @@
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/component.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/flex.css" type="text/css" media="screen">
 			<link rel="stylesheet" href="<?php echo $chemin;?>../css/main.css" type="text/css" media="screen">
+<<<<<<< HEAD
 			<!-- <link rel="stylesheet" href="<?php echo $chemin;?>../css/parcours.css" type="text/css" media="screen"> -->
 
 			
+=======
+>>>>>>> 898e05afd1f6c663fb0bf769fea940826629e188
 			<?php
 		}
 		function jsBase($page){
 			$chemin = "";
-			if($page == "artiste" || $page == "oeuvre") {
+			if($page == "artiste" || $page == "oeuvre" || $page== "inscription" || $page =="connexion") {
 				$chemin = "../";
 			}
 			?>
@@ -132,7 +144,7 @@
 <body>
 	<header class="appbar">
 
-		<a class="logo" href="/art-public-mtl/api/"><img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription"){echo "../";}?>../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
+		<a class="logo" href="/art-public-mtl/api/"><img src="<?php if($page == "artiste" || $page == "oeuvre" || $page == "inscription" || $page =="connexion"){echo "../";}?>../img/icons/logoAP.png" alt="Logo Art public Montréal"></a>
 		
 		<nav class="menu">
 			

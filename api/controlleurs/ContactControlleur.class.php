@@ -26,10 +26,33 @@ class ContactControlleur extends Controlleur
 	
 	public function getAction(Requete $requete)
 	{
+		$message = null;
+		if(isset($_GET["update"])) {
+			if($_GET["update"] == "succes") {
+				$message = "Votre commentaire a été bien sauvegardé";
+			} elseif($_GET["update"] == "error") {
+				$message = "Votre commentaire n'a pas été sauvegardé";
+			}
+		}
 		$oVue = new Vue();
         $oVue->afficheEntete("contact");	
-        $oVue->afficheContact();
+        $oVue->afficheContact($message);
         $oVue->affichePied();
+	}
+
+	public function postAction() {
+		if(!empty($_POST)) {
+			$oContact = new Contact();
+			$resAjoutContact = $oContact->ajoutContact($_POST);
+			if($resAjoutContact) {
+				header("Location:/art-public-mtl/api/contact?update=succes");
+			} else {
+				header("Location:/art-public-mtl/api/contact?update=error");
+			}
+		} else {
+			header("Location:/art-public-mtl/api/contact?update=error");
+			die;
+		}
 	}
 	
 }

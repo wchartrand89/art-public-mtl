@@ -11,6 +11,8 @@ $info4= $data4;
 				<a id="menu_oeuvre" href="/art-public-mtl/api/admin/oeuvre"><img src="../../../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
 				<a id="menu_artistes" href="/art-public-mtl/api/admin/artiste"><img src="../../../../img/icons/paletteBlanch.svg" alt="icon image"><p class="text_menu">Artistes</p></a>
 				<a id="menu_utilisateurs" href="/art-public-mtl/api/admin/utilisateur"><img src="../../../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Utilisateurs</p></a>
+                <a id="menu_contact" href="/art-public-mtl/api/admin/contact"><img src="../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Commentaires</p></a>
+                
 			</aside>
             <div id="formAdmin">
                 <span id="retour">
@@ -72,7 +74,9 @@ $info4= $data4;
                         </select>
                     </div> 
                     <div class="div_form">
-                        <label for="titre">Matériaux</label>
+                       <a titre = "Pour modifier des matériaux, utilisez la syntaxe suivante : Matériau1, Matériau2">
+                        <label for="titre" id="mat">Matériaux</label>
+                        </a>
                         <input class="box" type="text" name="materiaux" value="<?php echo $info["materiaux"];  ?>" id="Matériaux" >
                     </div>               
                     <div class="div_form">
@@ -168,7 +172,7 @@ $info4= $data4;
           
           ?>
                     <div id=btns_form>
-                        <input type="button" id="annuler" value="Annuler">
+                        <a href="/art-public-mtl/api/admin/oeuvre">Annuler</a>
                         <input type="submit" id="envoyer" value="Modifier">  
                     </div>		 
             </form> 
