@@ -51,22 +51,24 @@ if($_SERVER['REQUEST_METHOD'] == 'OPTIONS')
     /***************************************************/
 
 	$oReq = new Requete();
-	//var_dump($oReq);
+	//var_dump($oReq->ressource);
 	/* Instanciation du controlleur */
 	if($oReq->ressource == ""){
 		$oReq->ressource = "Accueil";
 	}
 	
 	$nomControlleur = ucfirst($oReq->ressource) . 'Controlleur';
-
+	//echo$nomControlleur;
 	
 		if (class_exists($nomControlleur)) {
+			
 			$reflectionClass = new ReflectionClass($nomControlleur);
     		
 			if($reflectionClass->isInstantiable()){
 				$oControlleur = new $nomControlleur();
 				$nomAction = strtolower($oReq->verbe) . 'Action';
 				$result = $oControlleur->$nomAction($oReq);
+				
 			}
 			else{
 				//http_response_code(404);

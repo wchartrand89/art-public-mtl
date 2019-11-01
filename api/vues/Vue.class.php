@@ -115,8 +115,7 @@ class Vue {
 	 */
 	public function afficheAPropos() {
 		
-		require("apropos/apropos.html.php");
-		
+		require("apropos/apropos.html.php");		
 	}
 
 	/**
@@ -158,5 +157,6 @@ class Vue {
 		require("accueil/monCompte.html.php");
 		
 	}
+	
 }
 ?>

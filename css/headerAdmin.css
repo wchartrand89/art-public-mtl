@@ -120,10 +120,15 @@ div > .Deconn{
 }
 
 .Inter:hover{
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
+    transform:ScaleY(1.3);
+    transform-origin: 50% 50%;
+    transition: transform .15s;
 }
 .Deconn:hover{
-    text-transform: uppercase;
+    transform:ScaleY(1.3);
+    transform-origin: 50% 50%;
+    transition: transform .15s;
 }
 
 /* MENU ASIDE */
@@ -137,7 +142,7 @@ div > .Deconn{
     -ms-flex-direction: column;
     flex-direction: column;        
     background-color: var(--couleur-marine);
-    padding-top: 10px;
+    padding-top: 30px;
     height: calc( 100vh - var(--taille-footer));
     position:sticky;
     top : var(--taille-footer);
@@ -164,26 +169,48 @@ div > .Deconn{
     margin-left: 18px;
 }
 
+#menu_aside > a:hover{
+
+    transform:ScaleY(1.2);
+    transform-origin: 50% 50%;
+    transition: transform .15s;
+}
+    /* #menu_aside > a{
+    transform: ScaleY(1.2);
+    transform-origin: 50% 0%;
+    transition: transform 235ms;
+}   */
+
 a > img{
     width:30px;
     height:23px;
     padding-right: 15px;
 }
 
-.text_menu{    
+.text_menu{ 
+    text-transform: uppercase;   
     font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     color: white;    
 }
 
-#menu_aside > a:hover{
-    text-transform: uppercase;    
+#menuArtistes, #menuUtil, #menuComment{
+    font-size: 17px;;
 }
+
+
+
+/* #menu_aside > a:hover{
+    font-size: 16px;    
+} */
 
 /* CONTENU LISTE OEUVRES */
 
+#menuOeuvres{
+    font-size: 17px;;
+}
 .contenu_listeOeuvres{
     padding:0px;
     width:100%;
@@ -199,6 +226,7 @@ a > img{
 }
 
 form{
+    text-transform: uppercase;
     display:-webkit-box;
     display:-ms-flexbox;
     display:flex;
@@ -235,9 +263,15 @@ form{
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
-    color:var(--couleur-marine);
+    /* color:var(--couleur-marine); */
+    
     text-align: center;
 }
+
+::placeholder{
+    color:var(--couleur-marine);
+}
+
 #img_recherche{
     
     font-family: Material Icons;
@@ -250,7 +284,9 @@ form{
 }
 
 #btn_submit{
-   
+    display:flex;
+    flex-basis: row;
+    justify-content: center;
     width: 202px;
     height: 30px;
     background: var(--couleur-marine);
@@ -261,10 +297,30 @@ form{
     font-size: 12px;
     color:white;
     border: 2px solid var(--couleur-marine); 
-    display: block;
+    /* display: block; */
     text-align: center;
+    text-decoration: none;
+}
+#btn_submit:hover{
+    transform:ScaleY(1.1);
+    transform-origin: 50% 50%;
+    transition: transform .15s; 
+}
+    /* transform:ScaleY(1.1);
+    transform-origin: 50% 50%;
+    transition: transform .15s; */
+
+#btn_submit > p{
+    margin-top: 8px;
+    font-size: 12px;
 }
 
+#btn_submit > img{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 25px;
+    height: auto;
+}
 
 .nomsChamps{
     display:-webkit-box;
@@ -405,7 +461,7 @@ form{
     flex-direction: row;
     -webkit-box-pack: flex start;
     -ms-flex-pack: flex start;
-    justify-content: flex start;
+    justify-content:center;
 }
 
 
@@ -429,15 +485,24 @@ form{
     width:45px;
     height:45px;
 }
+/* a:hover{
 
+    transform:ScaleY(1.1);
+    transform-origin: 50% 50%;
+    transition: transform .15s;
+} */
 #crayon:hover{
-    width:55px;
-    height:33px;
+    transform:ScaleY(1.2);
+    transform-origin: 50% 0%;
+    transition: transform .15s;
+    /* width:55px;
+    height:33px; */
 }
 
 #poubelle:hover{
-    width:55px;
-    height:33px;
+    transform:ScaleY(1.2);
+    transform-origin: 50% 50%;
+    transition: transform .15s;
 }
 
 .columns{
@@ -494,6 +559,8 @@ span > p{
     margin-top:0px;
     margin-bottom:0px;
 }
+
+
 
 
 

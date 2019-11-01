@@ -12,7 +12,7 @@ $info= $data;
 				<a id="menu_oeuvre" href="/art-public-mtl/api/admin/oeuvre"><img src="../../../../img/icons/imageBlanch.svg" alt="icon image"><p class="text_menu">Oeuvres</p></a>
 				<a id="menu_artistes" href="/art-public-mtl/api/admin/artiste"><img src="../../../../img/icons/paletteBlanch.svg" alt="icon image"><p class="text_menu">Artistes</p></a>
 				<a id="menu_utilisateurs" href="/art-public-mtl/api/admin/utilisateur"><img src="../../../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Utilisateurs</p></a>
-                <a id="menu_contact" href="/art-public-mtl/api/admin/contact"><img src="../../img/icons/personBlanch.svg" alt="icon image"><p class="text_menu">Commentaires</p></a>
+                <a id="menu_contact" href="/art-public-mtl/api/admin/contact"><img src="../../../../img/icons/COMMENT.png" alt="icon image"><p class="text_menu">Commentaires</p></a>
                 
 			</aside>
             <div id="formAdmin">
@@ -20,7 +20,7 @@ $info= $data;
                     <a id="a_image" href="/art-public-mtl/api/admin/artiste"><img src="../../../../img/icons/retour_fleche.svg" alt=""></a>
                     <p>Retour</p>
                 </span>
-                <p id="text_form_admin">MODIFICATION DE L'OEUVRE</p>
+                <p id="text_form_admin">MODIFICATION DE L'ARTISTE</p>
                 <form id='inputs_form' action="/art-public-mtl/api/admin/artiste/modification/" method="post">	
                               
                     <div>
