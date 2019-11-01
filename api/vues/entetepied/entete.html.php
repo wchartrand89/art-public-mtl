@@ -43,8 +43,7 @@
 
 	
 	<?php
-		if ($page== ""){
-			
+		if ($page== ""){			
 			cssBase("");
 			echo '<link rel="stylesheet" href="../css/home.css" type="text/css" media="screen">';
 			echo '<link rel="stylesheet" href="../css/slider.css" type="text/css" media="screen">';
@@ -93,7 +92,6 @@
 			echo '<link rel="stylesheet" href="../../css/oeuvres.css" type="text/css" media="screen">';
 			echo '<script src="../../js/onglets.js"></script>';
 			echo '<script src="../../js/imgOeuvre.js"></script>';
-			echo '<script src="../../js/carteOeuvre.js"></script>';
 			jsBase("oeuvre");
 		} 
 		else if ($page== "apropos"){

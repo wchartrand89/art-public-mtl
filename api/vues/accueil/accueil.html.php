@@ -20,22 +20,22 @@
 			<!-- Slideshow container -->
 			<div class="slider">
 				<div class="slide fade">
-					<a href="">
+					<a href="oeuvre/4">
 						<div class="img"><img class="photo" src="../img/oeuvres/1127_1.jpg" alt=""></div>
-						<div class="nom">Nom de l'oeuvre</div>
+						<div class="nom">Le malheureux magnifique</div>
 					</a>
 					
 				</div>
 				<div class="slide fade">
-					<a href="">
+					<a href="oeuvre/2">
 						<div class="img"><img class="photo" src="../img/oeuvres/1099_1_B.jpg" alt=""></div>
-						<div class="nom">Nom de l'oeuvre</div>
+						<div class="nom">Porte de jour</div>
 					</a>
 				</div>
 				<div class="slide fade">
-					<a href="">
+					<a href="oeuvre/3">
 						<div class="img"><img class="photo" src="../img/oeuvres/1119_1.jpg" alt=""></div>
-						<div class="nom">Nom de l'oeuvre</div>
+						<div class="nom">Regarder les pommetiers</div>
 					</a>
 				</div>
 

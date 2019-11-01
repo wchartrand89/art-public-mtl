@@ -52,6 +52,20 @@ CONNEXION
     <texte xml:id="user">Nom d'utilisateur</texte>
     <texte xml:id="pass">Mot de passe</texte>
     
+    <texte xml:id="pas_de_compte">Pas encore de compte ?</texte>
+    <texte xml:id="s_inscrire">S'inscrire </texte>
+    
+    <texte xml:id="inscription">Inscription</texte>
+    <texte xml:id="text_email">Adresse e-mail</texte>
+    <texte xml:id="text_email_ph">exemple@domaine.com</texte>
+    <texte xml:id="confirmer">Confirmez le mot de passe</texte>
+    <texte xml:id="deja_compte">Déja un compte?</texte>
+    <texte xml:id="se_connecter">Se connecter</texte>
+    
+    <texte xml:id="err1">Votre nom de compte est déjà utilisé.</texte>
+    <texte xml:id="err2">Votre adresse mail est déjà utilisée.</texte>
+    <texte xml:id="err3">Votre adresse mail et votre nom d'utilisateur sont déjà utilisés.</texte>
+    
 <!-- 
 *****************
 OEUVRES

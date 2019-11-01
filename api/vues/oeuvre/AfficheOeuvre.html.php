@@ -1,18 +1,29 @@
 
 <?php error_reporting(E_ALL ^ E_WARNING);  ?>
 <?php
-
     $document = cookie();
     $text_lang = $document->getElementById("lang")->nodeValue;
 
+    $text_retour = $document->getElementById("retour")->nodeValue;
+    $text_plus_info = $document->getElementById("plus_info")->nodeValue;
+
+    $text_bulle = $document->getElementById("bulleinfo")->nodeValue;
+    $text_details = $document->getElementById("details")->nodeValue;
+    $text_artiste = $document->getElementById("artiste")->nodeValue;
+    $text_carte = $document->getElementById("carte")->nodeValue;
+    $text_cat = $document->getElementById("categorie")->nodeValue;
+    $text_mat = $document->getElementById("materiaux")->nodeValue;
+    $text_technique = $document->getElementById("techniques")->nodeValue;
+    $text_date = $document->getElementById("dateCreation")->nodeValue;
 ?>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8S4xg4xxyN0iGGBdUOpR3xRa4DIkD710&callback=initMap"
     async defer>
     </script>
+
     <script>var lienPage =  window.location.href();</script>
 
     <section class="contenu uneOeuvre flex flex-col">
-	<section class="retour"><a href="javascript:history.back()"> < Retour  </a></section>
+	<section class="retour"><a href="javascript:history.back()"> < <?php echo $text_retour; ?>  </a></section>
 	<section class="oeuvre conteneur_partager">
 		<?php
 		extract($aData);
@@ -33,29 +44,29 @@
 
 			<div class="systeme_onglets">
 				<div class="onglets">
-					<span class="onglet_0 onglet" id="onglet_details" onclick="javascript:change_onglet('details');">D&eacute;tails</span>
-					<span class="onglet_0 onglet" id="onglet_artiste" onclick="javascript:change_onglet('artiste');">Artiste</span>
-					<span class="onglet_0 onglet" id="onglet_carte" onclick="javascript:change_onglet('carte');">Carte</span>
+					<span class="onglet_0 onglet" id="onglet_details" onclick="javascript:change_onglet('details');"><?php echo $text_details; ?></span>
+					<span class="onglet_0 onglet" id="onglet_artiste" onclick="javascript:change_onglet('artiste');"><?php echo $text_artiste; ?></span>
+					<span class="onglet_0 onglet" id="onglet_carte" onclick="javascript:change_onglet('carte');"><?php echo $text_carte; ?></span>
 				</div>
 			<div class="contenu_onglets">
 				<div class="contenu_onglet" id="contenu_onglet_details">
 					<h1></h1>
 					<table>
 						<tr>
-							<td>Catégorie</td>
+							<td><?php echo $text_cat; ?></td>
 							<td><?php if(isset($categorie)){echo $categorie;}else{echo "inconnu";} ?></td>
 						</tr>
 						<tr>
 						<tr>
-							<td>Matériaux</td>
+							<td><?php echo $text_mat; ?></td>
 							<td><?php if(isset($materiaux)){echo $materiaux;}else{echo "inconnu";} ?></td>
 						</tr>
 						<tr>
-							<td>Techniques</td>
+							<td><?php echo $text_technique; ?></td>
 							<td><?php if(isset($technique)){echo $technique;}else{echo "inconnu";} ?></td>
 						</tr>
 						<tr>
-							<td>Date de création</td>
+							<td><?php echo $text_date; ?></td>
 							<td><?php if(isset($dateCreation)){echo $dateCreation;}else{echo "inconnu";} ?></td>
 						</tr>
 					</table>
@@ -79,7 +90,7 @@
                   ?></a></p>
 						<p class=""><?php if(isset($description)){echo $description;}else{echo "description non disponible.";} ?></p>
 					</section>
-					<a href="/art-public-mtl/api/artiste/<?php echo $id_artiste ?>" >Plus d'information ></a>
+					<a href="/art-public-mtl/api/artiste/<?php echo $id_artiste ?>" ><?php echo $text_plus_info; ?> ></a>
 				</div>
 				<!-- <p class="arrondissement"><?php echo $Arrondissement?></p> -->
 
@@ -89,10 +100,51 @@
 				<div class="contenu_onglet" id="contenu_onglet_carte">
 					<h1></h1>
 
-
+    <div id="map" class="carte" style="height:230px; width:100%;"></div>
 <script>
         var map;
-        function initMap()
+    //data oeuvres
+    function setMarkers(map)
+    {
+        var oeuvre = ["<?php echo $titre; ?>", <?php echo $coordonneeLatitude; ?>, <?php echo $coordonneeLongitude; ?>, "<?php echo $nom; ?>"];
+        //marqueur pour chaque oeuvre
+        var icon = {
+            url: "../../img/icons/mapmarker.png", // url
+             scaledSize: new google.maps.Size(28, 40), // size
+        };
+            //paramètres des marqueurs
+            var marker = new google.maps.Marker({
+                position: {lat: oeuvre[1], lng: oeuvre[2]},
+                map: map,
+                icon: icon,
+                title: oeuvre[0]
+            });
+            // Limites de la carte
+            var allowedBounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(45.4079982, -73.9446209),
+                new google.maps.LatLng(45.6876557, -73.5051969));
+                // Après avoir drag (glissé) le curseur
+                google.maps.event.addListener(map, 'dragend', function()
+                {
+                    if (allowedBounds.contains(map.getCenter())) return;
+                 // Rediriger la carte vers la dernière limite connue
+                 var c = map.getCenter(),
+                     x = c.lng(),
+                     y = c.lat(),
+                     maxX = allowedBounds.getNorthEast().lng(),
+                     maxY = allowedBounds.getNorthEast().lat(),
+                     minX = allowedBounds.getSouthWest().lng(),
+                     minY = allowedBounds.getSouthWest().lat();
+                 if (x < minX) x = minX;
+                 if (x > maxX) x = maxX;
+                 if (y < minY) y = minY;
+                 if (y > maxY) y = maxY;
+                 map.setCenter(new google.maps.LatLng(y, x));
+               });
+    }
+    </script>
+    <script>
+                function initMap()
         {
             var myMapOptions = { clickableIcons: false }
             var styledMapType = new google.maps.StyledMapType(
@@ -257,8 +309,6 @@
                   }
                 ],
                 {name: 'Styled Map'});
-
-
             //options default la carte Google
             var oeuvre = ["<?php echo $description; ?>", <?php echo $coordonneeLatitude; ?>, <?php echo $coordonneeLongitude; ?>, "<?php echo $nom; ?>"];
             var options = {
@@ -273,69 +323,13 @@
                 disableDefaultUI: true,
                 zoomControl: true,
                 draggable : true
-
             }
-
             var map = new google.maps.Map(document.getElementById('map'), options);
             map.mapTypes.set('styled_map', styledMapType);
             map.setMapTypeId('styled_map');
             setMarkers(map);
         }
-
-    //data oeuvres
-
-
-    function setMarkers(map)
-    {
-        var oeuvre = ["<?php echo $titre; ?>", <?php echo $coordonneeLatitude; ?>, <?php echo $coordonneeLongitude; ?>, "<?php echo $nom; ?>"];
-
-        //marqueur pour chaque oeuvre
-        var icon = {
-            url: "../../img/icons/mapmarker.png", // url
-             scaledSize: new google.maps.Size(28, 40), // size
-        };
-
-
-
-            //paramètres des marqueurs
-            var marker = new google.maps.Marker({
-                position: {lat: oeuvre[1], lng: oeuvre[2]},
-                map: map,
-                icon: icon,
-                title: oeuvre[0]
-            });
-
-            // Limites de la carte
-            var allowedBounds = new google.maps.LatLngBounds(
-                new google.maps.LatLng(45.4079982, -73.9446209),
-                new google.maps.LatLng(45.6876557, -73.5051969));
-                // Après avoir drag (glissé) le curseur
-                google.maps.event.addListener(map, 'dragend', function()
-                {
-                    if (allowedBounds.contains(map.getCenter())) return;
-
-                 // Rediriger la carte vers la dernière limite connue
-
-                 var c = map.getCenter(),
-                     x = c.lng(),
-                     y = c.lat(),
-                     maxX = allowedBounds.getNorthEast().lng(),
-                     maxY = allowedBounds.getNorthEast().lat(),
-                     minX = allowedBounds.getSouthWest().lng(),
-                     minY = allowedBounds.getSouthWest().lat();
-
-                 if (x < minX) x = minX;
-                 if (x > maxX) x = maxX;
-                 if (y < minY) y = minY;
-                 if (y > maxY) y = maxY;
-
-                 map.setCenter(new google.maps.LatLng(y, x));
-               });
-
-    }
     </script>
-
-    <div id="map" class="carte" style="height:230px; width:100%;"></div>
 
     </div>
     </div>

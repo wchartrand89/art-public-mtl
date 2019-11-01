@@ -48,9 +48,23 @@ CONNEXION
 -->
     
     <texte xml:id="bienvenue">Welcome, </texte>
-    <texte xml:id="connexion">Connection</texte>
+    <texte xml:id="connexion">Log in</texte>
     <texte xml:id="user">Username</texte>
     <texte xml:id="pass">Password</texte>
+    
+    <texte xml:id="pas_de_compte">No account yet ?</texte>
+    <texte xml:id="s_inscrire">Sign up</texte>
+    
+    <texte xml:id="inscription">Subscription</texte>
+    <texte xml:id="text_email">E-mail adress</texte>
+    <texte xml:id="text_email_ph">example@domain.com</texte>
+    <texte xml:id="confirmer">Confirm password</texte>
+    <texte xml:id="deja_compte">Already have an account?</texte>
+    <texte xml:id="se_connecter">Log in</texte>
+    
+    <texte xml:id="err1">That username already exists.</texte>
+    <texte xml:id="err2">That e-mail address is already linked to an account.</texte>
+    <texte xml:id="err3">That e-mail address is already linked to an account and that username already exists.</texte>
     
 <!-- 
 *****************
